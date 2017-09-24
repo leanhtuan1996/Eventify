@@ -8,20 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		36300B6D1F773CE100ACC77E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36300B6C1F773CE100ACC77E /* AppDelegate.swift */; };
-		36300B6F1F773CE100ACC77E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36300B6E1F773CE100ACC77E /* ViewController.swift */; };
 		36300B721F773CE100ACC77E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36300B701F773CE100ACC77E /* Main.storyboard */; };
 		36300B741F773CE100ACC77E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36300B731F773CE100ACC77E /* Assets.xcassets */; };
 		36300B771F773CE100ACC77E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36300B751F773CE100ACC77E /* LaunchScreen.storyboard */; };
+		367A19591F77571300972017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 367A19581F77571300972017 /* GoogleService-Info.plist */; };
+		367A195F1F775A2F00972017 /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367A195E1F775A2F00972017 /* Extensions+UIViewController.swift */; };
+		36859EFE1F77678D002457C6 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859EFD1F77678D002457C6 /* SignInVC.swift */; };
+		36859F011F776DA7002457C6 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F001F776DA7002457C6 /* SignUpVC.swift */; };
+		36859F031F776F6A002457C6 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F021F776F6A002457C6 /* LaunchVC.swift */; };
+		36859F061F77BC80002457C6 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F051F77BC80002457C6 /* DiscoverVC.swift */; };
+		36859F0A1F77C24F002457C6 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F081F77C24F002457C6 /* EventsCell.swift */; };
+		36859F0B1F77C24F002457C6 /* EventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36859F091F77C24F002457C6 /* EventsCell.xib */; };
+		D99749464FB5A96247CBB5BD /* Pods_Eventify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF8C59A2F5C8764AE3A4BF3 /* Pods_Eventify.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AF9E15AF6482763BF932DDC /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 		36300B691F773CE100ACC77E /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36300B6C1F773CE100ACC77E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		36300B6E1F773CE100ACC77E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		36300B711F773CE100ACC77E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36300B731F773CE100ACC77E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36300B761F773CE100ACC77E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36300B781F773CE100ACC77E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		367A19581F77571300972017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		367A195E1F775A2F00972017 /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
+		36859EFD1F77678D002457C6 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		36859F001F776DA7002457C6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		36859F021F776F6A002457C6 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
+		36859F051F77BC80002457C6 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
+		36859F081F77C24F002457C6 /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
+		36859F091F77C24F002457C6 /* EventsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsCell.xib; sourceTree = "<group>"; };
+		36D810531C524B51C819E80A /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
+		AFF8C59A2F5C8764AE3A4BF3 /* Pods_Eventify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D99749464FB5A96247CBB5BD /* Pods_Eventify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0A8F096F140BA147C22C1D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFF8C59A2F5C8764AE3A4BF3 /* Pods_Eventify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		36300B601F773CE100ACC77E = {
 			isa = PBXGroup;
 			children = (
 				36300B6B1F773CE100ACC77E /* Eventify */,
 				36300B6A1F773CE100ACC77E /* Products */,
+				C125D73E3EB72DB2C35E8BF8 /* Pods */,
+				1F0A8F096F140BA147C22C1D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,9 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				36300B861F773D9B00ACC77E /* Supporting Files */,
+				36300B7F1F773D1400ACC77E /* Classes */,
 				36300B851F773D8000ACC77E /* Storyboards */,
 				36300B801F773D1B00ACC77E /* Resources */,
-				36300B7F1F773D1400ACC77E /* Classes */,
 			);
 			path = Eventify;
 			sourceTree = "<group>";
@@ -66,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				36300B6C1F773CE100ACC77E /* AppDelegate.swift */,
+				36859F021F776F6A002457C6 /* LaunchVC.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -73,6 +103,7 @@
 		36300B7F1F773D1400ACC77E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				367A195D1F775A0E00972017 /* Extensions */,
 				36300B7E1F773D1000ACC77E /* Apps */,
 				36300B841F773D6E00ACC77E /* Managers */,
 				36300B831F773D6400ACC77E /* Services */,
@@ -93,7 +124,9 @@
 		36300B811F773D5600ACC77E /* UIs */ = {
 			isa = PBXGroup;
 			children = (
-				36300B6E1F773CE100ACC77E /* ViewController.swift */,
+				36859F041F777127002457C6 /* Home */,
+				36859EFF1F776D98002457C6 /* SignUp */,
+				367A195A1F77575800972017 /* SignIn */,
 			);
 			path = UIs;
 			sourceTree = "<group>";
@@ -131,9 +164,61 @@
 		36300B861F773D9B00ACC77E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				367A19581F77571300972017 /* GoogleService-Info.plist */,
 				36300B781F773CE100ACC77E /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		367A195A1F77575800972017 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				36859EFD1F77678D002457C6 /* SignInVC.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		367A195D1F775A0E00972017 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				367A195E1F775A2F00972017 /* Extensions+UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		36859EFF1F776D98002457C6 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				36859F001F776DA7002457C6 /* SignUpVC.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		36859F041F777127002457C6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				36859F071F77C235002457C6 /* EventsCell */,
+				36859F051F77BC80002457C6 /* DiscoverVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		36859F071F77C235002457C6 /* EventsCell */ = {
+			isa = PBXGroup;
+			children = (
+				36859F081F77C24F002457C6 /* EventsCell.swift */,
+				36859F091F77C24F002457C6 /* EventsCell.xib */,
+			);
+			path = EventsCell;
+			sourceTree = "<group>";
+		};
+		C125D73E3EB72DB2C35E8BF8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36D810531C524B51C819E80A /* Pods-Eventify.debug.xcconfig */,
+				0AF9E15AF6482763BF932DDC /* Pods-Eventify.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36300B7B1F773CE100ACC77E /* Build configuration list for PBXNativeTarget "Eventify" */;
 			buildPhases = (
+				B24E715F93E407CD6CB67042 /* [CP] Check Pods Manifest.lock */,
 				36300B651F773CE100ACC77E /* Sources */,
 				36300B661F773CE100ACC77E /* Frameworks */,
 				36300B671F773CE100ACC77E /* Resources */,
+				049242D4BAA196B570DF4B70 /* [CP] Embed Pods Frameworks */,
+				4C53994F4BBFB7D8DC9B6B47 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,7 +283,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36859F0B1F77C24F002457C6 /* EventsCell.xib in Resources */,
 				36300B771F773CE100ACC77E /* LaunchScreen.storyboard in Resources */,
+				367A19591F77571300972017 /* GoogleService-Info.plist in Resources */,
 				36300B741F773CE100ACC77E /* Assets.xcassets in Resources */,
 				36300B721F773CE100ACC77E /* Main.storyboard in Resources */,
 			);
@@ -203,13 +293,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		049242D4BAA196B570DF4B70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C53994F4BBFB7D8DC9B6B47 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B24E715F93E407CD6CB67042 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Eventify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		36300B651F773CE100ACC77E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36300B6F1F773CE100ACC77E /* ViewController.swift in Sources */,
+				36859F011F776DA7002457C6 /* SignUpVC.swift in Sources */,
+				367A195F1F775A2F00972017 /* Extensions+UIViewController.swift in Sources */,
 				36300B6D1F773CE100ACC77E /* AppDelegate.swift in Sources */,
+				36859F0A1F77C24F002457C6 /* EventsCell.swift in Sources */,
+				36859F031F776F6A002457C6 /* LaunchVC.swift in Sources */,
+				36859EFE1F77678D002457C6 /* SignInVC.swift in Sources */,
+				36859F061F77BC80002457C6 /* DiscoverVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +495,7 @@
 		};
 		36300B7C1F773CE100ACC77E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36D810531C524B51C819E80A /* Pods-Eventify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -353,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anhtuan.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.0;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -360,6 +513,7 @@
 		};
 		36300B7D1F773CE100ACC77E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AF9E15AF6482763BF932DDC /* Pods-Eventify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -369,6 +523,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anhtuan.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.0;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
