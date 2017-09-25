@@ -68,7 +68,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // - MARK: FUNCTIONS
+    // MARK: - FUNCTIONS
     
     func signUp() {
         if !(txtEmail.hasText && txtPassword.hasText) {
@@ -108,7 +108,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         appDelegate.showSignInView()
     }
     
-    // - MARK: DELEGATE UITEXTFIELDS
+    // MARK: - DELEGATE UITEXTFIELDS
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
             nextField.becomeFirstResponder()

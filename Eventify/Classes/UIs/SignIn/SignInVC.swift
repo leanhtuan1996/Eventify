@@ -51,7 +51,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         btnSignUp.layer.cornerRadius = 10
     }
     
-    // - MARK: FUNCTIONS
+    // MARK: - FUNCTIONS
     
     func signIn() {
         
@@ -78,7 +78,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // - MARK : ACTIONS
+    // MARK : - ACTIONS
     
     @IBAction func btnFacebook(_ sender: Any) {
     }
@@ -99,7 +99,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         signIn()
     }
     
-    // - MARK: DELEGATE UITEXTFIELDS
+    // MARK: - DELEGATE UITEXTFIELDS
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
             nextField.becomeFirstResponder()

@@ -41,6 +41,13 @@ class DiscoverVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        if !(navigationController?.isNavigationBarHidden)! {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+    }
+    
     
     @IBAction func btnEventsClicked(_ sender: Any) {
         btnEvents.backgroundColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)
@@ -88,6 +95,10 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        if let sb = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC {
+            self.navigationController?.pushViewController(sb, animated: true)
+            self.tabBarController?.hidesBottomBarWhenPushed = true
+        }
     }
     
     
