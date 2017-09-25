@@ -49,7 +49,7 @@ class DiscoverVC: UIViewController {
         //tabbar
         
         if let items = tabBarController?.tabBar.items {
-            let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "profile")]
+            let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "alert"), #imageLiteral(resourceName: "ticket")]
             for i in 0..<items.count {
                 let tabBarItem = items[i]
                 let tabBarImage = tabBarImages[i]

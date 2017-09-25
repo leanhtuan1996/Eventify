@@ -1098,7 +1098,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
         <scene sceneID="mEc-oE-4HK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Bx8-oh-LBh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="gN6-GI-tGd"/>
+                    <tabBarItem key="tabBarItem" title="" image="alert" badgeValue="2" selectedImage="alert" id="gN6-GI-tGd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ew8-OX-kNX">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1132,6 +1132,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
         </scene>
     </scenes>
     <resources>
+        <image name="alert" width="40" height="40"/>
         <image name="background" width="1080" height="1920"/>
         <image name="event" width="35" height="35"/>
         <image name="facebok" width="32" height="32"/>
