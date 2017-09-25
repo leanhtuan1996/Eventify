@@ -11,14 +11,24 @@
 		36300B721F773CE100ACC77E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36300B701F773CE100ACC77E /* Main.storyboard */; };
 		36300B741F773CE100ACC77E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36300B731F773CE100ACC77E /* Assets.xcassets */; };
 		36300B771F773CE100ACC77E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36300B751F773CE100ACC77E /* LaunchScreen.storyboard */; };
+		365DD3821F78AF23001E48BF /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DD3811F78AF23001E48BF /* DetailEventVC.swift */; };
 		367A19591F77571300972017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 367A19581F77571300972017 /* GoogleService-Info.plist */; };
-		367A195F1F775A2F00972017 /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367A195E1F775A2F00972017 /* Extensions+UIViewController.swift */; };
 		36859EFE1F77678D002457C6 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859EFD1F77678D002457C6 /* SignInVC.swift */; };
 		36859F011F776DA7002457C6 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F001F776DA7002457C6 /* SignUpVC.swift */; };
 		36859F031F776F6A002457C6 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F021F776F6A002457C6 /* LaunchVC.swift */; };
 		36859F061F77BC80002457C6 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F051F77BC80002457C6 /* DiscoverVC.swift */; };
 		36859F0A1F77C24F002457C6 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F081F77C24F002457C6 /* EventsCell.swift */; };
 		36859F0B1F77C24F002457C6 /* EventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36859F091F77C24F002457C6 /* EventsCell.xib */; };
+		36B951401F7810DB00D926E4 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9513F1F7810DB00D926E4 /* UserServices.swift */; };
+		36B951421F78111200D926E4 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951411F78111200D926E4 /* UserObject.swift */; };
+		36B9514B1F7814B100D926E4 /* Extensions+UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951431F7814AF00D926E4 /* Extensions+UINavigationController.swift */; };
+		36B9514C1F7814B100D926E4 /* Extensions+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951441F7814B000D926E4 /* Extensions+Data.swift */; };
+		36B9514D1F7814B100D926E4 /* Extensions+NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951451F7814B000D926E4 /* Extensions+NSError.swift */; };
+		36B9514E1F7814B100D926E4 /* Extensions+UIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951461F7814B000D926E4 /* Extensions+UIActivityIndicatorView.swift */; };
+		36B9514F1F7814B100D926E4 /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951471F7814B100D926E4 /* Extensions+Date.swift */; };
+		36B951501F7814B100D926E4 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951481F7814B100D926E4 /* Extensions+String.swift */; };
+		36B951511F7814B100D926E4 /* Extensions+HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B951491F7814B100D926E4 /* Extensions+HTTPURLResponse.swift */; };
+		36B951521F7814B100D926E4 /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9514A1F7814B100D926E4 /* Extensions+UIViewController.swift */; };
 		D99749464FB5A96247CBB5BD /* Pods_Eventify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF8C59A2F5C8764AE3A4BF3 /* Pods_Eventify.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,14 +40,24 @@
 		36300B731F773CE100ACC77E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36300B761F773CE100ACC77E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36300B781F773CE100ACC77E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		365DD3811F78AF23001E48BF /* DetailEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
 		367A19581F77571300972017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		367A195E1F775A2F00972017 /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		36859EFD1F77678D002457C6 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		36859F001F776DA7002457C6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		36859F021F776F6A002457C6 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		36859F051F77BC80002457C6 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		36859F081F77C24F002457C6 /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
 		36859F091F77C24F002457C6 /* EventsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsCell.xib; sourceTree = "<group>"; };
+		36B9513F1F7810DB00D926E4 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
+		36B951411F78111200D926E4 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
+		36B951431F7814AF00D926E4 /* Extensions+UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UINavigationController.swift"; sourceTree = "<group>"; };
+		36B951441F7814B000D926E4 /* Extensions+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Data.swift"; sourceTree = "<group>"; };
+		36B951451F7814B000D926E4 /* Extensions+NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+NSError.swift"; sourceTree = "<group>"; };
+		36B951461F7814B000D926E4 /* Extensions+UIActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIActivityIndicatorView.swift"; sourceTree = "<group>"; };
+		36B951471F7814B100D926E4 /* Extensions+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Date.swift"; sourceTree = "<group>"; };
+		36B951481F7814B100D926E4 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
+		36B951491F7814B100D926E4 /* Extensions+HTTPURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+HTTPURLResponse.swift"; sourceTree = "<group>"; };
+		36B9514A1F7814B100D926E4 /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Extensions+UIViewController.swift"; path = "../../../../pharmacy/Pharmacy/Classes/Extensions/Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		36D810531C524B51C819E80A /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		AFF8C59A2F5C8764AE3A4BF3 /* Pods_Eventify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -134,6 +154,7 @@
 		36300B821F773D5B00ACC77E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				36B951411F78111200D926E4 /* UserObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,6 +162,7 @@
 		36300B831F773D6400ACC77E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				36B9513F1F7810DB00D926E4 /* UserServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -170,6 +192,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		365DD3801F78AEFF001E48BF /* DetailEvent */ = {
+			isa = PBXGroup;
+			children = (
+				365DD3811F78AF23001E48BF /* DetailEventVC.swift */,
+			);
+			path = DetailEvent;
+			sourceTree = "<group>";
+		};
 		367A195A1F77575800972017 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +211,14 @@
 		367A195D1F775A0E00972017 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				367A195E1F775A2F00972017 /* Extensions+UIViewController.swift */,
+				36B951441F7814B000D926E4 /* Extensions+Data.swift */,
+				36B951471F7814B100D926E4 /* Extensions+Date.swift */,
+				36B951491F7814B100D926E4 /* Extensions+HTTPURLResponse.swift */,
+				36B951451F7814B000D926E4 /* Extensions+NSError.swift */,
+				36B951481F7814B100D926E4 /* Extensions+String.swift */,
+				36B951461F7814B000D926E4 /* Extensions+UIActivityIndicatorView.swift */,
+				36B951431F7814AF00D926E4 /* Extensions+UINavigationController.swift */,
+				36B9514A1F7814B100D926E4 /* Extensions+UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,6 +234,7 @@
 		36859F041F777127002457C6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				365DD3801F78AEFF001E48BF /* DetailEvent */,
 				36859F071F77C235002457C6 /* EventsCell */,
 				36859F051F77BC80002457C6 /* DiscoverVC.swift */,
 			);
@@ -301,12 +339,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,13 +396,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B951511F7814B100D926E4 /* Extensions+HTTPURLResponse.swift in Sources */,
+				36B951401F7810DB00D926E4 /* UserServices.swift in Sources */,
 				36859F011F776DA7002457C6 /* SignUpVC.swift in Sources */,
-				367A195F1F775A2F00972017 /* Extensions+UIViewController.swift in Sources */,
+				36B951421F78111200D926E4 /* UserObject.swift in Sources */,
 				36300B6D1F773CE100ACC77E /* AppDelegate.swift in Sources */,
+				36B9514F1F7814B100D926E4 /* Extensions+Date.swift in Sources */,
+				36B9514C1F7814B100D926E4 /* Extensions+Data.swift in Sources */,
 				36859F0A1F77C24F002457C6 /* EventsCell.swift in Sources */,
+				36B9514E1F7814B100D926E4 /* Extensions+UIActivityIndicatorView.swift in Sources */,
 				36859F031F776F6A002457C6 /* LaunchVC.swift in Sources */,
+				365DD3821F78AF23001E48BF /* DetailEventVC.swift in Sources */,
+				36B951521F7814B100D926E4 /* Extensions+UIViewController.swift in Sources */,
+				36B9514B1F7814B100D926E4 /* Extensions+UINavigationController.swift in Sources */,
+				36B9514D1F7814B100D926E4 /* Extensions+NSError.swift in Sources */,
 				36859EFE1F77678D002457C6 /* SignInVC.swift in Sources */,
 				36859F061F77BC80002457C6 /* DiscoverVC.swift in Sources */,
+				36B951501F7814B100D926E4 /* Extensions+String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

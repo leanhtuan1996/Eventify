@@ -24,7 +24,7 @@ class DiscoverVC: UIViewController {
         
         tblEvents.register(UINib(nibName: "EventsCell", bundle: nil), forCellReuseIdentifier: "EventsCell")
         
-        controlView.layer.borderColor = #colorLiteral(red: 0.7569273114, green: 0.7537581325, blue: 0.7762107849, alpha: 1)
+        controlView.layer.borderColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)
         controlView.layer.borderWidth = 2
         controlView.layer.cornerRadius = 20
         
@@ -41,12 +41,13 @@ class DiscoverVC: UIViewController {
         
     }
     
+    
     @IBAction func btnEventsClicked(_ sender: Any) {
         btnEvents.backgroundColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)
         btnEvents.layer.zPosition = 100
         btnEvents.setTitleColor(#colorLiteral(red: 0.9714086652, green: 0.9793576598, blue: 0.9995563626, alpha: 1), for: UIControlState.normal)
         
-        btnPlaces.backgroundColor = #colorLiteral(red: 0.9714086652, green: 0.9793576598, blue: 0.9995563626, alpha: 1)
+        btnPlaces.backgroundColor = #colorLiteral(red: 0.9999160171, green: 1, blue: 0.9998719096, alpha: 1)
         btnPlaces.layer.zPosition = 99
         btnPlaces.setTitleColor(#colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1), for: UIControlState.normal)
         
@@ -56,10 +57,15 @@ class DiscoverVC: UIViewController {
         btnPlaces.layer.zPosition = 100
         btnPlaces.setTitleColor(#colorLiteral(red: 0.9714086652, green: 0.9793576598, blue: 0.9995563626, alpha: 1), for: UIControlState.normal)
         
-        btnEvents.backgroundColor = #colorLiteral(red: 0.9714086652, green: 0.9793576598, blue: 0.9995563626, alpha: 1)
+        btnEvents.backgroundColor = #colorLiteral(red: 0.9999160171, green: 1, blue: 0.9998719096, alpha: 1)
         btnEvents.layer.zPosition = 99
         btnEvents.setTitleColor(#colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1), for: UIControlState.normal)
     }
+    
+    @IBAction func SignOut(_ sender: Any) {
+        UserServices.shared.signOut()
+    }
+    
 }
 
 extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
@@ -83,5 +89,6 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
     }
+    
     
 }
