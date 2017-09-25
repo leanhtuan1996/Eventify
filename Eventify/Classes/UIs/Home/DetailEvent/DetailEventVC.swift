@@ -9,7 +9,8 @@
 import UIKit
 
 class DetailEventVC: UIViewController {
-
+    
+    @IBOutlet weak var btnLabel: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
@@ -17,6 +18,13 @@ class DetailEventVC: UIViewController {
         if (self.navigationController?.isNavigationBarHidden)! {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
+        
+        btnLabel.layer.cornerRadius = 15
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
 }

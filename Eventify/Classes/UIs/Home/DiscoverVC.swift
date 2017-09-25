@@ -15,14 +15,20 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var btnPlaces: UIButton!
     @IBOutlet weak var tblEvents: UITableView!
     @IBOutlet weak var saparatorView: UIView!
+    var refreshControl: UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //pull to refresh
+        refreshControl = UIRefreshControl()
+        //refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        //tableview
         tblEvents.delegate = self
         tblEvents.dataSource = self
-        
-        
         tblEvents.register(UINib(nibName: "EventsCell", bundle: nil), forCellReuseIdentifier: "EventsCell")
+        tblEvents.refreshControl = refreshControl
         
         controlView.layer.borderColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)
         controlView.layer.borderWidth = 2
@@ -41,13 +47,11 @@ class DiscoverVC: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        if !(navigationController?.isNavigationBarHidden)! {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
-    }
     
+    // MARK: - FUNCTIONS
+    @objc func refresh(sender:AnyObject) {
+        refreshControl.endRefreshing()
+    }
     
     @IBAction func btnEventsClicked(_ sender: Any) {
         btnEvents.backgroundColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)

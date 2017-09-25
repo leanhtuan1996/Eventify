@@ -13,6 +13,8 @@
 		36300B771F773CE100ACC77E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36300B751F773CE100ACC77E /* LaunchScreen.storyboard */; };
 		365DD3821F78AF23001E48BF /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DD3811F78AF23001E48BF /* DetailEventVC.swift */; };
 		367A19591F77571300972017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 367A19581F77571300972017 /* GoogleService-Info.plist */; };
+		367CC0D51F78DA6000335CC8 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CC0D41F78DA6000335CC8 /* ForgotPasswordVC.swift */; };
+		367CC0D91F78E18B00335CC8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CC0D81F78E18B00335CC8 /* Utilities.swift */; };
 		36859EFE1F77678D002457C6 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859EFD1F77678D002457C6 /* SignInVC.swift */; };
 		36859F011F776DA7002457C6 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F001F776DA7002457C6 /* SignUpVC.swift */; };
 		36859F031F776F6A002457C6 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F021F776F6A002457C6 /* LaunchVC.swift */; };
@@ -42,6 +44,8 @@
 		36300B781F773CE100ACC77E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		365DD3811F78AF23001E48BF /* DetailEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
 		367A19581F77571300972017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		367CC0D41F78DA6000335CC8 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		367CC0D81F78E18B00335CC8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		36859EFD1F77678D002457C6 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		36859F001F776DA7002457C6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		36859F021F776F6A002457C6 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 		36300B7F1F773D1400ACC77E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				367CC0D61F78E0CE00335CC8 /* Utilities */,
 				367A195D1F775A0E00972017 /* Extensions */,
 				36300B7E1F773D1000ACC77E /* Apps */,
 				36300B841F773D6E00ACC77E /* Managers */,
@@ -144,6 +149,7 @@
 		36300B811F773D5600ACC77E /* UIs */ = {
 			isa = PBXGroup;
 			children = (
+				367CC0D31F78DA4400335CC8 /* ForgotPassword */,
 				36859F041F777127002457C6 /* Home */,
 				36859EFF1F776D98002457C6 /* SignUp */,
 				367A195A1F77575800972017 /* SignIn */,
@@ -221,6 +227,22 @@
 				36B9514A1F7814B100D926E4 /* Extensions+UIViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		367CC0D31F78DA4400335CC8 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				367CC0D41F78DA6000335CC8 /* ForgotPasswordVC.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		367CC0D61F78E0CE00335CC8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				367CC0D81F78E18B00335CC8 /* Utilities.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		36859EFF1F776D98002457C6 /* SignUp */ = {
@@ -339,14 +361,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -362,9 +388,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -409,7 +438,9 @@
 				365DD3821F78AF23001E48BF /* DetailEventVC.swift in Sources */,
 				36B951521F7814B100D926E4 /* Extensions+UIViewController.swift in Sources */,
 				36B9514B1F7814B100D926E4 /* Extensions+UINavigationController.swift in Sources */,
+				367CC0D91F78E18B00335CC8 /* Utilities.swift in Sources */,
 				36B9514D1F7814B100D926E4 /* Extensions+NSError.swift in Sources */,
+				367CC0D51F78DA6000335CC8 /* ForgotPasswordVC.swift in Sources */,
 				36859EFE1F77678D002457C6 /* SignInVC.swift in Sources */,
 				36859F061F77BC80002457C6 /* DiscoverVC.swift in Sources */,
 				36B951501F7814B100D926E4 /* Extensions+String.swift in Sources */,

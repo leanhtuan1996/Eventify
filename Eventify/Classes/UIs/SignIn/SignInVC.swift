@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class SignInVC: UIViewController, UITextFieldDelegate {
+class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -21,6 +22,10 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //GID
+        GIDSignIn.sharedInstance().clientID = "323918211545-lkpctsjbvu71p05mqp1pa0sqpsun4d2l.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         
         //Email textfield
         txtEmail.layer.borderColor = UIColor.white.cgColor
@@ -64,7 +69,9 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let userObject = UserObject(id: "", email: email, password: password)
+        let userObject = UserObject(id: "", email: email)
+        userObject.password = password
+        
         activityIndicatorView.showLoadingDialog(self)
         UserServices.shared.signIn(with: userObject) { (user, error) in
             self.activityIndicatorView.stopAnimating()
@@ -84,9 +91,14 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnGooglePlus(_ sender: Any) {
+        activityIndicatorView.showLoadingDialog(self)
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func btnForgotPassword(_ sender: Any) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.showForgotPwView()
+        }
     }
     
     @IBAction func btnSignUp(_ sender: Any) {
@@ -109,6 +121,31 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             return true
         }
         return false
+    }
+    
+    // MARK: - SIGN IN FUNCTION WITH GID
+    func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser, withError error: Error) {
+        
+//        guard let signIn = signIn, let usr = user else {
+//            print("asdsads")
+//            return
+//        }
+        
+        UserServices.shared.signInWithGoogle(authentication: user.authentication) { (user, error) in
+            self.activityIndicatorView.stopAnimating()
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let user = user {
+                print(user.email)
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.showMainView()
+                }
+            }
+        }
     }
     
 }
