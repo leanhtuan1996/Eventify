@@ -552,10 +552,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9g-Do-99M">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COc-hz-sFX" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1033"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1601"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ao-R9-6Xa" userLabel="headerView">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -574,7 +574,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nh7-cL-i6M" userLabel="bodyView">
-                                                <rect key="frame" x="0.0" y="200" width="375" height="833"/>
+                                                <rect key="frame" x="0.0" y="200" width="375" height="1401"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normandy Coast" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tz-fM-HIO">
                                                         <rect key="frame" x="15" y="15" width="148" height="25"/>
@@ -629,12 +629,17 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsQ-H3-Jfs">
-                                                        <rect key="frame" x="10" y="249.5" width="355" height="568.5"/>
+                                                        <rect key="frame" x="10" y="249.5" width="355" height="1136.5"/>
                                                         <mutableString key="text">making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
 
 
 Where does it come from?
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</mutableString>
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+
+Where can I get some?
+There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</mutableString>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -688,35 +693,55 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
                                     <constraint firstAttribute="trailing" secondItem="COc-hz-sFX" secondAttribute="trailing" id="vgP-7o-tjl"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCD-hL-sxY">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <color key="backgroundColor" red="0.63533979654312134" green="0.63841462135314941" blue="0.74793773889541626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2v-BH-oeA" userLabel="bottomView">
+                                <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCD-hL-sxY">
+                                        <rect key="frame" x="255" y="12.5" width="100" height="45"/>
+                                        <color key="backgroundColor" red="0.63533979654312134" green="0.63841462135314941" blue="0.74793773889541626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="8uj-fK-Ai2"/>
+                                            <constraint firstAttribute="width" constant="100" id="Cc2-Ju-aUf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="ĐẶT VÉ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Từ 700.000 VND" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpx-cP-zhO">
+                                        <rect key="frame" x="20" y="24" width="135" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ZVd-Ec-CC2"/>
+                                    <constraint firstItem="bpx-cP-zhO" firstAttribute="leading" secondItem="f2v-BH-oeA" secondAttribute="leading" constant="20" id="GgK-nv-3YU"/>
+                                    <constraint firstItem="OCD-hL-sxY" firstAttribute="centerY" secondItem="f2v-BH-oeA" secondAttribute="centerY" id="NBC-Fz-Obh"/>
+                                    <constraint firstItem="bpx-cP-zhO" firstAttribute="centerY" secondItem="f2v-BH-oeA" secondAttribute="centerY" id="QdX-j5-Uds"/>
+                                    <constraint firstAttribute="trailing" secondItem="OCD-hL-sxY" secondAttribute="trailing" constant="20" id="dl5-k1-e4W"/>
+                                    <constraint firstAttribute="height" constant="70" id="zsb-2U-3NH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="JOIN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OCD-hL-sxY" firstAttribute="leading" secondItem="B6P-wL-7tk" secondAttribute="leading" id="8G6-Vn-ec3"/>
                             <constraint firstItem="d9g-Do-99M" firstAttribute="trailing" secondItem="B6P-wL-7tk" secondAttribute="trailing" id="Bax-Z8-kPn"/>
-                            <constraint firstItem="OCD-hL-sxY" firstAttribute="top" secondItem="d9g-Do-99M" secondAttribute="bottom" id="SSz-e3-4zs"/>
-                            <constraint firstItem="OCD-hL-sxY" firstAttribute="bottom" secondItem="B6P-wL-7tk" secondAttribute="bottom" id="Y0h-XL-ez8"/>
-                            <constraint firstItem="OCD-hL-sxY" firstAttribute="trailing" secondItem="B6P-wL-7tk" secondAttribute="trailing" id="dyq-TZ-96s"/>
+                            <constraint firstItem="f2v-BH-oeA" firstAttribute="top" secondItem="d9g-Do-99M" secondAttribute="bottom" id="LJi-lP-TLU"/>
                             <constraint firstItem="d9g-Do-99M" firstAttribute="leading" secondItem="B6P-wL-7tk" secondAttribute="leading" id="gl7-PV-TGj"/>
+                            <constraint firstItem="f2v-BH-oeA" firstAttribute="leading" secondItem="tge-wo-Mh3" secondAttribute="leading" id="kPW-B1-5TW"/>
                             <constraint firstItem="COc-hz-sFX" firstAttribute="width" secondItem="tge-wo-Mh3" secondAttribute="width" id="mlR-OL-lL0"/>
+                            <constraint firstAttribute="trailing" secondItem="f2v-BH-oeA" secondAttribute="trailing" id="rhi-pr-aCg"/>
                             <constraint firstItem="d9g-Do-99M" firstAttribute="top" secondItem="tge-wo-Mh3" secondAttribute="top" id="vkM-CU-abf"/>
+                            <constraint firstAttribute="bottom" secondItem="f2v-BH-oeA" secondAttribute="bottom" id="ykg-rj-6hd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B6P-wL-7tk"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUV-lP-qRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2908" y="-75.112443778110944"/>
+            <point key="canvasLocation" x="2907.5" y="-75.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bkw-XZ-B3V">
