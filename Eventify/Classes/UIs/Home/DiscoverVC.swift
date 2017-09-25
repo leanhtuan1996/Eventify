@@ -46,6 +46,17 @@ class DiscoverVC: UIViewController {
         //        self.cellView.layer.masksToBounds = false;
         //        self.cellView.clipsToBounds = false;
         
+        //tabbar
+        
+        if let items = tabBarController?.tabBar.items {
+            let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "profile")]
+            for i in 0..<items.count {
+                let tabBarItem = items[i]
+                let tabBarImage = tabBarImages[i]
+                tabBarItem.image = tabBarImage.withRenderingMode(.alwaysOriginal)
+                tabBarItem.selectedImage = tabBarImage
+            }
+        }
     }
     
     

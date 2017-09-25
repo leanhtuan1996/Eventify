@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAJ-pR-JRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1655" y="-74"/>
+            <point key="canvasLocation" x="-2783" y="-75"/>
         </scene>
         <!--Sign InVC-->
         <scene sceneID="tne-QT-ifu">
@@ -256,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-946" y="-74"/>
+            <point key="canvasLocation" x="-2074" y="-75"/>
         </scene>
         <!--Forgot PasswordVC-->
         <scene sceneID="Nbj-7G-KdX">
@@ -415,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXh-4o-mjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-946" y="640"/>
+            <point key="canvasLocation" x="-2074" y="638"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="h30-6k-LBj">
@@ -563,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPM-3i-GBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-206" y="-74"/>
+            <point key="canvasLocation" x="-1335" y="-75"/>
         </scene>
         <!--DiscoverVC-->
         <scene sceneID="5Q4-ua-8vi">
@@ -700,7 +700,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXE-KS-O8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2100" y="-76.011994002998506"/>
+            <point key="canvasLocation" x="-52" y="1660"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="r1y-9B-nAG">
+            <objects>
+                <viewController id="Xvf-Ru-ruc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KdT-wc-8Uc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="vjq-IG-zbx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VaL-X4-Gyu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vX-Gm-bqy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="1659"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DRb-6R-NdZ">
+            <objects>
+                <viewController id="NaQ-AR-WKm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yqQ-Zw-IWK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="mhJ-HJ-Naf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wQ1-5i-g7Y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jtb-kb-kZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1386" y="1659"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2Cr-iu-EUC">
+            <objects>
+                <viewController id="Hye-eg-OcX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LY1-PV-zjW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="m8x-tu-dAH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nyV-GC-GC8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Zv-sd-thk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2143" y="1658"/>
         </scene>
         <!--Event-->
         <scene sceneID="DUv-6E-AAO">
@@ -904,7 +952,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUV-lP-qRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2907.5" y="-75.5"/>
+            <point key="canvasLocation" x="-52" y="2344"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bkw-XZ-B3V">
@@ -919,11 +967,14 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                     <connections>
                         <segue destination="dm1-YW-e5E" kind="relationship" relationship="viewControllers" id="dsK-5B-FXT"/>
                         <segue destination="FU9-If-l3a" kind="relationship" relationship="viewControllers" id="D1w-tC-d0T"/>
+                        <segue destination="iVu-dT-lEd" kind="relationship" relationship="viewControllers" id="11G-ZN-oTc"/>
+                        <segue destination="Bx8-oh-LBh" kind="relationship" relationship="viewControllers" id="rQt-8x-9J4"/>
+                        <segue destination="Xsu-ML-GUb" kind="relationship" relationship="viewControllers" id="1Ik-Ij-Fs7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7lt-nr-rfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620.79999999999995" y="-74.662668665667169"/>
+            <point key="canvasLocation" x="665" y="-75"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="hTU-YA-EpN">
@@ -987,7 +1038,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m07-nE-3o4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="1370"/>
+            <point key="canvasLocation" x="-786" y="1659"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wY3-vR-Pfg">
@@ -1005,7 +1056,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jf4-jO-PpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401.5999999999999" y="-75.562218890554732"/>
+            <point key="canvasLocation" x="-52" y="926"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3HS-xV-m2q">
@@ -1023,7 +1074,61 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXN-PD-i8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="674"/>
+            <point key="canvasLocation" x="-786" y="925"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IA2-rt-cAl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="iVu-dT-lEd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="plus" landscapeImage="plus" selectedImage="plus" id="os4-xN-Cje"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gsg-tP-Hrz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xvf-Ru-ruc" kind="relationship" relationship="rootViewController" id="EH1-lD-oI1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3rF-N4-I2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="924"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mEc-oE-4HK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Bx8-oh-LBh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="gN6-GI-tGd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ew8-OX-kNX">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NaQ-AR-WKm" kind="relationship" relationship="rootViewController" id="uvp-51-42Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTv-jF-1ey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1386" y="923"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y2A-b7-th5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xsu-ML-GUb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="l9a-4M-god"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tDZ-KX-WC6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hye-eg-OcX" kind="relationship" relationship="rootViewController" id="WG4-pc-UnU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4gR-dM-uGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2143" y="922"/>
         </scene>
     </scenes>
     <resources>
@@ -1032,6 +1137,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
         <image name="facebok" width="32" height="32"/>
         <image name="google" width="32" height="32"/>
         <image name="map" width="25" height="25"/>
+        <image name="plus" width="60" height="60"/>
         <image name="profile" width="40" height="40"/>
         <image name="search" width="40" height="40"/>
     </resources>

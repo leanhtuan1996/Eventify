@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		36300B6D1F773CE100ACC77E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36300B6C1F773CE100ACC77E /* AppDelegate.swift */; };
 		36300B721F773CE100ACC77E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36300B701F773CE100ACC77E /* Main.storyboard */; };
-		36300B741F773CE100ACC77E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36300B731F773CE100ACC77E /* Assets.xcassets */; };
 		36300B771F773CE100ACC77E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36300B751F773CE100ACC77E /* LaunchScreen.storyboard */; };
 		365DD3821F78AF23001E48BF /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DD3811F78AF23001E48BF /* DetailEventVC.swift */; };
 		367A19591F77571300972017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 367A19581F77571300972017 /* GoogleService-Info.plist */; };
 		367CC0D51F78DA6000335CC8 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CC0D41F78DA6000335CC8 /* ForgotPasswordVC.swift */; };
 		367CC0D91F78E18B00335CC8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CC0D81F78E18B00335CC8 /* Utilities.swift */; };
 		367CC0DC1F78E72200335CC8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CC0DB1F78E72200335CC8 /* ProfileVC.swift */; };
+		367CC0E01F78F96800335CC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367CC0DF1F78F96800335CC8 /* Images.xcassets */; };
 		36859EFE1F77678D002457C6 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859EFD1F77678D002457C6 /* SignInVC.swift */; };
 		36859F011F776DA7002457C6 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F001F776DA7002457C6 /* SignUpVC.swift */; };
 		36859F031F776F6A002457C6 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36859F021F776F6A002457C6 /* LaunchVC.swift */; };
@@ -40,7 +40,6 @@
 		36300B691F773CE100ACC77E /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36300B6C1F773CE100ACC77E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36300B711F773CE100ACC77E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		36300B731F773CE100ACC77E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36300B761F773CE100ACC77E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36300B781F773CE100ACC77E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		365DD3811F78AF23001E48BF /* DetailEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		367CC0D41F78DA6000335CC8 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		367CC0D81F78E18B00335CC8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		367CC0DB1F78E72200335CC8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		367CC0DF1F78F96800335CC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		36859EFD1F77678D002457C6 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		36859F001F776DA7002457C6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		36859F021F776F6A002457C6 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		36300B801F773D1B00ACC77E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				36300B731F773CE100ACC77E /* Assets.xcassets */,
+				367CC0DF1F78F96800335CC8 /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -355,9 +355,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				36859F0B1F77C24F002457C6 /* EventsCell.xib in Resources */,
+				367CC0E01F78F96800335CC8 /* Images.xcassets in Resources */,
 				36300B771F773CE100ACC77E /* LaunchScreen.storyboard in Resources */,
 				367A19591F77571300972017 /* GoogleService-Info.plist in Resources */,
-				36300B741F773CE100ACC77E /* Assets.xcassets in Resources */,
 				36300B721F773CE100ACC77E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +593,7 @@
 			baseConfigurationReference = 36D810531C524B51C819E80A /* Pods-Eventify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VGQU7EVXZV;
 				INFOPLIST_FILE = "$(SRCROOT)/Eventify/Supporting Files/Info.plist";
@@ -611,6 +612,7 @@
 			baseConfigurationReference = 0AF9E15AF6482763BF932DDC /* Pods-Eventify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VGQU7EVXZV;
 				INFOPLIST_FILE = "$(SRCROOT)/Eventify/Supporting Files/Info.plist";
