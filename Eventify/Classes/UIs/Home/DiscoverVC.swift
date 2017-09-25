@@ -16,6 +16,7 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var tblEvents: UITableView!
     @IBOutlet weak var saparatorView: UIView!
     var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +47,7 @@ class DiscoverVC: UIViewController {
         //        self.cellView.clipsToBounds = false;
         
     }
+    
     
     
     // MARK: - FUNCTIONS

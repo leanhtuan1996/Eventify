@@ -415,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXh-4o-mjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-946.39999999999998" y="671.51424287856082"/>
+            <point key="canvasLocation" x="-946" y="640"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="h30-6k-LBj">
@@ -918,11 +918,76 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                     </tabBar>
                     <connections>
                         <segue destination="dm1-YW-e5E" kind="relationship" relationship="viewControllers" id="dsK-5B-FXT"/>
+                        <segue destination="FU9-If-l3a" kind="relationship" relationship="viewControllers" id="D1w-tC-d0T"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7lt-nr-rfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="620.79999999999995" y="-74.662668665667169"/>
+        </scene>
+        <!--ProfileVC-->
+        <scene sceneID="hTU-YA-EpN">
+            <objects>
+                <viewController storyboardIdentifier="ProfileVC" id="oqS-nX-bTr" customClass="ProfileVC" customModule="Eventify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oz0-tu-oaB" userLabel="rootView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Og-R9-Cmt" userLabel="headerView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvl-Uo-ZXy">
+                                        <rect key="frame" x="160.5" y="18.5" width="54.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" red="0.32412260770000001" green="0.3205904067" blue="0.35265558959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L64-k4-5E2" userLabel="map">
+                                        <rect key="frame" x="330" y="17.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="X5T-ec-VBM"/>
+                                            <constraint firstAttribute="width" constant="25" id="g5L-0h-Uis"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="gZQ-mB-vrC"/>
+                                            <constraint firstAttribute="height" constant="25" id="o1r-7e-c3h"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="map"/>
+                                        <connections>
+                                            <action selector="SignOut:" destination="MZJ-LA-KS0" eventType="touchUpInside" id="2JM-gs-2cP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Hvl-Uo-ZXy" firstAttribute="centerY" secondItem="5Og-R9-Cmt" secondAttribute="centerY" id="CUz-Kp-ZdF"/>
+                                    <constraint firstItem="Hvl-Uo-ZXy" firstAttribute="centerX" secondItem="5Og-R9-Cmt" secondAttribute="centerX" id="fRp-L8-uS3"/>
+                                    <constraint firstAttribute="trailing" secondItem="L64-k4-5E2" secondAttribute="trailing" constant="20" id="qxd-aj-gTP"/>
+                                    <constraint firstItem="L64-k4-5E2" firstAttribute="centerY" secondItem="Hvl-Uo-ZXy" secondAttribute="centerY" id="sib-Av-BKN"/>
+                                    <constraint firstAttribute="height" constant="60" id="uzY-zZ-jbG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bop-Hw-NOX" userLabel="saparator">
+                                <rect key="frame" x="20" y="80" width="335" height="1"/>
+                                <color key="backgroundColor" red="0.63533979650000005" green="0.63841462140000005" blue="0.74793773890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="dqs-Y9-FNK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Og-R9-Cmt" firstAttribute="leading" secondItem="GSO-LX-2pl" secondAttribute="leading" id="1uf-1U-FZc"/>
+                            <constraint firstAttribute="trailing" secondItem="Bop-Hw-NOX" secondAttribute="trailing" constant="20" id="8b7-EM-Ahr"/>
+                            <constraint firstItem="5Og-R9-Cmt" firstAttribute="trailing" secondItem="GSO-LX-2pl" secondAttribute="trailing" id="9VX-Dp-K89"/>
+                            <constraint firstItem="Bop-Hw-NOX" firstAttribute="leading" secondItem="Oz0-tu-oaB" secondAttribute="leading" constant="20" id="VuF-Ip-obv"/>
+                            <constraint firstItem="5Og-R9-Cmt" firstAttribute="top" secondItem="GSO-LX-2pl" secondAttribute="top" id="dSp-aG-Xs6"/>
+                            <constraint firstItem="Bop-Hw-NOX" firstAttribute="top" secondItem="5Og-R9-Cmt" secondAttribute="bottom" id="gqQ-pZ-IhM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GSO-LX-2pl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SQ1-Xe-pgX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m07-nE-3o4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620" y="1370"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wY3-vR-Pfg">
@@ -942,6 +1007,24 @@ There are many variations of passages of Lorem Ipsum available, but the majority
             </objects>
             <point key="canvasLocation" x="1401.5999999999999" y="-75.562218890554732"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3HS-xV-m2q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FU9-If-l3a" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="profile" id="kwi-Gh-YUr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q2K-bT-UtB">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oqS-nX-bTr" kind="relationship" relationship="rootViewController" id="6v8-h9-ghe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXN-PD-i8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620" y="674"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="1080" height="1920"/>
@@ -949,6 +1032,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
         <image name="facebok" width="32" height="32"/>
         <image name="google" width="32" height="32"/>
         <image name="map" width="25" height="25"/>
+        <image name="profile" width="40" height="40"/>
         <image name="search" width="40" height="40"/>
     </resources>
 </document>
