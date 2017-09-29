@@ -57,9 +57,9 @@ class DiscoverVC: UIViewController {
                 tabBarItem.image = tabBarImage.withRenderingMode(.alwaysOriginal)
                 tabBarItem.selectedImage = tabBarImage
                 if i != 2 {
-                    tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+                    tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
                 } else {
-                    tabBarItem.imageInsets = UIEdgeInsets(top: -2, left: 0, bottom: 0, right: 0)
+                    tabBarItem.imageInsets = UIEdgeInsets(top: -2, left: 0, bottom: 2, right: 0)
                 }
             }
         }
