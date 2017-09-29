@@ -812,12 +812,56 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                     <view key="view" contentMode="scaleToFill" id="8kd-OV-oO4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PH4-RC-iJ3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38s-bK-D4j">
+                                        <rect key="frame" x="10" y="17.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="lct-ms-obr"/>
+                                            <constraint firstAttribute="height" constant="25" id="yct-ae-wrh"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="back"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chỉnh sửa thông tin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyB-Dc-TQ1">
+                                        <rect key="frame" x="99.5" y="18.5" width="176" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.5183258056640625" green="0.51815170049667358" blue="0.54089653491973877" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAc-At-Hg6">
+                                        <rect key="frame" x="340" y="18" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="9U3-PY-8cp"/>
+                                            <constraint firstAttribute="width" constant="25" id="typ-sT-yYG"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="check"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TAc-At-Hg6" firstAttribute="centerY" secondItem="CyB-Dc-TQ1" secondAttribute="centerY" id="Bhl-ZJ-3zL"/>
+                                    <constraint firstAttribute="trailing" secondItem="TAc-At-Hg6" secondAttribute="trailing" constant="10" id="RJM-kd-5oB"/>
+                                    <constraint firstItem="38s-bK-D4j" firstAttribute="centerY" secondItem="PH4-RC-iJ3" secondAttribute="centerY" id="Z86-OP-78H"/>
+                                    <constraint firstItem="CyB-Dc-TQ1" firstAttribute="centerX" secondItem="PH4-RC-iJ3" secondAttribute="centerX" id="bgg-dA-2Gd"/>
+                                    <constraint firstItem="38s-bK-D4j" firstAttribute="leading" secondItem="PH4-RC-iJ3" secondAttribute="leading" constant="10" id="fxl-hw-crE"/>
+                                    <constraint firstItem="CyB-Dc-TQ1" firstAttribute="centerY" secondItem="PH4-RC-iJ3" secondAttribute="centerY" id="mG4-AW-Y3W"/>
+                                    <constraint firstAttribute="height" constant="60" id="qni-69-kNt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PH4-RC-iJ3" firstAttribute="leading" secondItem="8kd-OV-oO4" secondAttribute="leading" id="WHo-2L-42h"/>
+                            <constraint firstAttribute="trailing" secondItem="PH4-RC-iJ3" secondAttribute="trailing" id="YR7-0d-iYQ"/>
+                            <constraint firstItem="PH4-RC-iJ3" firstAttribute="top" secondItem="8kd-OV-oO4" secondAttribute="top" id="ZQt-hn-L9y"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFa-D4-tMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3606" y="2322"/>
+            <point key="canvasLocation" x="3605.5999999999999" y="2321.2893553223389"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="xjz-5O-bMU">
@@ -1219,7 +1263,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xgj-To-8My" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="event" id="FX1-mo-f2v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P83-pO-uz1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P83-pO-uz1">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1237,7 +1281,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jax-Dj-2Vo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" id="moM-TK-frP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmt-1m-j3K">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tmt-1m-j3K">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1255,7 +1299,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eCx-KP-e6n" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="plus" id="HWc-D0-cGs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vcE-vv-7wx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vcE-vv-7wx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1273,7 +1317,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="e7G-ee-cgy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="alert" id="NAK-hh-v8F"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TOF-W7-rO2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TOF-W7-rO2">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1291,7 +1335,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7i7-AK-sec" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="more" id="auB-ZF-Sjq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bj4-Jy-j0H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Bj4-Jy-j0H">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1307,7 +1351,9 @@ There are many variations of passages of Lorem Ipsum available, but the majority
     <resources>
         <image name="alert" width="30" height="30"/>
         <image name="avatar" width="500" height="635"/>
+        <image name="back" width="30" height="30"/>
         <image name="background" width="1080" height="1920"/>
+        <image name="check" width="30" height="30"/>
         <image name="event" width="30" height="30"/>
         <image name="facebok" width="32" height="32"/>
         <image name="google" width="32" height="32"/>
