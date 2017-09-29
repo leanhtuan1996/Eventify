@@ -28,7 +28,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         txtEmail.layer.cornerRadius = 5
         txtEmail.backgroundColor = UIColor.clear
         txtEmail.attributedPlaceholder =
-            NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
         txtEmail.textColor = UIColor.white
         txtEmail.tag = 1
         txtEmail.delegate = self
@@ -39,7 +39,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         txtPassword.layer.cornerRadius = 5
         txtPassword.backgroundColor = UIColor.clear
         txtPassword.attributedPlaceholder =
-            NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
         txtPassword.textColor = UIColor.white
         txtPassword.tag = 2
         txtPassword.delegate = self
@@ -50,7 +50,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         txtConfirmPassword.layer.cornerRadius = 5
         txtConfirmPassword.backgroundColor = UIColor.clear
         txtConfirmPassword.attributedPlaceholder =
-            NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
         txtConfirmPassword.textColor = UIColor.white
         txtConfirmPassword.tag = 3
         txtConfirmPassword.delegate = self

@@ -15,6 +15,7 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var btnPlaces: UIButton!
     @IBOutlet weak var tblEvents: UITableView!
     @IBOutlet weak var saparatorView: UIView!
+    
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -30,8 +31,9 @@ class DiscoverVC: UIViewController {
         tblEvents.dataSource = self
         tblEvents.register(UINib(nibName: "EventsCell", bundle: nil), forCellReuseIdentifier: "EventsCell")
         tblEvents.refreshControl = refreshControl
+        tblEvents.estimatedRowHeight = 370
         
-        controlView.layer.borderColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)
+        controlView.layer.borderColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1).cgColor
         controlView.layer.borderWidth = 2
         controlView.layer.cornerRadius = 20
         
@@ -47,14 +49,18 @@ class DiscoverVC: UIViewController {
         //        self.cellView.clipsToBounds = false;
         
         //tabbar
-        
         if let items = tabBarController?.tabBar.items {
-            let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "alert"), #imageLiteral(resourceName: "ticket")]
+            let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "alert"), #imageLiteral(resourceName: "setting")]
             for i in 0..<items.count {
                 let tabBarItem = items[i]
                 let tabBarImage = tabBarImages[i]
                 tabBarItem.image = tabBarImage.withRenderingMode(.alwaysOriginal)
                 tabBarItem.selectedImage = tabBarImage
+                if i != 2 {
+                    tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+                } else {
+                    tabBarItem.imageInsets = UIEdgeInsets(top: -2, left: 0, bottom: 0, right: 0)
+                }
             }
         }
     }
@@ -106,9 +112,9 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 350
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 365
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)

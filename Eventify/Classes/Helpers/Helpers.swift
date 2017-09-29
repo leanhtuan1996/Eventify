@@ -1,14 +1,14 @@
 //
-//  Utilities.swift
-//  Eventify
+//  Helpers.swift
+//  ELearning
 //
-//  Created by Lê Anh Tuấn on 9/25/17.
+//  Created by Lê Anh Tuấn on 9/29/17.
 //  Copyright © 2017 Lê Anh Tuấn. All rights reserved.
 //
 
 import UIKit
 
-class Utilities: NSObject {
+class Helpers: NSObject {
     static func validateEmail(_ candidate: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
@@ -42,16 +42,6 @@ class Utilities: NSObject {
         activityIndicatorView.sizeToFit()
         activityIndicatorView.startAnimating()
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
-        //        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: tableView.frame.size.height))
-        //        messageLabel.text = message
-        //        messageLabel.textColor = UIColor.black
-        //        messageLabel.numberOfLines = 0
-        //        messageLabel.textAlignment = NSTextAlignment.center
-        //        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
-        //        messageLabel.sizeToFit()
-        //        tableView.backgroundView = messageLabel;
-        //        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
     //Handled Error

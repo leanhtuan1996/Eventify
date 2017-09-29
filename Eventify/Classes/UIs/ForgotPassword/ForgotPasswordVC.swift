@@ -26,7 +26,7 @@ class ForgotPasswordVC: UIViewController, UITextFieldDelegate {
         txtEmail.layer.cornerRadius = 5
         txtEmail.backgroundColor = UIColor.clear
         txtEmail.attributedPlaceholder =
-            NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
         txtEmail.textColor = UIColor.white
         txtEmail.becomeFirstResponder()
         
@@ -49,7 +49,7 @@ class ForgotPasswordVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        if !Utilities.validateEmail(email) {
+        if !Helpers.validateEmail(email) {
             self.showAlert("Email invalid format", title: "Field are required", buttons: nil)
             return
         }

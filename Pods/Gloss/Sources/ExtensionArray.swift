@@ -73,8 +73,6 @@ public extension Array where Element: Decodable {
      
      - returns: Object or nil.
      */
-    
-    
     static func from(data: Data, serializer: JSONSerializer = GlossJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) -> [Element]? {
         guard
             let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)) as? [JSON],

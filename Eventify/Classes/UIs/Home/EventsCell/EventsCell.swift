@@ -9,7 +9,7 @@
 import UIKit
 
 class EventsCell: UITableViewCell {
-
+    
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var btnLabel: UIButton!
     
@@ -29,10 +29,10 @@ class EventsCell: UITableViewCell {
         
         btnLabel.layer.cornerRadius = 15
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

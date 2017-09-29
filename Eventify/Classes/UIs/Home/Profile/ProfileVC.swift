@@ -10,10 +10,18 @@ import UIKit
 
 class ProfileVC: UIViewController {
 
+    @IBOutlet weak var imgAvatar: UIImageView!
+    @IBOutlet weak var imgBackground: UIImageView!
+    
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+//        imgAvatar.layer.cornerRadius = 50
+//        
+//        imgBackground.image = imgAvatar.image
+//        imgBackground.addBlurEffect()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +30,24 @@ class ProfileVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    // MARK: - ACTIONS
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func btnEditAvatarClicked(_ sender: Any) {
     }
-    */
-
+    
+    @IBAction func btnEditPasswordClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnEditFullNameClicked(_ sender: Any) {
+    }
+    
+    
+    @IBAction func btnEditEmail(_ sender: Any) {
+    }
+    
+    @IBAction func editAvatarTapped(_ sender: Any) {
+        print("aaa")
+    }
+    
+    
 }
