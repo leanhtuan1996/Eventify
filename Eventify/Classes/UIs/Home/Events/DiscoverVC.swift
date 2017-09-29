@@ -50,14 +50,14 @@ class DiscoverVC: UIViewController {
         
         //tabbar
         if let items = tabBarController?.tabBar.items {
-            let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "alert"), #imageLiteral(resourceName: "setting")]
+            let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "alert"), #imageLiteral(resourceName: "more")]
             for i in 0..<items.count {
                 let tabBarItem = items[i]
                 let tabBarImage = tabBarImages[i]
                 tabBarItem.image = tabBarImage.withRenderingMode(.alwaysOriginal)
                 tabBarItem.selectedImage = tabBarImage
                 if i != 2 {
-                    tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+                    tabBarItem.imageInsets = UIEdgeInsets( top: 5, left: 0, bottom: -5, right: 0)
                 } else {
                     tabBarItem.imageInsets = UIEdgeInsets(top: -2, left: 0, bottom: 2, right: 0)
                 }

@@ -18,8 +18,8 @@ class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        imgAvatar.layer.cornerRadius = 50
-//        
+        imgAvatar.layer.cornerRadius = 50
+        
 //        imgBackground.image = imgAvatar.image
 //        imgBackground.addBlurEffect()
     }

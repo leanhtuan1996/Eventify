@@ -24,17 +24,18 @@
 		367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BFC1F7E3537002222EB /* UserObject.swift */; };
 		367F3BFF1F7E35C4002222EB /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BFE1F7E35C4002222EB /* LaunchVC.swift */; };
 		367F3C011F7E35F3002222EB /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C001F7E35F3002222EB /* ForgotPasswordVC.swift */; };
-		367F3C0A1F7E35FD002222EB /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C031F7E35FD002222EB /* DetailEventVC.swift */; };
-		367F3C0B1F7E35FD002222EB /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C041F7E35FD002222EB /* DiscoverVC.swift */; };
 		367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C091F7E35FD002222EB /* ProfileVC.swift */; };
 		367F3C101F7E360A002222EB /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C0F1F7E360A002222EB /* SignInVC.swift */; };
 		367F3C121F7E3612002222EB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C111F7E3612002222EB /* SignUpVC.swift */; };
 		367F3C141F7E3639002222EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367F3C131F7E3639002222EB /* Images.xcassets */; };
 		367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C151F7E375D002222EB /* Extensions+UIViewController.swift */; };
 		367F3C181F7E37C3002222EB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C171F7E37C3002222EB /* Helpers.swift */; };
-		367F3C1B1F7E383E002222EB /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C191F7E383E002222EB /* EventsCell.swift */; };
-		367F3C1C1F7E383E002222EB /* EventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367F3C1A1F7E383E002222EB /* EventsCell.xib */; };
 		3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */; };
+		36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */; };
+		36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7622A1F7E9C83009D3BE9 /* EventsCell.swift */; };
+		36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B7622B1F7E9C83009D3BE9 /* EventsCell.xib */; };
+		36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */; };
+		36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,17 +58,18 @@
 		367F3BFC1F7E3537002222EB /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		367F3BFE1F7E35C4002222EB /* LaunchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		367F3C001F7E35F3002222EB /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
-		367F3C031F7E35FD002222EB /* DetailEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
-		367F3C041F7E35FD002222EB /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		367F3C091F7E35FD002222EB /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		367F3C0F1F7E360A002222EB /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		367F3C111F7E3612002222EB /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		367F3C131F7E3639002222EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		367F3C151F7E375D002222EB /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		367F3C171F7E37C3002222EB /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		367F3C191F7E383E002222EB /* EventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
-		367F3C1A1F7E383E002222EB /* EventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsCell.xib; sourceTree = "<group>"; };
 		3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
+		36B7622A1F7E9C83009D3BE9 /* EventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
+		36B7622B1F7E9C83009D3BE9 /* EventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsCell.xib; sourceTree = "<group>"; };
+		36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
+		36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		84574092EFF458EE0F57B42B /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,9 +217,7 @@
 		367F3BE11F7E34EB002222EB /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				367F3C021F7E35FD002222EB /* DetailEvent */,
-				367F3C041F7E35FD002222EB /* DiscoverVC.swift */,
-				367F3C051F7E35FD002222EB /* EventsCell */,
+				36B762251F7E9BDF009D3BE9 /* Events */,
 				367F3C081F7E35FD002222EB /* Profile */,
 			);
 			path = Home;
@@ -265,29 +265,48 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		367F3C021F7E35FD002222EB /* DetailEvent */ = {
+		367F3C081F7E35FD002222EB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				367F3C031F7E35FD002222EB /* DetailEventVC.swift */,
+				36B762351F7E9D1C009D3BE9 /* EditProfile */,
+				367F3C091F7E35FD002222EB /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		36B762251F7E9BDF009D3BE9 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				36B762271F7E9C83009D3BE9 /* DetailEvent */,
+				36B762291F7E9C83009D3BE9 /* EventsCell */,
+				36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		36B762271F7E9C83009D3BE9 /* DetailEvent */ = {
+			isa = PBXGroup;
+			children = (
+				36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */,
 			);
 			path = DetailEvent;
 			sourceTree = "<group>";
 		};
-		367F3C051F7E35FD002222EB /* EventsCell */ = {
+		36B762291F7E9C83009D3BE9 /* EventsCell */ = {
 			isa = PBXGroup;
 			children = (
-				367F3C191F7E383E002222EB /* EventsCell.swift */,
-				367F3C1A1F7E383E002222EB /* EventsCell.xib */,
+				36B7622A1F7E9C83009D3BE9 /* EventsCell.swift */,
+				36B7622B1F7E9C83009D3BE9 /* EventsCell.xib */,
 			);
 			path = EventsCell;
 			sourceTree = "<group>";
 		};
-		367F3C081F7E35FD002222EB /* Profile */ = {
+		36B762351F7E9D1C009D3BE9 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
-				367F3C091F7E35FD002222EB /* ProfileVC.swift */,
+				36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */,
 			);
-			path = Profile;
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		81AB7D1D523A169706645BAA /* Frameworks */ = {
@@ -361,7 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				367F3C1C1F7E383E002222EB /* EventsCell.xib in Resources */,
+				36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */,
 				367F3BFA1F7E34EB002222EB /* Main.storyboard in Resources */,
 				3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */,
 				367F3C141F7E3639002222EB /* Images.xcassets in Resources */,
@@ -444,12 +463,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				367F3BF51F7E34EB002222EB /* EventServices.swift in Sources */,
+				36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */,
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
 				367F3BFF1F7E35C4002222EB /* LaunchVC.swift in Sources */,
-				367F3C0B1F7E35FD002222EB /* DiscoverVC.swift in Sources */,
 				367F3C121F7E3612002222EB /* SignUpVC.swift in Sources */,
+				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
@@ -459,12 +479,12 @@
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,
 				367F3C101F7E360A002222EB /* SignInVC.swift in Sources */,
-				367F3C1B1F7E383E002222EB /* EventsCell.swift in Sources */,
+				36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */,
 				367F3BF31F7E34EB002222EB /* Extensions+UIImageView.swift in Sources */,
-				367F3C0A1F7E35FD002222EB /* DetailEventVC.swift in Sources */,
 				367F3BF41F7E34EB002222EB /* Extensions+UINavigationController.swift in Sources */,
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,
 				367F3C011F7E35F3002222EB /* ForgotPasswordVC.swift in Sources */,
+				36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
