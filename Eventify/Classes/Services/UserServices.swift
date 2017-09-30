@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
+import Gloss
 
 class UserServices: NSObject {
     static let shared = UserServices()
@@ -132,5 +133,25 @@ class UserServices: NSObject {
             }
             return completionHandler(nil)
         }
+    }
+    
+    func getInfomations(completionHandler: @escaping(_ user: UserObject?, _ error: String?) -> Void) -> Void {
+        let user = Auth.auth().currentUser
+        if let uid = user?.uid {
+            
+            self.refUser.child(uid).observeSingleEvent(of: .value, with: { (data) in
+                guard let value = data.value as? JSON else {
+                    return completionHandler(nil, "Data is not avalid formation")
+                }
+                
+                completionHandler(UserObject(json: value), nil)
+            })
+        }
+        
+    }
+    
+    func updateInfomations(withUser user: UserObject, completionHandler: @escaping(_ error: String?) -> Void) {
+        
+        
     }
 }

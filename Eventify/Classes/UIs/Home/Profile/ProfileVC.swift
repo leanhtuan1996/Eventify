@@ -21,6 +21,20 @@ class ProfileVC: UIViewController {
         imgAvatar.layer.cornerRadius = 50
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        UserServices.shared.getInfomations { (user, error) in
+            if let error = error {
+                self.showAlert("Get infomations error: \(error)", title: "ERROR", buttons: nil)
+                return
+            }
+            
+            if let user = user {
+                self.lblName.text = user.fullName
+                self.lblEmail.text = user.email
+                
+            }
+        }
+    }
    
 
     // MARK: - ACTIONS

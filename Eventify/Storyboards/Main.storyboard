@@ -495,6 +495,9 @@
                                             <constraint firstAttribute="width" constant="25" id="pMf-0b-Ryn"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="map"/>
+                                        <connections>
+                                            <action selector="SignOut:" destination="VYz-D4-Khi" eventType="touchUpInside" id="BNl-Fz-V55"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -2022,6 +2025,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                         <outlet property="btnSignUp" destination="xyH-nE-2fh" id="SLj-r5-9yD"/>
                         <outlet property="txtConfirmPassword" destination="jKZ-4p-DLy" id="lHX-NY-GlD"/>
                         <outlet property="txtEmail" destination="Rht-I3-TfI" id="zHK-15-78o"/>
+                        <outlet property="txtPassword" destination="KAk-74-uHU" id="AP6-TU-HIY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFj-37-Qxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2056,7 +2060,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xgj-To-8My" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="event" id="FX1-mo-f2v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P83-pO-uz1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P83-pO-uz1">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2074,7 +2078,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jax-Dj-2Vo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" id="moM-TK-frP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmt-1m-j3K">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tmt-1m-j3K">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2092,7 +2096,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eCx-KP-e6n" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="plus" id="HWc-D0-cGs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vcE-vv-7wx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vcE-vv-7wx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2110,7 +2114,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="e7G-ee-cgy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="alert" id="NAK-hh-v8F"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TOF-W7-rO2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TOF-W7-rO2">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2128,7 +2132,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7i7-AK-sec" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="more" id="auB-ZF-Sjq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bj4-Jy-j0H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Bj4-Jy-j0H">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
