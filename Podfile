@@ -10,4 +10,5 @@ pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
 pod 'Gloss', '~> 1.2'
+pod 'SkyFloatingLabelTextField', '~> 3.0'
 end

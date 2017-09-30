@@ -36,6 +36,7 @@
 		36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B7622B1F7E9C83009D3BE9 /* EventsCell.xib */; };
 		36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */; };
 		36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */; };
+		36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		36B7622B1F7E9C83009D3BE9 /* EventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsCell.xib; sourceTree = "<group>"; };
 		36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
 		84574092EFF458EE0F57B42B /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,6 +279,7 @@
 		36B762251F7E9BDF009D3BE9 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				36B762381F7FB283009D3BE9 /* NewEvent */,
 				36B762271F7E9C83009D3BE9 /* DetailEvent */,
 				36B762291F7E9C83009D3BE9 /* EventsCell */,
 				36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */,
@@ -307,6 +310,14 @@
 				36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */,
 			);
 			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		36B762381F7FB283009D3BE9 /* NewEvent */ = {
+			isa = PBXGroup;
+			children = (
+				36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */,
+			);
+			path = NewEvent;
 			sourceTree = "<group>";
 		};
 		81AB7D1D523A169706645BAA /* Frameworks */ = {
@@ -438,6 +449,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -447,6 +459,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -478,6 +491,7 @@
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,
+				36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */,
 				367F3C101F7E360A002222EB /* SignInVC.swift in Sources */,
 				36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */,
 				367F3BF31F7E34EB002222EB /* Extensions+UIImageView.swift in Sources */,

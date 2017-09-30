@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SkyFloatingLabelTextField.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>leveldb-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,17 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>ABBADB038A6615E1D21B61EE5E5D408E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
+		<key>C5C798575C41BF223E7DE1D96D213079</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F000013C3D723171C301E7A2D8BC7597</key>
+		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F000013C3D723171C301E7A2D8BC7597"
+               BlueprintIdentifier = "C5C798575C41BF223E7DE1D96D213079"
                BuildableName = "Pods_Eventify.framework"
                BlueprintName = "Pods-Eventify"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F000013C3D723171C301E7A2D8BC7597"
+            BlueprintIdentifier = "C5C798575C41BF223E7DE1D96D213079"
             BuildableName = "Pods_Eventify.framework"
             BlueprintName = "Pods-Eventify"
             ReferencedContainer = "container:Pods.xcodeproj">

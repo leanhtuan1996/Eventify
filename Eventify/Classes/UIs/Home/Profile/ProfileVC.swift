@@ -11,42 +11,31 @@ import UIKit
 class ProfileVC: UIViewController {
 
     @IBOutlet weak var imgAvatar: UIImageView!
-    @IBOutlet weak var imgBackground: UIImageView!
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var tblProfile: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imgAvatar.layer.cornerRadius = 50
-        
-//        imgBackground.image = imgAvatar.image
-//        imgBackground.addBlurEffect()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+   
 
     // MARK: - ACTIONS
 
-    @IBAction func btnEditAvatarClicked(_ sender: Any) {
-    }
-    
-    @IBAction func btnEditPasswordClicked(_ sender: Any) {
-    }
-    
-    @IBAction func btnEditFullNameClicked(_ sender: Any) {
+    @IBAction func btnEditProfileClicked(_ sender: Any) {
+        if let sb = storyboard?.instantiateViewController(withIdentifier: "EditProfileVC") as? EditProfileVC {
+            self.navigationController?.pushViewController(sb, animated: true)
+        }
     }
     
     
-    @IBAction func btnEditEmail(_ sender: Any) {
+    @IBAction func btnTicketsClicked(_ sender: Any) {
     }
     
-    @IBAction func editAvatarTapped(_ sender: Any) {
-        print("aaa")
+    @IBAction func btnSavedEventsClicked(_ sender: Any) {
     }
     
     

@@ -10,26 +10,43 @@ import UIKit
 
 class EditProfileVC: UIViewController {
 
+    
+    @IBOutlet weak var imgAvatar: UIImageView!
+    @IBOutlet weak var imgCover: UIImageView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var txtNameToEdit: UITextField!
+    @IBOutlet weak var txtEmailToEdit: UITextField!
+    @IBOutlet weak var txtPhoneNumberToEdit: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        imgAvatar.layer.cornerRadius = 50
+        imgCover.image = imgAvatar.image
+        imgCover.addBlurEffect()
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        if let nav = self.navigationController {
+            nav.setNavigationBarHidden(true, animated: true)
+        }
+        
+        //tabBarController?.tabBar.isHidden = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidDisappear(_ animated: Bool) {
+        if let nav = self.navigationController {
+            nav.setNavigationBarHidden(false, animated: true)
+        }
+       
     }
-    */
 
+    
+    @IBAction func btnBackClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func btnDoneClicked(_ sender: Any) {
+    }
 }
