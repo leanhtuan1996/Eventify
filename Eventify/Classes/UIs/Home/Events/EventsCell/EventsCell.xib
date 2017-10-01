@@ -151,8 +151,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnEventType" destination="fCL-ED-0Kv" id="dfL-n3-4Yv"/>
                 <outlet property="btnLabel" destination="fCL-ED-0Kv" id="WZM-pd-1NE"/>
                 <outlet property="cellView" destination="H2p-sc-9uM" id="0Q5-gt-1Rf"/>
+                <outlet property="imgPhoto" destination="RR2-nP-0LM" id="Gkb-JE-fRu"/>
+                <outlet property="lblAddress" destination="E0V-sR-6BE" id="v1P-Dp-bb1"/>
+                <outlet property="lblName" destination="IKi-TV-yLz" id="12e-Ry-fS6"/>
+                <outlet property="lblPrice" destination="sV1-HZ-5HD" id="VDF-G3-vfg"/>
+                <outlet property="lblTimeStart" destination="dUq-37-DvI" id="lVL-mt-P4s"/>
             </connections>
             <point key="canvasLocation" x="36" y="-170"/>
         </tableViewCell>

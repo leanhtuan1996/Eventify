@@ -16,6 +16,7 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var tblEvents: UITableView!
     @IBOutlet weak var saparatorView: UIView!
     
+    var events: [EventObject] = []
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -41,13 +42,6 @@ class DiscoverVC: UIViewController {
         btnEvents.layer.cornerRadius = 20
         btnPlaces.layer.cornerRadius = 20
         
-        //        self.cellView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        //        self.cellView.layer.shadowColor = UIColor.black.cgColor
-        //        self.cellView.layer.shadowRadius = 4
-        //        self.cellView.layer.shadowOpacity = 0.25
-        //        self.cellView.layer.masksToBounds = false;
-        //        self.cellView.clipsToBounds = false;
-        
         //tabbar
         if let items = tabBarController?.tabBar.items {
             let tabBarImages = [#imageLiteral(resourceName: "event"), #imageLiteral(resourceName: "profile"), #imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "alert"), #imageLiteral(resourceName: "more")]
@@ -65,7 +59,20 @@ class DiscoverVC: UIViewController {
         }
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        EventServices.shared.getEvents { (events, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let events = events {
+                self.events = events
+                self.tblEvents.reloadData()
+            }
+            
+        }
+    }
     
     // MARK: - FUNCTIONS
     @objc func refresh(sender:AnyObject) {
@@ -99,7 +106,7 @@ class DiscoverVC: UIViewController {
 
 extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,12 +115,13 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         }
         cell.contentView.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
+        
+        cell.event = events[indexPath.row]
+        cell.lblName.text = events[indexPath.row].name
+        cell.lblAddress.text = events[indexPath.row].address
+        
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 365
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)

@@ -36,16 +36,38 @@ class EventObject: NSObject, Decodable {
             self.type = type
         }
         
-        if let ticket: [TicketObject] = "tickets" <~~ json {
-            self.ticket = ticket
+//        if let ticket: [TicketObject] = "tickets" <~~ json {
+//            print(ticket.count)
+//            self.ticket = ticket
+//        }
+        
+        
+        
+        if let ticketJSON: JSON = "tickets" <~~ json {
+            var ticketArray: [TicketObject] = []
+            for temp in ticketJSON {
+                if let ticketjson = temp.value as? JSON {
+                    if let ticketObject = TicketObject(json: ticketjson) {
+                        ticketArray.append(ticketObject)
+                    }
+                }
+            }
+            
+            self.ticket = ticketArray
+        }
+        
+        if let timeStart: Int = "timeStart" <~~ json {
+            self.timeStart = timeStart.toString()
+        }
+        
+        if let timeEnd: Int = "timeEnd" <~~ json {
+            self.timeEnd = timeEnd.toString()
         }
         
         self.id = id
         self.name = "name" <~~ json
         self.photoURL = "photoURL" <~~ json
         self.descriptionEvent = "descriptionEvent" <~~ json
-        self.timeStart = "timeStart" <~~ json
-        self.timeEnd = "timeEnd" <~~ json
         self.address = "address" <~~ json
         
         

@@ -12,9 +12,16 @@ class EventsCell: UITableViewCell {
     
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var btnLabel: UIButton!
+    @IBOutlet weak var imgPhoto: UIImageView!
     
-    @IBOutlet weak var backgroundUIVIEW: UIView!
-    @IBOutlet weak var contentUiView: UIView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var btnEventType: UIButton!
+    @IBOutlet weak var lblTimeStart: UILabel!
+    @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet weak var lblAddress: UILabel!
+    
+    
+    var event: EventObject?
     
     override func awakeFromNib() {
         super.awakeFromNib()
