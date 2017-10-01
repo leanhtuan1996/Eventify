@@ -24,7 +24,15 @@ class TicketManager: NSObject {
         return currentTickets
     }
     
-    func getTicket(byId id: Int){
+    func getTicket(byId id: Int) -> TicketObject? {
+        currentTickets = getTickets()
+        if let index = currentTickets.index(where: { (ticket) -> Bool in
+            return id == ticket.id
+        }) {
+            return currentTickets[index]
+        } else {
+            return nil
+        }
         
     }
     
@@ -35,7 +43,14 @@ class TicketManager: NSObject {
     }
     
     func deleteTicket(byId id: Int) {
-        
+        currentTickets = getTickets()
+        if let index = currentTickets.index(where: { (ticket) -> Bool in
+            return id == ticket.id
+        }) {
+            currentTickets.remove(at: index)
+            deleteTickets()
+            addTickets(with: currentTickets)
+        }
     }
     
     func addTicket(with ticket: TicketObject) {
@@ -60,8 +75,22 @@ class TicketManager: NSObject {
         
     }
     
-    func editTicket(with ticket: TicketObject) {
+    func addTickets(with tickets: [TicketObject]) {
         
+        //begin add to userdefault
+        let ticketsData = NSKeyedArchiver.archivedData(withRootObject: tickets)
+        userDefault.set(ticketsData, forKey: "tickets")
+        userDefault.synchronize()
+    }
+    
+    func editTicket(with ticket: TicketObject) {
+        if let index = currentTickets.index(where: { (t) -> Bool in
+            return ticket.id == t.id
+        }) {
+            currentTickets[index] = ticket
+            deleteTickets()
+            addTickets(with: currentTickets)
+        }
     }
 
 }
