@@ -9,7 +9,7 @@
 import UIKit
 import GoogleSignIn
 
-class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
+class SignInVC: UIViewController {
     
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -69,8 +69,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSig
             return
         }
         
-        let userObject = UserObject(id: "", email: email)
+        let userObject = UserObject()
         userObject.password = password
+        userObject.email = email
         
         activityIndicatorView.showLoadingDialog(self)
         UserServices.shared.signIn(with: userObject) { (user, error) in
@@ -111,6 +112,10 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSig
         signIn()
     }
     
+    
+}
+
+extension SignInVC: UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
     // MARK: - DELEGATE UITEXTFIELDS
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
@@ -126,11 +131,6 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSig
     // MARK: - SIGN IN FUNCTION WITH GID
     func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser, withError error: Error) {
         
-//        guard let signIn = signIn, let usr = user else {
-//            print("asdsads")
-//            return
-//        }
-        
         UserServices.shared.signInWithGoogle(authentication: user.authentication) { (user, error) in
             self.activityIndicatorView.stopAnimating()
             
@@ -139,13 +139,12 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSig
                 return
             }
             
-            if let user = user {
-                print(user.email)
+            if let _ = user {
+                // print(user.email)
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                     appDelegate.showMainView()
                 }
             }
         }
     }
-    
 }

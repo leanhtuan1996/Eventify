@@ -22,5 +22,12 @@ extension String {
             return ""
         }
     }
+    
+    func toInt() -> Int? {
+        if let int = Int(self) {
+            return int
+        }
+        return nil
+    }
 }
 

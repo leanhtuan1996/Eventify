@@ -11,27 +11,27 @@ import Gloss
 
 class UserObject: NSObject, Gloss.Decodable {
     var id: String
-    var email: String
+    var email: String?
     var password: String?
     var fullName: String?
     var address: String?
     var phone: String?
+    var photoURL: String?
     
-    init(id: String, email: String) {
-        self.id = id
-        self.email = email
-        self.password = ""
+    override init() {
+        self.id = ""
     }
     
     required init?(json: JSON) {
-        guard let id: String = "id" <~~ json, let email: String =  "email" <~~ json else {
+        guard let id: String = "id" <~~ json else {
             return nil
         }
         self.id = id
-        self.email = email
-        self.password = "password" <~~ json ?? ""
-        self.fullName = "fullName" <~~ json ?? ""
-        self.address = "address" <~~ json ?? ""
-        self.phone = "phone" <~~ json ?? ""
+        self.email = "email" <~~ json ?? nil
+        self.password = "password" <~~ json ?? nil
+        self.fullName = "fullName" <~~ json ?? nil
+        self.address = "address" <~~ json ?? nil
+        self.phone = "phone" <~~ json ?? nil
+        self.photoURL = "photoURL" <~~ json ?? nil
     }
 }

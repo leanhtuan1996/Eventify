@@ -87,8 +87,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
         
         activityIndicatorView.showLoadingDialog(self)
-        let userObject = UserObject(id: "", email: email)
+        let userObject = UserObject()
         userObject.password = password
+        userObject.email = email
         UserServices.shared.signUp(with: userObject) { (user, error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {

@@ -10,10 +10,23 @@ import UIKit
 
 class NewEventVC: UIViewController {
 
-    override func viewDidLoad() {
+    @IBOutlet weak var imgPicker: UIImageView!
+    @IBOutlet weak var imgCover: UIImageView!
+    @IBOutlet weak var lblNameEvent: UITextField!
+    @IBOutlet weak var lblByOrganizer: UILabel!
+    @IBOutlet weak var lblTimeStart: UILabel!
+    @IBOutlet weak var lblTimeEnd: UILabel!
+    @IBOutlet weak var txtDetailAddress: UITextField!
+    @IBOutlet weak var lblEventType: UILabel!
+    @IBOutlet weak var lblNumberTickets: UILabel!
+    
+    override func viewDidLoad(
+        ) {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let tapForLblNumberTickets = UITapGestureRecognizer(target: self, action: #selector(self.showTicketsManager))
+        lblNumberTickets.isUserInteractionEnabled = true
+        lblNumberTickets.addGestureRecognizer(tapForLblNumberTickets)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +34,22 @@ class NewEventVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
-    */
+    
+
+    func showTicketsManager() {
+        if let sb = storyboard?.instantiateViewController(withIdentifier: "TicketsManagerVC") as? TicketsManagerVC {
+            self.navigationController?.pushViewController(sb, animated: true)
+        }
+    }
+    
+    
+    @IBAction func btnDoneClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnMoreClicked(_ sender: Any) {
+    }
 
 }

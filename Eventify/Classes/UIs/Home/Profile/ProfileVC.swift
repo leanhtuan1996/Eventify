@@ -15,6 +15,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var tblProfile: UITableView!
+    let loading = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,9 @@ class ProfileVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loading.showLoadingDialog(self)
         UserServices.shared.getInfomations { (user, error) in
+            self.loading.stopAnimating()
             if let error = error {
                 self.showAlert("Get infomations error: \(error)", title: "ERROR", buttons: nil)
                 return

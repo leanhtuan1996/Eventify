@@ -14,9 +14,6 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var txtNameToEdit: UITextField!
-    @IBOutlet weak var txtEmailToEdit: UITextField!
-    @IBOutlet weak var txtPhoneNumberToEdit: UITextField!
     
     
     override func viewDidLoad() {
@@ -41,12 +38,32 @@ class EditProfileVC: UIViewController {
         }
        
     }
-
     
     @IBAction func btnBackClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnDoneClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnUpdatePhotoClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnUpdatePasswordClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnUpdateEmailClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnUpdatePhoneClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnUpdateFullNameClicked(_ sender: Any) {
+    }
+    
+    @IBAction func btnLogOutClicked(_ sender: Any) {
+        let loading = UIActivityIndicatorView()
+        loading.showLoadingDialog(self)
+        UserServices.shared.signOut()
     }
 }

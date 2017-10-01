@@ -21,11 +21,11 @@ class UserServices: NSObject {
     
     func signUp(with user: UserObject, completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
         
-        guard let password = user.password else {
+        guard let password = user.password, let email = user.email else {
             return completionHandler(nil, "Password not empty")
         }
         
-        Auth.auth().createUser(withEmail: user.email, password: password) { (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 return completionHandler(nil, error.localizedDescription)
             }
@@ -40,26 +40,32 @@ class UserServices: NSObject {
                 //print(user)
                 
                 self.refUser.child(user.uid).setValue(usr)
+                
+                let userObject = UserObject()
+                userObject.id = user.uid
+                userObject.email = user.email
                
-                return completionHandler(UserObject(id: user.uid, email: user.email ?? ""), nil)
+                return completionHandler(userObject, nil)
             }
         }
     }
     
     func signIn(with user: UserObject, completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
         
-        guard let password = user.password else {
+        guard let password = user.password, let email = user.email else {
             return completionHandler(nil, "Password is required")
         }
         
-        Auth.auth().signIn(withEmail: user.email, password: password) { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 return completionHandler(nil, error.localizedDescription)
             }
             
             if let user = user {
-                let usr = UserObject(id: user.uid, email: user.email ?? "")
-                return completionHandler(usr, nil)
+                let userObject = UserObject()
+                userObject.id = user.uid
+                userObject.email = user.email
+                return completionHandler(userObject, nil)
             }
         }
     }
@@ -68,7 +74,10 @@ class UserServices: NSObject {
     func isLoggedIn(completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-                return completionHandler(UserObject(id: user.uid, email: user.email ?? ""), nil)
+                let userObject = UserObject()
+                userObject.id = user.uid
+                userObject.email = user.email
+                return completionHandler(userObject, nil)
             } else {
                 return completionHandler(nil, "User not found")
             }
@@ -106,7 +115,9 @@ class UserServices: NSObject {
                 return completionHandler(nil, "SIGN IN WITH GOOGLE HAD BEEN ERROR")
             }
             
-            let userObject = UserObject(id: user.uid, email: user.email ?? "")
+            let userObject = UserObject()
+            userObject.id = user.uid
+            userObject.email = user.email
             
             let usr: [String: Any] = [
                 "id" : user.uid,
@@ -150,8 +161,26 @@ class UserServices: NSObject {
         
     }
     
-    func updateInfomations(withUser user: UserObject, completionHandler: @escaping(_ error: String?) -> Void) {
-        
+    func updateEmail() {
         
     }
+    
+    func updatePhoneNumber() {
+        
+    }
+    
+    func updatePassword() {
+        
+    }
+    
+    func updatePhotoURL() {
+        
+    }
+    
+    func updateFullname() {
+        
+    }
+    
+    
+    
 }

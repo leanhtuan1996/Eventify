@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1600FF157567900C11290812 /* Pods_Eventify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A434F16EF586BE1A66742A2 /* Pods_Eventify.framework */; };
+		362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */; };
+		362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E041F8094800033F9DB /* NewTicketVC.swift */; };
+		362C5E071F809E290033F9DB /* TicketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E061F809E290033F9DB /* TicketObject.swift */; };
+		362C5E091F809F150033F9DB /* TicketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E081F809F150033F9DB /* TicketManager.swift */; };
+		362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E0A1F80A1930033F9DB /* Extensions+Int.swift */; };
+		362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E0D1F80ADF20033F9DB /* TicketCells.swift */; };
+		362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362C5E0E1F80ADF20033F9DB /* TicketCells.xib */; };
 		367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BCF1F7E34EB002222EB /* AppDelegate.swift */; };
 		367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD11F7E34EB002222EB /* Extensions+Data.swift */; };
 		367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD21F7E34EB002222EB /* Extensions+Date.swift */; };
@@ -41,6 +48,13 @@
 
 /* Begin PBXFileReference section */
 		1A434F16EF586BE1A66742A2 /* Pods_Eventify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsManagerVC.swift; sourceTree = "<group>"; };
+		362C5E041F8094800033F9DB /* NewTicketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTicketVC.swift; sourceTree = "<group>"; };
+		362C5E061F809E290033F9DB /* TicketObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketObject.swift; sourceTree = "<group>"; };
+		362C5E081F809F150033F9DB /* TicketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketManager.swift; sourceTree = "<group>"; };
+		362C5E0A1F80A1930033F9DB /* Extensions+Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Int.swift"; sourceTree = "<group>"; };
+		362C5E0D1F80ADF20033F9DB /* TicketCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketCells.swift; sourceTree = "<group>"; };
+		362C5E0E1F80ADF20033F9DB /* TicketCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketCells.xib; sourceTree = "<group>"; };
 		367F3BB81F7E337D002222EB /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367F3BCF1F7E34EB002222EB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367F3BD11F7E34EB002222EB /* Extensions+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Data.swift"; sourceTree = "<group>"; };
@@ -95,6 +109,33 @@
 				CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		362C5E001F8093B20033F9DB /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				362C5E0C1F80ADD90033F9DB /* TicketCells */,
+				362C5E031F8094740033F9DB /* NewTicket */,
+				362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		362C5E031F8094740033F9DB /* NewTicket */ = {
+			isa = PBXGroup;
+			children = (
+				362C5E041F8094800033F9DB /* NewTicketVC.swift */,
+			);
+			path = NewTicket;
+			sourceTree = "<group>";
+		};
+		362C5E0C1F80ADD90033F9DB /* TicketCells */ = {
+			isa = PBXGroup;
+			children = (
+				362C5E0D1F80ADF20033F9DB /* TicketCells.swift */,
+				362C5E0E1F80ADF20033F9DB /* TicketCells.xib */,
+			);
+			path = TicketCells;
 			sourceTree = "<group>";
 		};
 		367F3BAF1F7E337D002222EB = {
@@ -161,6 +202,7 @@
 				367F3BD61F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift */,
 				367F3BD71F7E34EB002222EB /* Extensions+UIImageView.swift */,
 				367F3BD81F7E34EB002222EB /* Extensions+UINavigationController.swift */,
+				362C5E0A1F80A1930033F9DB /* Extensions+Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -176,6 +218,7 @@
 		367F3BDA1F7E34EB002222EB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				362C5E081F809F150033F9DB /* TicketManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -184,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				367F3BFC1F7E3537002222EB /* UserObject.swift */,
+				362C5E061F809E290033F9DB /* TicketObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +359,7 @@
 		36B762381F7FB283009D3BE9 /* NewEvent */ = {
 			isa = PBXGroup;
 			children = (
+				362C5E001F8093B20033F9DB /* Tickets */,
 				36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */,
 			);
 			path = NewEvent;
@@ -394,6 +439,7 @@
 				36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */,
 				367F3BFA1F7E34EB002222EB /* Main.storyboard in Resources */,
 				3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */,
+				362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */,
 				367F3C141F7E3639002222EB /* Images.xcassets in Resources */,
 				367F3BF91F7E34EB002222EB /* LaunchScreen.storyboard in Resources */,
 			);
@@ -478,15 +524,20 @@
 				367F3BF51F7E34EB002222EB /* EventServices.swift in Sources */,
 				36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */,
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
+				362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */,
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
 				367F3BFF1F7E35C4002222EB /* LaunchVC.swift in Sources */,
 				367F3C121F7E3612002222EB /* SignUpVC.swift in Sources */,
+				362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */,
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
+				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
+				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
+				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
@@ -497,6 +548,7 @@
 				367F3BF31F7E34EB002222EB /* Extensions+UIImageView.swift in Sources */,
 				367F3BF41F7E34EB002222EB /* Extensions+UINavigationController.swift in Sources */,
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,
+				362C5E071F809E290033F9DB /* TicketObject.swift in Sources */,
 				367F3C011F7E35F3002222EB /* ForgotPasswordVC.swift in Sources */,
 				36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */,
 			);

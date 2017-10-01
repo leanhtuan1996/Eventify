@@ -93,7 +93,6 @@ class DiscoverVC: UIViewController {
     }
     
     @IBAction func SignOut(_ sender: Any) {
-        UserServices.shared.signOut()
     }
     
 }
