@@ -9,9 +9,9 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-
-    @IBOutlet weak var imgAvatar: UIImageView!
     
+    @IBOutlet weak var imgAvatar: UIImageView!
+    var user: UserObject?
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var tblProfile: UITableView!
@@ -23,25 +23,17 @@ class ProfileVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loading.showLoadingDialog(self)
-        UserServices.shared.getInfomations { (user, error) in
-            self.loading.stopAnimating()
-            if let error = error {
-                self.showAlert("Get infomations error: \(error)", title: "ERROR", buttons: nil)
-                return
-            }
-            
-            if let user = user {
-                self.lblName.text = user.fullName
-                self.lblEmail.text = user.email
-                
-            }
+        
+        if let user = UserServices.shared.currentUser {
+            lblName.text = user.fullName
+            lblEmail.text = user.email
         }
+        
     }
-   
-
+    
+    
     // MARK: - ACTIONS
-
+    
     @IBAction func btnEditProfileClicked(_ sender: Any) {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "EditProfileVC") as? EditProfileVC {
             self.navigationController?.pushViewController(sb, animated: true)

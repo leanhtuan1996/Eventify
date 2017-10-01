@@ -21,6 +21,7 @@ class LaunchVC: UIViewController {
                     appDelegate.showSignInView()
                 }
                 else {
+                    UserServices.shared.getInfomations()
                     appDelegate.showMainView()
                 }
             })

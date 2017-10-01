@@ -18,6 +18,7 @@ class UserServices: NSObject {
     
     //ref User child
     let refUser = Database.database().reference().child("Users")
+    var currentUser:UserObject?
     
     func signUp(with user: UserObject, completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
         
@@ -77,6 +78,10 @@ class UserServices: NSObject {
                 let userObject = UserObject()
                 userObject.id = user.uid
                 userObject.email = user.email
+                userObject.fullName = user.displayName
+                userObject.phone = user.phoneNumber
+                userObject.photoURL = String(describing: user.photoURL)
+                self.currentUser = userObject
                 return completionHandler(userObject, nil)
             } else {
                 return completionHandler(nil, "User not found")
@@ -118,6 +123,9 @@ class UserServices: NSObject {
             let userObject = UserObject()
             userObject.id = user.uid
             userObject.email = user.email
+            userObject.fullName = user.displayName
+            userObject.phone = user.phoneNumber
+            userObject.photoURL = String(describing: user.photoURL)
             
             let usr: [String: Any] = [
                 "id" : user.uid,
@@ -146,16 +154,15 @@ class UserServices: NSObject {
         }
     }
     
-    func getInfomations(completionHandler: @escaping(_ user: UserObject?, _ error: String?) -> Void) -> Void {
+    func getInfomations() {
         let user = Auth.auth().currentUser
         if let uid = user?.uid {
-            
-            self.refUser.child(uid).observeSingleEvent(of: .value, with: { (data) in
+            self.refUser.child(uid).observe(.value, with: { (data) in
                 guard let value = data.value as? JSON else {
-                    return completionHandler(nil, "Data is not avalid formation")
+                    return
                 }
-                
-                completionHandler(UserObject(json: value), nil)
+                print(value)
+                self.currentUser = UserObject(json: value)
             })
         }
         

@@ -17,6 +17,7 @@ class TicketsManagerVC: UIViewController {
         tblTickets.delegate = self
         tblTickets.dataSource = self
         tblTickets.register(UINib(nibName: "TicketCells", bundle: nil), forCellReuseIdentifier: "TicketCells")
+        tblTickets.estimatedRowHeight = 70
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +26,7 @@ class TicketsManagerVC: UIViewController {
         
         //load tickets
         loadTickets()
+        //TicketManager.shared.deleteTickets()
     }
     
     func loadTickets() {
@@ -58,7 +60,18 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.ticketObject = tickets[indexPath.row]
+        cell.lblNameTicket.text = tickets[indexPath.row].name
+        cell.lblPrice.text = (tickets[indexPath.row].price?.toString() ?? "") + " VND"
+        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let sb = storyboard?.instantiateViewController(withIdentifier: "NewTicketVC") as? NewTicketVC {
+            sb.ticketObject = tickets[indexPath.row]
+            self.navigationController?.pushViewController(sb, animated: true)
+        }
     }
 }

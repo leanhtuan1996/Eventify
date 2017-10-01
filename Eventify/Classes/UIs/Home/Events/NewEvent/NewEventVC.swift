@@ -28,14 +28,15 @@ class NewEventVC: UIViewController {
         lblNumberTickets.addGestureRecognizer(tapForLblNumberTickets)
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        
+        if let user = UserServices.shared.currentUser {
+            lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
+        }
+        
+        lblNumberTickets.text = TicketManager.shared.getTickets().count.toString() + " loại vé"
     }
     
 

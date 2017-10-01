@@ -10,9 +10,17 @@ import UIKit
 
 class TicketCells: UITableViewCell {
 
+    var ticketObject = TicketObject()
+    @IBOutlet weak var lblNameTicket: UILabel!
+    @IBOutlet weak var lblQuantitySold: UILabel!
+    @IBOutlet weak var lblPrice: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        lblNameTicket.text = ticketObject.name
+//        lblQuantitySold.text = ticketObject.quantity?.toString()
+//        lblPrice.text = ticketObject.price?.toString()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

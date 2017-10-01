@@ -11,6 +11,7 @@ import SkyFloatingLabelTextField
 
 class NewTicketVC: UIViewController, UITextFieldDelegate {
 
+    var ticketObject = TicketObject()
     @IBOutlet weak var txtNameTicket: SkyFloatingLabelTextField!
      @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
      @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
@@ -22,6 +23,11 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         txtDescription.delegate = self
         txtQuantity.delegate = self
         txtPrice.delegate = self
+        
+        
+        txtNameTicket.text = ticketObject.name
+        txtQuantity.text = ticketObject.quantity?.toString()
+        txtPrice.text = ticketObject.price?.toString()
         
     }
     
@@ -50,6 +56,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         txtQuantity.errorMessage = ""
         
         let ticket = TicketObject()
+        ticket.id = ticketObject.id
         ticket.name = txtNameTicket.text
         ticket.descriptions = txtDescription.text
         ticket.quantity = txtQuantity.text?.toInt()
