@@ -15,6 +15,8 @@
 		362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E0A1F80A1930033F9DB /* Extensions+Int.swift */; };
 		362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E0D1F80ADF20033F9DB /* TicketCells.swift */; };
 		362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362C5E0E1F80ADF20033F9DB /* TicketCells.xib */; };
+		362C5E121F810CD10033F9DB /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E111F810CD10033F9DB /* EventObject.swift */; };
+		362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E131F810D760033F9DB /* EventTypeObject.swift */; };
 		367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BCF1F7E34EB002222EB /* AppDelegate.swift */; };
 		367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD11F7E34EB002222EB /* Extensions+Data.swift */; };
 		367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD21F7E34EB002222EB /* Extensions+Date.swift */; };
@@ -55,6 +57,8 @@
 		362C5E0A1F80A1930033F9DB /* Extensions+Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Int.swift"; sourceTree = "<group>"; };
 		362C5E0D1F80ADF20033F9DB /* TicketCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketCells.swift; sourceTree = "<group>"; };
 		362C5E0E1F80ADF20033F9DB /* TicketCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketCells.xib; sourceTree = "<group>"; };
+		362C5E111F810CD10033F9DB /* EventObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
+		362C5E131F810D760033F9DB /* EventTypeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeObject.swift; sourceTree = "<group>"; };
 		367F3BB81F7E337D002222EB /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367F3BCF1F7E34EB002222EB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367F3BD11F7E34EB002222EB /* Extensions+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Data.swift"; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 			children = (
 				367F3BFC1F7E3537002222EB /* UserObject.swift */,
 				362C5E061F809E290033F9DB /* TicketObject.swift */,
+				362C5E111F810CD10033F9DB /* EventObject.swift */,
+				362C5E131F810D760033F9DB /* EventTypeObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -532,7 +538,9 @@
 				362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */,
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
+				362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
+				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
