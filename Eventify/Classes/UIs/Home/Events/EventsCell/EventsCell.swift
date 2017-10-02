@@ -15,7 +15,6 @@ class EventsCell: UITableViewCell {
     @IBOutlet weak var imgPhoto: UIImageView!
     
     @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var btnEventType: UIButton!
     @IBOutlet weak var lblTimeStart: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
@@ -34,7 +33,7 @@ class EventsCell: UITableViewCell {
         self.cellView.layer.masksToBounds = false;
         self.cellView.clipsToBounds = false;
         
-        btnLabel.layer.cornerRadius = 15
+        //btnLabel.layer.cornerRadius = 15
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

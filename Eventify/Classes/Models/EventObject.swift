@@ -9,7 +9,7 @@
 import UIKit
 import Gloss
 
-class EventObject: NSObject, Decodable {
+class EventObject: NSObject, Glossy  {
     var id: String?
     var name: String?
     var photoURL: String?
@@ -18,8 +18,8 @@ class EventObject: NSObject, Decodable {
     var timeStart: String?
     var timeEnd: String?
     var address: String?
-    var type: EventTypeObject?
-    var ticket: [TicketObject]?
+    var types: [EventTypeObject]?
+    var tickets: [TicketObject]?
     
     override init() { }
     
@@ -32,17 +32,22 @@ class EventObject: NSObject, Decodable {
             self.by = byUser
         }
         
-        if let type: EventTypeObject = "type" <~~ json {
-            self.type = type
+
+        //types
+        if let typeJSON: JSON = "types" <~~ json {
+            var typeArray: [EventTypeObject] = []
+            for temp in typeJSON {
+                if let typeJson = temp.value as? JSON {
+                    if let typeObject = EventTypeObject(json: typeJson) {
+                        typeArray.append(typeObject)
+                    }
+                }
+            }
+            
+            self.types = typeArray
         }
         
-//        if let ticket: [TicketObject] = "tickets" <~~ json {
-//            print(ticket.count)
-//            self.ticket = ticket
-//        }
-        
-        
-        
+        //tickets
         if let ticketJSON: JSON = "tickets" <~~ json {
             var ticketArray: [TicketObject] = []
             for temp in ticketJSON {
@@ -53,7 +58,7 @@ class EventObject: NSObject, Decodable {
                 }
             }
             
-            self.ticket = ticketArray
+            self.tickets = ticketArray
         }
         
         if let timeStart: Int = "timeStart" <~~ json {
@@ -69,8 +74,22 @@ class EventObject: NSObject, Decodable {
         self.photoURL = "photoURL" <~~ json
         self.descriptionEvent = "descriptionEvent" <~~ json
         self.address = "address" <~~ json
-        
-        
-        
     }
+    
+    //to json
+    func toJSON() -> JSON? {
+        return jsonify([
+            "id" ~~> self.id,
+            "name" ~~> self.name,
+            "address" ~~> self.address,
+            "by" ~~> self.by,
+            "photoURL" ~~> self.photoURL,
+            "tickets" ~~> self.tickets,
+            "types" ~~> self.types,
+            "timeStart" ~~> self.timeStart,
+            "timeEnd" ~~> self.timeEnd
+            ])
+    }
+    
+    
 }

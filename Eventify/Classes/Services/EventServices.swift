@@ -76,5 +76,11 @@ class EventServices: NSObject {
     
     func updateEvent(withEvent event: EventObject, completionHandler: @escaping (_ error: String?) -> Void) {
         
+//        if let id = event.id {
+//            refEvent.child(id).setValue(event.toJSON())
+//        }
+//        refEvent.child("1").updateChildValues(event.toJSON()!) { (error, ref) in
+//            
+//        }
     }
 }

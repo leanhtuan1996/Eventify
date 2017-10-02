@@ -29,5 +29,30 @@ extension String {
         }
         return nil
     }
+    
+    func toDouble() -> Double? {
+        if let double = Double(self) {
+            return double
+        }
+        return nil
+    }
+    
+    func timestampToDate() -> String {
+        let dateFormatter = DateFormatter()
+        
+        guard let timestamp = self.toDouble() else {
+            return "N/A"
+        }
+        
+        let date = Date(timeIntervalSince1970: timestamp)
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        dateFormatter.locale = Locale.current
+        return dateFormatter.string(from: date)
+    }
+    
+    func toTimeStamp() -> String {
+        let date = Date()
+        return String(date.timeIntervalSince1970)
+    }
 }
 

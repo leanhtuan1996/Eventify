@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Dollar
 
 class DiscoverVC: UIViewController {
     
@@ -99,9 +100,6 @@ class DiscoverVC: UIViewController {
         btnEvents.setTitleColor(#colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1), for: UIControlState.normal)
     }
     
-    @IBAction func SignOut(_ sender: Any) {
-    }
-    
 }
 
 extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
@@ -119,6 +117,8 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         cell.event = events[indexPath.row]
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address
+        cell.lblTimeStart.text = events[indexPath.row].timeStart?.timestampToDate()
+        cell.lblPrice.text = "Từ 0 VNĐ"
         
         return cell
     }
@@ -129,6 +129,16 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(sb, animated: true)
             self.tabBarController?.hidesBottomBarWhenPushed = true
         }
+    }
+    
+    func handlerPrice(priceArray: [TicketObject]) -> String {
+        
+        //Get all price in array
+        
+        
+        //find min
+        
+        return ""
     }
     
     
