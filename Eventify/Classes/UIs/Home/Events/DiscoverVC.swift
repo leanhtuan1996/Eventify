@@ -61,6 +61,7 @@ class DiscoverVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         EventServices.shared.getEvents { (events, error) in
             if let error = error {
                 print(error)
@@ -73,6 +74,11 @@ class DiscoverVC: UIViewController {
             }
             
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     // MARK: - FUNCTIONS

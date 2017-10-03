@@ -20,6 +20,9 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var lblEventType: UILabel!
     @IBOutlet weak var lblNumberTickets: UILabel!
     
+    var isTimeStartIsPicking: Bool = true
+    var dateTimeSelector: WWCalendarTimeSelector!
+    
     override func viewDidLoad(
         ) {
         super.viewDidLoad()
@@ -27,6 +30,16 @@ class NewEventVC: UIViewController {
         lblNumberTickets.isUserInteractionEnabled = true
         lblNumberTickets.addGestureRecognizer(tapForLblNumberTickets)
         
+        let tapForlblTimeStart = UITapGestureRecognizer(target: self, action: #selector(self.showTimeStartCalendarPicker))
+        lblTimeStart.isUserInteractionEnabled = true
+        lblTimeStart.addGestureRecognizer(tapForlblTimeStart)
+        
+        let tapForlblTimeEnd = UITapGestureRecognizer(target: self, action: #selector(self.showTimeEndCalendarPicker))
+        lblTimeEnd.isUserInteractionEnabled = true
+        lblTimeEnd.addGestureRecognizer(tapForlblTimeEnd)
+        
+        dateTimeSelector = WWCalendarTimeSelector.instantiate()
+        dateTimeSelector.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +59,20 @@ class NewEventVC: UIViewController {
         }
     }
     
+    func showTimeStartCalendarPicker() {
+        
+        isTimeStartIsPicking = true
+        self.tabBarController?.tabBar.isHidden = true
+        self.present(dateTimeSelector, animated: true, completion: nil)
+    }
+    
+    func showTimeEndCalendarPicker() {
+        
+        isTimeStartIsPicking = false
+        self.tabBarController?.tabBar.isHidden = true
+        self.present(dateTimeSelector, animated: true, completion: nil)
+    }
+    
     
     @IBAction func btnDoneClicked(_ sender: Any) {
     }
@@ -53,4 +80,27 @@ class NewEventVC: UIViewController {
     @IBAction func btnMoreClicked(_ sender: Any) {
     }
 
+}
+
+extension NewEventVC: WWCalendarTimeSelectorProtocol {
+    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
+        
+        UIView.animate(withDuration: 1) {
+            self.tabBarController?.tabBar.isHidden = false
+        }
+        
+        if isTimeStartIsPicking {
+            self.lblTimeStart.text = date.stringFromFormat("dd/MM/yyyy HH:ss")
+        } else {
+            self.lblTimeEnd.text = date.stringFromFormat("dd/MM/yyyy HH:ss")
+        }
+        
+        
+    }
+    
+    func WWCalendarTimeSelectorCancel(_ selector: WWCalendarTimeSelector, date: Date) {
+        UIView.animate(withDuration: 1) {
+            self.tabBarController?.tabBar.isHidden = false
+        }
+    }
 }

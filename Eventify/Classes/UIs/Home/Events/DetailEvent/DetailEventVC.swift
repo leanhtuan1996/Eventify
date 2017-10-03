@@ -14,17 +14,20 @@ class DetailEventVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        
-        if (self.navigationController?.isNavigationBarHidden)! {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-        
-        btnLabel.layer.cornerRadius = 15
+        //self.navigationController?.setNavigationBarHidden(false, animated: true)
+        //btnLabel.layer.cornerRadius = 15
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
     }
+    
+    
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.tabBarController?.tabBar.isHidden = false
+//    }
     
 }
