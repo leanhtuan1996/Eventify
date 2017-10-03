@@ -123,7 +123,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         cell.event = events[indexPath.row]
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address
-        cell.lblTimeStart.text = events[indexPath.row].timeStart?.timestampToDate()
+        cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
         cell.lblPrice.text = "Từ 0 VNĐ"
         
         return cell

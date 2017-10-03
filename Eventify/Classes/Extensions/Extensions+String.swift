@@ -24,6 +24,7 @@ extension String {
     }
     
     func toInt() -> Int? {
+        
         if let int = Int(self) {
             return int
         }
@@ -35,6 +36,16 @@ extension String {
             return double
         }
         return nil
+    }
+    
+    func toTimeStamp(format: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        guard let date = dateFormatter.date(from: self) else {
+            return nil
+        }
+        
+        return String(describing: date.timeIntervalSince1970)
     }
     
     func timestampToDate() -> String {

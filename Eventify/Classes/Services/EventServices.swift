@@ -64,10 +64,19 @@ class EventServices: NSObject {
     
     
     func addEvent(withEvent event: EventObject, completionHandler: @escaping (_ error: String?) -> Void) {
+        let id = refEvent.childByAutoId().key
+        event.id = id
+        guard let eventJSON = event.toJSON() else {
+            return completionHandler("Dữ liệu không hợp lệ")
+        }
         
+        print(eventJSON)
         
-//        
-//        refEvent.childByAutoId().setValue()
+        refEvent.child(id).setValue(eventJSON)
+        
+//        refEvent.childByAutoId().setValue(eventJSON) { (error, ref) in
+//            
+//        }
     }
     
     func deleteEvent(withId id: String) {

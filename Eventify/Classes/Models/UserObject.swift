@@ -9,7 +9,7 @@
 import UIKit
 import Gloss
 
-class UserObject: NSObject, Gloss.Decodable {
+class UserObject: NSObject, Glossy {
     var id: String
     var email: String?
     var password: String?
@@ -33,5 +33,17 @@ class UserObject: NSObject, Gloss.Decodable {
         self.address = "address" <~~ json ?? nil
         self.phone = "phone" <~~ json ?? nil
         self.photoURL = "photoURL" <~~ json ?? nil
+    }
+    
+    func toJSON() -> JSON? {
+        return jsonify(
+            ["id" ~~> self.id,
+             "email" ~~> self.email,
+             "password" ~~> self.password,
+             "fullName" ~~> self.fullName,
+             "address" ~~> self.address,
+             "phone" ~~> self.phone,
+             "photoURL" ~~> self.photoURL
+            ])
     }
 }

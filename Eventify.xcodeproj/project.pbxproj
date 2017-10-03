@@ -16,6 +16,7 @@
 		36001ADE1F83C7A20031A1EE /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AD41F83C7A20031A1EE /* String+Timepiece.swift */; };
 		36001ADF1F83C7A20031A1EE /* WWCalendarTimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36001AD51F83C7A20031A1EE /* WWCalendarTimeSelector.storyboard */; };
 		36001AE01F83C7A20031A1EE /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AD61F83C7A20031A1EE /* WWCalendarTimeSelector.swift */; };
+		36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AE11F83F8360031A1EE /* Extensions+Double.swift */; };
 		362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */; };
 		362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E041F8094800033F9DB /* NewTicketVC.swift */; };
 		362C5E071F809E290033F9DB /* TicketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E061F809E290033F9DB /* TicketObject.swift */; };
@@ -66,6 +67,7 @@
 		36001AD41F83C7A20031A1EE /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
 		36001AD51F83C7A20031A1EE /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
 		36001AD61F83C7A20031A1EE /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
+		36001AE11F83F8360031A1EE /* Extensions+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Double.swift"; sourceTree = "<group>"; };
 		362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsManagerVC.swift; sourceTree = "<group>"; };
 		362C5E041F8094800033F9DB /* NewTicketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTicketVC.swift; sourceTree = "<group>"; };
 		362C5E061F809E290033F9DB /* TicketObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketObject.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				367F3BD71F7E34EB002222EB /* Extensions+UIImageView.swift */,
 				367F3BD81F7E34EB002222EB /* Extensions+UINavigationController.swift */,
 				362C5E0A1F80A1930033F9DB /* Extensions+Int.swift */,
+				36001AE11F83F8360031A1EE /* Extensions+Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
 				36001AE01F83C7A20031A1EE /* WWCalendarTimeSelector.swift in Sources */,
+				36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */,
 				367F3BFF1F7E35C4002222EB /* LaunchVC.swift in Sources */,
 				367F3C121F7E3612002222EB /* SignUpVC.swift in Sources */,
 				362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */,

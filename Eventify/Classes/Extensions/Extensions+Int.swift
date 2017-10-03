@@ -12,4 +12,13 @@ extension Int {
     func toString() -> String {
         return String(self)
     }
+    
+    func toTimestampString() -> String {
+        let dateFormatter = DateFormatter()
+        
+        let date = Date(timeIntervalSince1970: Double(self))
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        dateFormatter.locale = Locale.current
+        return dateFormatter.string(from: date)
+    }
 }

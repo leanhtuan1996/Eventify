@@ -9,7 +9,7 @@
 import UIKit
 import Gloss
 
-class TicketObject: NSObject, NSCoding, Decodable {
+class TicketObject: NSObject, NSCoding, Glossy {
     var id: Int?
     var name: String?
     var descriptions: String?
@@ -56,6 +56,16 @@ class TicketObject: NSObject, NSCoding, Decodable {
         if let descriptionsString = descriptions {
             aCoder.encode(descriptionsString, forKey: "descriptions")
         }
+    }
+    
+    func toJSON() -> JSON? {
+        return jsonify(
+            ["id" ~~> self.id,
+             "quantity" ~~> self.quantity,
+             "price" ~~> self.price,
+             "name" ~~> self.name,
+             "descriptions" ~~> self.descriptions
+            ])
     }
     
 }

@@ -15,8 +15,8 @@ class EventObject: NSObject, Glossy  {
     var photoURL: String?
     var by: UserObject?
     var descriptionEvent: String?
-    var timeStart: String?
-    var timeEnd: String?
+    var timeStart: Int?
+    var timeEnd: Int?
     var address: String?
     var types: [EventTypeObject]?
     var tickets: [TicketObject]?
@@ -62,11 +62,11 @@ class EventObject: NSObject, Glossy  {
         }
         
         if let timeStart: Int = "timeStart" <~~ json {
-            self.timeStart = timeStart.toString()
+            self.timeStart = timeStart
         }
         
         if let timeEnd: Int = "timeEnd" <~~ json {
-            self.timeEnd = timeEnd.toString()
+            self.timeEnd = timeEnd
         }
         
         self.id = id
@@ -78,14 +78,16 @@ class EventObject: NSObject, Glossy  {
     
     //to json
     func toJSON() -> JSON? {
+        
+        
         return jsonify([
             "id" ~~> self.id,
             "name" ~~> self.name,
             "address" ~~> self.address,
-            "by" ~~> self.by,
+            "by" ~~> self.by?.toJSON(),
             "photoURL" ~~> self.photoURL,
-            "tickets" ~~> self.tickets,
-            "types" ~~> self.types,
+            "tickets" ~~> self.tickets?.toJSONArray(),
+            "types" ~~> self.types?.toJSONArray(),
             "timeStart" ~~> self.timeStart,
             "timeEnd" ~~> self.timeEnd
             ])

@@ -9,7 +9,7 @@
 import UIKit
 import Gloss
 
-class EventTypeObject: NSObject, Decodable {
+class EventTypeObject: NSObject, Glossy {
     var id: String?
     var name: String?
     
@@ -21,6 +21,13 @@ class EventTypeObject: NSObject, Decodable {
         }
         self.id = id
         self.name = "name" <~~ json
+    }
+    
+    func toJSON() -> JSON? {
+        return jsonify(
+        ["id" ~~> self.id,
+         "name" ~~> self.name
+        ])
     }
     
 }
