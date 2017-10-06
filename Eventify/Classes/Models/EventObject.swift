@@ -8,6 +8,8 @@
 
 import UIKit
 import Gloss
+import FirebaseDatabase
+
 
 class EventObject: NSObject, Glossy  {
     var id: String?
@@ -48,17 +50,8 @@ class EventObject: NSObject, Glossy  {
         }
         
         //tickets
-        if let ticketJSON: JSON = "tickets" <~~ json {
-            var ticketArray: [TicketObject] = []
-            for temp in ticketJSON {
-                if let ticketjson = temp.value as? JSON {
-                    if let ticketObject = TicketObject(json: ticketjson) {
-                        ticketArray.append(ticketObject)
-                    }
-                }
-            }
-            
-            self.tickets = ticketArray
+        if let ticketJSON: [JSON] = "tickets" <~~ json {
+            self.tickets = [TicketObject].from(jsonArray: ticketJSON)
         }
         
         if let timeStart: Int = "timeStart" <~~ json {
@@ -79,6 +72,15 @@ class EventObject: NSObject, Glossy  {
     //to json
     func toJSON() -> JSON? {
         
+        guard let tickets = self.tickets, let id = self.id else {
+            return nil
+        }
+        
+        //set id for ticket
+        for ticket in tickets {
+            let id = refEvent.child(id).child("tickets").childByAutoId().key
+            ticket.id = id
+        }
         
         return jsonify([
             "id" ~~> self.id,

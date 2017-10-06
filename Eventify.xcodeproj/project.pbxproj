@@ -17,6 +17,10 @@
 		36001ADF1F83C7A20031A1EE /* WWCalendarTimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36001AD51F83C7A20031A1EE /* WWCalendarTimeSelector.storyboard */; };
 		36001AE01F83C7A20031A1EE /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AD61F83C7A20031A1EE /* WWCalendarTimeSelector.swift */; };
 		36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AE11F83F8360031A1EE /* Extensions+Double.swift */; };
+		36001B061F8747C40031A1EE /* TypeEventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B051F8747C40031A1EE /* TypeEventServices.swift */; };
+		36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B081F874A7C0031A1EE /* EventTypesVC.swift */; };
+		36001B0D1F875ED10031A1EE /* EventTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B0B1F875ED10031A1EE /* EventTypeCell.swift */; };
+		36001B0E1F875ED10031A1EE /* EventTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36001B0C1F875ED10031A1EE /* EventTypeCell.xib */; };
 		362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */; };
 		362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E041F8094800033F9DB /* NewTicketVC.swift */; };
 		362C5E071F809E290033F9DB /* TicketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E061F809E290033F9DB /* TicketObject.swift */; };
@@ -68,6 +72,10 @@
 		36001AD51F83C7A20031A1EE /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
 		36001AD61F83C7A20031A1EE /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
 		36001AE11F83F8360031A1EE /* Extensions+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Double.swift"; sourceTree = "<group>"; };
+		36001B051F8747C40031A1EE /* TypeEventServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEventServices.swift; sourceTree = "<group>"; };
+		36001B081F874A7C0031A1EE /* EventTypesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypesVC.swift; sourceTree = "<group>"; };
+		36001B0B1F875ED10031A1EE /* EventTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
+		36001B0C1F875ED10031A1EE /* EventTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeCell.xib; sourceTree = "<group>"; };
 		362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsManagerVC.swift; sourceTree = "<group>"; };
 		362C5E041F8094800033F9DB /* NewTicketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTicketVC.swift; sourceTree = "<group>"; };
 		362C5E061F809E290033F9DB /* TicketObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketObject.swift; sourceTree = "<group>"; };
@@ -156,11 +164,30 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		36001B071F874A690031A1EE /* EventTypes */ = {
+			isa = PBXGroup;
+			children = (
+				36001B0A1F875EB80031A1EE /* EventTypeCell */,
+				36001B081F874A7C0031A1EE /* EventTypesVC.swift */,
+			);
+			path = EventTypes;
+			sourceTree = "<group>";
+		};
+		36001B0A1F875EB80031A1EE /* EventTypeCell */ = {
+			isa = PBXGroup;
+			children = (
+				36001B0B1F875ED10031A1EE /* EventTypeCell.swift */,
+				36001B0C1F875ED10031A1EE /* EventTypeCell.xib */,
+			);
+			path = EventTypeCell;
+			sourceTree = "<group>";
+		};
 		362C5E001F8093B20033F9DB /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
 				362C5E0C1F80ADD90033F9DB /* TicketCells */,
 				362C5E031F8094740033F9DB /* NewTicket */,
+				36001B071F874A690031A1EE /* EventTypes */,
 				362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */,
 			);
 			path = Tickets;
@@ -285,6 +312,7 @@
 			children = (
 				367F3BDD1F7E34EB002222EB /* EventServices.swift */,
 				367F3BDE1F7E34EB002222EB /* UserServices.swift */,
+				36001B051F8747C40031A1EE /* TypeEventServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -491,6 +519,7 @@
 				3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */,
 				362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */,
 				367F3C141F7E3639002222EB /* Images.xcassets in Resources */,
+				36001B0E1F875ED10031A1EE /* EventTypeCell.xib in Resources */,
 				367F3BF91F7E34EB002222EB /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,6 +619,7 @@
 				362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */,
 				36001AD91F83C7A20031A1EE /* Duration.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
+				36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */,
 				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
@@ -607,6 +637,8 @@
 				36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */,
 				36001ADA1F83C7A20031A1EE /* Int+Timepiece.swift in Sources */,
 				367F3BF31F7E34EB002222EB /* Extensions+UIImageView.swift in Sources */,
+				36001B0D1F875ED10031A1EE /* EventTypeCell.swift in Sources */,
+				36001B061F8747C40031A1EE /* TypeEventServices.swift in Sources */,
 				367F3BF41F7E34EB002222EB /* Extensions+UINavigationController.swift in Sources */,
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,
 				362C5E071F809E290033F9DB /* TicketObject.swift in Sources */,

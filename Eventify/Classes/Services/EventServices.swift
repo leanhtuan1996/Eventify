@@ -12,10 +12,11 @@ import FirebaseAuth
 import FirebaseDatabase
 import Gloss
 
+let refEvent = Database.database().reference().child("Events")
 class EventServices: NSObject {
     static let shared = EventServices()
     //ref User child
-    let refEvent = Database.database().reference().child("Events")
+    
     
     func getEvents(completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void ) {
         //listen
@@ -30,6 +31,7 @@ class EventServices: NSObject {
             
             for object in json {
                 if let eventsJSON = object.value as? JSON {
+                    //print(eventsJSON["tickets"])
                     if let event = EventObject(json: eventsJSON) {
                         events.append(event)
                     }
@@ -73,10 +75,6 @@ class EventServices: NSObject {
         print(eventJSON)
         
         refEvent.child(id).setValue(eventJSON)
-        
-//        refEvent.childByAutoId().setValue(eventJSON) { (error, ref) in
-//            
-//        }
     }
     
     func deleteEvent(withId id: String) {

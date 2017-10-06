@@ -24,7 +24,7 @@ class TicketManager: NSObject {
         return []
     }
     
-    func getTicket(byId id: Int) -> TicketObject? {
+    func getTicket(byId id: String) -> TicketObject? {
         print("GET TICKET")
         let currentTickets = getTickets()
         if let index = currentTickets.index(where: { (ticket) -> Bool in
@@ -42,7 +42,7 @@ class TicketManager: NSObject {
         }
     }
     
-    func deleteTicket(byId id: Int) {
+    func deleteTicket(byId id: String) {
         var currentTickets = getTickets()
         print("GET TICKET: \(id)")
         if let index = currentTickets.index(where: { (ticket) -> Bool in
@@ -62,7 +62,7 @@ class TicketManager: NSObject {
         }) {
             editTicket(with: ticket)
         } else {
-            ticket.id = currentTickets.count
+            ticket.id = currentTickets.count.toString()
             currentTickets.append(ticket)
             
             print(currentTickets.count)

@@ -10,7 +10,7 @@ import UIKit
 import Gloss
 
 class TicketObject: NSObject, NSCoding, Glossy {
-    var id: Int?
+    var id: String?
     var name: String?
     var descriptions: String?
     var quantity: Int?
@@ -21,7 +21,7 @@ class TicketObject: NSObject, NSCoding, Glossy {
     }
     
     required init(coder aDecoder: NSCoder) {
-        id = aDecoder.decodeInteger(forKey: "id")
+        id = aDecoder.decodeObject(forKey: "id") as? String ?? ""
         name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
         descriptions = aDecoder.decodeObject(forKey: "descriptions") as? String ?? ""
         quantity = aDecoder.decodeInteger(forKey: "quantity")
@@ -30,8 +30,9 @@ class TicketObject: NSObject, NSCoding, Glossy {
     }
     
     required init?(json: JSON) {
+        self.id = "id" <~~ json
         self.name = "name" <~~ json
-        self.descriptions = "descriptions" <~~ json
+        self.descriptions = "description" <~~ json
         self.quantity = "quantity" <~~ json
         self.price = "price" <~~ json
     }

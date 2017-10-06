@@ -27,6 +27,8 @@ class NewEventVC: UIViewController {
     var isTimeEndPicked: Bool = false
     var dateTimeSelector: WWCalendarTimeSelector!
     
+    var newEvent: EventObject = EventObject()
+    
     override func viewDidLoad(
         ) {
         super.viewDidLoad()
@@ -41,6 +43,10 @@ class NewEventVC: UIViewController {
         let tapForlblTimeEnd = UITapGestureRecognizer(target: self, action: #selector(self.showTimeEndCalendarPicker))
         lblTimeEnd.isUserInteractionEnabled = true
         lblTimeEnd.addGestureRecognizer(tapForlblTimeEnd)
+        
+        let tapForlblEventType = UITapGestureRecognizer(target: self, action: #selector(self.showPopupEventTypes))
+        lblEventType.isUserInteractionEnabled = true
+        lblEventType.addGestureRecognizer(tapForlblEventType)
         
         dateTimeSelector = WWCalendarTimeSelector.instantiate()
         dateTimeSelector.delegate = self
@@ -79,6 +85,16 @@ class NewEventVC: UIViewController {
         self.present(dateTimeSelector, animated: true, completion: nil)
     }
     
+    func showPopupEventTypes() {
+        if let sb = storyboard?.instantiateViewController(withIdentifier: "EventTypesVC") as? EventTypesVC {
+            self.addChildViewController(sb)
+            sb.view.frame = self.view.frame
+            self.view.addSubview(sb.view)
+            sb.didMove(toParentViewController: self)
+            sb.delegate = self
+        }
+    }
+    
     
     @IBAction func btnDoneClicked(_ sender: Any) {
         if !lblNameEvent.hasText {
@@ -106,28 +122,34 @@ class NewEventVC: UIViewController {
         }
                 
         let tickets: [TicketObject] = TicketManager.shared.getTickets()
-        let event: EventObject = EventObject()
-        event.name = name
-        event.address = address
-        event.tickets = tickets
-        event.by = UserServices.shared.currentUser
-        event.descriptionEvent = "Không có"
-        event.photoURL = "Không có"
+        
+        newEvent.name = name
+        newEvent.address = address
+        newEvent.tickets = tickets
+        newEvent.by = UserServices.shared.currentUser
+        newEvent.descriptionEvent = "Không có"
+        newEvent.photoURL = "Không có"
         
         if let start = timeStart.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
-            print(start)
-            event.timeStart = start.toDouble()?.toInt()
+            //print(start)
+            newEvent.timeStart = start.toDouble()?.toInt()
         }
         if let end = timeEnd.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
-            event.timeEnd = end.toDouble()?.toInt()
+            newEvent.timeEnd = end.toDouble()?.toInt()
         }
         
+        if newEvent.types?.count == 0 {
+            self.showAlert("Vui lòng chọn loại sự kiện", title: "Thông báo", buttons: nil)
+            return
+        }
         
-        EventServices.shared.addEvent(withEvent: event) { (error) in
+        EventServices.shared.addEvent(withEvent: newEvent) { (error) in
             if let error = error {
                 self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
                 return
             }
+            //Delete tickets if add event okay
+            TicketManager.shared.deleteTickets()
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -141,7 +163,7 @@ class NewEventVC: UIViewController {
 
 }
 
-extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate {
+extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, SelectEventTypeDelegate {
     func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
         
         UIView.animate(withDuration: 1) {
@@ -189,6 +211,13 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate {
         }
     }
     
+    func selectedType(with type: EventTypeObject) {
+        self.lblEventType.text = type.name
+        self.newEvent.types?.append(type)
+    }
     
-    
+}
+
+protocol SelectEventTypeDelegate {
+    func selectedType(with type: EventTypeObject) -> Void
 }

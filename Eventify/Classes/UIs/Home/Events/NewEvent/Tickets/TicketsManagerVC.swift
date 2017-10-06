@@ -39,12 +39,10 @@ class TicketsManagerVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func btnDoneClicked(_ sender: Any) {
-    }
-    
-    @IBAction func btnMoreClicked(_ sender: Any) {
+    @IBAction func btnAddClicked(_ sender: Any) {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "NewTicketVC") as? NewTicketVC {
             self.navigationController?.pushViewController(sb, animated: true)
+            sb.titleString = "Tạo vé mới"
         }
     }
 }
@@ -71,6 +69,7 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "NewTicketVC") as? NewTicketVC {
             sb.ticketObject = tickets[indexPath.row]
+            sb.titleString = "Chỉnh sửa vé"
             self.navigationController?.pushViewController(sb, animated: true)
         }
     }

@@ -12,12 +12,12 @@ import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
 import Gloss
-
+let refUser = Database.database().reference().child("Users")
 class UserServices: NSObject {
     static let shared = UserServices()
     
     //ref User child
-    let refUser = Database.database().reference().child("Users")
+    
     var currentUser:UserObject?
     
     func signUp(with user: UserObject, completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
@@ -40,7 +40,7 @@ class UserServices: NSObject {
                 ]
                 //print(user)
                 
-                self.refUser.child(user.uid).setValue(usr)
+                refUser.child(user.uid).setValue(usr)
                 
                 let userObject = UserObject()
                 userObject.id = user.uid
@@ -135,7 +135,7 @@ class UserServices: NSObject {
             ]
             //print(user)
             
-            self.refUser.child(user.uid).setValue(usr)
+            refUser.child(user.uid).setValue(usr)
             
             return completionHandler(userObject, nil)
         }
@@ -157,7 +157,7 @@ class UserServices: NSObject {
     func getInfomations() {
         let user = Auth.auth().currentUser
         if let uid = user?.uid {
-            self.refUser.child(uid).observe(.value, with: { (data) in
+            refUser.child(uid).observe(.value, with: { (data) in
                 guard let value = data.value as? JSON else {
                     return
                 }

@@ -11,11 +11,13 @@ import SkyFloatingLabelTextField
 
 class NewTicketVC: UIViewController, UITextFieldDelegate {
 
+    var titleString: String?
     var ticketObject = TicketObject()
     @IBOutlet weak var txtNameTicket: SkyFloatingLabelTextField!
      @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
      @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
      @IBOutlet weak var txtPrice: SkyFloatingLabelTextField!
+    @IBOutlet weak var lblTitleVC: UILabel!
     let loading = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +26,11 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         txtQuantity.delegate = self
         txtPrice.delegate = self
         
-        
         txtNameTicket.text = ticketObject.name
         txtQuantity.text = ticketObject.quantity?.toString()
         txtPrice.text = ticketObject.price?.toString()
+        
+        lblTitleVC.text = titleString
         
     }
     
