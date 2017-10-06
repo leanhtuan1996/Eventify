@@ -65,5 +65,14 @@ extension String {
         let date = Date()
         return String(date.timeIntervalSince1970)
     }
+    
+    func isDate() -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        if let _ = dateFormatter.date(from: self) {
+            return true
+        }
+        return false
+    }
 }
 

@@ -68,13 +68,30 @@ class EventServices: NSObject {
     func addEvent(withEvent event: EventObject, completionHandler: @escaping (_ error: String?) -> Void) {
         let id = refEvent.childByAutoId().key
         event.id = id
+        
+        if event.name == nil {
+            return completionHandler("Tên sự kiện không được rỗng")
+        }
+        
+        if event.tickets == nil || event.tickets?.count == 0 {
+            return completionHandler("Vé sự kiện không được rỗng")
+        }
+        
+        if event.timeEnd == nil || event.timeStart == nil {
+            return completionHandler("Thời gian bắt đầu hoặc kết thúc không được rỗng")
+        }
+        
+        if event.types == nil || event.types?.count == 0 {
+            return completionHandler("Loại sự kiện không được rỗng")
+        }
+        
         guard let eventJSON = event.toJSON() else {
             return completionHandler("Dữ liệu không hợp lệ")
         }
         
-        print(eventJSON)
-        
         refEvent.child(id).setValue(eventJSON)
+        
+        return completionHandler(nil)
     }
     
     func deleteEvent(withId id: String) {

@@ -13,7 +13,7 @@ class EventTypesVC: UIViewController {
     @IBOutlet weak var popupView: UIView!
     var eventTypes: [EventTypeObject] = []
     @IBOutlet weak var tblTypes: UITableView!
-    var delegate: SelectEventTypeDelegate!
+    var delegate: SelectPropertyEventDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadEventTypes()

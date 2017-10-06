@@ -36,17 +36,18 @@ class EventObject: NSObject, Glossy  {
         
 
         //types
-        if let typeJSON: JSON = "types" <~~ json {
-            var typeArray: [EventTypeObject] = []
-            for temp in typeJSON {
-                if let typeJson = temp.value as? JSON {
-                    if let typeObject = EventTypeObject(json: typeJson) {
-                        typeArray.append(typeObject)
-                    }
-                }
-            }
-            
-            self.types = typeArray
+        if let typeJSON: [JSON] = "types" <~~ json {
+//            var typeArray: [EventTypeObject] = []
+//            for temp in typeJSON {
+//                if let typeJson = temp.value as? JSON {
+//                    if let typeObject = EventTypeObject(json: typeJson) {
+//                        typeArray.append(typeObject)
+//                    }
+//                }
+//            }
+//            
+//            self.types = typeArray
+            self.types = [EventTypeObject].from(jsonArray: typeJSON)
         }
         
         //tickets

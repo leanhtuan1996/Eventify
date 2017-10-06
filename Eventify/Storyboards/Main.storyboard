@@ -1082,10 +1082,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3F-v8-ZBG" userLabel="map">
-                                        <rect key="frame" x="10" y="12.5" width="20" height="20"/>
+                                        <rect key="frame" x="10" y="10" width="30" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="6U6-tg-tcr"/>
-                                            <constraint firstAttribute="width" constant="20" id="9bI-3L-qbL"/>
+                                            <constraint firstAttribute="height" constant="25" id="6U6-tg-tcr"/>
+                                            <constraint firstAttribute="width" constant="30" id="9bI-3L-qbL"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="back"/>
                                         <connections>
@@ -1172,10 +1172,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xA3-5r-ScA" userLabel="back">
-                                        <rect key="frame" x="10" y="12.5" width="20" height="20"/>
+                                        <rect key="frame" x="10" y="10" width="30" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="6lK-7y-W1F"/>
-                                            <constraint firstAttribute="width" constant="20" id="wxo-Wk-Dom"/>
+                                            <constraint firstAttribute="height" constant="25" id="6lK-7y-W1F"/>
+                                            <constraint firstAttribute="width" constant="30" id="wxo-Wk-Dom"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="back"/>
                                         <connections>
@@ -1886,6 +1886,7 @@
                         <outlet property="lblNumberTickets" destination="xRK-6E-bWb" id="J5j-Sr-yf5"/>
                         <outlet property="lblTimeEnd" destination="TM8-Me-EyY" id="Bwv-ix-Bdm"/>
                         <outlet property="lblTimeStart" destination="617-3R-4P8" id="Ix5-CI-gEW"/>
+                        <outlet property="txtDescriptionEvent" destination="sKN-VR-zqX" id="EM1-ba-i1G"/>
                         <outlet property="txtDetailAddress" destination="NDh-9e-Ag5" id="fHR-aH-i0G"/>
                     </connections>
                 </viewController>

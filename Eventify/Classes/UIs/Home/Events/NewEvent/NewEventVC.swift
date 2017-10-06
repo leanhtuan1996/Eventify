@@ -22,12 +22,14 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var txtDetailAddress: SkyFloatingLabelTextField!
     @IBOutlet weak var lblEventType: UILabel!
     @IBOutlet weak var lblNumberTickets: UILabel!
+    @IBOutlet weak var txtDescriptionEvent: SkyFloatingLabelTextField!
     
     var isTimeStartPicked: Bool = false
-    var isTimeEndPicked: Bool = false
     var dateTimeSelector: WWCalendarTimeSelector!
     
     var newEvent: EventObject = EventObject()
+    
+    let loading = UIActivityIndicatorView()
     
     override func viewDidLoad(
         ) {
@@ -80,7 +82,7 @@ class NewEventVC: UIViewController {
     }
     
     func showTimeEndCalendarPicker() {
-        isTimeEndPicked = true
+        isTimeStartPicked = false
         self.tabBarController?.tabBar.isHidden = true
         self.present(dateTimeSelector, animated: true, completion: nil)
     }
@@ -103,21 +105,22 @@ class NewEventVC: UIViewController {
         
         if !txtDetailAddress.hasText {
             txtDetailAddress.errorMessage = "Trường này là bắt buộc"
-        }
-        
-        if !isTimeStartPicked {
-            lblTimeStart.text = "Vui lòng chọn thời gian bắt đầu"
-            lblTimeStart.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-        }
-        
-        if !isTimeStartPicked {
-            lblTimeEnd.text = "Vui lòng chọn thời gian kết thúc"
-            lblTimeEnd.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
             return
         }
         
         //start add event
         guard let name = lblNameEvent.text, let address = txtDetailAddress.text, let timeStart = lblTimeStart.text, let timeEnd = lblTimeEnd.text else {
+            return
+        }
+        
+        if !timeStart.isDate() {
+            lblTimeStart.text = "Vui lòng chọn ngày bắt đầu"
+            lblTimeStart.textColor = UIColor.red
+        }
+        
+        if !timeEnd.isDate() {
+            lblTimeEnd.text = "Vui lòng chọn ngày kết thúc"
+            lblTimeEnd.textColor = UIColor.red
             return
         }
                 
@@ -127,11 +130,10 @@ class NewEventVC: UIViewController {
         newEvent.address = address
         newEvent.tickets = tickets
         newEvent.by = UserServices.shared.currentUser
-        newEvent.descriptionEvent = "Không có"
+        newEvent.descriptionEvent = txtDescriptionEvent.text
         newEvent.photoURL = "Không có"
         
         if let start = timeStart.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
-            //print(start)
             newEvent.timeStart = start.toDouble()?.toInt()
         }
         if let end = timeEnd.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
@@ -143,27 +145,35 @@ class NewEventVC: UIViewController {
             return
         }
         
-        EventServices.shared.addEvent(withEvent: newEvent) { (error) in
-            if let error = error {
-                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-                return
+        let leftButton = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (btn) in
+            self.loading.showLoadingDialog(self)
+            EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
+                self.loading.stopAnimating()
+                if let error = error {
+                    self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
+                    return
+                }
+                //Delete tickets if add event okay
+                TicketManager.shared.deleteTickets()
+                //self.navigationController?.popViewController(animated: true)
+                
+                let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.showMainView()
+                    }
+                })
+                
+                self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
             }
-            //Delete tickets if add event okay
-            TicketManager.shared.deleteTickets()
-            self.navigationController?.popViewController(animated: true)
         }
         
-        
-        
+        let rightButton = UIAlertAction(title: "Hủy bỏ", style: UIAlertActionStyle.default, handler: nil)
+        self.showAlert("Nhấn nút Ok để thêm mới sự kiện", title: "Bạn có muốn thêm không?", buttons: [leftButton, rightButton])
         
     }
-    
-    @IBAction func btnMoreClicked(_ sender: Any) {
-    }
-
 }
 
-extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, SelectEventTypeDelegate {
+extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, SelectPropertyEventDelegate {
     func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
         
         UIView.animate(withDuration: 1) {
@@ -173,12 +183,9 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         if isTimeStartPicked {
             self.lblTimeStart.text = date.stringFromFormat("dd/MM/yyyy HH:ss")
             lblTimeStart.textColor = UIColor.black
-        }
-        
-        if isTimeEndPicked {
+        } else {
             self.lblTimeEnd.text = date.stringFromFormat("dd/MM/yyyy HH:ss")
             lblTimeEnd.textColor = UIColor.black
-            return
         }
     }
     
@@ -186,15 +193,6 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         UIView.animate(withDuration: 1) {
             self.tabBarController?.tabBar.isHidden = false
         }
-        
-        if isTimeStartPicked {
-            isTimeStartPicked = false
-        }
-        
-        if isTimeEndPicked {
-            isTimeEndPicked = false
-        }
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -213,11 +211,18 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
     
     func selectedType(with type: EventTypeObject) {
         self.lblEventType.text = type.name
+        
+        if self.newEvent.types == nil {
+            self.newEvent.types = []
+        }
+        
         self.newEvent.types?.append(type)
     }
     
+   
+    
 }
 
-protocol SelectEventTypeDelegate {
+protocol SelectPropertyEventDelegate {
     func selectedType(with type: EventTypeObject) -> Void
 }
