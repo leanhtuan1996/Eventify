@@ -1913,10 +1913,10 @@
             </objects>
             <point key="canvasLocation" x="5270" y="1627"/>
         </scene>
-        <!--View Controller-->
+        <!--SettingsVC-->
         <scene sceneID="VkZ-0c-Fp7">
             <objects>
-                <viewController id="72R-f7-Cg5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsVC" id="72R-f7-Cg5" customClass="SettingsVC" customModule="Eventify" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Iz5-0o-PDx"/>
                         <viewControllerLayoutGuide type="bottom" id="dZ3-Ws-mM7"/>

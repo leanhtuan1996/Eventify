@@ -145,31 +145,24 @@ class NewEventVC: UIViewController {
             return
         }
         
-        let leftButton = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (btn) in
-            self.loading.showLoadingDialog(self)
-            EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
-                self.loading.stopAnimating()
-                if let error = error {
-                    self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-                    return
-                }
-                //Delete tickets if add event okay
-                TicketManager.shared.deleteTickets()
-                //self.navigationController?.popViewController(animated: true)
-                
-                let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.showMainView()
-                    }
-                })
-                
-                self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
+        self.loading.showLoadingDialog(self)
+        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
+            self.loading.stopAnimating()
+            if let error = error {
+                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
+                return
             }
+            //Delete tickets if add event okay
+            //TicketManager.shared.deleteTickets()
+            
+            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+                
+            })
+            
+            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
+            self.tabBarController?.selectedIndex = 0
+            
         }
-        
-        let rightButton = UIAlertAction(title: "Hủy bỏ", style: UIAlertActionStyle.default, handler: nil)
-        self.showAlert("Nhấn nút Ok để thêm mới sự kiện", title: "Bạn có muốn thêm không?", buttons: [leftButton, rightButton])
-        
     }
 }
 

@@ -130,7 +130,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        //print(indexPath.row)
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC {
             self.navigationController?.pushViewController(sb, animated: true)
             self.tabBarController?.hidesBottomBarWhenPushed = true
