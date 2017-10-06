@@ -31,7 +31,7 @@ class TicketsManagerVC: UIViewController {
     
     func loadTickets() {
         tickets = TicketManager.shared.getTickets()
-        print(tickets.count)
+        //print(tickets.count)
         tblTickets.reloadData()
     }
   

@@ -23,6 +23,8 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var lblEventType: UILabel!
     @IBOutlet weak var lblNumberTickets: UILabel!
     @IBOutlet weak var txtDescriptionEvent: SkyFloatingLabelTextField!
+    var pickerImg = UIImagePickerController()
+
     
     var isTimeStartPicked: Bool = false
     var dateTimeSelector: WWCalendarTimeSelector!
@@ -50,11 +52,26 @@ class NewEventVC: UIViewController {
         lblEventType.isUserInteractionEnabled = true
         lblEventType.addGestureRecognizer(tapForlblEventType)
         
+        let tapForImgPicker = UITapGestureRecognizer(target: self, action: #selector(self.showOptionPickerImg))
+        imgPicker.isUserInteractionEnabled = true
+        imgPicker.addGestureRecognizer(tapForImgPicker)
+        
         dateTimeSelector = WWCalendarTimeSelector.instantiate()
         dateTimeSelector.delegate = self
         
         lblNameEvent.delegate = self
         txtDetailAddress.delegate = self
+        
+        pickerImg.delegate = self
+        
+        lblNameEvent.returnKeyType = .done
+        lblNameEvent.delegate = self
+        
+        txtDetailAddress.returnKeyType = .done
+        txtDetailAddress.delegate = self
+        
+        txtDescriptionEvent.returnKeyType = .done
+        txtDescriptionEvent.delegate = self
         
     }
     
@@ -67,7 +84,6 @@ class NewEventVC: UIViewController {
         
         lblNumberTickets.text = TicketManager.shared.getTickets().count.toString() + " loại vé"
     }
-    
 
     func showTicketsManager() {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "TicketsManagerVC") as? TicketsManagerVC {
@@ -97,6 +113,24 @@ class NewEventVC: UIViewController {
         }
     }
     
+    func showOptionPickerImg() {
+        let alert = UIAlertController(title: "Chọn thư viện hoặc camera", message: "Chọn một bức ảnh từ thư viện ảnh hoặc chụp để làm ảnh bìa cho sự kiện của bạn", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.cancel, handler: nil)
+        let libraryAction = UIAlertAction(title: "Thư viện ảnh", style: UIAlertActionStyle.default) { (btn) in
+            self.openGallary()
+        }
+        
+        let cameraAction = UIAlertAction(title: "Máy ảnh", style: UIAlertActionStyle.default) { (btn) in
+            self.openCamera()
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(libraryAction)
+        alert.addAction(cameraAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     @IBAction func btnDoneClicked(_ sender: Any) {
         if !lblNameEvent.hasText {
@@ -152,21 +186,19 @@ class NewEventVC: UIViewController {
                 self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
                 return
             }
-            //Delete tickets if add event okay
-            //TicketManager.shared.deleteTickets()
             
             let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-                
+                self.tabBarController?.selectedIndex = 0
             })
             
             self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
-            self.tabBarController?.selectedIndex = 0
             
         }
     }
 }
 
-extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, SelectPropertyEventDelegate {
+extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, SelectPropertyEventDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
         
         UIView.animate(withDuration: 1) {
@@ -202,6 +234,11 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     func selectedType(with type: EventTypeObject) {
         self.lblEventType.text = type.name
         
@@ -212,8 +249,49 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         self.newEvent.types?.append(type)
     }
     
-   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismiss(animated: true, completion: nil)
+        /// chcek if you can return edited image that user choose it if user already edit it(crop it), return it as image
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            
+            /// if user update it and already got it , just return it to 'self.imgView.image'
+            self.imgCover.image = editedImage
+            
+            /// else if you could't find the edited image that means user select original image same is it without editing .
+        } else if let orginalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            /// if user update it and already got it , just return it to 'self.imgView.image'.
+            self.imgCover.image = orginalImage
+        } 
+        else { print ("error") }
+    }
     
+
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            pickerImg.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(pickerImg, animated: true, completion: { 
+                
+            })
+        
+        } else {
+            self.showAlert("Camera không sẵn có", title: "Lỗi", buttons: nil)
+        }
+    }
+    
+    func openGallary() {
+        pickerImg.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        pickerImg.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        pickerImg.isEditing = true
+        self.present(pickerImg, animated: true) { 
+            
+        }
+    }
 }
 
 protocol SelectPropertyEventDelegate {
