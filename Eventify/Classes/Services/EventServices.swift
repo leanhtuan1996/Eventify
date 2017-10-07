@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import Gloss
 
 let refEvent = Database.database().reference().child("Events")
+let refImageEventStorage = Storage.storage().reference().child("Images").child("EventCover")
 class EventServices: NSObject {
     static let shared = EventServices()
     //ref User child
@@ -106,5 +107,29 @@ class EventServices: NSObject {
 //        refEvent.child("1").updateChildValues(event.toJSON()!) { (error, ref) in
 //            
 //        }
+    }
+    
+    func uploadImageCover(data imgData: Data, completionHandler: @escaping (_ urlImg: String?, _ error: String?) -> Void ) {
+        let timeStamp = Helpers.getTimeStamp()
+        guard let currentUser = UserServices.shared.currentUser else {
+            return completionHandler(nil, "User not found")
+        }
+        
+        let keyPath = "\(currentUser.id)" + "\(timeStamp).jpg"
+        
+        let uploadTask = refImageEventStorage.child(keyPath).putData(imgData, metadata: nil) { (metaData, error) in
+            guard let metaData = metaData else {
+                return completionHandler(nil, "MetaData not found")
+            }
+            
+            if let url = metaData.downloadURL() {
+                return completionHandler(String(describing: url), nil)
+            }
+            
+            
+        }
+        
+        uploadTask.resume()
+        
     }
 }

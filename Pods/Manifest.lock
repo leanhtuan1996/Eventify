@@ -9,6 +9,9 @@ PODS:
   - Firebase/Database (4.2.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.3)
+  - Firebase/Storage (4.2.0):
+    - Firebase/Core
+    - FirebaseStorage (= 2.0.2)
   - FirebaseAnalytics (4.0.3):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -26,6 +29,10 @@ PODS:
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.3)
+  - FirebaseStorage (2.0.2):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - Gloss (1.2.4)
   - GoogleSignIn (4.1.0):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
@@ -62,6 +69,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Storage
   - Gloss (~> 1.2)
   - GoogleSignIn
   - SkyFloatingLabelTextField (~> 3.0)
@@ -74,6 +82,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 9a6cc1e3eaf75905390f9220596ad4fd8f92faee
   FirebaseDatabase: 03940adcac54ce30db06f1fc2136f8581734ce2c
   FirebaseInstanceID: a4fc702b5a026f7322964376047f1a3f1f7cc6ff
+  FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
   GoogleSignIn: 8c599fc10d25b2af86a3f82fd9631e863f2b1400
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
@@ -83,6 +92,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SkyFloatingLabelTextField: 4e2d2f7160af660ed1da6bb9d0027b5c474b4b79
 
-PODFILE CHECKSUM: 53c721401d3bafd7f92a353ceb6f2b81ee0ebb4e
+PODFILE CHECKSUM: c21c59423c0a7a7cc7955291ba588f133878a9c8
 
 COCOAPODS: 1.3.1

@@ -165,7 +165,6 @@ class NewEventVC: UIViewController {
         newEvent.tickets = tickets
         newEvent.by = UserServices.shared.currentUser
         newEvent.descriptionEvent = txtDescriptionEvent.text
-        newEvent.photoURL = "Không có"
         
         if let start = timeStart.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
             newEvent.timeStart = start.toDouble()?.toInt()
@@ -236,7 +235,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        return true
+        return false
     }
     
     func selectedType(with type: EventTypeObject) {
@@ -251,19 +250,21 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
-        /// chcek if you can return edited image that user choose it if user already edit it(crop it), return it as image
-        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            
-            /// if user update it and already got it , just return it to 'self.imgView.image'
-            self.imgCover.image = editedImage
-            
-            /// else if you could't find the edited image that means user select original image same is it without editing .
-        } else if let orginalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-            /// if user update it and already got it , just return it to 'self.imgView.image'.
-            self.imgCover.image = orginalImage
-        } 
-        else { print ("error") }
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let img = UIImageJPEGRepresentation(image, 0.5) {
+                self.imgCover.image = UIImage(data: img)
+                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
+                    if let error = error {
+                        print("Upload image had been failed: \(error)")
+                        return
+                    }
+                    if let path = path {
+                        self.newEvent.photoURL = path
+                    }
+                })
+            }
+        }
     }
     
 
@@ -274,11 +275,8 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
     
     func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            pickerImg.sourceType = UIImagePickerControllerSourceType.camera
-            self.present(pickerImg, animated: true, completion: { 
-                
-            })
-        
+            self.pickerImg.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(pickerImg, animated: true, completion: nil)
         } else {
             self.showAlert("Camera không sẵn có", title: "Lỗi", buttons: nil)
         }
@@ -287,10 +285,8 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
     func openGallary() {
         pickerImg.sourceType = UIImagePickerControllerSourceType.photoLibrary
         pickerImg.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        pickerImg.isEditing = true
-        self.present(pickerImg, animated: true) { 
-            
-        }
+        pickerImg.isEditing = false
+        self.present(pickerImg, animated: true, completion: nil)
     }
 }
 

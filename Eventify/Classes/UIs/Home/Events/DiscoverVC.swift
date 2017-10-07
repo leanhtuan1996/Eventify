@@ -126,6 +126,11 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
         cell.lblPrice.text = "Từ 0 VNĐ"
         
+        if let url = events[indexPath.row].photoURL {
+            cell.imgPhoto.downloadedFrom(link: url)
+        }
+        
+        
         return cell
     }
     

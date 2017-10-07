@@ -66,4 +66,9 @@ class Helpers: NSObject {
         }
         return "Error Not Found"
     }
+    
+    static func getTimeStamp() -> String {
+        let date = Date()
+        return String(date.timeIntervalSince1970)
+    }
 }

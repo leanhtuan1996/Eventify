@@ -2,14 +2,15 @@
 # platform :ios, '9.0'
 
 target 'Eventify' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  pod 'Firebase/Core'
-pod 'Firebase/Database'
-pod 'Firebase/Auth'
-pod 'GoogleSignIn'
-pod 'Gloss', '~> 1.2'
-pod 'SkyFloatingLabelTextField', '~> 3.0'
-pod 'Dollar', '~> 6.2.1'
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Storage'
+    pod 'GoogleSignIn'
+    pod 'Gloss', '~> 1.2'
+    pod 'SkyFloatingLabelTextField', '~> 3.0'
+    pod 'Dollar', '~> 6.2.1'
 end
