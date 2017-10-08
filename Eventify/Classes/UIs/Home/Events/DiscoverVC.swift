@@ -19,10 +19,10 @@ class DiscoverVC: UIViewController {
     
     var events: [EventObject] = []
     var refreshControl: UIRefreshControl!
+    var cacheImage: NSCache<AnyObject, AnyObject>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //pull to refresh
         refreshControl = UIRefreshControl()
         //refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -58,6 +58,8 @@ class DiscoverVC: UIViewController {
                 }
             }
         }
+        
+        cacheImage = NSCache()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,12 +126,11 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
-        cell.lblPrice.text = "Từ 0 VNĐ"
+        cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? [])) VNĐ"
         
         if let url = events[indexPath.row].photoURL {
             cell.imgPhoto.downloadedFrom(link: url)
         }
-        
         
         return cell
     }
@@ -142,14 +143,25 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func handlerPrice(priceArray: [TicketObject]) -> String {
+    func handlerPrice(for tickets: [TicketObject]) -> String {
         
-        //Get all price in array
+        if tickets.count > 0{
+           
+            var min = tickets[0].price ?? 0
+            
+            //Get all price in array
+            for ticket in tickets {
+                if let price = ticket.price {
+                    min = price < min ? price : min
+                }
+            }
+            
+            return min.toString()
+            
+        } else {
+            return "0"
+        }
         
-        
-        //find min
-        
-        return ""
     }
     
     

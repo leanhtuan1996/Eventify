@@ -31,7 +31,6 @@ class ProfileVC: UIViewController {
         
     }
     
-    
     // MARK: - ACTIONS
     
     @IBAction func btnEditProfileClicked(_ sender: Any) {

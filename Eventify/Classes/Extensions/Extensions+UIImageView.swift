@@ -21,22 +21,32 @@ extension UIImageView
     }
     
     
-    func downloadedFrom(url: URL) {
-        //contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() {
-                self.image = image
-            }
-            }.resume()
+    func downloadedFrom(url: URL ) {
+        
+        if let cacheImage = cacheImageCoverEvent.object(forKey: url.absoluteString as NSString) as? UIImage {
+            self.image = cacheImage
+            print("Image cached")
+        } else {
+            
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard
+                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                    let data = data, error == nil,
+                    let image = UIImage(data: data)
+                    else { return }
+                DispatchQueue.main.async() {
+                    print("Image no cached")
+                    self.image = image
+                    cacheImageCoverEvent.setObject(image, forKey: url.absoluteString as NSString)
+                }
+                }.resume()
+        }
     }
     func downloadedFrom(link: String) {
+        
         guard let url = URL(string: link) else { return }
+       
         downloadedFrom(url: url)
     }
     

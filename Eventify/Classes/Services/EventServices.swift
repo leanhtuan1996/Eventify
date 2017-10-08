@@ -14,6 +14,7 @@ import Gloss
 
 let refEvent = Database.database().reference().child("Events")
 let refImageEventStorage = Storage.storage().reference().child("Images").child("EventCover")
+var cacheImageCoverEvent = NSCache<NSString, AnyObject>()
 class EventServices: NSObject {
     static let shared = EventServices()
     //ref User child

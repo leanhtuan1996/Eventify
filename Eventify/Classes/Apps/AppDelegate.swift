@@ -15,6 +15,7 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var orientationLock = UIInterfaceOrientationMask.portrait
 
     override init() {
         FirebaseApp.configure()
@@ -27,6 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation] as? String)
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        //print("QUAY NÈ")
+        return self.orientationLock
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

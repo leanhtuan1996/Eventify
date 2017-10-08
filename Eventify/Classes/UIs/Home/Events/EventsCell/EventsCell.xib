@@ -21,8 +21,9 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZS-hq-zRK" userLabel="backgroundView">
                         <rect key="frame" x="10" y="0.0" width="300" height="200"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="RR2-nP-0LM">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RR2-nP-0LM">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTg-zX-ZWR">
                                 <rect key="frame" x="250" y="0.0" width="50" height="50"/>
@@ -160,7 +161,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="background" width="1080" height="1920"/>
         <image name="bookmark" width="50" height="50"/>
         <image name="clock" width="25" height="25"/>
         <image name="lacation" width="25" height="25"/>

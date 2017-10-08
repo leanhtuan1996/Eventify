@@ -71,4 +71,40 @@ class Helpers: NSObject {
         let date = Date()
         return String(date.timeIntervalSince1970)
     }
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
+    
+    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        
+        self.lockOrientation(orientation)
+        
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+    }
+    
+    static func downloadedFrom(url: URL, completionHandler: @escaping (_ image: UIImage?, _ error: String?) -> Void) {
+        //contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return completionHandler(nil, "ERROR") }
+            
+            return completionHandler(image, nil)
+            
+            }.resume()
+    }
+    static func downloadedFrom(link: String, completionHandler: @escaping (_ image: UIImage?, _ error: String?) -> Void) {
+        guard let url = URL(string: link) else { return }
+        downloadedFrom(url: url) { (image, error) in
+            return completionHandler(image, error)
+        }
+    }
 }
