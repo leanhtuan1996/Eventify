@@ -16,6 +16,7 @@ class DetailEventVC: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblTimeStart: UILabel!
+    @IBOutlet weak var lblTimeEnd: UILabel!
     @IBOutlet weak var lblDescriptions: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     override func viewDidLoad() {
@@ -29,13 +30,8 @@ class DetailEventVC: UIViewController {
         }
         lblName.text = event.name
         lblPrice.text = "Từ \(minPrice ?? "0") VNĐ"
-        
-        if let timeStart = event.timeStart?.toTimestampString() {
-            lblTimeStart.text = "Bắt đầu lúc: \(timeStart)"
-        } else {
-            lblTimeStart.text = "Bắt đầu lúc: N/A"
-        }
-        
+        lblTimeStart.text = "Bắt đầu lúc: \(event.timeStart?.toTimestampString() ?? "Không rõ")"
+        lblTimeEnd.text = "Kết thúc lúc: \(event.timeEnd?.toTimestampString() ?? "Không rõ")"
         lblDescriptions.text = event.descriptionEvent ?? "Không có chi tiết sự kiện để hiển thị ngay lúc này"
         lblAddress.text = "Địa chỉ: \(event.address ?? "Không rõ")"
     }
@@ -47,9 +43,9 @@ class DetailEventVC: UIViewController {
     
     
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        self.navigationController?.setNavigationBarHidden(true, animated: true)
-//        self.tabBarController?.tabBar.isHidden = false
-//    }
+    //    override func viewDidDisappear(_ animated: Bool) {
+    //        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    //        self.tabBarController?.tabBar.isHidden = false
+    //    }
     
 }
