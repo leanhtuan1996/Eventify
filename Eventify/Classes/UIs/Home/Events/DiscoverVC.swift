@@ -127,7 +127,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblAddress.text = events[indexPath.row].address
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
         cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? [])) VNĐ"
-        
+        cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
         if let url = events[indexPath.row].photoURL {
             cell.imgPhoto.downloadedFrom(link: url)
         }
@@ -138,6 +138,8 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(indexPath.row)
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC {
+            sb.event = events[indexPath.row]
+            sb.minPrice = handlerPrice(for: events[indexPath.row].tickets ?? [])
             self.navigationController?.pushViewController(sb, animated: true)
             self.tabBarController?.hidesBottomBarWhenPushed = true
         }
@@ -162,6 +164,24 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
             return "0"
         }
         
+    }
+    
+    func handlerTypes(for types: [EventTypeObject]) -> String {
+       
+        var string = ""
+        
+        var index = 0
+        for type in types {
+            if index != types.count - 1 {
+                string += (type.name ?? "") + ", "
+            } else {
+                string += (type.name ?? "")
+            }
+            index += 1
+        }
+        
+        
+        return string
     }
     
     

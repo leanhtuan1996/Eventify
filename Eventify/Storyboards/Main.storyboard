@@ -600,10 +600,10 @@
             </objects>
             <point key="canvasLocation" x="2757.5999999999999" y="1626.8365817091455"/>
         </scene>
-        <!--Event-->
+        <!--Detail EventVC-->
         <scene sceneID="ZWa-4S-L7i">
             <objects>
-                <viewController storyboardIdentifier="DetailEventVC" title="Event" id="tQ6-Ko-e7Q" customClass="DetailEventVC" customModule="Eventify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailEventVC" id="tQ6-Ko-e7Q" customClass="DetailEventVC" customModule="Eventify" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pdk-A3-wPk"/>
                         <viewControllerLayoutGuide type="bottom" id="ptH-zW-Big"/>
@@ -759,6 +759,14 @@
                             <constraint firstItem="wou-h5-Ewg" firstAttribute="leading" secondItem="rDh-II-YeA" secondAttribute="leading" id="wce-Oq-98J"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imgCover" destination="Shz-2r-Jqj" id="GIX-vT-fHD"/>
+                        <outlet property="lblAddress" destination="g91-Mn-AWv" id="zbt-l4-wbE"/>
+                        <outlet property="lblDescriptions" destination="23v-Sr-mvS" id="Eoh-7J-uSk"/>
+                        <outlet property="lblName" destination="EV2-iv-20x" id="IQE-EQ-sXK"/>
+                        <outlet property="lblPrice" destination="Nv6-VF-ncS" id="kTl-c9-tdu"/>
+                        <outlet property="lblTimeStart" destination="gJ4-iy-WPm" id="Vuf-eV-g16"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tld-5i-DJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
