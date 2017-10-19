@@ -63,7 +63,7 @@ class DiscoverVC: UIViewController {
    
     
     func loadEvents(isFirstLoad: Bool) {
-        EventServicesTest.shared.getEvents(isFirstLoad: isFirstLoad ) { (events, error) in
+        EventServicesTest.shared.getEvents(isFirstLoad: isFirstLoad) { (events, error) in
             
             self.refreshControl.endRefreshing()
             
@@ -73,21 +73,10 @@ class DiscoverVC: UIViewController {
             }
             
             if let events = events {
-                //self.events = events
                 
-                if isFirstLoad {
-                    self.events = events
-                    self.tblEvents.reloadData()
-                    return
-                }
-                
-                events.forEach({ (event) in
-                    self.events.append(event)
-                })
-                
+                self.events = events
                 self.tblEvents.reloadData()
             }
-            
         }
     }
     
@@ -198,21 +187,22 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         return string
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == (self.events.count - 3) {
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.row == (self.events.count - 3) {
+//            print("LOADING MORE: ROW: \(indexPath.row) - EVENTS COUNT: \(self.events.count)")
+//            self.loadEvents(isFirstLoad: false)
+//        }
+//    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // UITableView only moves in one direction, y axis
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        if maximumOffset - currentOffset <= 200.0 {
             self.loadEvents(isFirstLoad: false)
         }
+
     }
-    
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        // UITableView only moves in one direction, y axis
-//        let currentOffset = scrollView.contentOffset.y
-//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-//        
-//        if maximumOffset - currentOffset <= 400.0 {
-//           self.loadEvents()
-//        }
-//
-//    }
     
 }

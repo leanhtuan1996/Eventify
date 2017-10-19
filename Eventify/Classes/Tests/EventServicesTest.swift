@@ -22,19 +22,23 @@ class EventServicesTest: NSObject {
     
     var lastSnapshotEvent: DocumentSnapshot?
     
+    var allEvents: [EventObject] = []
+    
     func getEvents(isFirstLoad: Bool, completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void ) {
         
-        //default
-        var refQuery = refEventTest.order(by: "dateCreated", descending: true).limit(to: 15)
+        var refQuery: Query?
         
-        if !isFirstLoad {
+        if isFirstLoad {
+            self.allEvents = []
+            self.lastSnapshotEvent = nil
+            refQuery = refEventTest.order(by: "dateCreated", descending: true).limit(to: 15)
+        } else {
             if let lastSnapshotEvent = self.lastSnapshotEvent {
-                refQuery = refEventTest.order(by: "dateCreated", descending: false).start(afterDocument: lastSnapshotEvent).limit(to: 15)
+                refQuery = refEventTest.order(by: "dateCreated", descending: true).start(afterDocument: lastSnapshotEvent).limit(to: 15)
             }
         }
         
-        refQuery.addSnapshotListener { (snapshot, error) in
-            var events: [EventObject] = []
+        refQuery?.addSnapshotListener { (snapshot, error) in
             
             if let error = error {
                 return completionHandler(nil, error.localizedDescription)
@@ -44,21 +48,18 @@ class EventServicesTest: NSObject {
                     return completionHandler(nil, "Data not found")
                 }
                 
-                //print(snapshot.documents.count)
                 
                 if let last = snapshot.documents.last {
                     self.lastSnapshotEvent = last
                 }
                 
                 for document in snapshot.documents {
-                    
-                    //print(document.data())
                     if let event = EventObject(json: document.data()) {
-                        events.append(event)
+                        self.allEvents.append(event)
                     }
                 }
                 
-                completionHandler(events, nil)
+                return completionHandler(self.allEvents, nil)
             }
         }
 

@@ -207,7 +207,7 @@ class NewEventVC: UIViewController {
     var count = 1
     func addEvent() {
         print(count)
-        if count == 100 {
+        if count == 50 {
             self.timer?.invalidate()
         }
         

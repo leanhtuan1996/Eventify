@@ -26,7 +26,7 @@ class DetailEventVC: UIViewController {
         //btnLabel.layer.cornerRadius = 15
         
         if let photoUrl = event.photoURL {
-            imgCover.downloadedFrom(link: photoUrl)
+            imgCover.downloadedFrom(path: photoUrl)
         }
         lblName.text = event.name
         lblPrice.text = "Từ \(minPrice ?? "0") VNĐ"

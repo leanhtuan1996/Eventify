@@ -22,8 +22,7 @@ extension UIImageView
     }
     
     
-    func downloadedFrom(url: URL ) {
-        
+    func downloadedFrom(url: URL) {
         self.hnk_setImageFromURL(url)
         
     }
