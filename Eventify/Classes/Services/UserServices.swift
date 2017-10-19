@@ -119,7 +119,7 @@ class UserServices: NSObject {
             guard let user = user else {
                 return completionHandler(nil, "SIGN IN WITH GOOGLE HAD BEEN ERROR")
             }
-            
+           
             let userObject = UserObject()
             userObject.id = user.uid
             userObject.email = user.email

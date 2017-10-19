@@ -11,6 +11,7 @@ import Firebase
 import GoogleSignIn
 import Gloss
 let refUserTest = Firestore.firestore().collection("Users")
+let refImagePhotoUser = refStorageTest.reference().child("Images").child("UserAvatar")
 
 class UserServicesTest: NSObject {
     static let shared = UserServicesTest()
@@ -19,6 +20,7 @@ class UserServicesTest: NSObject {
     
     var currentUser:UserObject?
     
+    //sign up with email & password
     func signUp(with user: UserObject, completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
         
         guard let password = user.password, let email = user.email else {
@@ -31,21 +33,28 @@ class UserServicesTest: NSObject {
             }
             
             if let user = user {
-                let usr: [String: Any] = [
-                    "id" : user.uid,
-                    "email" : user.email ?? "",
-                    "fullName" : user.displayName ?? "",
-                    "phone" : user.phoneNumber ?? ""
-                ]
-                //print(user)
-                
-                refUser.child(user.uid).setValue(usr)
                 
                 let userObject = UserObject()
                 userObject.id = user.uid
                 userObject.email = user.email
+                userObject.phone = user.phoneNumber
+                userObject.photoURL = String(describing: user.photoURL)
+                userObject.fullName = user.displayName
                 
-                return completionHandler(userObject, nil)
+                //set current user
+                self.currentUser = userObject
+                
+                guard let userJson = userObject.toJSON() else {
+                    return completionHandler(nil, "Convert user to json has been failed")
+                }
+                
+                refUserTest.document(user.uid).setData(userJson, options: SetOptions.merge(), completion: { (error) in
+                    if let error = error {
+                        return completionHandler(nil, "Insert into database has been failed with error: \(error.localizedDescription)")
+                    }
+                    
+                    return completionHandler(userObject, nil)
+                })
             }
         }
     }
@@ -65,6 +74,13 @@ class UserServicesTest: NSObject {
                 let userObject = UserObject()
                 userObject.id = user.uid
                 userObject.email = user.email
+                userObject.phone = user.phoneNumber
+                userObject.photoURL = String(describing: user.photoURL)
+                userObject.fullName = user.displayName
+                
+                //set current user
+                self.currentUser = userObject
+                
                 return completionHandler(userObject, nil)
             }
         }
@@ -91,6 +107,7 @@ class UserServicesTest: NSObject {
     func signOut() {
         do
         {
+            //for google
             if let _ = GIDSignIn.sharedInstance().currentUser {
                 GIDSignIn.sharedInstance().signOut()
             }
@@ -122,21 +139,24 @@ class UserServicesTest: NSObject {
             let userObject = UserObject()
             userObject.id = user.uid
             userObject.email = user.email
-            userObject.fullName = user.displayName
             userObject.phone = user.phoneNumber
             userObject.photoURL = String(describing: user.photoURL)
+            userObject.fullName = user.displayName
             
-            let usr: [String: Any] = [
-                "id" : user.uid,
-                "email" : user.email ?? "",
-                "fullName" : user.displayName ?? "",
-                "phone" : user.phoneNumber ?? ""
-            ]
-            //print(user)
+            //set current user
+            self.currentUser = userObject
             
-            refUser.child(user.uid).setValue(usr)
+            guard let userJson = userObject.toJSON() else {
+                return completionHandler(nil, "Convert user to json has been failed")
+            }
             
-            return completionHandler(userObject, nil)
+            refUserTest.document(user.uid).setData(userJson, options: SetOptions.merge(), completion: { (error) in
+                if let error = error {
+                    return completionHandler(nil, "Insert into database has been failed with error: \(error.localizedDescription)")
+                }
+                
+                return completionHandler(userObject, nil)
+            })
         }
     }
     
@@ -152,61 +172,90 @@ class UserServicesTest: NSObject {
             return completionHandler(nil)
         }
     }
+   
     
-    func getInfomations() {
-        let user = Auth.auth().currentUser
-        if let uid = user?.uid {
-            refUser.child(uid).observe(.value, with: { (data) in
-                guard let value = data.value as? JSON else {
-                    return
+    func updateEmail(withEmail email: String, completionHandler: @escaping (_ error: String? ) -> Void ) {
+        Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
+            if let error = error {
+                return completionHandler(error.localizedDescription)
+            }
+            
+            if let currentUser = self.currentUser {
+
+                refUserTest.document(currentUser.id).updateData(["lastUpdated" : FieldValue.serverTimestamp(), "email" : email], completion: { (error) in
+                    if let error = error {
+                        return completionHandler("Insert to database has been failed with error: \(error)")
+                    }
+                    self.currentUser?.email = email
+                    
+                    return completionHandler(nil)
+                })
+            } else {
+                return completionHandler("Current user not found")
+            }
+        })
+    }
+    
+    func updatePhoneNumber(withPhone phone: String, completionHandler: @escaping (_ error: Error?) -> Void) {
+        
+    }
+    
+    func updatePassword(withPassword pw: String, completionHandler: @escaping (_ error: String? )-> Void) {
+        Auth.auth().currentUser?.updatePassword(to: pw, completion: { (error) in
+            if let error = error {
+                return completionHandler(error.localizedDescription)
+            }
+            
+            if let currentUser = self.currentUser {
+                refUserTest.document(currentUser.id).updateData(["lastUpdated" : FieldValue.serverTimestamp(), "password" : pw], completion: { (error) in
+                    if let error = error {
+                        return completionHandler("Insert to database has been failed with error: \(error)")
+                    }
+                    self.currentUser?.password = pw
+                    return completionHandler(nil)
+                })
+            } else {
+                return completionHandler("Current user not found")
+            }
+        })
+    }
+    
+    func updatePhotoURL(withImage image: Data, completionHandler: @escaping (_ error: String?) -> Void) {
+        guard let currentUser = self.currentUser else {
+            return completionHandler("User not found")
+        }
+        
+        let keyPath = "\(currentUser.id)" + "\(Helpers.getTimeStamp()).jpg"
+        
+        let uploadTask = refImagePhotoUser.child(keyPath).putData(image, metadata: nil) { (metaData, error) in
+            guard let metaData = metaData, let path = metaData.path else {
+                return completionHandler( "MetaData not found")
+            }
+            
+            refUserTest.document(currentUser.id).updateData(["lastUpdated" : FieldValue.serverTimestamp(), "photoURL" : path], completion: { (error) in
+                if let error = error {
+                    return completionHandler("Insert to database has been failed with error: \(error)")
                 }
-                print(value)
-                self.currentUser = UserObject(json: value)
+                self.currentUser?.photoURL = metaData.path
+                return completionHandler(nil)
             })
         }
         
+        uploadTask.resume()
     }
     
-    func getInfomations(withRef ref: DocumentReference, completionHandler: @escaping (_ user: UserObject?, _ error: String?) -> Void ) {
-        ref.addSnapshotListener { (snapshot, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return completionHandler(nil, error.localizedDescription)
-            }
-            
-            guard let data = snapshot else {
-                print("Data not found")
-                return completionHandler(nil, "Data not found")
-            }
-            
-            if let user = UserObject(json: data.data()) {
-                completionHandler(user, nil)
-            } else {
-                completionHandler(nil, "Cast json to object has been failed")
-            }
+    func updateFullname(withFullname fullname: String, completionHandler: @escaping (_ error: String?) -> Void) {
+        guard let currentUser = self.currentUser else {
+            return completionHandler("User not found")
         }
-    }
-    
-    func updateEmail() {
         
+        refUserTest.document(currentUser.id).updateData(["lastUpdated" : FieldValue.serverTimestamp(), "fullName" : fullname], completion: { (error) in
+            if let error = error {
+                return completionHandler("Insert to database has been failed with error: \(error)")
+            }
+            self.currentUser?.fullName = fullname
+            return completionHandler(nil)
+        })
     }
-    
-    func updatePhoneNumber() {
-        
-    }
-    
-    func updatePassword() {
-        
-    }
-    
-    func updatePhotoURL() {
-        
-    }
-    
-    func updateFullname() {
-        
-    }
-    
-    
     
 }
