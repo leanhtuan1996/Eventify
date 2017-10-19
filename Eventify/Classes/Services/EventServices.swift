@@ -130,15 +130,13 @@ class EventServices: NSObject {
             guard let metaData = metaData else {
                 return completionHandler(nil, "MetaData not found")
             }
-            
             if let url = metaData.downloadURL() {
                 return completionHandler(String(describing: url), nil)
             }
-            
-            
         }
         
         uploadTask.resume()
         
     }
+    
 }

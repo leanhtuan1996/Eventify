@@ -82,12 +82,12 @@ class EventObject: NSObject, Glossy  {
         
         //set id for ticket
         for ticket in tickets {
-            let id = refEvent.child(id).child("tickets").childByAutoId().key
+            let id = Helpers.getTimeStamp()
             ticket.id = id
         }
         
         return jsonify([
-            "id" ~~> self.id,
+            "id" ~~> id,
             "name" ~~> self.name,
             "address" ~~> self.address,
             "by" ~~> self.by?.toJSON(),

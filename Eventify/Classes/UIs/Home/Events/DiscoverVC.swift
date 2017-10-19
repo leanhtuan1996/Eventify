@@ -58,12 +58,15 @@ class DiscoverVC: UIViewController {
             }
         }
         
-        loadEvents()
+        loadEvents(isFirstLoad: true)
     }
    
     
-    func loadEvents() {
-        EventServicesTest.shared.getEvents() { (events, error) in
+    func loadEvents(isFirstLoad: Bool) {
+        EventServicesTest.shared.getEvents(isFirstLoad: isFirstLoad ) { (events, error) in
+            
+            self.refreshControl.endRefreshing()
+            
             if let error = error {
                 print(error)
                 return
@@ -71,6 +74,12 @@ class DiscoverVC: UIViewController {
             
             if let events = events {
                 //self.events = events
+                
+                if isFirstLoad {
+                    self.events = events
+                    self.tblEvents.reloadData()
+                    return
+                }
                 
                 events.forEach({ (event) in
                     self.events.append(event)
@@ -89,7 +98,7 @@ class DiscoverVC: UIViewController {
     
     // MARK: - FUNCTIONS
     @objc func refresh(sender:AnyObject) {
-        refreshControl.endRefreshing()
+        loadEvents(isFirstLoad: true)
     }
     
     @IBAction func btnEventsClicked(_ sender: Any) {
@@ -134,10 +143,8 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? [])) VNĐ"
         cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
         if let url = events[indexPath.row].photoURL {
-            cell.imgPhoto.downloadedFrom(link: url)
+            cell.imgPhoto.downloadedFrom(path: url)
         }
-        
-        
         
         return cell
     }
@@ -193,7 +200,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == (self.events.count - 3) {
-            self.loadEvents()
+            self.loadEvents(isFirstLoad: false)
         }
     }
     

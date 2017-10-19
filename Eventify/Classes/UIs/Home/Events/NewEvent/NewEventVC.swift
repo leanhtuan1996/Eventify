@@ -182,28 +182,25 @@ class NewEventVC: UIViewController {
             return
         }
         
-        self.loading.showLoadingDialog(self)
+        //self.loading.showLoadingDialog(self)
         
         //for testing
-        //timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
         
         
-        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
-            self.loading.stopAnimating()
-            if let error = error {
-                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-                return
-            }
-            
-            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-                self.tabBarController?.selectedIndex = 0
-            })
-            
-            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
-            
-            
-            
-        }
+//        EventServicesTest.shared.addEvent(withEvent: self.newEvent) { (error) in
+//            self.loading.stopAnimating()
+//            if let error = error {
+//                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
+//                return
+//            }
+//            
+//            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+//                self.tabBarController?.selectedIndex = 0
+//            })
+//            
+//            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
+//        }
     }
     
     //for testing
@@ -295,13 +292,14 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let img = UIImageJPEGRepresentation(image, 0.5) {
                 self.imgCover.image = UIImage(data: img)
-                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
+                EventServicesTest.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
                     if let error = error {
                         print("Upload image had been failed: \(error)")
                         return
                     }
                     if let path = path {
                         self.newEvent.photoURL = path
+                       
                     }
                 })
             }
