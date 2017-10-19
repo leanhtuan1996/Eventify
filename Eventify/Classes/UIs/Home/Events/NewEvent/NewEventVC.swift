@@ -12,7 +12,7 @@ import Gloss
 
 
 class NewEventVC: UIViewController {
-
+    
     @IBOutlet weak var imgPicker: UIImageView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblNameEvent: SkyFloatingLabelTextField!
@@ -24,7 +24,7 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var lblNumberTickets: UILabel!
     @IBOutlet weak var txtDescriptionEvent: SkyFloatingLabelTextField!
     var pickerImg = UIImagePickerController()
-
+    
     
     var isTimeStartPicked: Bool = false
     var dateTimeSelector: WWCalendarTimeSelector!
@@ -32,6 +32,8 @@ class NewEventVC: UIViewController {
     var newEvent: EventObject = EventObject()
     
     let loading = UIActivityIndicatorView()
+    
+    var timer: Timer?
     
     override func viewDidLoad(
         ) {
@@ -73,6 +75,8 @@ class NewEventVC: UIViewController {
         txtDescriptionEvent.returnKeyType = .done
         txtDescriptionEvent.delegate = self
         
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +88,7 @@ class NewEventVC: UIViewController {
         
         lblNumberTickets.text = TicketManager.shared.getTickets().count.toString() + " loại vé"
     }
-
+    
     func showTicketsManager() {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "TicketsManagerVC") as? TicketsManagerVC {
             self.navigationController?.pushViewController(sb, animated: true)
@@ -157,7 +161,7 @@ class NewEventVC: UIViewController {
             lblTimeEnd.textColor = UIColor.red
             return
         }
-                
+        
         let tickets: [TicketObject] = TicketManager.shared.getTickets()
         
         newEvent.name = name
@@ -179,6 +183,11 @@ class NewEventVC: UIViewController {
         }
         
         self.loading.showLoadingDialog(self)
+        
+        //for testing
+        //timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
+        
+        
         EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
             self.loading.stopAnimating()
             if let error = error {
@@ -192,7 +201,39 @@ class NewEventVC: UIViewController {
             
             self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
             
+            
+            
         }
+    }
+    
+    //for testing
+    var count = 1
+    func addEvent() {
+        print(count)
+        if count == 100 {
+            self.timer?.invalidate()
+        }
+        
+        let tickets: [TicketObject] = TicketManager.shared.getTickets()
+        
+        newEvent.name = "Sự kiện thứ \(count)"
+        newEvent.address = "Địa chỉ thứ \(count)"
+        newEvent.tickets = tickets
+        newEvent.by = UserServices.shared.currentUser
+        newEvent.descriptionEvent = "Mô tả thứ \(count)"
+        newEvent.timeStart = Helpers.getTimeStampWithInt()
+        newEvent.timeEnd = Helpers.getTimeStampWithInt()
+        
+        
+        EventServicesTest.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
+            if let error  = error {
+                print(error)
+            } else {
+                print("OK")
+            }
+        })
+        
+        self.count += 1
     }
 }
 
@@ -267,7 +308,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         }
     }
     
-
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

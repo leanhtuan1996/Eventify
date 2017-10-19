@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 extension UIImageView
 {
@@ -23,25 +24,28 @@ extension UIImageView
     
     func downloadedFrom(url: URL ) {
         
-        if let cacheImage = cacheImageCoverEvent.object(forKey: url.absoluteString as NSString) as? UIImage {
-            self.image = cacheImage
-            print("Image cached")
-        } else {
-            
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                guard
-                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                    let data = data, error == nil,
-                    let image = UIImage(data: data)
-                    else { return }
-                DispatchQueue.main.async() {
-                    print("Image no cached")
-                    self.image = image
-                    cacheImageCoverEvent.setObject(image, forKey: url.absoluteString as NSString)
-                }
-                }.resume()
-        }
+//        if let cacheImage = cacheImageCoverEvent.object(forKey: url.absoluteString as NSString) as? UIImage {
+//            self.image = cacheImage
+//            print("Image cached")
+//        } else {
+//            
+//            URLSession.shared.dataTask(with: url) { data, response, error in
+//                guard
+//                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+//                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+//                    let data = data, error == nil,
+//                    let image = UIImage(data: data)
+//                    else { return }
+//                DispatchQueue.main.async() {
+//                    print("Image no cached")
+//                    self.image = image
+//                    cacheImageCoverEvent.setObject(image, forKey: url.absoluteString as NSString)
+//                }
+//                }.resume()
+//        }
+        
+        self.hnk_setImageFromURL(url)
+        
     }
     func downloadedFrom(link: String) {
         

@@ -19,7 +19,6 @@ class DiscoverVC: UIViewController {
     
     var events: [EventObject] = []
     var refreshControl: UIRefreshControl!
-    var cacheImage: NSCache<AnyObject, AnyObject>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,19 +58,24 @@ class DiscoverVC: UIViewController {
             }
         }
         
-        cacheImage = NSCache()
+        loadEvents()
     }
+   
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        EventServices.shared.getEvents { (events, error) in
+    func loadEvents() {
+        EventServicesTest.shared.getEvents() { (events, error) in
             if let error = error {
                 print(error)
                 return
             }
             
             if let events = events {
-                self.events = events
+                //self.events = events
+                
+                events.forEach({ (event) in
+                    self.events.append(event)
+                })
+                
                 self.tblEvents.reloadData()
             }
             
@@ -122,6 +126,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         
+        
         cell.event = events[indexPath.row]
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address
@@ -131,6 +136,8 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         if let url = events[indexPath.row].photoURL {
             cell.imgPhoto.downloadedFrom(link: url)
         }
+        
+        
         
         return cell
     }
@@ -184,5 +191,21 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         return string
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (self.events.count - 3) {
+            self.loadEvents()
+        }
+    }
+    
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        // UITableView only moves in one direction, y axis
+//        let currentOffset = scrollView.contentOffset.y
+//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+//        
+//        if maximumOffset - currentOffset <= 400.0 {
+//           self.loadEvents()
+//        }
+//
+//    }
     
 }

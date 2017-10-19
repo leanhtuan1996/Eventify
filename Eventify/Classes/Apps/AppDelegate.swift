@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
 import GoogleSignIn
 
 @UIApplicationMain
@@ -19,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         FirebaseApp.configure()
+        //Database.database().isPersistenceEnabled = true
+        Firestore.firestore().settings.isPersistenceEnabled = true
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

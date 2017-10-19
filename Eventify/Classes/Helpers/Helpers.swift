@@ -69,7 +69,12 @@ class Helpers: NSObject {
     
     static func getTimeStamp() -> String {
         let date = Date()
-        return String(date.timeIntervalSince1970)
+        return String(date.timeIntervalSince1970.toInt())
+    }
+    
+    static func getTimeStampWithInt() -> Int {
+        let date = Date()
+        return date.timeIntervalSince1970.toInt()
     }
     
     static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {

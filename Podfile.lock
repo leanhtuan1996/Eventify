@@ -1,34 +1,50 @@
 PODS:
+  - BoringSSL (9.0):
+    - BoringSSL/Implementation (= 9.0)
+    - BoringSSL/Interface (= 9.0)
+  - BoringSSL/Implementation (9.0):
+    - BoringSSL/Interface (= 9.0)
+  - BoringSSL/Interface (9.0)
   - Dollar (6.2.1)
-  - Firebase/Auth (4.2.0):
+  - Firebase/Auth (4.3.0):
     - Firebase/Core
-    - FirebaseAuth (= 4.2.0)
-  - Firebase/Core (4.2.0):
-    - FirebaseAnalytics (= 4.0.3)
-    - FirebaseCore (= 4.0.7)
-  - Firebase/Database (4.2.0):
+    - FirebaseAuth (= 4.2.1)
+  - Firebase/Core (4.3.0):
+    - FirebaseAnalytics (= 4.0.4)
+    - FirebaseCore (= 4.0.8)
+  - Firebase/Database (4.3.0):
     - Firebase/Core
-    - FirebaseDatabase (= 4.0.3)
-  - Firebase/Storage (4.2.0):
+    - FirebaseDatabase (= 4.1.0)
+  - Firebase/Firestore (4.3.0):
+    - Firebase/Core
+    - FirebaseFirestore (= 0.8.0)
+  - Firebase/Storage (4.3.0):
     - Firebase/Core
     - FirebaseStorage (= 2.0.2)
-  - FirebaseAnalytics (4.0.3):
+  - FirebaseAnalytics (4.0.4):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseAuth (4.2.0):
+  - FirebaseAuth (4.2.1):
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.7):
+  - FirebaseCore (4.0.8):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseDatabase (4.0.3):
+  - FirebaseDatabase (4.1.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (2.0.3)
+  - FirebaseFirestore (0.8.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseAuth (~> 4.2)
+    - FirebaseCore (~> 4.0)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - Protobuf (~> 3.1)
+  - FirebaseInstanceID (2.0.4)
   - FirebaseStorage (2.0.2):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
@@ -39,16 +55,32 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
     - GTMOAuth2 (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleToolboxForMac/DebugUtils (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/Defines (2.1.1)
-  - GoogleToolboxForMac/NSData+zlib (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
-    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
-  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
+  - gRPC (1.6.5):
+    - gRPC-Core (= 1.6.5)
+    - gRPC-RxLibrary (= 1.6.5)
+  - gRPC-Core (1.6.5):
+    - gRPC-Core/Implementation (= 1.6.5)
+    - gRPC-Core/Interface (= 1.6.5)
+  - gRPC-Core/Implementation (1.6.5):
+    - BoringSSL (~> 9.0)
+    - gRPC-Core/Interface (= 1.6.5)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.6.5)
+  - gRPC-ProtoRPC (1.6.5):
+    - gRPC (= 1.6.5)
+    - gRPC-RxLibrary (= 1.6.5)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.6.5)
   - GTMOAuth2 (1.1.5):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.12):
@@ -56,42 +88,64 @@ PODS:
   - GTMSessionFetcher/Core (1.1.12)
   - GTMSessionFetcher/Full (1.1.12):
     - GTMSessionFetcher/Core (= 1.1.12)
+  - HanekeSwift (0.10.1)
   - leveldb-library (1.18.3)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - SkyFloatingLabelTextField (3.2.0)
+  - Protobuf (3.4.0)
+  - SkyFloatingLabelTextField (3.2.1)
 
 DEPENDENCIES:
-  - Dollar (~> 6.2.1)
+  - Dollar
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Firestore
   - Firebase/Storage
-  - Gloss (~> 1.2)
+  - Gloss
   - GoogleSignIn
-  - SkyFloatingLabelTextField (~> 3.0)
+  - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`, commit `694d6df`)
+  - SkyFloatingLabelTextField
+
+EXTERNAL SOURCES:
+  HanekeSwift:
+    :commit: 694d6df
+    :git: https://github.com/Haneke/HanekeSwift.git
+
+CHECKOUT OPTIONS:
+  HanekeSwift:
+    :commit: 694d6df
+    :git: https://github.com/Haneke/HanekeSwift.git
 
 SPEC CHECKSUMS:
+  BoringSSL: 19083b821ef3ae0f758fae15482e183003b1e265
   Dollar: 197e92d0fc1ded259363f33f883704b7b550472b
-  Firebase: 9548cae14d69718add12d75a5b312893f7ef89c7
-  FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
-  FirebaseAuth: 22f8a5170f31d1f111141950590f071f35df3229
-  FirebaseCore: 9a6cc1e3eaf75905390f9220596ad4fd8f92faee
-  FirebaseDatabase: 03940adcac54ce30db06f1fc2136f8581734ce2c
-  FirebaseInstanceID: a4fc702b5a026f7322964376047f1a3f1f7cc6ff
+  Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
+  FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
+  FirebaseAuth: d7f047fbeab98062b98ea933b8d934e0fb1190e2
+  FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
+  FirebaseDatabase: 607284a103e961d7f5863ee603cab5e85f443bd6
+  FirebaseFirestore: 8e2fd99a621ae6fc6acfac3bdea824fe9d9c128d
+  FirebaseInstanceID: 70c2b877e9338971b2429ea5a4293df6961aa44e
   FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
   GoogleSignIn: 8c599fc10d25b2af86a3f82fd9631e863f2b1400
-  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  gRPC: 42f915ce322b1abc5241621acc776f2fdb0a2039
+  gRPC-Core: 54211a073d238ec8569be06e1a939a72f081a3e9
+  gRPC-ProtoRPC: 4299db62f86df58c88844ccb50f5c48993e704f6
+  gRPC-RxLibrary: 1b1c9c9cf666709ad7714cb0e0f3c44dc0cbfb0b
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
+  HanekeSwift: 4113367892828e7700d24a384027de6ebc79aad1
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  SkyFloatingLabelTextField: 4e2d2f7160af660ed1da6bb9d0027b5c474b4b79
+  Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
+  SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
 
-PODFILE CHECKSUM: c21c59423c0a7a7cc7955291ba588f133878a9c8
+PODFILE CHECKSUM: 349cedf5e0f96e18e1dd7b139134a3867eda84a0
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.beta.1

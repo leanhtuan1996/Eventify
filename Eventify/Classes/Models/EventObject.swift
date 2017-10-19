@@ -8,7 +8,8 @@
 
 import UIKit
 import Gloss
-import FirebaseDatabase
+import Firebase
+import Dollar
 
 
 class EventObject: NSObject, Glossy  {
@@ -19,6 +20,8 @@ class EventObject: NSObject, Glossy  {
     var descriptionEvent: String?
     var timeStart: Int?
     var timeEnd: Int?
+    var dateCreated: Int?
+    var dateEdited: Int?
     var address: String?
     var types: [EventTypeObject]?
     var tickets: [TicketObject]?
@@ -92,7 +95,9 @@ class EventObject: NSObject, Glossy  {
             "tickets" ~~> self.tickets?.toJSONArray(),
             "types" ~~> self.types?.toJSONArray(),
             "timeStart" ~~> self.timeStart,
-            "timeEnd" ~~> self.timeEnd
+            "timeEnd" ~~> self.timeEnd,
+            "dateCreated" ~~> Helpers.getTimeStampWithInt(),
+            "dateEdited" ~~> self.dateEdited
             ])
     }
     

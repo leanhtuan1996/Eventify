@@ -8,66 +8,81 @@
 
 import UIKit
 import FirebaseAuth
-import FirebaseDatabase
+import FirebaseFirestore
 import FirebaseStorage
 import Gloss
 
-let refEvent = Database.database().reference().child("Events")
-let refImageEventStorage = Storage.storage().reference().child("Images").child("EventCover")
-class EventServices: NSObject {
-    static let shared = EventServices()
+let refEventTest = Firestore.firestore().collection("Events")
+
+class EventServicesTest: NSObject {
+    static let shared = EventServicesTest()
     //ref User child
     
+    var lastSnapshotEvent: DocumentSnapshot?
     
-    
-    //get 10 events that newest
-    func getEvents(firstId: String?, completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void ) {
-        //listen
+    func getEvents(completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void ) {
         
-        var events: [EventObject] = []
+        //default
+        var refQuery = refEventTest.order(by: "dateCreated", descending: false).limit(to: 15)
         
+        if let lastSnapshotEvent = self.lastSnapshotEvent {
+            refQuery = refEventTest.order(by: "dateCreated", descending: false).start(afterDocument: lastSnapshotEvent).limit(to: 15)
+        }
         
-        refEvent.queryOrdered(byChild: "dateCreated")
-            .queryLimited(toFirst: 15).observe(.value, with: { (snapshot) in
+        refQuery.addSnapshotListener { (snapshot, error) in
+            var events: [EventObject] = []
+            
+            if let error = error {
+                return completionHandler(nil, error.localizedDescription)
+            } else {
+                guard let snapshot = snapshot else {
+                    print("Data not found")
+                    return completionHandler(nil, "Data not found")
+                }
                 
-                events = []
+                if let last = snapshot.documents.last {
+                    self.lastSnapshotEvent = last
+                }
                 
-                print("LOADING MORE EVENTS")
-                
-                print(snapshot.children.allObjects.count)
-                
-                for child in snapshot.children {
+                for document in snapshot.documents {
                     
-                    guard let json = child as? DataSnapshot else {
-                        return completionHandler(nil, "Data invalid format")
+                    print(document.data())
+                    if let event = EventObject(json: document.data()) {
+                        events.append(event)
                     }
-                    
-                    if let eventJSON = json.value as? JSON {
-                        if let event = EventObject(json: eventJSON) {
-                            events.append(event)
-                        }
-                    }
-                    
                 }
                 
                 completionHandler(events, nil)
-                
-            })
+            }
+        }
+
     }
     
+    //Done
     func getEvent(withId id: String, completionHandler: @escaping (_ event: EventObject?, _ error: String?) -> Void)  {
-        refEvent.child(id).observeSingleEvent(of: .value, with: { (data) in
-            guard let json = data.value as? JSON else {
-                return completionHandler(nil, "Data invalid format")
+        
+        refEventTest.document(id).addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return completionHandler(nil, error.localizedDescription)
             }
             
-            if let event = EventObject(json: json) {
-                return completionHandler(event, nil)
+            guard let data = snapshot else {
+                print("Data not found")
+                return completionHandler(nil, "Data not found")
             }
             
-            return completionHandler(nil, "Get Event Error")
+            if let event = EventObject(json: data.data()) {
+                completionHandler(event, nil)
+            } else {
+                completionHandler(nil, "Cast json to object has been failed")
+            }
             
-        })
+        }
+    }
+    
+    func deleteEvents() {
+        refEventTest.document("OHtrA5mvouboda7mgoaZ").delete()
     }
     
     func getEventByIdUser(withIdUser id: String) {
@@ -76,8 +91,8 @@ class EventServices: NSObject {
     
     
     func addEvent(withEvent event: EventObject, completionHandler: @escaping (_ error: String?) -> Void) {
-        let id = refEvent.childByAutoId().key
-        event.id = id
+        let newEventRef = refEventTest.document()
+        event.id = newEventRef.documentID
         
         if event.name == nil {
             return completionHandler("Tên sự kiện không được rỗng")
@@ -99,9 +114,17 @@ class EventServices: NSObject {
             return completionHandler("Dữ liệu không hợp lệ")
         }
         
-        refEvent.child(id).setValue(eventJSON)
+//        newEventRef.setData(eventJSON) { (error) in
+//            return completionHandler(error)
+//        }
         
-        return completionHandler(nil)
+        newEventRef.setData(eventJSON) { err in
+            if let error = err {
+                return completionHandler(error.localizedDescription)
+            } else {
+                return completionHandler(nil)
+            }
+        }
     }
     
     func deleteEvent(withId id: String) {

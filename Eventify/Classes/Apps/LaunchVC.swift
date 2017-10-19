@@ -12,8 +12,10 @@ class LaunchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //TicketManager.shared.deleteTickets()
+        
+        EventServicesTest.shared.deleteEvents()
+        
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             
             //Listen

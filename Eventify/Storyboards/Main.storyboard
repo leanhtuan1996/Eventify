@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1023" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1031" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -621,7 +621,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-2S-cIf" userLabel="view">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Shz-2r-Jqj">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Shz-2r-Jqj">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                     </imageView>
                                                 </subviews>
@@ -1452,12 +1452,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wny-Sl-LSv" userLabel="map">
-                                        <rect key="frame" x="345" y="12.5" width="15" height="20"/>
+                                        <rect key="frame" x="330" y="12.5" width="40" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="15" id="6US-Zc-Hhl"/>
+                                            <constraint firstAttribute="width" constant="40" id="6US-Zc-Hhl"/>
                                             <constraint firstAttribute="height" constant="20" id="ClD-kK-TAg"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="more-2"/>
+                                        <state key="normal" title="Edit"/>
                                         <connections>
                                             <action selector="btnEditProfileClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="fAn-WP-G46"/>
                                         </connections>
@@ -1467,7 +1467,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="1lu-4g-L5i"/>
                                     <constraint firstItem="2hj-2v-niL" firstAttribute="centerX" secondItem="BpW-oe-KWu" secondAttribute="centerX" id="3rA-gC-aev"/>
                                     <constraint firstAttribute="height" constant="45" id="6sW-TF-XBb"/>
-                                    <constraint firstAttribute="trailing" secondItem="wny-Sl-LSv" secondAttribute="trailing" constant="15" id="9tb-oI-W5c"/>
+                                    <constraint firstAttribute="trailing" secondItem="wny-Sl-LSv" secondAttribute="trailing" constant="5" id="9tb-oI-W5c"/>
                                     <constraint firstItem="2hj-2v-niL" firstAttribute="centerY" secondItem="BpW-oe-KWu" secondAttribute="centerY" id="PSn-Kl-21T"/>
                                     <constraint firstItem="wny-Sl-LSv" firstAttribute="centerY" secondItem="2hj-2v-niL" secondAttribute="centerY" id="zyz-67-OIm"/>
                                 </constraints>
@@ -2357,7 +2357,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xgj-To-8My" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="event" id="FX1-mo-f2v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P83-pO-uz1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P83-pO-uz1">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2376,7 +2376,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jax-Dj-2Vo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" id="moM-TK-frP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tmt-1m-j3K">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmt-1m-j3K">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2395,7 +2395,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eCx-KP-e6n" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="plus" id="HWc-D0-cGs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vcE-vv-7wx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vcE-vv-7wx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2414,7 +2414,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="e7G-ee-cgy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="alert" id="NAK-hh-v8F"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TOF-W7-rO2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TOF-W7-rO2">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2433,7 +2433,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7i7-AK-sec" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="more" id="auB-ZF-Sjq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Bj4-Jy-j0H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bj4-Jy-j0H">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2465,7 +2465,6 @@
         <image name="location-2" width="35" height="35"/>
         <image name="map" width="25" height="25"/>
         <image name="more" width="30" height="30"/>
-        <image name="more-2" width="30" height="30"/>
         <image name="plus" width="60" height="60"/>
         <image name="profile" width="30" height="30"/>
         <image name="search" width="40" height="40"/>
