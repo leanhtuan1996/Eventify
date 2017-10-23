@@ -19,6 +19,7 @@ class DiscoverVC: UIViewController {
     
     var events: [EventObject] = []
     var refreshControl: UIRefreshControl!
+    var isLoadingMore = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +74,6 @@ class DiscoverVC: UIViewController {
             }
             
             if let events = events {
-                
                 self.events = events
                 self.tblEvents.reloadData()
             }
@@ -195,6 +195,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
 //    }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
         // UITableView only moves in one direction, y axis
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height

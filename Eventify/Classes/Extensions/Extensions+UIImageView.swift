@@ -9,6 +9,8 @@
 import UIKit
 import Haneke
 
+let stringCache = Shared.stringCache
+
 extension UIImageView
 {
     func addBlurEffect()
@@ -29,21 +31,31 @@ extension UIImageView
     func downloadedFrom(link: String) {
         
         guard let url = URL(string: link) else { return }
-       
+        
         downloadedFrom(url: url)
     }
     
     func downloadedFrom(path: String) {
-        EventServicesTest.shared.downloadImageCover(withPath: path, completionHandler: { (url, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            guard let url = url else {
-                return
-            }
-            self.downloadedFrom(url: url)
-        })
+        
+        stringCache.fetch(key: path)
+            .onSuccess { (string) in
+                self.downloadedFrom(link: string)
+                
+            }.onFailure { (error) in
+                EventServicesTest.shared.downloadImageCover(withPath: path, completionHandler: { (url, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    guard let url = url else {
+                        return
+                    }
+                    
+                    stringCache.set(value: String(describing: url), key: path)
+                    
+                    self.downloadedFrom(url: url)
+                })
+        }
     }
     
 }
