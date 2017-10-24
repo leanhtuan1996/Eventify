@@ -14,11 +14,11 @@ class DetailEventVC: UIViewController {
     var event: EventObject!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblAddress: UILabel!
-    @IBOutlet weak var lblTimeStart: UILabel!
-    @IBOutlet weak var lblTimeEnd: UILabel!
     @IBOutlet weak var lblDescriptions: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
+    
+    
+    //button
     @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var btnBookmark: UIButton!
     override func viewDidLoad() {

@@ -97,6 +97,7 @@ class SignInVC: UIViewController {
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
+                self.showAlert(error.localizedDescription, title: "Login with facebook has been error", buttons: nil)
                 self.activityIndicatorView.stopAnimating()
                 return
             }
@@ -112,6 +113,7 @@ class SignInVC: UIViewController {
                 self.activityIndicatorView.stopAnimating()
                 if let error = error {
                     print(error)
+                    self.showAlert(error, title: "Login with facebook has been error", buttons: nil)
                     return
                 }                
             })
