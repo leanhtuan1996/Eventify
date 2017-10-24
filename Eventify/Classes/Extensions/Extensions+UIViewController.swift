@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-        
+    
     func showAlert(_ message:String, title: String, buttons: [UIAlertAction]?) {
         let alert:UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -26,5 +26,6 @@ extension UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
     
 }

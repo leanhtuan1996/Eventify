@@ -112,4 +112,31 @@ class Helpers: NSObject {
             return completionHandler(image, error)
         }
     }
+    
+    static func addBlurEffect(toView view:UIView?) {
+        // Add blur view
+        guard let view = view else { return }
+        
+        
+        //This will let visualEffectView to work perfectly
+        if let navBar = view as? UINavigationBar{
+            navBar.setBackgroundImage(UIImage(), for: .default)
+            navBar.shadowImage = UIImage()
+        }
+        
+        
+        var bounds = view.bounds
+        bounds.offsetBy(dx: 0.0, dy: 0.0)
+        bounds.size.height = bounds.height
+        
+        
+        let blurEffect = UIBlurEffect(style: .light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        visualEffectView.isUserInteractionEnabled = false
+        visualEffectView.frame = bounds
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.insertSubview(visualEffectView, at: 0)
+        
+    }
 }

@@ -53,6 +53,7 @@
 		367F3C141F7E3639002222EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367F3C131F7E3639002222EB /* Images.xcassets */; };
 		367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C151F7E375D002222EB /* Extensions+UIViewController.swift */; };
 		367F3C181F7E37C3002222EB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C171F7E37C3002222EB /* Helpers.swift */; };
+		36829F471F9F09E400D1465F /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36829F461F9F09E400D1465F /* Extensions+UIImage.swift */; };
 		3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */; };
 		36B683821F95FD9700CC4F09 /* EventServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B683811F95FD9700CC4F09 /* EventServicesTest.swift */; };
 		36B683841F960DBD00CC4F09 /* UserServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B683831F960DBD00CC4F09 /* UserServicesTest.swift */; };
@@ -113,6 +114,7 @@
 		367F3C131F7E3639002222EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		367F3C151F7E375D002222EB /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		367F3C171F7E37C3002222EB /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		36829F461F9F09E400D1465F /* Extensions+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
 		3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36B683811F95FD9700CC4F09 /* EventServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventServicesTest.swift; sourceTree = "<group>"; };
 		36B683831F960DBD00CC4F09 /* UserServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServicesTest.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				367F3BD81F7E34EB002222EB /* Extensions+UINavigationController.swift */,
 				362C5E0A1F80A1930033F9DB /* Extensions+Int.swift */,
 				36001AE11F83F8360031A1EE /* Extensions+Double.swift */,
+				36829F461F9F09E400D1465F /* Extensions+UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
 				36001AE01F83C7A20031A1EE /* WWCalendarTimeSelector.swift in Sources */,
+				36829F471F9F09E400D1465F /* Extensions+UIImage.swift in Sources */,
 				36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */,
 				36B683841F960DBD00CC4F09 /* UserServicesTest.swift in Sources */,
 				367F3BFF1F7E35C4002222EB /* LaunchVC.swift in Sources */,

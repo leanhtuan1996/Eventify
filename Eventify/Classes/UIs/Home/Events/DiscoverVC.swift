@@ -20,7 +20,7 @@ class DiscoverVC: UIViewController {
     var events: [EventObject] = []
     var refreshControl: UIRefreshControl!
     var isLoadingMore = false
-    
+    var previousController: UIViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
         //pull to refresh
@@ -60,8 +60,9 @@ class DiscoverVC: UIViewController {
         }
         
         loadEvents(isFirstLoad: true)
+        
+        self.tabBarController?.delegate = self
     }
-   
     
     func loadEvents(isFirstLoad: Bool) {
         EventServicesTest.shared.getEvents(isFirstLoad: isFirstLoad) { (events, error) in
@@ -112,7 +113,7 @@ class DiscoverVC: UIViewController {
     
 }
 
-extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
+extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
@@ -151,7 +152,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     func handlerPrice(for tickets: [TicketObject]) -> String {
         
         if tickets.count > 0{
-           
+            
             var min = tickets[0].price ?? 0
             
             //Get all price in array
@@ -170,7 +171,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func handlerTypes(for types: [EventTypeObject]) -> String {
-       
+        
         var string = ""
         
         var index = 0
@@ -187,13 +188,6 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         return string
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if indexPath.row == (self.events.count - 3) {
-//            print("LOADING MORE: ROW: \(indexPath.row) - EVENTS COUNT: \(self.events.count)")
-//            self.loadEvents(isFirstLoad: false)
-//        }
-//    }
-    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         // UITableView only moves in one direction, y axis
@@ -203,7 +197,12 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource {
         if maximumOffset - currentOffset <= 200.0 {
             self.loadEvents(isFirstLoad: false)
         }
-
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 0 {
+            self.tblEvents.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
+        }
     }
     
 }
