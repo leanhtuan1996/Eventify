@@ -75,6 +75,7 @@ class DiscoverVC: UIViewController {
             }
             
             if let events = events {
+                if events.count == 0 { return }
                 self.events = events
                 self.tblEvents.reloadData()
             }
@@ -198,6 +199,8 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
             self.loadEvents(isFirstLoad: false)
         }
     }
+    
+    
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 0 {

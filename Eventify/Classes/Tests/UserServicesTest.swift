@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import Gloss
+import FBSDKLoginKit
 let refUserTest = Firestore.firestore().collection("Users")
 let refImagePhotoUser = refStorageTest.reference().child("Images").child("UserAvatar")
 
@@ -18,18 +19,18 @@ class UserServicesTest: NSObject {
     
     //ref User child
     
-    var currentUser:UserObject?
+    var currentUser: UserObject?
     
     //sign up with email & password
-    func signUp(with user: UserObject, completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
+    func signUp(with user: UserObject, completionHandler: @escaping(_ error: String?) -> Void) {
         
         guard let password = user.password, let email = user.email else {
-            return completionHandler(nil, "Password not empty")
+            return completionHandler("Password not empty")
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
-                return completionHandler(nil, error.localizedDescription)
+                return completionHandler(error.localizedDescription)
             }
             
             if let user = user {
@@ -45,29 +46,29 @@ class UserServicesTest: NSObject {
                 self.currentUser = userObject
                 
                 guard let userJson = userObject.toJSON() else {
-                    return completionHandler(nil, "Convert user to json has been failed")
+                    return completionHandler("Convert user to json has been failed")
                 }
                 
                 refUserTest.document(user.uid).setData(userJson, options: SetOptions.merge(), completion: { (error) in
                     if let error = error {
-                        return completionHandler(nil, "Insert into database has been failed with error: \(error.localizedDescription)")
+                        return completionHandler("Insert into database has been failed with error: \(error.localizedDescription)")
                     }
                     
-                    return completionHandler(userObject, nil)
+                    return completionHandler(nil)
                 })
             }
         }
     }
     
-    func signIn(with user: UserObject, completionHandler: @escaping(_ data: UserObject?, _ error: String?) -> Void) {
+    func signIn(with user: UserObject, completionHandler: @escaping(_ error: String?) -> Void) {
         
         guard let password = user.password, let email = user.email else {
-            return completionHandler(nil, "Password is required")
+            return completionHandler("Password is required")
         }
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
-                return completionHandler(nil, error.localizedDescription)
+                return completionHandler(error.localizedDescription)
             }
             
             if let user = user {
@@ -81,7 +82,7 @@ class UserServicesTest: NSObject {
                 //set current user
                 self.currentUser = userObject
                 
-                return completionHandler(userObject, nil)
+                return completionHandler(nil)
             }
         }
     }
@@ -112,6 +113,7 @@ class UserServicesTest: NSObject {
                 GIDSignIn.sharedInstance().signOut()
             }
             
+            
             try Auth.auth().signOut()
         }
         catch let error as NSError
@@ -120,20 +122,20 @@ class UserServicesTest: NSObject {
         }
     }
     
-    func signInWithGoogle(authentication: GIDAuthentication?, completionHandler: @escaping (_ user: UserObject?, _ error: String?) -> Void) {
+    func signInWithGoogle(authentication: GIDAuthentication?, completionHandler: @escaping (_ error: String?) -> Void) {
         
         guard let authentication = authentication else {
-            return completionHandler(nil, "Authentication not found")
+            return completionHandler("Authentication not found")
         }
         
         let auth = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         Auth.auth().signIn(with: auth) { (user, error) in
             if let error = error {
-                return completionHandler(nil, error.localizedDescription)
+                return completionHandler(error.localizedDescription)
             }
             
             guard let user = user else {
-                return completionHandler(nil, "SIGN IN WITH GOOGLE HAD BEEN ERROR")
+                return completionHandler("SIGN IN WITH GOOGLE HAD BEEN ERROR")
             }
             
             let userObject = UserObject()
@@ -147,21 +149,54 @@ class UserServicesTest: NSObject {
             self.currentUser = userObject
             
             guard let userJson = userObject.toJSON() else {
-                return completionHandler(nil, "Convert user to json has been failed")
+                return completionHandler("Convert user to json has been failed")
             }
             
             refUserTest.document(user.uid).setData(userJson, options: SetOptions.merge(), completion: { (error) in
                 if let error = error {
-                    return completionHandler(nil, "Insert into database has been failed with error: \(error.localizedDescription)")
+                    return completionHandler("Insert into database has been failed with error: \(error.localizedDescription)")
                 }
                 
-                return completionHandler(userObject, nil)
+                return completionHandler(nil)
             })
         }
     }
     
-    func signInWithFacebook() {
+    func signInWithFacebook(token: FBSDKAccessToken, completionHandler: @escaping (_ error: String?) -> Void) {
         
+        let auth = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+        Auth.auth().signIn(with: auth) { (user, error) in
+            if let error = error {
+                return completionHandler(error.localizedDescription)
+            }
+            
+            guard let user = user else {
+                return completionHandler("SIGN IN WITH FACEBOOK HAD BEEN ERROR")
+            }
+            
+            let userObject = UserObject()
+            userObject.id = user.uid
+            userObject.email = user.email
+            userObject.phone = user.phoneNumber
+            userObject.photoURL = String(describing: user.photoURL)
+            userObject.fullName = user.displayName
+            
+            //set current user
+            self.currentUser = userObject
+            
+            guard let userJson = userObject.toJSON() else {
+                return completionHandler("Convert user to json has been failed")
+            }
+            
+            refUserTest.document(user.uid).setData(userJson, options: SetOptions.merge(), completion: { (error) in
+                if let error = error {
+                    return completionHandler("Insert into database has been failed with error: \(error.localizedDescription)")
+                }
+                
+                return completionHandler(nil)
+            })
+            
+        }
     }
     
     func forgotPasswordWithEmail(withEmail email: String, completionHandler: @escaping(_ error: String?) -> Void ) {

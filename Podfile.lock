@@ -1,4 +1,10 @@
 PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - BoringSSL (9.0):
     - BoringSSL/Implementation (= 9.0)
     - BoringSSL/Interface (= 9.0)
@@ -6,6 +12,10 @@ PODS:
     - BoringSSL/Interface (= 9.0)
   - BoringSSL/Interface (9.0)
   - Dollar (6.2.1)
+  - FBSDKCoreKit (4.27.1):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.27.1):
+    - FBSDKCoreKit
   - Firebase/Auth (4.3.0):
     - Firebase/Core
     - FirebaseAuth (= 4.2.1)
@@ -99,7 +109,10 @@ PODS:
   - SkyFloatingLabelTextField (3.2.1)
 
 DEPENDENCIES:
+  - Bolts
   - Dollar
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -121,8 +134,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Haneke/HanekeSwift.git
 
 SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BoringSSL: 19083b821ef3ae0f758fae15482e183003b1e265
   Dollar: 197e92d0fc1ded259363f33f883704b7b550472b
+  FBSDKCoreKit: 03365dad5d790249196ffad8be4f6d8a2d98f932
+  FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
   Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
   FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
   FirebaseAuth: d7f047fbeab98062b98ea933b8d934e0fb1190e2
@@ -146,6 +162,6 @@ SPEC CHECKSUMS:
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
 
-PODFILE CHECKSUM: 349cedf5e0f96e18e1dd7b139134a3867eda84a0
+PODFILE CHECKSUM: 5d832cb6b2755935851faf9eb10c0fac7b71d0e0
 
 COCOAPODS: 1.4.0.beta.1

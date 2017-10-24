@@ -15,4 +15,8 @@ target 'Eventify' do
     pod 'SkyFloatingLabelTextField'
     pod 'Dollar'
     pod 'HanekeSwift', :git => 'https://github.com/Haneke/HanekeSwift.git', :commit => '694d6df'
+    # Pods for Facebook
+    pod 'Bolts'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
 end

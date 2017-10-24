@@ -8,6 +8,9 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 
 class SignInVC: UIViewController {
     
@@ -74,21 +77,45 @@ class SignInVC: UIViewController {
         userObject.email = email
         
         activityIndicatorView.showLoadingDialog(self)
-        UserServices.shared.signIn(with: userObject) { (user, error) in
+        UserServicesTest.shared.signIn(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {
                 self.showAlert(error, title: "Sign In Error", buttons: nil)
                 return
             }
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                 appDelegate.showMainView()
-            }
+//            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//                 appDelegate.showMainView()
+//            }
         }
     }
     
     // MARK : - ACTIONS
     
     @IBAction func btnFacebook(_ sender: Any) {
+        self.activityIndicatorView.showLoadingDialog(self)
+        let fbManager = FBSDKLoginManager.init()
+        fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.activityIndicatorView.stopAnimating()
+                return
+            }
+            
+            guard let result = result, let token = result.token else {
+                print("Result not found")
+                self.activityIndicatorView.stopAnimating()
+                return
+            }
+            
+            
+            UserServicesTest.shared.signInWithFacebook(token: token, completionHandler: { (error) in
+                self.activityIndicatorView.stopAnimating()
+                if let error = error {
+                    print(error)
+                    return
+                }                
+            })
+        }
     }
     
     @IBAction func btnGooglePlus(_ sender: Any) {
@@ -131,7 +158,7 @@ extension SignInVC: UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate 
     // MARK: - SIGN IN FUNCTION WITH GID
     func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser, withError error: Error) {
         
-        UserServices.shared.signInWithGoogle(authentication: user.authentication) { (user, error) in
+        UserServicesTest.shared.signInWithGoogle(authentication: user.authentication) { (error) in
             self.activityIndicatorView.stopAnimating()
             
             if let error = error {
@@ -139,12 +166,12 @@ extension SignInVC: UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate 
                 return
             }
             
-            if let _ = user {
-                // print(user.email)
-                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.showMainView()
-                }
-            }
+//            if let _ = user {
+//                // print(user.email)
+//                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//                    appDelegate.showMainView()
+//                }
+//            }
         }
     }
 }

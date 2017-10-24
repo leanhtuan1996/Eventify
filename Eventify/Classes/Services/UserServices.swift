@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
+import FBSDKLoginKit
 import Gloss
 let refUser = Database.database().reference().child("Users")
 class UserServices: NSObject {
@@ -141,8 +142,37 @@ class UserServices: NSObject {
         }
     }
     
-    func signInWithFacebook() {
+    func signInWithFacebook(token: String, completionHandler: @escaping (_ user: UserObject?, _ error: String?) -> Void) {
         
+        let auth = FacebookAuthProvider.credential(withAccessToken: token)
+        Auth.auth().signIn(with: auth) { (user, error) in
+            if let error = error {
+                return completionHandler(nil, error.localizedDescription)
+            }
+            
+            guard let user = user else {
+                return completionHandler(nil, "SIGN IN WITH FACEBOOK HAD BEEN ERROR")
+            }
+            
+            let userObject = UserObject()
+            userObject.id = user.uid
+            userObject.email = user.email
+            userObject.fullName = user.displayName
+            userObject.phone = user.phoneNumber
+            userObject.photoURL = String(describing: user.photoURL)
+            
+            let usr: [String: Any] = [
+                "id" : user.uid,
+                "email" : user.email ?? "",
+                "fullName" : user.displayName ?? "",
+                "phone" : user.phoneNumber ?? ""
+            ]
+            
+            refUser.child(user.uid).setValue(usr)
+            
+            return completionHandler(userObject, nil)
+            
+        }
     }
     
     func forgotPasswordWithEmail(withEmail email: String, completionHandler: @escaping(_ error: String?) -> Void ) {
