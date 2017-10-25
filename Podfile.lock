@@ -107,6 +107,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - Protobuf (3.4.0)
   - SkyFloatingLabelTextField (3.2.1)
+  - ZaloSDK (2.2.0928)
 
 DEPENDENCIES:
   - Bolts
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`, commit `694d6df`)
   - SkyFloatingLabelTextField
+  - ZaloSDK
 
 EXTERNAL SOURCES:
   HanekeSwift:
@@ -161,7 +163,8 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
+  ZaloSDK: 9bb20d9cea224e716918c946320355e74b66e019
 
-PODFILE CHECKSUM: 5d832cb6b2755935851faf9eb10c0fac7b71d0e0
+PODFILE CHECKSUM: 24ed115b71f0c26bc469e01127dcf0cb3b70b585
 
 COCOAPODS: 1.4.0.beta.1

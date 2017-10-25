@@ -17,6 +17,8 @@ class UserObject: NSObject, Glossy {
     var address: String?
     var phone: String?
     var photoURL: String?
+    var token: String?
+    var dob: String?
     
     override init() {
         self.id = ""
@@ -27,12 +29,20 @@ class UserObject: NSObject, Glossy {
             return nil
         }
         self.id = id
-        self.email = "email" <~~ json ?? nil
-        self.password = "password" <~~ json ?? nil
-        self.fullName = "fullName" <~~ json ?? nil
-        self.address = "address" <~~ json ?? nil
-        self.phone = "phone" <~~ json ?? nil
-        self.photoURL = "photoURL" <~~ json ?? nil
+        self.email = "email" <~~ json
+        self.password = "password" <~~ json
+        self.fullName = "fullName" <~~ json
+        
+        //for zalo
+        self.fullName = "name" <~~ json
+        self.dob = "birthday" <~~ json
+        
+        
+        self.address = "address" <~~ json
+        self.phone = "phone" <~~ json
+        self.photoURL = "photoURL" <~~ json
+        self.token = "token" <~~ json
+        self.dob  = "dob" <~~ json
     }
     
     func toJSON() -> JSON? {
@@ -43,7 +53,9 @@ class UserObject: NSObject, Glossy {
              "fullName" ~~> self.fullName,
              "address" ~~> self.address,
              "phone" ~~> self.phone,
-             "photoURL" ~~> self.photoURL
+             "photoURL" ~~> self.photoURL,
+             "dob" ~~> self.dob,
+             "token" ~~> self.token
             ])
     }
 }

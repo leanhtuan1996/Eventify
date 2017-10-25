@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import ZaloSDK
+import ZaloSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         //Database.database().isPersistenceEnabled = true
         Firestore.firestore().settings.isPersistenceEnabled = true
+        
+        //ZaloSDK.sharedInstance().initialize(withAppId: "3201380157403447726")
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -35,11 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let googlePlus = GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation] as? String)
         let facebook = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        //let zalo = ZDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation] as? String)
         
         return googlePlus || facebook
     }
-    
-    
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         //print("QUAY NÈ")

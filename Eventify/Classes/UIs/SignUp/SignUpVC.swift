@@ -90,13 +90,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         let userObject = UserObject()
         userObject.password = password
         userObject.email = email
-        UserServices.shared.signUp(with: userObject) { (user, error) in
+        UserServices.shared.signUp(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {
                 self.showAlert(error, title: "Sign In Error", buttons: nil)
                 return
             }
-            self.appDelegate.showMainView()
+            //self.appDelegate.showMainView()
         }
     }
     

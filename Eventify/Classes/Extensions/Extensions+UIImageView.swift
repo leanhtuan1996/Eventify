@@ -42,7 +42,7 @@ extension UIImageView
                 self.downloadedFrom(link: string)
                 
             }.onFailure { (error) in
-                EventServicesTest.shared.downloadImageCover(withPath: path, completionHandler: { (url, error) in
+                EventServices.shared.downloadImageCover(withPath: path, completionHandler: { (url, error) in
                     if let error = error {
                         print(error.localizedDescription)
                         return

@@ -77,7 +77,7 @@ class SignInVC: UIViewController {
         userObject.email = email
         
         activityIndicatorView.showLoadingDialog(self)
-        UserServicesTest.shared.signIn(with: userObject) { (error) in
+        UserServices.shared.signIn(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {
                 self.showAlert(error, title: "Sign In Error", buttons: nil)
@@ -96,7 +96,7 @@ class SignInVC: UIViewController {
         let fbManager = FBSDKLoginManager.init()
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             if let error = error {
-                print(error.localizedDescription)
+                //print(error.localizedDescription)
                 self.showAlert(error.localizedDescription, title: "Login with facebook has been error", buttons: nil)
                 self.activityIndicatorView.stopAnimating()
                 return
@@ -109,10 +109,10 @@ class SignInVC: UIViewController {
             }
             
             
-            UserServicesTest.shared.signInWithFacebook(token: token, completionHandler: { (error) in
+            UserServices.shared.signInWithFacebook(token: token, completionHandler: { (error) in
                 self.activityIndicatorView.stopAnimating()
                 if let error = error {
-                    print(error)
+                    //print(error)
                     self.showAlert(error, title: "Login with facebook has been error", buttons: nil)
                     return
                 }                
@@ -123,6 +123,17 @@ class SignInVC: UIViewController {
     @IBAction func btnGooglePlus(_ sender: Any) {
         activityIndicatorView.showLoadingDialog(self)
         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @IBAction func btnZalo(_ sender: Any) {
+//        self.activityIndicatorView.showLoadingDialog(self)
+//        UserServicesTest.shared.signInWithZalo(vc: self) { (error) in
+//            self.activityIndicatorView.stopAnimating()
+//            if let error = error {
+//                self.showAlert(error, title: "Failed", buttons: nil)
+//                return
+//            }
+//        }
     }
     
     @IBAction func btnForgotPassword(_ sender: Any) {
@@ -160,7 +171,7 @@ extension SignInVC: UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate 
     // MARK: - SIGN IN FUNCTION WITH GID
     func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser, withError error: Error) {
         
-        UserServicesTest.shared.signInWithGoogle(authentication: user.authentication) { (error) in
+        UserServices.shared.signInWithGoogle(authentication: user.authentication) { (error) in
             self.activityIndicatorView.stopAnimating()
             
             if let error = error {

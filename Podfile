@@ -5,12 +5,14 @@ target 'Eventify' do
     # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
     
+    # Pods for Facebook
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
     pod 'Firebase/Firestore'
     pod 'GoogleSignIn'
+    
     pod 'Gloss'
     pod 'SkyFloatingLabelTextField'
     pod 'Dollar'
@@ -19,4 +21,7 @@ target 'Eventify' do
     pod 'Bolts'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
+    
+    # Pod for Zalo
+    pod 'ZaloSDK'
 end

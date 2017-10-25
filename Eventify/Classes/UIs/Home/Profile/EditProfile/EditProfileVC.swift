@@ -25,18 +25,20 @@ class EditProfileVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.backItem?.title = "Trở về"
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
         if let nav = self.navigationController {
             nav.setNavigationBarHidden(true, animated: true)
         }
-        
-        //tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        if let nav = self.navigationController {
-            nav.setNavigationBarHidden(false, animated: true)
-        }
-       
     }
     
     @IBAction func btnBackClicked(_ sender: Any) {

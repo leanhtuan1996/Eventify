@@ -65,7 +65,7 @@ class DiscoverVC: UIViewController {
     }
     
     func loadEvents(isFirstLoad: Bool) {
-        EventServicesTest.shared.getEvents(isFirstLoad: isFirstLoad) { (events, error) in
+        EventServices.shared.getEvents(isFirstLoad: isFirstLoad) { (events, error) in
             
             self.refreshControl.endRefreshing()
             

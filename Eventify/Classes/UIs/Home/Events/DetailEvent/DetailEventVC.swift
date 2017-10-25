@@ -42,13 +42,15 @@ class DetailEventVC: UIViewController {
         btnBookmark.layer.cornerRadius = 20
         btnBookmark.layer.borderWidth = 0.5
         btnBookmark.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.backItem?.title = "Trở về"
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.tabBarController?.tabBar.isHidden = true
         
-        self.navigationController?.navigationBar.backItem?.title = "Trở về"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

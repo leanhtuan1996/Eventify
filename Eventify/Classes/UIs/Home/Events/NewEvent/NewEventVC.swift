@@ -222,7 +222,7 @@ class NewEventVC: UIViewController {
         newEvent.timeEnd = Helpers.getTimeStampWithInt()
         
         
-        EventServicesTest.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
+        EventServices.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
             if let error  = error {
                 print(error)
             } else {
@@ -292,7 +292,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let img = UIImageJPEGRepresentation(image, 0.5) {
                 self.imgCover.image = UIImage(data: img)
-                EventServicesTest.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
+                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
                     if let error = error {
                         print("Upload image had been failed: \(error)")
                         return
