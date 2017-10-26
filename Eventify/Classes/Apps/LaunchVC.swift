@@ -16,7 +16,7 @@ class LaunchVC: UIViewController {
         
         //EventServicesTest.shared.deleteEvents()
         
-        UserServices.shared.signOut()
+        //UserServices.shared.signOut()
         
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             

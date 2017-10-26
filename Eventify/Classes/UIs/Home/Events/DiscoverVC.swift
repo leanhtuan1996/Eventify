@@ -82,6 +82,10 @@ class DiscoverVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -200,11 +204,12 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         }
     }
     
-    
-    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if tabBarController.selectedIndex == 0 {
-            self.tblEvents.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
+        if let nav = tabBarController.selectedViewController as? UINavigationController {
+            if previousController == nav.viewControllers[0] as? DiscoverVC {
+                self.tblEvents.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
+            }
+            previousController = nav.viewControllers[0]
         }
     }
     
