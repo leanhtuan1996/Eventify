@@ -661,7 +661,7 @@
                                                 </constraints>
                                                 <state key="normal" image="share"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Famous! Free Halloween Party w/99.7 Now Radio" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EV2-iv-20x">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Famous! Free Halloween Party w/99.7 Now Radio" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EV2-iv-20x">
                                                 <rect key="frame" x="20" y="230" width="335" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -704,6 +704,9 @@
                                                         <state key="normal" title="Thêm vào lịch">
                                                             <color key="titleColor" red="0.53996080160140991" green="0.54462438821792603" blue="0.63826191425323486" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnAddToCalendar:" destination="tQ6-Ko-e7Q" eventType="touchUpInside" id="abr-g9-tSv"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21:30 - 2:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xq-pg-YHn">
                                                         <rect key="frame" x="45" y="30" width="280" height="20"/>
@@ -801,6 +804,9 @@
                                                 <state key="normal" title="Đọc thêm">
                                                     <color key="titleColor" red="0.53996080160000004" green="0.54462438820000003" blue="0.63826191430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnShowMoreDiscriptions:" destination="tQ6-Ko-e7Q" eventType="touchUpInside" id="ce4-Fu-BO2"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -894,7 +900,11 @@
                         <outlet property="btnBookmark" destination="ENy-Cq-BUq" id="uxF-hr-YZE"/>
                         <outlet property="btnShare" destination="ThA-mP-US9" id="g7S-he-Zyr"/>
                         <outlet property="imgCover" destination="Shz-2r-Jqj" id="GIX-vT-fHD"/>
+                        <outlet property="lblAddress" destination="D8F-fb-Ahk" id="Lxu-Z9-14d"/>
+                        <outlet property="lblBy" destination="N4S-zh-bb6" id="COh-je-vSq"/>
+                        <outlet property="lblDateStart" destination="Zvf-56-AmV" id="ZS3-Xc-xlq"/>
                         <outlet property="lblDescriptions" destination="23v-Sr-mvS" id="Eoh-7J-uSk"/>
+                        <outlet property="lblDuration" destination="4Xq-pg-YHn" id="Jj3-D6-Rxs"/>
                         <outlet property="lblName" destination="EV2-iv-20x" id="IQE-EQ-sXK"/>
                         <outlet property="lblPrice" destination="Nv6-VF-ncS" id="kTl-c9-tdu"/>
                     </connections>
@@ -2429,7 +2439,7 @@
                 <navigationController storyboardIdentifier="navDiscovery" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xgj-To-8My" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="event" id="FX1-mo-f2v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P83-pO-uz1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P83-pO-uz1">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2448,7 +2458,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jax-Dj-2Vo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" id="moM-TK-frP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmt-1m-j3K">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tmt-1m-j3K">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2467,7 +2477,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eCx-KP-e6n" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="plus" id="HWc-D0-cGs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vcE-vv-7wx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vcE-vv-7wx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2486,7 +2496,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e7G-ee-cgy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="alert" id="NAK-hh-v8F"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TOF-W7-rO2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TOF-W7-rO2">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2505,7 +2515,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7i7-AK-sec" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="more" id="auB-ZF-Sjq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bj4-Jy-j0H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Bj4-Jy-j0H">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -82,10 +82,6 @@ class DiscoverVC: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)

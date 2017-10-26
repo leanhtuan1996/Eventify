@@ -21,4 +21,15 @@ extension Int {
         dateFormatter.locale = Locale.current
         return dateFormatter.string(from: date)
     }
+    
+    //day - month - year - hour - minute
+    func getTime() -> (Int, Int, Int, Int, Int) {
+        let dateFormatter = DateFormatter()
+        
+        let date = Date(timeIntervalSince1970: Double(self))
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        dateFormatter.locale = Locale.current
+        
+        return (date.day, date.month, date.year, date.hour, date.minute)
+    }
 }

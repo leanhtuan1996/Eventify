@@ -16,7 +16,11 @@ class DetailEventVC: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDescriptions: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
-    
+    @IBOutlet weak var lblBy: UILabel!
+    @IBOutlet weak var lblDateStart: UILabel!
+    @IBOutlet weak var lblDuration: UILabel!
+    @IBOutlet weak var lblAddress: UILabel!
+    let loading = UIActivityIndicatorView()
     
     //button
     @IBOutlet weak var btnShare: UIButton!
@@ -27,9 +31,7 @@ class DetailEventVC: UIViewController {
         //self.navigationController?.setNavigationBarHidden(false, animated: true)
         //btnLabel.layer.cornerRadius = 15
         
-        if let photoUrl = event.photoURL {
-            imgCover.downloadedFrom(path: photoUrl)
-        }
+        
 //        lblName.text = event.name
 //        lblPrice.text = "Từ \(minPrice ?? "0") VNĐ"
 //        lblTimeStart.text = "Bắt đầu lúc: \(event.timeStart?.toTimestampString() ?? "Không rõ")"
@@ -47,6 +49,52 @@ class DetailEventVC: UIViewController {
         self.navigationController?.navigationBar.backItem?.title = "Trở về"
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         self.tabBarController?.tabBar.isHidden = true
+        
+        self.handlerEvent {
+            self.loading.stopAnimating()
+        }
+    }
+    
+    func handlerEvent(completionHandler: @escaping () -> Void) {
+        
+        //loading
+        loading.showLoadingDialog(self)
+        
+        //image cover
+        if let photoUrl = event.photoURL {
+            imgCover.downloadedFrom(path: photoUrl)
+        }
+        
+        //name
+        self.lblName.text = event.name
+        //by
+        self.lblBy.text = "Bởi: \(event.by?.fullName ?? "Không rõ")"
+        /*
+         * day start - ex: 31 thg 10, 2017
+         * .get day
+         * .get month
+         * .get year
+         */
+        if let timeStart = event.timeStart, let timeEnd = event.timeEnd {
+            let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
+            let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
+            self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
+            self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
+        }
+        
+        //address
+        self.lblAddress.text = event.address ?? "Không có vị trí cho sự kiện này"
+        
+        //descriptions
+        self.lblDescriptions.text = event.descriptionEvent ?? "Không có mô tả cho sự kiện này"
+        
+        //maps
+        
+        //price: from $ -> to $
+        
+        //isLike?
+        
+        completionHandler()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +104,10 @@ class DetailEventVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    @IBAction func btnAddToCalendar(_ sender: Any) {
+    }
+    @IBAction func btnShowMoreDiscriptions(_ sender: Any) {
     }
     
 }
