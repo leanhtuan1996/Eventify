@@ -23,6 +23,7 @@
 		36001B0E1F875ED10031A1EE /* EventTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36001B0C1F875ED10031A1EE /* EventTypeCell.xib */; };
 		36001B121F8775160031A1EE /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B111F8775160031A1EE /* SettingsVC.swift */; };
 		362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362260001FA1A0D000B2BE4C /* EventProtocols.swift */; };
+		362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362260271FA1A99500B2BE4C /* MapPickerVC.swift */; };
 		362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */; };
 		362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E041F8094800033F9DB /* NewTicketVC.swift */; };
 		362C5E071F809E290033F9DB /* TicketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E061F809E290033F9DB /* TicketObject.swift */; };
@@ -170,6 +171,7 @@
 		36001B0C1F875ED10031A1EE /* EventTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeCell.xib; sourceTree = "<group>"; };
 		36001B111F8775160031A1EE /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		362260001FA1A0D000B2BE4C /* EventProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
+		362260271FA1A99500B2BE4C /* MapPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPickerVC.swift; sourceTree = "<group>"; };
 		362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsManagerVC.swift; sourceTree = "<group>"; };
 		362C5E041F8094800033F9DB /* NewTicketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTicketVC.swift; sourceTree = "<group>"; };
 		362C5E061F809E290033F9DB /* TicketObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketObject.swift; sourceTree = "<group>"; };
@@ -664,6 +666,14 @@
 				362260001FA1A0D000B2BE4C /* EventProtocols.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3622601A1FA1A98400B2BE4C /* MapPicker */ = {
+			isa = PBXGroup;
+			children = (
+				362260271FA1A99500B2BE4C /* MapPickerVC.swift */,
+			);
+			path = MapPicker;
 			sourceTree = "<group>";
 		};
 		362C5E001F8093B20033F9DB /* Tickets */ = {
@@ -1666,6 +1676,7 @@
 		36B762381F7FB283009D3BE9 /* NewEvent */ = {
 			isa = PBXGroup;
 			children = (
+				3622601A1FA1A98400B2BE4C /* MapPicker */,
 				362C5E001F8093B20033F9DB /* Tickets */,
 				36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */,
 			);
@@ -1908,6 +1919,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -2026,6 +2039,7 @@
 				36001ADB1F83C7A20031A1EE /* NSCalendar+Timepiece.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
+				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				36001ADD1F83C7A20031A1EE /* NSDateComponents+Timepiece.swift in Sources */,

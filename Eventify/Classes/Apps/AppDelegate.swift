@@ -12,6 +12,8 @@ import GoogleSignIn
 import FBSDKCoreKit
 import ZaloSDK
 import ZaloSDKCoreKit
+import GooglePlaces
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         //Database.database().isPersistenceEnabled = true
         Firestore.firestore().settings.isPersistenceEnabled = true
+        
+        GMSServices.provideAPIKey("AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")
+        GMSPlacesClient.provideAPIKey("AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")
         
         //ZaloSDK.sharedInstance().initialize(withAppId: "3201380157403447726")
     }

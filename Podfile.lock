@@ -60,6 +60,13 @@ PODS:
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - Gloss (1.2.4)
+  - GoogleMaps (2.4.0):
+    - GoogleMaps/Maps (= 2.4.0)
+  - GoogleMaps/Base (2.4.0)
+  - GoogleMaps/Maps (2.4.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.4.0):
+    - GoogleMaps/Base (= 2.4.0)
   - GoogleSignIn (4.1.0):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -120,6 +127,8 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - Gloss
+  - GoogleMaps
+  - GooglePlaces
   - GoogleSignIn
   - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`, commit `694d6df`)
   - SkyFloatingLabelTextField
@@ -150,6 +159,8 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 70c2b877e9338971b2429ea5a4293df6961aa44e
   FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
+  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
   GoogleSignIn: 8c599fc10d25b2af86a3f82fd9631e863f2b1400
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   gRPC: 42f915ce322b1abc5241621acc776f2fdb0a2039
@@ -165,6 +176,6 @@ SPEC CHECKSUMS:
   SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
   ZaloSDK: 9bb20d9cea224e716918c946320355e74b66e019
 
-PODFILE CHECKSUM: 24ed115b71f0c26bc469e01127dcf0cb3b70b585
+PODFILE CHECKSUM: efa01e9191e6d24e4c7acfa34368438ac400a08c
 
 COCOAPODS: 1.4.0.beta.1

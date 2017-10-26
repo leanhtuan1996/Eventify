@@ -19,13 +19,13 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var lblByOrganizer: UILabel!
     @IBOutlet weak var lblTimeStart: UILabel!
     @IBOutlet weak var lblTimeEnd: UILabel!
-    @IBOutlet weak var txtDetailAddress: SkyFloatingLabelTextField!
-    @IBOutlet weak var lblEventType: UILabel!
+    @IBOutlet weak var lblEventType: UILabel!    
+    @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblNumberTickets: UILabel!
     @IBOutlet weak var txtDescriptionEvent: SkyFloatingLabelTextField!
     var pickerImg = UIImagePickerController()
     
-    
+    var addressPicker: String?
     var isTimeStartPicked: Bool = false
     var dateTimeSelector: WWCalendarTimeSelector!
     
@@ -58,19 +58,19 @@ class NewEventVC: UIViewController {
         imgPicker.isUserInteractionEnabled = true
         imgPicker.addGestureRecognizer(tapForImgPicker)
         
+        let tapForAddressPicker = UITapGestureRecognizer(target: self, action: #selector(self.showMapsPickerVC))
+        lblAddress.isUserInteractionEnabled = true
+        lblAddress.addGestureRecognizer(tapForAddressPicker)
+        
         dateTimeSelector = WWCalendarTimeSelector.instantiate()
         dateTimeSelector.delegate = self
         
         lblNameEvent.delegate = self
-        txtDetailAddress.delegate = self
         
         pickerImg.delegate = self
         
         lblNameEvent.returnKeyType = .done
         lblNameEvent.delegate = self
-        
-        txtDetailAddress.returnKeyType = .done
-        txtDetailAddress.delegate = self
         
         txtDescriptionEvent.returnKeyType = .done
         txtDescriptionEvent.delegate = self
@@ -136,18 +136,19 @@ class NewEventVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func showMapsPickerVC() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "MapPickerVC") as? MapPickerVC {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @IBAction func btnDoneClicked(_ sender: Any) {
         if !lblNameEvent.hasText {
             lblNameEvent.errorMessage = "Trường này là bắt buộc"
         }
         
-        if !txtDetailAddress.hasText {
-            txtDetailAddress.errorMessage = "Trường này là bắt buộc"
-            return
-        }
-        
         //start add event
-        guard let name = lblNameEvent.text, let address = txtDetailAddress.text, let timeStart = lblTimeStart.text, let timeEnd = lblTimeEnd.text else {
+        guard let name = lblNameEvent.text, let timeStart = lblTimeStart.text, let timeEnd = lblTimeEnd.text, let address = self.addressPicker else {
             return
         }
         
@@ -266,6 +267,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
         if let text = textField as? SkyFloatingLabelTextField {
             text.errorMessage = ""
         }

@@ -34,7 +34,6 @@ extension Int {
     }
     
     func toDate() -> Date {
-        let dateFormatter = DateFormatter()
         let date = Date(timeIntervalSince1970: Double(self))
         return date
     }
