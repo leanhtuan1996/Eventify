@@ -33,6 +33,8 @@
 		362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362C5E0E1F80ADF20033F9DB /* TicketCells.xib */; };
 		362C5E121F810CD10033F9DB /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E111F810CD10033F9DB /* EventObject.swift */; };
 		362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E131F810D760033F9DB /* EventTypeObject.swift */; };
+		36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */; };
+		3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366580191FA1EDE8008A161F /* AddressObject.swift */; };
 		367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BCF1F7E34EB002222EB /* AppDelegate.swift */; };
 		367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD11F7E34EB002222EB /* Extensions+Data.swift */; };
 		367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD21F7E34EB002222EB /* Extensions+Date.swift */; };
@@ -545,6 +547,8 @@
 		3644EFC71F9F2FC70037F1D1 /* SwitchUserSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SwitchUserSample-Info.plist"; sourceTree = "<group>"; };
 		3644EFC81F9F2FC70037F1D1 /* SwitchUserSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwitchUserSample-Prefix.pch"; sourceTree = "<group>"; };
 		3644EFC91F9F2FC70037F1D1 /* SwitchUserSample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwitchUserSample.xcodeproj; sourceTree = "<group>"; };
+		36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsServices.swift; sourceTree = "<group>"; };
+		366580191FA1EDE8008A161F /* AddressObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressObject.swift; sourceTree = "<group>"; };
 		367F3BB81F7E337D002222EB /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367F3BCF1F7E34EB002222EB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367F3BD11F7E34EB002222EB /* Extensions+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Data.swift"; sourceTree = "<group>"; };
@@ -1532,6 +1536,7 @@
 				362C5E061F809E290033F9DB /* TicketObject.swift */,
 				362C5E111F810CD10033F9DB /* EventObject.swift */,
 				362C5E131F810D760033F9DB /* EventTypeObject.swift */,
+				366580191FA1EDE8008A161F /* AddressObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1542,6 +1547,7 @@
 				367F3BDD1F7E34EB002222EB /* EventServices.swift */,
 				367F3BDE1F7E34EB002222EB /* UserServices.swift */,
 				36001B051F8747C40031A1EE /* TypeEventServices.swift */,
+				36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1957,6 +1963,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Eventify/Pods-Eventify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Dollar/Dollar.framework",
@@ -1978,6 +1985,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dollar.framework",
@@ -2036,6 +2044,7 @@
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
+				3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */,
 				36001ADB1F83C7A20031A1EE /* NSCalendar+Timepiece.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
@@ -2056,6 +2065,7 @@
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,
 				362C5E071F809E290033F9DB /* TicketObject.swift in Sources */,
 				36001ADE1F83C7A20031A1EE /* String+Timepiece.swift in Sources */,
+				36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */,
 				367F3C011F7E35F3002222EB /* ForgotPasswordVC.swift in Sources */,
 				36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */,
 			);

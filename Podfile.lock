@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.5.1)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -117,6 +118,7 @@ PODS:
   - ZaloSDK (2.2.0928)
 
 DEPENDENCIES:
+  - Alamofire
   - Bolts
   - Dollar
   - FBSDKCoreKit
@@ -145,6 +147,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Haneke/HanekeSwift.git
 
 SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BoringSSL: 19083b821ef3ae0f758fae15482e183003b1e265
   Dollar: 197e92d0fc1ded259363f33f883704b7b550472b
@@ -176,6 +179,6 @@ SPEC CHECKSUMS:
   SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
   ZaloSDK: 9bb20d9cea224e716918c946320355e74b66e019
 
-PODFILE CHECKSUM: efa01e9191e6d24e4c7acfa34368438ac400a08c
+PODFILE CHECKSUM: 90588e88fb808973a1fa6afe43d5a2207f1b8311
 
 COCOAPODS: 1.4.0.beta.1

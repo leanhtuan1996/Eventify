@@ -25,11 +25,12 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var txtDescriptionEvent: SkyFloatingLabelTextField!
     var pickerImg = UIImagePickerController()
     
-    var addressPicker: String?
+    var isAddressPicked = false
     var isTimeStartPicked: Bool = false
     var dateTimeSelector: WWCalendarTimeSelector!
     
     var newEvent: EventObject = EventObject()
+    var address: AddressObject?
     
     let loading = UIActivityIndicatorView()
     
@@ -139,6 +140,7 @@ class NewEventVC: UIViewController {
     func showMapsPickerVC() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "MapPickerVC") as? MapPickerVC {
             self.navigationController?.pushViewController(vc, animated: true)
+            vc.delegate = self
         }
     }
     
@@ -147,8 +149,13 @@ class NewEventVC: UIViewController {
             lblNameEvent.errorMessage = "Trường này là bắt buộc"
         }
         
+        if !isAddressPicked {
+            lblAddress.text = "Vui lòng chọn vị trí"
+            lblAddress.textColor = UIColor.red
+        }
+        
         //start add event
-        guard let name = lblNameEvent.text, let timeStart = lblTimeStart.text, let timeEnd = lblTimeEnd.text, let address = self.addressPicker else {
+        guard let name = lblNameEvent.text, let timeStart = lblTimeStart.text, let timeEnd = lblTimeEnd.text, let address = self.address else {
             return
         }
         
@@ -166,7 +173,7 @@ class NewEventVC: UIViewController {
         let tickets: [TicketObject] = TicketManager.shared.getTickets()
         
         newEvent.name = name
-        newEvent.address = address
+        newEvent.address = address.address
         newEvent.tickets = tickets
         newEvent.by = UserServices.shared.currentUser
         newEvent.descriptionEvent = txtDescriptionEvent.text
@@ -183,25 +190,25 @@ class NewEventVC: UIViewController {
             return
         }
         
-        //self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog(self)
         
         //for testing
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
+        //timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
         
         
-//        EventServicesTest.shared.addEvent(withEvent: self.newEvent) { (error) in
-//            self.loading.stopAnimating()
-//            if let error = error {
-//                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-//                return
-//            }
-//            
-//            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-//                self.tabBarController?.selectedIndex = 0
-//            })
-//            
-//            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
-//        }
+        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
+            self.loading.stopAnimating()
+            if let error = error {
+                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
+                return
+            }
+            
+            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+                self.tabBarController?.selectedIndex = 0
+            })
+            
+            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
+        }
     }
     
     //for testing
@@ -235,7 +242,23 @@ class NewEventVC: UIViewController {
     }
 }
 
-extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, SelectPropertyEventDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, EventDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func selectedAddress(with address: AddressObject) {
+        self.isAddressPicked = true
+        self.address = address
+        self.lblAddress.text = address.address
+        self.lblAddress.textColor = UIColor.black
+    }
+    
+    func selectedType(with type: EventTypeObject) {
+        self.lblEventType.text = type.name
+        
+        if self.newEvent.types == nil {
+            self.newEvent.types = []
+        }
+        
+        self.newEvent.types?.append(type)
+    }
     
     func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
         
@@ -278,15 +301,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         return false
     }
     
-    func selectedType(with type: EventTypeObject) {
-        self.lblEventType.text = type.name
-        
-        if self.newEvent.types == nil {
-            self.newEvent.types = []
-        }
-        
-        self.newEvent.types?.append(type)
-    }
+   
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
@@ -329,8 +344,4 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Selec
         pickerImg.isEditing = false
         self.present(pickerImg, animated: true, completion: nil)
     }
-}
-
-protocol SelectPropertyEventDelegate {
-    func selectedType(with type: EventTypeObject) -> Void
 }

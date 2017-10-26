@@ -12,4 +12,8 @@ extension Double {
     func toInt() -> Int {
         return Int(self)
     }
+    
+    func toString() -> String {
+        return String(self)
+    }
 }
