@@ -131,7 +131,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
-        cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? [])) VNĐ"
+        cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? []).0) VNĐ"
         cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
         if let url = events[indexPath.row].photoURL {
             cell.imgPhoto.downloadedFrom(path: url)
@@ -144,29 +144,32 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         //print(indexPath.row)
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC {
             sb.event = events[indexPath.row]
-            sb.minPrice = handlerPrice(for: events[indexPath.row].tickets ?? [])
+            sb.minPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).0
+            sb.maxPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).1
             self.navigationController?.pushViewController(sb, animated: true)
             self.tabBarController?.hidesBottomBarWhenPushed = true
         }
     }
     
-    func handlerPrice(for tickets: [TicketObject]) -> String {
+    func handlerPrice(for tickets: [TicketObject]) -> (String, String) {
         
-        if tickets.count > 0{
+        if tickets.count > 0 {
             
             var min = tickets[0].price ?? 0
+            var max = tickets[0].price ?? 0
             
             //Get all price in array
             for ticket in tickets {
                 if let price = ticket.price {
                     min = price < min ? price : min
+                    max = price > max ? price : max
                 }
             }
             
-            return min.toString()
+            return (min.toString(), max.toString())
             
         } else {
-            return "0"
+            return ("0", "0")
         }
         
     }

@@ -10,7 +10,8 @@ import UIKit
 
 class DetailEventVC: UIViewController {
     
-    var minPrice: String!
+    var minPrice: String?
+    var maxPrice: String?
     var event: EventObject!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
@@ -28,27 +29,12 @@ class DetailEventVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        //self.navigationController?.setNavigationBarHidden(false, animated: true)
-        //btnLabel.layer.cornerRadius = 15
-        
-        
-//        lblName.text = event.name
-//        lblPrice.text = "Từ \(minPrice ?? "0") VNĐ"
-//        lblTimeStart.text = "Bắt đầu lúc: \(event.timeStart?.toTimestampString() ?? "Không rõ")"
-//        lblTimeEnd.text = "Kết thúc lúc: \(event.timeEnd?.toTimestampString() ?? "Không rõ")"
-//        lblDescriptions.text = event.descriptionEvent ?? "Không có chi tiết sự kiện để hiển thị ngay lúc này"
-//        lblAddress.text = "Địa chỉ: \(event.address ?? "Không rõ")"
         btnShare.layer.cornerRadius = 20
         btnShare.layer.borderWidth = 0.5
         btnShare.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
         btnBookmark.layer.cornerRadius = 20
         btnBookmark.layer.borderWidth = 0.5
         btnBookmark.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.backItem?.title = "Trở về"
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
-        self.tabBarController?.tabBar.isHidden = true
         
         self.handlerEvent {
             self.loading.stopAnimating()
@@ -69,6 +55,7 @@ class DetailEventVC: UIViewController {
         self.lblName.text = event.name
         //by
         self.lblBy.text = "Bởi: \(event.by?.fullName ?? "Không rõ")"
+        
         /*
          * day start - ex: 31 thg 10, 2017
          * .get day
@@ -88,17 +75,23 @@ class DetailEventVC: UIViewController {
         //descriptions
         self.lblDescriptions.text = event.descriptionEvent ?? "Không có mô tả cho sự kiện này"
         
-        //maps
-        
         //price: from $ -> to $
+        if let minPrice = self.minPrice, let maxPrice = self.maxPrice {
+            self.lblPrice.text = "Từ \(minPrice) - \(maxPrice) VNĐ"
+        }
+        
+        //maps
         
         //isLike?
         
-        completionHandler()
+        return completionHandler()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.backItem?.title = "Trở về"
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,6 +99,32 @@ class DetailEventVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     @IBAction func btnAddToCalendar(_ sender: Any) {
+        
+        guard let name = lblName.text, let dateStart = event.timeStart, let dateEnd = event.timeEnd, let location = event.address else {
+            return
+        }
+        
+        let startDate = dateStart.toDate()
+        let endDate = dateEnd.toDate()
+        
+        let addButton = UIAlertAction(title: "Thêm ngay", style: UIAlertActionStyle.default) { (btn) in
+            self.loading.showLoadingDialog(self)
+            Helpers.addEventToCalendar(title: name, description: self.lblDescriptions.text, startDate: startDate, endDate: endDate, location: location, completion: { (error) in
+                
+                self.loading.stopAnimating()
+                if let error = error {
+                    self.showAlert(error, title: "Thêm sự kiện vào lịch thất bại", buttons: nil)
+                    return
+                }
+                self.showAlert("Đã thêm thành công sự kiện \(name) vào ứng dụng lịch của bạn.", title: "Thêm sự kiện vào lịch thành công", buttons: nil)
+            })
+            
+        }
+        
+        let cancelButton = UIAlertAction(title: "Huỷ bỏ", style: UIAlertActionStyle.default, handler: nil)
+        
+        self.showAlert("Bằng cách nhấn vào nút \("Thêm ngay"), sự kiện \(name) sẽ được thêm vào ứng dụng lịch của bạn", title: "Bạn có muốn thêm sự kiện \(name) vào lịch của bạn không?", buttons: [addButton, cancelButton])
+        
     }
     @IBAction func btnShowMoreDiscriptions(_ sender: Any) {
     }

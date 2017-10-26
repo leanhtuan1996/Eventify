@@ -73,6 +73,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>${PRODUCT_NAME} muốn được sử dụng máy ảnh của bạn</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>${PRODUCT_NAME} muốn được sử dụng lịch của bạn</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>${PRODUCT_NAME} muốn được sử dụng thư viện của bạn</string>
 	<key>UILaunchStoryboardName</key>

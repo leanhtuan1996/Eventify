@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class Helpers: NSObject {
     static func validateEmail(_ candidate: String) -> Bool {
@@ -138,5 +139,37 @@ class Helpers: NSObject {
         visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.insertSubview(visualEffectView, at: 0)
         
+    }
+    
+    static func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, location: String,  completion: ((_ error: String?) -> Void)? = nil) {
+        let eventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: .event, completion: { (granted, error) in
+            
+            if !granted {
+                completion?("Ứng dụng chưa được cấp phép sử dụng lịch của bạn. Vui lòng đi đến Cài Đặt -> Quyền riêng tư -> Lịch để cấp phép và thử lại")
+                return
+            }
+            
+            if (granted) && (error == nil) {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = title
+                event.startDate = startDate
+                event.endDate = endDate
+                event.notes = description
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                event.isAllDay = false
+                event.location = location
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                } catch let e {
+                    completion?(e.localizedDescription)
+                    return
+                }
+                completion?(nil)
+            } else {
+                completion?(error?.localizedDescription)
+            }
+        })
     }
 }

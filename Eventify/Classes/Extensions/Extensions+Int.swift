@@ -32,4 +32,12 @@ extension Int {
         
         return (date.day, date.month, date.year, date.hour, date.minute)
     }
+    
+    func toDate() -> Date {
+        let dateFormatter = DateFormatter()
+        let date = Date(timeIntervalSince1970: Double(self))
+        return date
+    }
 }
+
+

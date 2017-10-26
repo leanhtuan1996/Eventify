@@ -22,6 +22,7 @@
 		36001B0D1F875ED10031A1EE /* EventTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B0B1F875ED10031A1EE /* EventTypeCell.swift */; };
 		36001B0E1F875ED10031A1EE /* EventTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36001B0C1F875ED10031A1EE /* EventTypeCell.xib */; };
 		36001B121F8775160031A1EE /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B111F8775160031A1EE /* SettingsVC.swift */; };
+		362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362260001FA1A0D000B2BE4C /* EventProtocols.swift */; };
 		362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */; };
 		362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E041F8094800033F9DB /* NewTicketVC.swift */; };
 		362C5E071F809E290033F9DB /* TicketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E061F809E290033F9DB /* TicketObject.swift */; };
@@ -168,6 +169,7 @@
 		36001B0B1F875ED10031A1EE /* EventTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
 		36001B0C1F875ED10031A1EE /* EventTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeCell.xib; sourceTree = "<group>"; };
 		36001B111F8775160031A1EE /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		362260001FA1A0D000B2BE4C /* EventProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
 		362C5E011F8093C10033F9DB /* TicketsManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsManagerVC.swift; sourceTree = "<group>"; };
 		362C5E041F8094800033F9DB /* NewTicketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTicketVC.swift; sourceTree = "<group>"; };
 		362C5E061F809E290033F9DB /* TicketObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketObject.swift; sourceTree = "<group>"; };
@@ -654,6 +656,14 @@
 				36001B111F8775160031A1EE /* SettingsVC.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		36225FF31FA1A0B800B2BE4C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				362260001FA1A0D000B2BE4C /* EventProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		362C5E001F8093B20033F9DB /* Tickets */ = {
@@ -1448,6 +1458,7 @@
 		367F3BCD1F7E34EB002222EB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				36225FF31FA1A0B800B2BE4C /* Protocols */,
 				36B683801F95FD8500CC4F09 /* Tests */,
 				367F3BCE1F7E34EB002222EB /* Apps */,
 				367F3BD01F7E34EB002222EB /* Extensions */,
@@ -1991,6 +2002,7 @@
 				36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */,
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
 				362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */,
+				362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */,
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
 				36001AE01F83C7A20031A1EE /* WWCalendarTimeSelector.swift in Sources */,
