@@ -65,21 +65,42 @@ class DiscoverVC: UIViewController {
     }
     
     func loadEvents(isFirstLoad: Bool) {
-        EventServices.shared.getEvents(isFirstLoad: isFirstLoad) { (events, error) in
-            
-            self.refreshControl.endRefreshing()
-            
-            if let error = error {
-                print(error)
-                return
+        
+        if isFirstLoad {
+            EventServices.shared.getEvents { (events, error) in
+                self.refreshControl.endRefreshing()
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                if let events = events {
+                    self.events = events
+                    self.tblEvents.reloadData()
+                }
             }
-            
-            if let events = events {
-                if events.count == 0 { return }
-                self.events = events
-                self.tblEvents.reloadData()
-            }
+        } else {
+            EventServices.shared.getMoreEvents(completionHandler: { (events, error) in
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                if let events = events {
+                    if events.count == 0 { return }
+                    
+                    events.forEach({ (event) in
+                        self.events.append(event)
+                    })
+                    
+                    self.tblEvents.reloadData()
+                }
+            })
         }
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,7 +109,7 @@ class DiscoverVC: UIViewController {
     }
     
     // MARK: - FUNCTIONS
-    @objc func refresh(sender:AnyObject) {
+    func refresh() {
         loadEvents(isFirstLoad: true)
     }
     

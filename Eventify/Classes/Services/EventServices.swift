@@ -21,6 +21,7 @@ class EventServices: NSObject {
     //ref User child
     
     var lastSnapshotEvent: DocumentSnapshot?
+    var firstSnapshotEvent: DocumentSnapshot?
     
     var allEvents: [EventObject] = []
     
@@ -30,6 +31,7 @@ class EventServices: NSObject {
         
         if isFirstLoad {
             self.allEvents = []
+            self.firstSnapshotEvent = nil
             self.lastSnapshotEvent = nil
             refQuery = refEvent.order(by: "dateCreated", descending: true).limit(to: 15)
         } else {
@@ -48,10 +50,13 @@ class EventServices: NSObject {
                     return completionHandler(nil, "Data not found")
                 }
                 
-                
-                if let last = snapshot.documents.last {
-                    self.lastSnapshotEvent = last
+                if isFirstLoad {
+                    print("FIRST LOAD EVENTS")
+                    self.firstSnapshotEvent = snapshot.documents.first
                 }
+                
+                self.lastSnapshotEvent = snapshot.documents.last
+                
                 
                 for document in snapshot.documents {
                     //print(document.data())
@@ -61,6 +66,67 @@ class EventServices: NSObject {
                 }
                 
                 return completionHandler(self.allEvents, nil)
+            }
+        }
+        
+    }
+    
+    func getEvents(completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void) {
+        let refQuery = refEvent.order(by: "dateCreated", descending: true).limit(to: 15)
+        
+        var events: [EventObject] = []
+        
+        refQuery.addSnapshotListener { (snapshot, error) in
+            
+            if let error = error {
+                return completionHandler(nil, error.localizedDescription)
+            } else {
+                guard let snapshot = snapshot else {
+                    print("Data not found")
+                    return completionHandler(nil, "Data not found")
+                }
+                
+                self.lastSnapshotEvent = snapshot.documents.last
+                
+                for document in snapshot.documents {
+                    //print(document.data())
+                    if let event = EventObject(json: document.data()) {
+                        events.append(event)
+                    }
+                }
+                
+                return completionHandler(events, nil)
+            }
+        }
+        
+    }
+    
+    func getMoreEvents(completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void ) {
+        var refQuery: Query?
+        if let lastSnapshotEvent = self.lastSnapshotEvent {
+            refQuery = refEvent.order(by: "dateCreated", descending: true).start(afterDocument: lastSnapshotEvent).limit(to: 15)
+        }
+        var events: [EventObject] = []
+        refQuery?.addSnapshotListener { (snapshot, error) in
+            
+            if let error = error {
+                return completionHandler(nil, error.localizedDescription)
+            } else {
+                guard let snapshot = snapshot else {
+                    print("Data not found")
+                    return completionHandler(nil, "Data not found")
+                }
+                
+                self.lastSnapshotEvent = snapshot.documents.last
+                
+                for document in snapshot.documents {
+                    //print(document.data())
+                    if let event = EventObject(json: document.data()) {
+                        events.append(event)
+                    }
+                }
+                
+                return completionHandler(events, nil)
             }
         }
         

@@ -21,11 +21,18 @@ extension UIViewController {
         } else {
             alert.addAction(.init(title: "Okay", style: .default, handler: nil))
         }
-        
-        
-        
         self.present(alert, animated: true, completion: nil)
     }
     
+    //dismiss keyboard
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
 }

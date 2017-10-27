@@ -19,7 +19,7 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var lblByOrganizer: UILabel!
     @IBOutlet weak var lblTimeStart: UILabel!
     @IBOutlet weak var lblTimeEnd: UILabel!
-    @IBOutlet weak var lblEventType: UILabel!    
+    @IBOutlet weak var lblEventType: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblNumberTickets: UILabel!
     @IBOutlet weak var txtDescriptionEvent: SkyFloatingLabelTextField!
@@ -75,9 +75,6 @@ class NewEventVC: UIViewController {
         
         txtDescriptionEvent.returnKeyType = .done
         txtDescriptionEvent.delegate = self
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +88,7 @@ class NewEventVC: UIViewController {
     }
     
     func showTicketsManager() {
+        self.dismissKeyboard()
         if let sb = storyboard?.instantiateViewController(withIdentifier: "TicketsManagerVC") as? TicketsManagerVC {
             self.navigationController?.pushViewController(sb, animated: true)
         }
@@ -109,6 +107,7 @@ class NewEventVC: UIViewController {
     }
     
     func showPopupEventTypes() {
+        self.dismissKeyboard()
         if let sb = storyboard?.instantiateViewController(withIdentifier: "EventTypesVC") as? EventTypesVC {
             self.addChildViewController(sb)
             sb.view.frame = self.view.frame
@@ -119,6 +118,7 @@ class NewEventVC: UIViewController {
     }
     
     func showOptionPickerImg() {
+        self.dismissKeyboard()
         let alert = UIAlertController(title: "Chọn thư viện hoặc camera", message: "Chọn một bức ảnh từ thư viện ảnh hoặc chụp để làm ảnh bìa cho sự kiện của bạn", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let cancelAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.cancel, handler: nil)
@@ -138,6 +138,7 @@ class NewEventVC: UIViewController {
     }
     
     func showMapsPickerVC() {
+        self.dismissKeyboard()
         if let vc = storyboard?.instantiateViewController(withIdentifier: "MapPickerVC") as? MapPickerVC {
             self.navigationController?.pushViewController(vc, animated: true)
             vc.delegate = self
@@ -189,11 +190,11 @@ class NewEventVC: UIViewController {
             self.showAlert("Vui lòng chọn loại sự kiện", title: "Thông báo", buttons: nil)
             return
         }
-        
+        self.dismissKeyboard()
         self.loading.showLoadingDialog(self)
         
         //for testing
-        //timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
+        //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
         
         
         EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
@@ -217,6 +218,7 @@ class NewEventVC: UIViewController {
         print(count)
         if count == 50 {
             self.timer?.invalidate()
+            self.loading.stopAnimating()
         }
         
         let tickets: [TicketObject] = TicketManager.shared.getTickets()
@@ -301,7 +303,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
         return false
     }
     
-   
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
@@ -316,7 +318,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
                     }
                     if let path = path {
                         self.newEvent.photoURL = path
-                       
+                        
                     }
                 })
             }
