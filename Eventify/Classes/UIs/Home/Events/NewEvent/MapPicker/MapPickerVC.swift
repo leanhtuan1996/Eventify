@@ -29,14 +29,8 @@ class MapPickerVC: UIViewController {
     var placemark: CLPlacemark?
     var delegate: EventDelegate!
     
-    var city: String?
-    var country: String?
-    var countryShortName: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let item1 = UIBarButtonItem(title: "Xong", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.done))
-//        self.navigationItem.setRightBarButton(item1, animated: true)
         searchView.layer.cornerRadius = 10
         searchView.layer.shadowColor = UIColor.blue.cgColor
         searchView.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -187,8 +181,8 @@ extension MapPickerVC: GMSMapViewDelegate, CLLocationManagerDelegate {
         let address = AddressObject()
         address.placeId = placeID
         address.address = name
-        address.latitude = location.latitude.toString()
-        address.longtutude = location.longitude.toString()
+        address.latitude = location.latitude
+        address.longtutude = location.longitude
         self.showAddressPickerAlert(with: address)
         
     }

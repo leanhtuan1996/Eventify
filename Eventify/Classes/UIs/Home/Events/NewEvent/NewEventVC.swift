@@ -173,7 +173,7 @@ class NewEventVC: UIViewController {
         let tickets: [TicketObject] = TicketManager.shared.getTickets()
         
         newEvent.name = name
-        newEvent.address = address.address
+        newEvent.address = address
         newEvent.tickets = tickets
         newEvent.by = UserServices.shared.currentUser
         newEvent.descriptionEvent = txtDescriptionEvent.text
@@ -222,7 +222,7 @@ class NewEventVC: UIViewController {
         let tickets: [TicketObject] = TicketManager.shared.getTickets()
         
         newEvent.name = "Sự kiện thứ \(count)"
-        newEvent.address = "Địa chỉ thứ \(count)"
+        newEvent.address = address
         newEvent.tickets = tickets
         newEvent.by = UserServices.shared.currentUser
         newEvent.descriptionEvent = "Mô tả thứ \(count)"

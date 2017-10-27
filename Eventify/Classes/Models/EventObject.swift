@@ -22,7 +22,7 @@ class EventObject: NSObject, Glossy  {
     var timeEnd: Int?
     var dateCreated: Int?
     var dateEdited: Int?
-    var address: String?
+    var address: AddressObject?
     var types: [EventTypeObject]?
     var tickets: [TicketObject]?
     
@@ -40,16 +40,6 @@ class EventObject: NSObject, Glossy  {
 
         //types
         if let typeJSON: [JSON] = "types" <~~ json {
-//            var typeArray: [EventTypeObject] = []
-//            for temp in typeJSON {
-//                if let typeJson = temp.value as? JSON {
-//                    if let typeObject = EventTypeObject(json: typeJson) {
-//                        typeArray.append(typeObject)
-//                    }
-//                }
-//            }
-//            
-//            self.types = typeArray
             self.types = [EventTypeObject].from(jsonArray: typeJSON)
         }
         
@@ -70,7 +60,10 @@ class EventObject: NSObject, Glossy  {
         self.name = "name" <~~ json
         self.photoURL = "photoURL" <~~ json
         self.descriptionEvent = "descriptionEvent" <~~ json
-        self.address = "address" <~~ json
+        
+        if let address: AddressObject = "address" <~~ json {
+            self.address = address
+        }
     }
     
     //to json
@@ -89,7 +82,8 @@ class EventObject: NSObject, Glossy  {
         return jsonify([
             "id" ~~> id,
             "name" ~~> self.name,
-            "address" ~~> self.address,
+            "address" ~~> self.address?.toJSON(),
+            "descriptionEvent" ~~> self.descriptionEvent,
             "by" ~~> self.by?.toJSON(),
             "photoURL" ~~> self.photoURL,
             "tickets" ~~> self.tickets?.toJSONArray(),

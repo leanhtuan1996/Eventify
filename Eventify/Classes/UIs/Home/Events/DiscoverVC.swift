@@ -129,7 +129,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         
         cell.event = events[indexPath.row]
         cell.lblName.text = events[indexPath.row].name
-        cell.lblAddress.text = events[indexPath.row].address
+        cell.lblAddress.text = events[indexPath.row].address?.address
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
         cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? []).0) VNĐ"
         cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
@@ -205,7 +205,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let nav = tabBarController.selectedViewController as? UINavigationController {
-            if previousController == nav.viewControllers[0] as? DiscoverVC {
+            if previousController == nav.viewControllers[0] as? DiscoverVC && self.events.count > 0 {
                 self.tblEvents.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
             }
             previousController = nav.viewControllers[0]

@@ -10,10 +10,10 @@
 import UIKit
 import Gloss
 
-class AddressObject: NSObject, Decodable {
+class AddressObject: NSObject, Glossy {
     var placeId: String
-    var latitude: String?
-    var longtutude: String?
+    var latitude: Double?
+    var longtutude: Double?
     var address: String?
     
     override init() {
@@ -27,13 +27,32 @@ class AddressObject: NSObject, Decodable {
         }
         self.placeId = placeId
         
+        //for get place with google maps
         if let geometry: JSON = "geometry" <~~ json {
+            print(geometry)
             if let location = geometry["location"] as? JSON {
-                self.latitude = location["lat"] as? String
-                self.longtutude = location["lng"] as? String
+                self.latitude = location["lat"] as? Double
+                self.longtutude = location["lng"] as? Double
             }
         }
         
+        if let lat: Double = "lat" <~~ json {
+            self.latitude = lat
+        }
+        
+        if let lng: Double = "lng" <~~ json {
+            self.longtutude = lng
+        }
+        
         self.address = "formatted_address" <~~ json
+    }
+    
+    func toJSON() -> JSON? {
+        return jsonify([
+            "place_id" ~~> self.placeId,
+            "lat" ~~> self.latitude,
+            "lng" ~~> self.longtutude,
+            "formatted_address" ~~> self.address
+            ])
     }
 }

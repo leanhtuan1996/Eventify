@@ -54,6 +54,7 @@ class EventServices: NSObject {
                 }
                 
                 for document in snapshot.documents {
+                    //print(document.data())
                     if let event = EventObject(json: document.data()) {
                         self.allEvents.append(event)
                     }
@@ -111,6 +112,10 @@ class EventServices: NSObject {
         
         if event.types == nil || event.types?.count == 0 {
             return completionHandler("Loại sự kiện không được rỗng")
+        }
+        
+        if event.address == nil {
+            return completionHandler("Địa chỉ sự kiện không được rỗng")
         }
         
         guard let eventJSON = event.toJSON() else {

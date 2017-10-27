@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
+import MapKit
 
 class DetailEventVC: UIViewController {
     
     var minPrice: String?
     var maxPrice: String?
     var event: EventObject!
+    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDescriptions: UILabel!
@@ -36,12 +40,14 @@ class DetailEventVC: UIViewController {
         btnBookmark.layer.borderWidth = 0.5
         btnBookmark.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
         
-        self.handlerEvent {
-            self.loading.stopAnimating()
-        }
+        let tapToOpenMaps = UITapGestureRecognizer(target: self, action: #selector(self.openMaps))
+        lblAddress.isUserInteractionEnabled = true
+        lblAddress.addGestureRecognizer(tapToOpenMaps)
+        
+        handlerEvent()
     }
     
-    func handlerEvent(completionHandler: @escaping () -> Void) {
+    func handlerEvent() {
         
         //loading
         loading.showLoadingDialog(self)
@@ -70,7 +76,7 @@ class DetailEventVC: UIViewController {
         }
         
         //address
-        self.lblAddress.text = event.address ?? "Không có vị trí cho sự kiện này"
+        self.lblAddress.text = event.address?.address ?? "Không có vị trí cho sự kiện này"
         
         //descriptions
         self.lblDescriptions.text = event.descriptionEvent ?? "Không có mô tả cho sự kiện này"
@@ -80,11 +86,64 @@ class DetailEventVC: UIViewController {
             self.lblPrice.text = "Từ \(minPrice) - \(maxPrice) VNĐ"
         }
         
+        
+            if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude, let addressName = self.event.address?.address {
+                let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longtitude, zoom: 8.0)
+                self.mapView.animate(to: camera)
+                self.addMarker(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longtitude), eventName: self.event.name ?? "Sự kiện không xác định", address: addressName)
+            }
+        
+        
+        
         //maps
+        
         
         //isLike?
         
-        return completionHandler()
+        loading.stopAnimating()
+    }
+    
+    func openMaps() {
+        //options: Google Maps & Apple Maps
+        guard let latitude = event.address?.latitude, let longtitude = event.address?.longtutude, let addressName = event.address?.address, let placeId = event.address?.placeId else {
+            return
+        }
+        
+        let alert = UIAlertController(title: "Mở bản đồ với?", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let appleMap = UIAlertAction(title: "Apple Maps", style: UIAlertActionStyle.default) { (btn) in
+            self.openAppleMaps(latitude: latitude, longtitude: longtitude, name: addressName)
+        }
+        
+        let googleMaps = UIAlertAction(title: "Google Maps", style: UIAlertActionStyle.default) { (btn) in
+            self.openGoogleMaps(latitude: latitude, longtitude: longtitude, name: addressName, placeId: placeId)
+        }
+        
+        let cancel = UIAlertAction(title: "Huỷ bỏ", style: UIAlertActionStyle.cancel) { (btn) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(appleMap)
+        alert.addAction(googleMaps)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openGoogleMaps(latitude: Double, longtitude: Double, name: String, placeId: String) {
+        
+        guard let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(latitude),\(longtitude)&query_place_id=\(placeId)") else  {
+            return
+        }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
+    }
+    
+    func openAppleMaps(latitude: Double, longtitude: Double, name: String) {
+        let coordinate = CLLocationCoordinate2DMake(latitude,longtitude)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+        mapItem.name = name
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +157,7 @@ class DetailEventVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
     }
+    
     @IBAction func btnAddToCalendar(_ sender: Any) {
         
         guard let name = lblName.text, let dateStart = event.timeStart, let dateEnd = event.timeEnd, let location = event.address else {
@@ -128,7 +188,22 @@ class DetailEventVC: UIViewController {
         self.showAlert("Bằng cách nhấn vào nút \("Thêm ngay"), sự kiện \(name) sẽ được thêm vào ứng dụng lịch của bạn", title: "Bạn có muốn thêm sự kiện \(name) vào lịch của bạn không?", buttons: [addButton, cancelButton])
         
     }
+    
     @IBAction func btnShowMoreDiscriptions(_ sender: Any) {
     }
     
+}
+
+extension DetailEventVC {
+    func addMarker(coordinate: CLLocationCoordinate2D, eventName: String, address: String) {
+        let marker = GMSMarker()
+        self.mapView.clear()
+        marker.position = coordinate
+        marker.title = eventName
+        marker.snippet = address
+        marker.appearAnimation = .pop
+        marker.isDraggable = true
+        marker.isFlat = true
+        marker.map = mapView
+    }
 }

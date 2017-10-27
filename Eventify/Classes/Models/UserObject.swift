@@ -32,17 +32,22 @@ class UserObject: NSObject, Glossy {
         self.email = "email" <~~ json
         self.password = "password" <~~ json
         self.fullName = "fullName" <~~ json
-        
-        //for zalo
-        self.fullName = "name" <~~ json
-        self.dob = "birthday" <~~ json
-        
-        
         self.address = "address" <~~ json
         self.phone = "phone" <~~ json
         self.photoURL = "photoURL" <~~ json
         self.token = "token" <~~ json
         self.dob  = "dob" <~~ json
+        
+        //for zalo
+        if let fullname: String = "name" <~~ json {
+            self.fullName = fullname
+        }
+        if let dob: String = "birthday" <~~ json {
+            self.dob = dob
+        }
+        
+        
+        
     }
     
     func toJSON() -> JSON? {

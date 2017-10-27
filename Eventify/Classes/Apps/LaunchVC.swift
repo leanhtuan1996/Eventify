@@ -14,7 +14,7 @@ class LaunchVC: UIViewController {
         super.viewDidLoad()
         //TicketManager.shared.deleteTickets()
         
-        //EventServicesTest.shared.deleteEvents()
+        //EventServices.shared.deleteEvents()
         
         //UserServices.shared.signOut()
         

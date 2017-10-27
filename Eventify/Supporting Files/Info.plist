@@ -60,6 +60,8 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
+		<string>comgooglemaps-x-callback</string>
+		<string>comgooglemaps</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
@@ -79,8 +81,8 @@
 	<string>${PRODUCT_NAME} muốn được sử dụng thư viện của bạn</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>${PRODUCT_NAME} muốn được sử dụng vị trí của bạn</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>${PRODUCT_NAME} muốn được sử dụng vị trí của bạn</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>${PRODUCT_NAME} muốn được sử dụng vị trí của bạn</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

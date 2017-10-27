@@ -141,7 +141,7 @@ class Helpers: NSObject {
         
     }
     
-    static func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, location: String,  completion: ((_ error: String?) -> Void)? = nil) {
+    static func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, location: AddressObject,  completion: ((_ error: String?) -> Void)? = nil) {
         let eventStore = EKEventStore()
         
         eventStore.requestAccess(to: .event, completion: { (granted, error) in
@@ -153,13 +153,23 @@ class Helpers: NSObject {
             
             if (granted) && (error == nil) {
                 let event = EKEvent(eventStore: eventStore)
+                
+                if let address = location.address, let latitude = location.latitude, let longtitude = location.longtutude {
+                    let location = EKStructuredLocation(title: address)
+                    location.geoLocation = CLLocation(latitude: latitude, longitude: longtitude)
+                    event.structuredLocation = location
+                }
+                
                 event.title = title
                 event.startDate = startDate
                 event.endDate = endDate
                 event.notes = description
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 event.isAllDay = false
-                event.location = location
+                event.location = location.address ?? "Vị trí không xác định"
+                event.addAlarm(EKAlarm(absoluteDate: startDate))
+                
+                
                 do {
                     try eventStore.save(event, span: .thisEvent)
                 } catch let e {
