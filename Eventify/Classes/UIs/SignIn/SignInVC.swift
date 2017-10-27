@@ -75,7 +75,7 @@ class SignInVC: UIViewController {
         let userObject = UserObject()
         userObject.password = password
         userObject.email = email
-        
+        self.dismissKeyboard()
         activityIndicatorView.showLoadingDialog(self)
         UserServices.shared.signIn(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
@@ -92,6 +92,7 @@ class SignInVC: UIViewController {
     // MARK : - ACTIONS
     
     @IBAction func btnFacebook(_ sender: Any) {
+        self.dismissKeyboard()
         self.activityIndicatorView.showLoadingDialog(self)
         let fbManager = FBSDKLoginManager.init()
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
@@ -121,6 +122,7 @@ class SignInVC: UIViewController {
     }
     
     @IBAction func btnGooglePlus(_ sender: Any) {
+        self.dismissKeyboard()
         activityIndicatorView.showLoadingDialog(self)
         GIDSignIn.sharedInstance().signIn()
     }

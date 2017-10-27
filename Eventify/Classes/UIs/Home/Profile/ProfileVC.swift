@@ -27,6 +27,12 @@ class ProfileVC: UIViewController {
         if let user = UserServices.shared.currentUser {
             lblName.text = user.fullName
             lblEmail.text = user.email
+            
+            if let photoUrl = user.photoURL {
+                self.imgAvatar.downloadedFrom(link: photoUrl)
+            } else {
+                self.imgAvatar.image = #imageLiteral(resourceName: "avatar")
+            }
         }
         
     }
@@ -34,7 +40,7 @@ class ProfileVC: UIViewController {
     // MARK: - ACTIONS
     
     @IBAction func btnEditProfileClicked(_ sender: Any) {
-        if let sb = storyboard?.instantiateViewController(withIdentifier: "EditProfileVC") as? EditProfileVC {
+        if let sb = storyboard?.instantiateViewController(withIdentifier: "EditProfileVC") as? EditProfileVC {        
             self.navigationController?.pushViewController(sb, animated: true)
         }
     }

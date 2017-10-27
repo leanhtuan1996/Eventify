@@ -42,9 +42,12 @@ class UserServices: NSObject {
                 userObject.id = user.uid
                 userObject.email = user.email
                 userObject.phone = user.phoneNumber
-                userObject.photoURL = String(describing: user.photoURL)
                 userObject.fullName = user.displayName
                 
+                if let photoUrl = user.photoURL {
+                    userObject.photoURL = String(describing: photoUrl)
+                }
+               
                 //set current user
                 self.currentUser = userObject
                 
@@ -79,8 +82,11 @@ class UserServices: NSObject {
                 userObject.id = user.uid
                 userObject.email = user.email
                 userObject.phone = user.phoneNumber
-                userObject.photoURL = String(describing: user.photoURL)
                 userObject.fullName = user.displayName
+                
+                if let photoUrl = user.photoURL {
+                    userObject.photoURL = String(describing: photoUrl)
+                }
                 
                 //set current user
                 self.currentUser = userObject
@@ -134,7 +140,11 @@ class UserServices: NSObject {
                 userObject.email = user.email
                 userObject.fullName = user.displayName
                 userObject.phone = user.phoneNumber
-                userObject.photoURL = String(describing: user.photoURL)
+                
+                if let photoUrl = user.photoURL {
+                    userObject.photoURL = String(describing: photoUrl)
+                }
+                
                 self.currentUser = userObject
                 return completionHandler(nil)
             }
@@ -176,13 +186,17 @@ class UserServices: NSObject {
                 return completionHandler("SIGN IN WITH GOOGLE HAD BEEN ERROR")
             }
             
+            
             let userObject = UserObject()
             userObject.id = user.uid
             userObject.email = user.email
             userObject.phone = user.phoneNumber
-            userObject.photoURL = String(describing: user.photoURL)
-            userObject.fullName = user.displayName
             
+            if let photoUrl = user.photoURL {
+                userObject.photoURL = String(describing: photoUrl)
+            }
+            
+            userObject.fullName = user.displayName
             //set current user
             self.currentUser = userObject
             
@@ -216,8 +230,11 @@ class UserServices: NSObject {
             userObject.id = user.uid
             userObject.email = user.email
             userObject.phone = user.phoneNumber
-            userObject.photoURL = String(describing: user.photoURL)
             userObject.fullName = user.displayName
+            
+            if let photoUrl = user.photoURL {
+                userObject.photoURL = String(describing: photoUrl)
+            }
             
             //set current user
             self.currentUser = userObject

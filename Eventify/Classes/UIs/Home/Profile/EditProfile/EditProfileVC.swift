@@ -10,7 +10,6 @@ import UIKit
 
 class EditProfileVC: UIViewController {
 
-    
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
@@ -18,9 +17,22 @@ class EditProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUi()
+        
+    }
+    
+    func setUpUi() {
         imgAvatar.layer.cornerRadius = 50
-        imgCover.image = imgAvatar.image
+        
+        if let photoUrl = UserServices.shared.currentUser?.photoURL {
+            self.imgAvatar.downloadedFrom(link: photoUrl)
+            imgCover.downloadedFrom(link: photoUrl)
+        } else {
+            self.imgAvatar.image = #imageLiteral(resourceName: "avatar")
+        }
+        
         imgCover.addBlurEffect()
+        
         
     }
 

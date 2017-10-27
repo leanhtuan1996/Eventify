@@ -39,6 +39,10 @@ class NewEventVC: UIViewController {
     override func viewDidLoad(
         ) {
         super.viewDidLoad()
+        setUpUI()
+    }
+    
+    func setUpUI() {
         let tapForLblNumberTickets = UITapGestureRecognizer(target: self, action: #selector(self.showTicketsManager))
         lblNumberTickets.isUserInteractionEnabled = true
         lblNumberTickets.addGestureRecognizer(tapForLblNumberTickets)
@@ -194,22 +198,22 @@ class NewEventVC: UIViewController {
         self.loading.showLoadingDialog(self)
         
         //for testing
-        //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
         
         
-        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
-            self.loading.stopAnimating()
-            if let error = error {
-                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-                return
-            }
-            
-            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-                self.tabBarController?.selectedIndex = 0
-            })
-            
-            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
-        }
+//        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
+//            self.loading.stopAnimating()
+//            if let error = error {
+//                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
+//                return
+//            }
+//            
+//            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+//                self.tabBarController?.selectedIndex = 0
+//            })
+//            
+//            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
+//        }
     }
     
     //for testing

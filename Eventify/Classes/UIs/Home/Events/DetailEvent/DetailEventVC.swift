@@ -25,6 +25,11 @@ class DetailEventVC: UIViewController {
     @IBOutlet weak var lblDateStart: UILabel!
     @IBOutlet weak var lblDuration: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var imgAvata: UIImageView!
+    @IBOutlet weak var lblByName: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    
     let loading = UIActivityIndicatorView()
     
     //button
@@ -32,6 +37,13 @@ class DetailEventVC: UIViewController {
     @IBOutlet weak var btnBookmark: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpUI()
+        
+        handlerEvent()
+    }
+    
+    func setUpUI() {
         self.tabBarController?.tabBar.isHidden = true
         btnShare.layer.cornerRadius = 20
         btnShare.layer.borderWidth = 0.5
@@ -44,7 +56,8 @@ class DetailEventVC: UIViewController {
         lblAddress.isUserInteractionEnabled = true
         lblAddress.addGestureRecognizer(tapToOpenMaps)
         
-        handlerEvent()
+        self.imgAvata.layer.cornerRadius = 37.5
+        self.imgAvata.clipsToBounds = true
     }
     
     func handlerEvent() {
@@ -86,16 +99,28 @@ class DetailEventVC: UIViewController {
             self.lblPrice.text = "Từ \(minPrice) - \(maxPrice) VNĐ"
         }
         
-        
-            if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude, let addressName = self.event.address?.address {
-                let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longtitude, zoom: 8.0)
-                self.mapView.animate(to: camera)
-                self.addMarker(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longtitude), eventName: self.event.name ?? "Sự kiện không xác định", address: addressName)
-            }
-        
-        
-        
         //maps
+        if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude, let addressName = self.event.address?.address {
+            let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longtitude, zoom: 8.0)
+            self.mapView.animate(to: camera)
+            self.addMarker(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longtitude), eventName: self.event.name ?? "Sự kiện không xác định", address: addressName)
+        }
+        
+        //orgernize
+        if let user = event.by {
+            
+            if let link = user.photoURL {
+                print(link)
+                self.imgAvata.downloadedFrom(link: link)
+            } else {
+                self.imgAvata.image = #imageLiteral(resourceName: "avatar")
+            }
+            
+            self.lblByName.text = "\(user.fullName ?? "Không rõ")"
+            self.lblPhone.text = "\(user.phone ?? "Không rõ")"
+            self.lblEmail.text = "\(user.email ?? "Không rõ")"
+            
+        }
         
         
         //isLike?
