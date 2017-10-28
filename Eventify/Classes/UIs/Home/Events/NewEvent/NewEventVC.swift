@@ -249,6 +249,8 @@ class NewEventVC: UIViewController {
 }
 
 extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, EventDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
     func selectedAddress(with address: AddressObject) {
         self.isAddressPicked = true
         self.address = address

@@ -79,5 +79,9 @@ class EditProfileVC: UIViewController {
         let loading = UIActivityIndicatorView()
         loading.showLoadingDialog(self)
         UserServices.shared.signOut()
+        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.showSignInView()
+        }
     }
 }

@@ -16,6 +16,9 @@ class DetailEventVC: UIViewController {
     var minPrice: String?
     var maxPrice: String?
     var event: EventObject!
+    let loading = UIActivityIndicatorView()
+    var isLiked = false
+    
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
@@ -29,17 +32,13 @@ class DetailEventVC: UIViewController {
     @IBOutlet weak var lblByName: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
-    
-    let loading = UIActivityIndicatorView()
-    
-    //button
     @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var btnBookmark: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpUI()
-        
         handlerEvent()
     }
     
@@ -58,6 +57,12 @@ class DetailEventVC: UIViewController {
         
         self.imgAvata.layer.cornerRadius = 37.5
         self.imgAvata.clipsToBounds = true
+        
+        if isLiked {
+            self.btnBookmark.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+        } else {
+            self.btnBookmark.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
+        }
     }
     
     func handlerEvent() {
@@ -110,7 +115,6 @@ class DetailEventVC: UIViewController {
         if let user = event.by {
             
             if let link = user.photoURL {
-                print(link)
                 self.imgAvata.downloadedFrom(link: link)
             } else {
                 self.imgAvata.image = #imageLiteral(resourceName: "avatar")
@@ -217,6 +221,39 @@ class DetailEventVC: UIViewController {
     @IBAction func btnShowMoreDiscriptions(_ sender: Any) {
     }
     
+    @IBAction func btnShare(_ sender: Any) {
+        
+        guard let event = self.event else {
+            return
+        }
+        
+        let contentToSharing = "Hãy đến với \(event.address?.address ?? "") vào lúc \(event.timeStart?.toTimestampString() ?? "") để tham gia sự kiện mang tên \(event.name ?? "") cũng mình nhé!"
+        self.sharingEvent(with: contentToSharing)
+    }
+    
+    @IBAction func btnLike(_ sender: Any) {
+        guard let event = self.event else {
+            return
+        }
+        
+        if isLiked {
+            self.btnBookmark.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
+            self.isLiked = false
+        } else {
+            self.btnBookmark.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+            self.isLiked = true
+            UserServices.shared.likeEvent(withEvent: event, completionHandler: { (error) in
+                
+            })
+        }
+    }
+    
+    func sharingEvent(with content: String) {
+        let alertSharing = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        alertSharing.popoverPresentationController?.sourceView = self.view
+        alertSharing.excludedActivityTypes = []
+        self.present(alertSharing, animated: true, completion: nil)
+    }
 }
 
 extension DetailEventVC {
@@ -231,4 +268,6 @@ extension DetailEventVC {
         marker.isFlat = true
         marker.map = mapView
     }
+    
+    
 }

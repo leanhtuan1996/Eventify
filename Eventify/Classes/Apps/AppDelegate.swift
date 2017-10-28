@@ -77,12 +77,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func showMainView() {
+        print("showMainView")
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBar") as? UITabBarController{
             self.window?.rootViewController = vc
         }
     }
     
     func showSignInView() {
+        print("SignInVIew")
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
             self.window?.rootViewController = vc
         }

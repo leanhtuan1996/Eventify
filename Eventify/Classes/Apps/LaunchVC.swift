@@ -16,12 +16,16 @@ class LaunchVC: UIViewController {
         
         //EventServices.shared.deleteEvents()
         
+        //UserServices.shared.deleteUsers()
+        
         //UserServices.shared.signOut()
+       
         
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             
             //Listen
             UserServices.shared.isLoggedIn(completionHandler: { (error) in
+                print("ISLOGGEDIN")
                 if let _ = error {
                     appDelegate.showSignInView()
                 }

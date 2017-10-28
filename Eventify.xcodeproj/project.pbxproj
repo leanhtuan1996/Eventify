@@ -67,6 +67,7 @@
 		36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */; };
 		36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */; };
 		36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */; };
+		36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -583,6 +584,7 @@
 		36B762331F7E9CF5009D3BE9 /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
+		36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveEventProtocol.swift; sourceTree = "<group>"; };
 		84574092EFF458EE0F57B42B /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -668,6 +670,7 @@
 			isa = PBXGroup;
 			children = (
 				362260001FA1A0D000B2BE4C /* EventProtocols.swift */,
+				36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2051,6 +2054,7 @@
 				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
+				36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */,
 				36001ADD1F83C7A20031A1EE /* NSDateComponents+Timepiece.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,
 				36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */,

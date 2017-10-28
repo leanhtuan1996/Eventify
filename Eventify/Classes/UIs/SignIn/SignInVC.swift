@@ -83,9 +83,9 @@ class SignInVC: UIViewController {
                 self.showAlert(error, title: "Sign In Error", buttons: nil)
                 return
             }
-//            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//                 appDelegate.showMainView()
-//            }
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                 appDelegate.showMainView()
+            }
         }
     }
     
@@ -116,7 +116,10 @@ class SignInVC: UIViewController {
                     //print(error)
                     self.showAlert(error, title: "Login with facebook has been error", buttons: nil)
                     return
-                }                
+                }
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.showMainView()
+                }
             })
         }
     }
@@ -183,9 +186,9 @@ extension SignInVC: UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate 
             
 //            if let _ = user {
 //                // print(user.email)
-//                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//                    appDelegate.showMainView()
-//                }
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.showMainView()
+                }
 //            }
         }
     }

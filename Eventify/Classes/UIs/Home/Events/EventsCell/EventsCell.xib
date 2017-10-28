@@ -94,33 +94,13 @@
                                         <color key="textColor" red="0.63533979650000005" green="0.63841462140000005" blue="0.74793773890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sf-KI-SKn">
-                                        <rect key="frame" x="190" y="-20" width="40" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="1Hn-ZZ-9vC"/>
-                                            <constraint firstAttribute="width" constant="40" id="dx4-6W-a0b"/>
-                                        </constraints>
-                                        <state key="normal" image="share"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hx-mg-aVu">
-                                        <rect key="frame" x="245" y="-20" width="40" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="i4U-ar-NrM"/>
-                                            <constraint firstAttribute="height" constant="40" id="lAD-yH-o66"/>
-                                        </constraints>
-                                        <state key="normal" image="like"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="E0V-sR-6BE" secondAttribute="trailing" constant="10" id="1uN-pf-dNr"/>
                                     <constraint firstItem="liF-f7-8PF" firstAttribute="leading" secondItem="SpV-Jr-Gnv" secondAttribute="leading" constant="10" id="2Pp-dz-f2u"/>
                                     <constraint firstItem="IKi-TV-yLz" firstAttribute="top" secondItem="SpV-Jr-Gnv" secondAttribute="top" constant="10" id="6mN-UC-j3z"/>
-                                    <constraint firstItem="4hx-mg-aVu" firstAttribute="centerY" secondItem="3Sf-KI-SKn" secondAttribute="centerY" id="Emm-yY-O74"/>
                                     <constraint firstItem="WXq-SM-kOi" firstAttribute="centerY" secondItem="sV1-HZ-5HD" secondAttribute="centerY" id="NkE-W7-Q8q"/>
-                                    <constraint firstItem="4hx-mg-aVu" firstAttribute="leading" secondItem="3Sf-KI-SKn" secondAttribute="trailing" constant="15" id="QaV-dh-esb"/>
                                     <constraint firstAttribute="trailing" secondItem="IKi-TV-yLz" secondAttribute="trailing" constant="10" id="ZAk-br-li8"/>
                                     <constraint firstItem="WXq-SM-kOi" firstAttribute="leading" secondItem="dUq-37-DvI" secondAttribute="trailing" constant="20" id="b1J-Fg-n8G"/>
                                     <constraint firstAttribute="bottom" secondItem="E0V-sR-6BE" secondAttribute="bottom" constant="2" id="be4-wR-zUI"/>
@@ -129,7 +109,6 @@
                                     <constraint firstItem="E0V-sR-6BE" firstAttribute="top" secondItem="sV1-HZ-5HD" secondAttribute="bottom" constant="5" id="mTl-P0-xNt"/>
                                     <constraint firstItem="iMw-dA-5DP" firstAttribute="top" secondItem="IKi-TV-yLz" secondAttribute="bottom" constant="5" id="mcl-Ch-lWk"/>
                                     <constraint firstItem="E0V-sR-6BE" firstAttribute="leading" secondItem="eOB-wm-Q8u" secondAttribute="trailing" constant="10" id="nw1-vQ-VW0"/>
-                                    <constraint firstAttribute="trailing" secondItem="4hx-mg-aVu" secondAttribute="trailing" constant="15" id="nzE-OF-Bx8"/>
                                     <constraint firstItem="dUq-37-DvI" firstAttribute="top" secondItem="iMw-dA-5DP" secondAttribute="bottom" constant="10" id="oZc-iI-tTv"/>
                                     <constraint firstItem="iMw-dA-5DP" firstAttribute="leading" secondItem="SpV-Jr-Gnv" secondAttribute="leading" constant="10" id="ov5-PJ-w5v"/>
                                     <constraint firstItem="sV1-HZ-5HD" firstAttribute="top" secondItem="dUq-37-DvI" secondAttribute="top" id="p8y-eb-sPI"/>
@@ -137,7 +116,6 @@
                                     <constraint firstItem="eOB-wm-Q8u" firstAttribute="centerY" secondItem="E0V-sR-6BE" secondAttribute="centerY" id="pku-v2-2jW"/>
                                     <constraint firstItem="sV1-HZ-5HD" firstAttribute="leading" secondItem="WXq-SM-kOi" secondAttribute="trailing" constant="5" id="rNn-ze-b1h"/>
                                     <constraint firstAttribute="trailing" secondItem="iMw-dA-5DP" secondAttribute="trailing" constant="10" id="szj-Qc-nAx"/>
-                                    <constraint firstItem="IKi-TV-yLz" firstAttribute="top" secondItem="3Sf-KI-SKn" secondAttribute="bottom" constant="-10" id="u5W-gh-4Lm"/>
                                     <constraint firstItem="eOB-wm-Q8u" firstAttribute="leading" secondItem="liF-f7-8PF" secondAttribute="leading" id="wH1-te-Spo"/>
                                 </constraints>
                             </view>
@@ -150,15 +128,41 @@
                             <constraint firstAttribute="trailing" secondItem="SpV-Jr-Gnv" secondAttribute="trailing" id="tbc-PN-F9U"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sf-KI-SKn">
+                        <rect key="frame" x="200" y="178" width="45" height="45"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal" image="share"/>
+                        <connections>
+                            <action selector="btnShare:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2lg-Nu-J0o"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hx-mg-aVu">
+                        <rect key="frame" x="255" y="178" width="45" height="45"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="2Ra-8R-kbE"/>
+                            <constraint firstAttribute="width" constant="45" id="BoZ-8I-QWB"/>
+                        </constraints>
+                        <state key="normal" image="unlike"/>
+                        <connections>
+                            <action selector="btnLike:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3zw-Pm-rD6"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="XX0-ff-2nZ" secondAttribute="bottom" constant="10" id="2Fu-bf-lRO"/>
                     <constraint firstAttribute="trailing" secondItem="XX0-ff-2nZ" secondAttribute="trailing" constant="10" id="5JU-jZ-BHS"/>
+                    <constraint firstItem="4hx-mg-aVu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="178" id="7OP-Zl-lWi"/>
                     <constraint firstAttribute="trailing" secondItem="2ZS-hq-zRK" secondAttribute="trailing" constant="10" id="81c-tc-E5y"/>
                     <constraint firstItem="XX0-ff-2nZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Aci-eC-SJ1"/>
                     <constraint firstItem="2ZS-hq-zRK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KNR-ko-8NN"/>
+                    <constraint firstItem="3Sf-KI-SKn" firstAttribute="width" secondItem="4hx-mg-aVu" secondAttribute="width" id="Q2a-48-79Q"/>
+                    <constraint firstItem="3Sf-KI-SKn" firstAttribute="top" secondItem="4hx-mg-aVu" secondAttribute="top" id="Xv6-Na-0k8"/>
+                    <constraint firstItem="4hx-mg-aVu" firstAttribute="leading" secondItem="3Sf-KI-SKn" secondAttribute="trailing" constant="10" id="bbF-sD-RiW"/>
                     <constraint firstItem="2ZS-hq-zRK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="m4B-yr-rn3"/>
+                    <constraint firstItem="3Sf-KI-SKn" firstAttribute="height" secondItem="4hx-mg-aVu" secondAttribute="height" id="nkh-Oa-fFo"/>
                     <constraint firstItem="XX0-ff-2nZ" firstAttribute="top" secondItem="2ZS-hq-zRK" secondAttribute="bottom" id="yUG-9O-5hp"/>
+                    <constraint firstAttribute="trailing" secondItem="4hx-mg-aVu" secondAttribute="trailing" constant="20" id="ylS-62-gbF"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -178,8 +182,8 @@
     <resources>
         <image name="clock" width="25" height="25"/>
         <image name="lacation" width="25" height="25"/>
-        <image name="like" width="35" height="35"/>
         <image name="price" width="25" height="25"/>
         <image name="share" width="32" height="32"/>
+        <image name="unlike" width="35" height="35"/>
     </resources>
 </document>

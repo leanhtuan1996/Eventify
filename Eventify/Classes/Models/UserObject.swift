@@ -19,6 +19,7 @@ class UserObject: NSObject, Glossy {
     var photoURL: String?
     var token: String?
     var dob: String?
+    var liked: [EventObject]?
     
     override init() {
         self.id = ""
@@ -46,6 +47,9 @@ class UserObject: NSObject, Glossy {
             self.dob = dob
         }
         
+//        if let eventsLiked: [JSON] = "liked" <~~ json {
+//            self.liked = [EventObject].from(jsonArray: eventsLiked)
+//        }
         
         
     }

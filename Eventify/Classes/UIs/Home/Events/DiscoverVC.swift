@@ -18,11 +18,20 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var saparatorView: UIView!
     
     var events: [EventObject] = []
+    var likedEvents: [String] = []
     var refreshControl: UIRefreshControl!
     var isLoadingMore = false
     var previousController: UIViewController?
+    let loading = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpUI()
+        
+        setUpInformations()
+    }
+    
+    func setUpUI() {
         //pull to refresh
         refreshControl = UIRefreshControl()
         //refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -59,48 +68,78 @@ class DiscoverVC: UIViewController {
             }
         }
         
-        loadEvents(isFirstLoad: true)
-        
         self.tabBarController?.delegate = self
     }
     
-    func loadEvents(isFirstLoad: Bool) {
-        
-        if isFirstLoad {
-            EventServices.shared.getEvents { (events, error) in
-                self.refreshControl.endRefreshing()
-                
-                if let error = error {
-                    print(error)
-                    return
-                }
-                
-                if let events = events {
-                    self.events = events
+    func setUpInformations() {
+        self.loading.showLoadingDialog(self)
+        loadEvents { 
+            self.loadInformations {
+                if self.loading.isAnimating {
+                    self.loading.stopAnimating()
                     self.tblEvents.reloadData()
                 }
             }
-        } else {
-            EventServices.shared.getMoreEvents(completionHandler: { (events, error) in
+        }
+    }
+    
+    func loadEvents(_ completionHandler: (() -> Void)?) {
+        
+        EventServices.shared.getEvents { (events, error) in
+            self.refreshControl.endRefreshing()
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let events = events {
+                self.events = events
+                self.tblEvents.reloadData()
+            }
+            completionHandler?()
+        }
+    }
+    
+    func loadMoreEvents() {
+        EventServices.shared.getMoreEvents(completionHandler: { (events, error) in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let events = events {
+                if events.count == 0 { return }
                 
-                if let error = error {
-                    print(error)
-                    return
-                }
+                events.forEach({ (event) in
+                    self.events.append(event)
+                })
                 
-                if let events = events {
-                    if events.count == 0 { return }
-                    
-                    events.forEach({ (event) in
-                        self.events.append(event)
-                    })
-                    
-                    self.tblEvents.reloadData()
-                }
-            })
+                self.tblEvents.reloadData()
+            }
+        })
+    }
+    
+    func loadInformations(_ completionHandler: @escaping () -> Void) {
+        guard let idUser = UserServices.shared.currentUser?.id else {
+            return
         }
         
-        
+        UserServices.shared.getMyInformations(withId: idUser) { (user, error) in
+            
+            print("Loading informations")
+            
+            if let eventLiked = user?.liked {
+                eventLiked.forEach({ (event) in
+                    if let id = event.id {
+                        self.likedEvents.append(id)
+                    }
+                })
+            }
+            
+            return completionHandler()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,7 +149,7 @@ class DiscoverVC: UIViewController {
     
     // MARK: - FUNCTIONS
     func refresh() {
-        loadEvents(isFirstLoad: true)
+        self.loadEvents(nil)
     }
     
     @IBAction func btnEventsClicked(_ sender: Any) {
@@ -135,7 +174,10 @@ class DiscoverVC: UIViewController {
     
 }
 
-extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
+extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, InteractiveEventProtocol {
+    
+    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
@@ -146,16 +188,30 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         }
         cell.contentView.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
-        
-        
         cell.event = events[indexPath.row]
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address?.address
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
         cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? []).0) VNĐ"
         cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
+        cell.delegate = self
         if let url = events[indexPath.row].photoURL {
             cell.imgPhoto.downloadedFrom(path: url)
+        }
+        
+        if let eventsLiked = UserServices.shared.currentUser?.liked {
+            if let idEvent = events[indexPath.row].id {
+               if eventsLiked.contains(where: { (event) -> Bool in
+                if let id = event.id {
+                    return id == idEvent
+                }
+                return false
+               }) {
+                cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+               } else {
+                cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
+                }
+            }
         }
         
         return cell
@@ -164,6 +220,22 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(indexPath.row)
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC {
+            
+            if let eventsLiked = UserServices.shared.currentUser?.liked {
+                if let idEvent = events[indexPath.row].id {
+                    if eventsLiked.contains(where: { (event) -> Bool in
+                        if let id = event.id {
+                            return id == idEvent
+                        }
+                        return false
+                    }) {
+                        sb.isLiked = true
+                    } else {
+                        sb.isLiked = false
+                    }
+                }
+            }
+            
             sb.event = events[indexPath.row]
             sb.minPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).0
             sb.maxPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).1
@@ -220,7 +292,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if maximumOffset - currentOffset <= 200.0 {
-            self.loadEvents(isFirstLoad: false)
+            self.loadMoreEvents()
         }
     }
     
@@ -231,6 +303,28 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
             }
             previousController = nav.viewControllers[0]
         }
+    }
+    
+    //SharingProtocol
+    func sharingEvent(with content: String) {
+        let alertSharing = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        alertSharing.popoverPresentationController?.sourceView = self.view
+        alertSharing.excludedActivityTypes = []
+        self.present(alertSharing, animated: true, completion: nil)
+    }
+    
+    func unLikeEvent(with event: EventObject) {
+        
+    }
+    
+    func likeEvent(with event: EventObject) {
+        UserServices.shared.likeEvent(withEvent: event) { (error) in
+            if let error = error {
+                self.showAlert("Có lỗi không xác định đã xảy ra. \(error)", title: "Thích sự kiện thất bại", buttons: nil)
+                return
+            }
+        }
+        
     }
     
 }
