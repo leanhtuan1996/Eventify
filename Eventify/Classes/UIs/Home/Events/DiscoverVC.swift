@@ -76,8 +76,8 @@ class DiscoverVC: UIViewController {
         loadEvents { 
             self.loadInformations {
                 if self.loading.isAnimating {
-                    self.loading.stopAnimating()
                     self.tblEvents.reloadData()
+                    self.loading.stopAnimating()
                 }
             }
         }
@@ -147,6 +147,10 @@ class DiscoverVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tblEvents.reloadData()
+    }
+    
     // MARK: - FUNCTIONS
     func refresh() {
         self.loadEvents(nil)
@@ -176,8 +180,6 @@ class DiscoverVC: UIViewController {
 
 extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, InteractiveEventProtocol {
     
-    
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
@@ -208,8 +210,10 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
                 return false
                }) {
                 cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+                cell.isLiked = true
                } else {
                 cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
+                cell.isLiked = false
                 }
             }
         }
@@ -315,6 +319,16 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
     
     func unLikeEvent(with event: EventObject) {
         
+        guard let id = event.id else {
+            return
+        }
+        
+        UserServices.shared.UnlikeEvent(withId: id) { (error) in
+            if let error = error {
+                self.showAlert("Có lỗi không xác định đã xảy ra. \(error)", title: "Thích sự kiện thất bại", buttons: nil)
+                return
+            }
+        }
     }
     
     func likeEvent(with event: EventObject) {

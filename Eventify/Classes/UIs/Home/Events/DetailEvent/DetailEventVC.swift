@@ -239,11 +239,25 @@ class DetailEventVC: UIViewController {
         if isLiked {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
             self.isLiked = false
+            guard let id = self.event.id else {
+                return
+            }
+            
+            UserServices.shared.UnlikeEvent(withId: id) { (error) in
+                if let error = error {
+                    self.showAlert("Có lỗi không xác định đã xảy ra. \(error)", title: "Thích sự kiện thất bại", buttons: nil)
+                    return
+                }
+            }
+            
         } else {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
             self.isLiked = true
             UserServices.shared.likeEvent(withEvent: event, completionHandler: { (error) in
-                
+                if let error = error {
+                    self.showAlert("Có lỗi không xác định đã xảy ra. \(error)", title: "Thích sự kiện thất bại", buttons: nil)
+                    return
+                }
             })
         }
     }

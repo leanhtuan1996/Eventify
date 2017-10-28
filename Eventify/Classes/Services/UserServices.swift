@@ -521,8 +521,16 @@ class UserServices: NSObject {
         //refLiked.document(idUser).setData(<#T##documentData: [String : Any]##[String : Any]#>, options: <#T##SetOptions#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
     }
     
-    func UnlikeEvent(withId id: String, completionHandler: @escaping (_ error: String) -> Void ) {
+    func UnlikeEvent(withId id: String, completionHandler: @escaping (_ error: String?) -> Void ) {
         
+        guard let idUser = self.currentUser?.id else {
+            print("Current user not found")
+            return completionHandler("Current user not found")
+        }
+        
+        refUser.document(idUser).collection("liked").document(id).delete { (error) in
+            return completionHandler(error?.localizedDescription)
+        }
     }
     
     func deleteUsers() {
