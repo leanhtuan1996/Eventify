@@ -114,6 +114,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.4.0)
+  - RichEditorView (4.0.0)
   - SkyFloatingLabelTextField (3.2.1)
   - ZaloSDK (2.2.0928)
 
@@ -133,6 +134,7 @@ DEPENDENCIES:
   - GooglePlaces
   - GoogleSignIn
   - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`, commit `694d6df`)
+  - RichEditorView
   - SkyFloatingLabelTextField
   - ZaloSDK
 
@@ -176,9 +178,10 @@ SPEC CHECKSUMS:
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
+  RichEditorView: e5990b1a092539559def9df135e064b29ab97e68
   SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
   ZaloSDK: 9bb20d9cea224e716918c946320355e74b66e019
 
-PODFILE CHECKSUM: 90588e88fb808973a1fa6afe43d5a2207f1b8311
+PODFILE CHECKSUM: e0298dd605c9a9658376b56466b9185e7c62bb37
 
 COCOAPODS: 1.4.0.beta.1

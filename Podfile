@@ -37,4 +37,7 @@ target 'Eventify' do
     
     # Pod for Zalo
     pod 'ZaloSDK'
+    
+    # Pods for textEditor
+    pod 'RichEditorView'
 end

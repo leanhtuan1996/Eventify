@@ -22,7 +22,7 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var lblEventType: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblNumberTickets: UILabel!
-    @IBOutlet weak var txtDescriptionEvent: SkyFloatingLabelTextField!
+    @IBOutlet weak var lblDescriptionEvent: UILabel!
     var pickerImg = UIImagePickerController()
     
     var isAddressPicked = false
@@ -67,6 +67,10 @@ class NewEventVC: UIViewController {
         lblAddress.isUserInteractionEnabled = true
         lblAddress.addGestureRecognizer(tapForAddressPicker)
         
+        let tapForDiscriptionEditor = UITapGestureRecognizer(target: self, action: #selector(self.showDescriptionEditor))
+        lblDescriptionEvent.isUserInteractionEnabled = true
+        lblDescriptionEvent.addGestureRecognizer(tapForDiscriptionEditor)
+        
         dateTimeSelector = WWCalendarTimeSelector.instantiate()
         dateTimeSelector.delegate = self
         
@@ -76,9 +80,6 @@ class NewEventVC: UIViewController {
         
         lblNameEvent.returnKeyType = .done
         lblNameEvent.delegate = self
-        
-        txtDescriptionEvent.returnKeyType = .done
-        txtDescriptionEvent.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +90,15 @@ class NewEventVC: UIViewController {
         }
         
         lblNumberTickets.text = TicketManager.shared.getTickets().count.toString() + " loại vé"
+    }
+    
+    func showDescriptionEditor() {
+        
+        if let sb = storyboard?.instantiateViewController(withIdentifier: "DescriptionEditorVC") as? DescriptionEditorVC {
+            sb.delegate = self
+            self.navigationController?.pushViewController(sb, animated: true)
+        }
+        
     }
     
     func showTicketsManager() {
@@ -181,7 +191,7 @@ class NewEventVC: UIViewController {
         newEvent.address = address
         newEvent.tickets = tickets
         newEvent.by = UserServices.shared.currentUser
-        newEvent.descriptionEvent = txtDescriptionEvent.text
+        newEvent.descriptionEvent = lblDescriptionEvent.text
         
         if let start = timeStart.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
             newEvent.timeStart = start.toDouble()?.toInt()
@@ -201,19 +211,19 @@ class NewEventVC: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
         
         
-//        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
-//            self.loading.stopAnimating()
-//            if let error = error {
-//                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-//                return
-//            }
-//            
-//            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-//                self.tabBarController?.selectedIndex = 0
-//            })
-//            
-//            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
-//        }
+        //        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
+        //            self.loading.stopAnimating()
+        //            if let error = error {
+        //                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
+        //                return
+        //            }
+        //
+        //            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+        //                self.tabBarController?.selectedIndex = 0
+        //            })
+        //
+        //            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
+        //        }
     }
     
     //for testing
@@ -250,6 +260,9 @@ class NewEventVC: UIViewController {
 
 extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, EventDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func discriptionEditor(with string: String) {
+        self.lblDescriptionEvent.text = string
+    }
     
     func selectedAddress(with address: AddressObject) {
         self.isAddressPicked = true
@@ -300,7 +313,9 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if let text = textField as? SkyFloatingLabelTextField {
+            
             text.errorMessage = ""
+            
         }
     }
     

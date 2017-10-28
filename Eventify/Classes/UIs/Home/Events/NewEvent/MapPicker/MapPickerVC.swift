@@ -196,6 +196,8 @@ extension MapPickerVC: GMSMapViewDelegate, CLLocationManagerDelegate {
         return true
     }
     
+    
+    
     //CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
        

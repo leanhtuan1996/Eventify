@@ -1709,6 +1709,39 @@
             </objects>
             <point key="canvasLocation" x="4445.6000000000004" y="4423.5382308845583"/>
         </scene>
+        <!--Description EditorVC-->
+        <scene sceneID="RpV-ep-esR">
+            <objects>
+                <viewController storyboardIdentifier="DescriptionEditorVC" id="TIX-zE-pUr" customClass="DescriptionEditorVC" customModule="Eventify" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zQH-ur-ZGo"/>
+                        <viewControllerLayoutGuide type="bottom" id="5wa-e0-HmZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T7W-a2-XcY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PpC-2i-Ze4" customClass="RichEditorView" customModule="RichEditorView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PpC-2i-Ze4" firstAttribute="top" secondItem="T7W-a2-XcY" secondAttribute="top" id="X9N-Sn-ffS"/>
+                            <constraint firstItem="PpC-2i-Ze4" firstAttribute="leading" secondItem="T7W-a2-XcY" secondAttribute="leading" id="YCj-AZ-9XM"/>
+                            <constraint firstItem="5wa-e0-HmZ" firstAttribute="top" secondItem="PpC-2i-Ze4" secondAttribute="bottom" id="jph-C1-BYb"/>
+                            <constraint firstAttribute="trailing" secondItem="PpC-2i-Ze4" secondAttribute="trailing" id="wc2-0G-TTH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="editor" destination="PpC-2i-Ze4" id="gFQ-cF-N1l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aeg-RC-4CY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4445.6000000000004" y="5115.2923538230889"/>
+        </scene>
         <!--ProfileVC-->
         <scene sceneID="xjz-5O-bMU">
             <objects>
@@ -1933,7 +1966,7 @@
                                 <rect key="frame" x="0.0" y="71" width="375" height="547"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-vg-Avp" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="776"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="788.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j6A-Hn-xFQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
@@ -1979,89 +2012,68 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-2" translatesAutoresizingMaskIntoConstraints="NO" id="0ip-Ne-Vpp">
-                                                <rect key="frame" x="10" y="300" width="30" height="30"/>
+                                                <rect key="frame" x="10" y="312.5" width="30" height="30"/>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKN-VR-zqX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="50" y="255" width="315" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="pqf-zx-1Kv"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                        <color key="value" red="0.63533979650000005" green="0.63841462140000005" blue="0.74793773890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Miêu tả sự kiện"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian bắt đầu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xV-az-i2r">
-                                                <rect key="frame" x="50" y="300" width="315" height="18"/>
+                                                <rect key="frame" x="48" y="312.5" width="317" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhấp vào để chọn ngày" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="617-3R-4P8">
-                                                <rect key="frame" x="50" y="328" width="171" height="19.5"/>
+                                                <rect key="frame" x="48" y="340.5" width="171" height="19.5"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian kết thúc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoR-eT-Npu">
-                                                <rect key="frame" x="50" y="357.5" width="123" height="18"/>
+                                                <rect key="frame" x="48" y="370" width="123" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhấp vào để chọn ngày" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TM8-Me-EyY">
-                                                <rect key="frame" x="50" y="385.5" width="171" height="19.5"/>
+                                                <rect key="frame" x="48" y="398" width="171" height="19.5"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location-2" translatesAutoresizingMaskIntoConstraints="NO" id="lmF-ua-53C">
-                                                <rect key="frame" x="10" y="415" width="30" height="30"/>
+                                                <rect key="frame" x="10" y="427.5" width="30" height="30"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eventType" translatesAutoresizingMaskIntoConstraints="NO" id="yAJ-B8-ntP">
-                                                <rect key="frame" x="10" y="471.5" width="30" height="30"/>
+                                                <rect key="frame" x="10" y="484" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0ET-dM-qr3"/>
                                                     <constraint firstAttribute="width" constant="30" id="cbs-OK-EkB"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại sự kiện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="un8-UW-qwy">
-                                                <rect key="frame" x="50" y="471.5" width="81.5" height="18"/>
+                                                <rect key="frame" x="50" y="484" width="81.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhấp vào để chọn loại sự kiện" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zo-AQ-3DD">
-                                                <rect key="frame" x="50" y="499.5" width="229" height="20.5"/>
+                                                <rect key="frame" x="50" y="512" width="229" height="20.5"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket-2" translatesAutoresizingMaskIntoConstraints="NO" id="P7S-x0-NNp">
-                                                <rect key="frame" x="10" y="535" width="30" height="30"/>
+                                                <rect key="frame" x="10" y="547.5" width="30" height="30"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vé" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD5-5g-SlJ">
-                                                <rect key="frame" x="50" y="535" width="17.5" height="18"/>
+                                                <rect key="frame" x="50" y="547.5" width="17.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thêm vé" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRK-6E-bWb">
-                                                <rect key="frame" x="50" y="558" width="59.5" height="18"/>
+                                                <rect key="frame" x="50" y="570.5" width="59.5" height="18"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.34940767290000002" green="0.3454156518" blue="0.36454087499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2076,7 +2088,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PF-jP-q1Y">
-                                                <rect key="frame" x="50" y="415" width="46.5" height="20"/>
+                                                <rect key="frame" x="50" y="427.5" width="46.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Pvl-90-eEx"/>
                                                 </constraints>
@@ -2085,29 +2097,42 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhấp vào để chọn địa chỉ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xG-AD-7FB">
-                                                <rect key="frame" x="50" y="443" width="193" height="20.5"/>
+                                                <rect key="frame" x="50" y="455.5" width="193" height="20.5"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miêu tả sự kiện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rti-O1-blT">
+                                                <rect key="frame" x="50" y="260" width="104" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhấp vào để soạn thảo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rp-d6-1Az">
+                                                <rect key="frame" x="50" y="283" width="315" height="19.5"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="6xV-az-i2r" firstAttribute="top" secondItem="0rp-d6-1Az" secondAttribute="bottom" constant="10" id="0Vd-JZ-wKd"/>
                                             <constraint firstItem="P7S-x0-NNp" firstAttribute="width" secondItem="yAJ-B8-ntP" secondAttribute="width" id="1JW-B6-nPH"/>
                                             <constraint firstItem="EpC-Cm-0QV" firstAttribute="centerY" secondItem="fe3-6w-y5z" secondAttribute="centerY" id="1ej-zr-xeQ"/>
                                             <constraint firstItem="P7S-x0-NNp" firstAttribute="height" secondItem="yAJ-B8-ntP" secondAttribute="height" id="1kx-0b-54W"/>
-                                            <constraint firstItem="sKN-VR-zqX" firstAttribute="leading" secondItem="N4P-3T-SI9" secondAttribute="leading" id="1ll-dF-aBT"/>
-                                            <constraint firstItem="sKN-VR-zqX" firstAttribute="top" secondItem="N4P-3T-SI9" secondAttribute="bottom" constant="5" id="3JW-XP-pTq"/>
                                             <constraint firstItem="0ip-Ne-Vpp" firstAttribute="width" secondItem="EpC-Cm-0QV" secondAttribute="width" id="3lV-Q4-Jge"/>
                                             <constraint firstItem="j6A-Hn-xFQ" firstAttribute="top" secondItem="aqb-vg-Avp" secondAttribute="top" id="5Ex-Gy-Nhs"/>
-                                            <constraint firstItem="6xV-az-i2r" firstAttribute="leading" secondItem="sKN-VR-zqX" secondAttribute="leading" id="5fS-D9-DuT"/>
                                             <constraint firstItem="un8-UW-qwy" firstAttribute="leading" secondItem="7xG-AD-7FB" secondAttribute="leading" id="6Zx-C7-JAe"/>
+                                            <constraint firstItem="Rti-O1-blT" firstAttribute="top" secondItem="N4P-3T-SI9" secondAttribute="bottom" constant="10" id="6mk-QP-TsR"/>
                                             <constraint firstItem="5Zo-AQ-3DD" firstAttribute="top" secondItem="un8-UW-qwy" secondAttribute="bottom" constant="10" id="7HS-c8-BCG"/>
                                             <constraint firstAttribute="bottom" secondItem="xRK-6E-bWb" secondAttribute="bottom" constant="200" id="7TB-bP-Ygy"/>
                                             <constraint firstItem="7xG-AD-7FB" firstAttribute="top" secondItem="4PF-jP-q1Y" secondAttribute="bottom" constant="8" id="9Hh-UP-jIF"/>
                                             <constraint firstItem="0ip-Ne-Vpp" firstAttribute="height" secondItem="EpC-Cm-0QV" secondAttribute="height" id="A4t-KQ-Ij7"/>
                                             <constraint firstItem="0ip-Ne-Vpp" firstAttribute="top" secondItem="6xV-az-i2r" secondAttribute="top" id="CU0-r4-pdF"/>
+                                            <constraint firstAttribute="trailing" secondItem="0rp-d6-1Az" secondAttribute="trailing" constant="10" id="CaW-nf-khD"/>
                                             <constraint firstItem="yAJ-B8-ntP" firstAttribute="leading" secondItem="aqb-vg-Avp" secondAttribute="leading" constant="10" id="EMC-T9-X0R"/>
                                             <constraint firstItem="617-3R-4P8" firstAttribute="leading" secondItem="6xV-az-i2r" secondAttribute="leading" id="EQ1-GV-oxj"/>
                                             <constraint firstItem="EpC-Cm-0QV" firstAttribute="leading" secondItem="aqb-vg-Avp" secondAttribute="leading" constant="10" id="Fh3-F2-lhI"/>
@@ -2120,17 +2145,19 @@
                                             <constraint firstItem="lmF-ua-53C" firstAttribute="leading" secondItem="0ip-Ne-Vpp" secondAttribute="leading" id="M5H-wy-6oa"/>
                                             <constraint firstItem="yAJ-B8-ntP" firstAttribute="top" secondItem="un8-UW-qwy" secondAttribute="top" id="Mfs-hC-Htn"/>
                                             <constraint firstItem="P7S-x0-NNp" firstAttribute="top" secondItem="dD5-5g-SlJ" secondAttribute="top" id="MmW-3q-fH5"/>
+                                            <constraint firstItem="0rp-d6-1Az" firstAttribute="top" secondItem="Rti-O1-blT" secondAttribute="bottom" constant="5" id="N8c-MT-QPU"/>
+                                            <constraint firstItem="6xV-az-i2r" firstAttribute="leading" secondItem="0ip-Ne-Vpp" secondAttribute="trailing" constant="8" symbolic="YES" id="NSO-HJ-1T1"/>
                                             <constraint firstItem="xRK-6E-bWb" firstAttribute="top" secondItem="dD5-5g-SlJ" secondAttribute="bottom" constant="5" id="PHd-MP-SWi"/>
                                             <constraint firstItem="0ip-Ne-Vpp" firstAttribute="leading" secondItem="EpC-Cm-0QV" secondAttribute="leading" id="QDa-cv-iwj"/>
                                             <constraint firstItem="huc-oQ-Hur" firstAttribute="centerY" secondItem="j6A-Hn-xFQ" secondAttribute="centerY" id="QkG-bD-GCI"/>
                                             <constraint firstItem="aoR-eT-Npu" firstAttribute="leading" secondItem="617-3R-4P8" secondAttribute="leading" id="RV8-s7-FKZ"/>
                                             <constraint firstItem="lmF-ua-53C" firstAttribute="top" secondItem="4PF-jP-q1Y" secondAttribute="top" id="RzL-PN-V3t"/>
-                                            <constraint firstItem="6xV-az-i2r" firstAttribute="top" secondItem="sKN-VR-zqX" secondAttribute="bottom" constant="10" id="TKj-ui-teX"/>
                                             <constraint firstItem="N4P-3T-SI9" firstAttribute="leading" secondItem="fe3-6w-y5z" secondAttribute="leading" id="VfJ-mQ-xYE"/>
+                                            <constraint firstItem="Rti-O1-blT" firstAttribute="leading" secondItem="aqb-vg-Avp" secondAttribute="leading" constant="50" id="aAS-t7-GiL"/>
                                             <constraint firstItem="TM8-Me-EyY" firstAttribute="leading" secondItem="aoR-eT-Npu" secondAttribute="leading" id="b3l-Jq-QcE"/>
                                             <constraint firstItem="huc-oQ-Hur" firstAttribute="centerX" secondItem="j6A-Hn-xFQ" secondAttribute="centerX" id="bJp-Ry-5tB"/>
                                             <constraint firstItem="un8-UW-qwy" firstAttribute="top" secondItem="7xG-AD-7FB" secondAttribute="bottom" constant="8" id="cGi-X8-Xwy"/>
-                                            <constraint firstAttribute="trailing" secondItem="sKN-VR-zqX" secondAttribute="trailing" constant="10" id="hNp-9X-XW7"/>
+                                            <constraint firstItem="0rp-d6-1Az" firstAttribute="leading" secondItem="aqb-vg-Avp" secondAttribute="leading" constant="50" id="d1s-kp-2FJ"/>
                                             <constraint firstItem="j6A-Hn-xFQ" firstAttribute="leading" secondItem="aqb-vg-Avp" secondAttribute="leading" id="kc3-yI-9a4"/>
                                             <constraint firstItem="dD5-5g-SlJ" firstAttribute="top" secondItem="5Zo-AQ-3DD" secondAttribute="bottom" constant="15" id="lay-Dw-bn4"/>
                                             <constraint firstItem="aoR-eT-Npu" firstAttribute="top" secondItem="617-3R-4P8" secondAttribute="bottom" constant="10" id="mse-7n-f89"/>
@@ -2177,12 +2204,12 @@
                         <outlet property="imgPicker" destination="huc-oQ-Hur" id="4VS-I6-qcK"/>
                         <outlet property="lblAddress" destination="7xG-AD-7FB" id="G4F-wz-JTt"/>
                         <outlet property="lblByOrganizer" destination="N4P-3T-SI9" id="8sH-cy-ulG"/>
+                        <outlet property="lblDescriptionEvent" destination="0rp-d6-1Az" id="1Bq-hp-Sdb"/>
                         <outlet property="lblEventType" destination="5Zo-AQ-3DD" id="eaO-JN-Swb"/>
                         <outlet property="lblNameEvent" destination="fe3-6w-y5z" id="TKM-ar-vOD"/>
                         <outlet property="lblNumberTickets" destination="xRK-6E-bWb" id="J5j-Sr-yf5"/>
                         <outlet property="lblTimeEnd" destination="TM8-Me-EyY" id="Bwv-ix-Bdm"/>
                         <outlet property="lblTimeStart" destination="617-3R-4P8" id="Ix5-CI-gEW"/>
-                        <outlet property="txtDescriptionEvent" destination="sKN-VR-zqX" id="EM1-ba-i1G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1Z-Ak-sOo" userLabel="First Responder" sceneMemberID="firstResponder"/>

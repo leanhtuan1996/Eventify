@@ -14,7 +14,8 @@ import Gloss
 import Haneke
 
 let refEvent = Firestore.firestore().collection("Events")
-let refImageEventStorage = Storage.storage().reference().child("Images").child("EventCover")
+let refImageEventCoverStorage = Storage.storage().reference().child("Images").child("EventCover")
+let refImageEventDiscriptionsStorage = Storage.storage().reference().child("Images").child("EventDiscriptions")
 
 class EventServices: NSObject {
     static let shared = EventServices()
@@ -226,12 +227,33 @@ class EventServices: NSObject {
         
         let keyPath = "\(currentUser.id)" + "\(Helpers.getTimeStamp()).jpg"
         
-        let uploadTask = refImageEventStorage.child(keyPath).putData(imgData, metadata: nil) { (metaData, error) in
+        let uploadTask = refImageEventCoverStorage.child(keyPath).putData(imgData, metadata: nil) { (metaData, error) in
             guard let metaData = metaData else {
                 return completionHandler(nil, "MetaData not found")
             }
             
             return completionHandler(metaData.path, nil)
+        }
+        
+        uploadTask.resume()
+        
+    }
+    
+    func uploadImageDescriptionEvent(data imgData: Data, completionHandler: @escaping (_ urlImg: String?, _ error: String?) -> Void ) {
+        
+        guard let currentUser = UserServices.shared.currentUser else {
+            return completionHandler(nil, "User not found")
+        }
+        
+        let keyPath = "\(currentUser.id)" + "\(Helpers.getTimeStamp()).jpg"
+        
+        let uploadTask = refImageEventDiscriptionsStorage.child(keyPath).putData(imgData, metadata: nil) { (metaData, error) in
+            print(metaData)
+            guard let metaData = metaData else {
+                return completionHandler(nil, "MetaData not found")
+            }
+            
+            return completionHandler(metaData.downloadURL()?.absoluteString, nil)
         }
         
         uploadTask.resume()

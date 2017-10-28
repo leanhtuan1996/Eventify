@@ -68,6 +68,7 @@
 		36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */; };
 		36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */; };
 		36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */; };
+		36D1C2131FA466D000DB7451 /* DescriptionEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C2121FA466D000DB7451 /* DescriptionEditorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -585,6 +586,7 @@
 		36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
 		36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveEventProtocol.swift; sourceTree = "<group>"; };
+		36D1C2121FA466D000DB7451 /* DescriptionEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionEditorVC.swift; sourceTree = "<group>"; };
 		84574092EFF458EE0F57B42B /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1685,11 +1687,20 @@
 		36B762381F7FB283009D3BE9 /* NewEvent */ = {
 			isa = PBXGroup;
 			children = (
+				36D1C2051FA466B400DB7451 /* DescriptionEditor */,
 				3622601A1FA1A98400B2BE4C /* MapPicker */,
 				362C5E001F8093B20033F9DB /* Tickets */,
 				36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */,
 			);
 			path = NewEvent;
+			sourceTree = "<group>";
+		};
+		36D1C2051FA466B400DB7451 /* DescriptionEditor */ = {
+			isa = PBXGroup;
+			children = (
+				36D1C2121FA466D000DB7451 /* DescriptionEditorVC.swift */,
+			);
+			path = DescriptionEditor;
 			sourceTree = "<group>";
 		};
 		81AB7D1D523A169706645BAA /* Frameworks */ = {
@@ -1978,6 +1989,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HanekeSwift/Haneke.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RichEditorView/RichEditorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -2000,6 +2012,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichEditorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -2022,6 +2035,7 @@
 			files = (
 				367F3BF51F7E34EB002222EB /* EventServices.swift in Sources */,
 				36001ADC1F83C7A20031A1EE /* NSDate+Timepiece.swift in Sources */,
+				36D1C2131FA466D000DB7451 /* DescriptionEditorVC.swift in Sources */,
 				36B683821F95FD9700CC4F09 /* EventServicesTest.swift in Sources */,
 				36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */,
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
