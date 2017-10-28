@@ -91,7 +91,7 @@ extension DescriptionEditorVC: UIImagePickerControllerDelegate, UINavigationCont
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
         
-        if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let imageResized = resizeImage(image: image, newWidth: self.view.bounds.width) {
                 if let img = UIImageJPEGRepresentation(imageResized, 0.5) {
                     
