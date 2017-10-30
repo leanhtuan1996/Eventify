@@ -14,7 +14,7 @@ import FBSDKLoginKit
 import ZaloSDK
 
 let refUser = Firestore.firestore().collection("Users")
-let refLiked = Firestore.firestore().collection("Liked")
+let refLikedEvents = Firestore.firestore().collection("LikedEvents")
 let refStorage = Storage.storage()
 let refImagePhotoUser = refStorage.reference().child("Images").child("UserAvatar")
 
@@ -50,28 +50,25 @@ class UserServices: NSObject {
             
             if let user = UserObject(json: snapshot.data()) {
                 
-                refUser.document(id).collection("liked").addSnapshotListener({ (snapshot, error) in
-                    
+                refLikedEvents.document(user.id).addSnapshotListener({ (snapshot, error) in
                     if let error = error {
                         completionHandler?(nil, error.localizedDescription)
                         return
                     }
                     
-                    guard let documents = snapshot?.documents else {
-                        print("error")
-                        completionHandler?(nil, "error")
+                    guard let likedEventsJson = snapshot?.data() else {
+                        completionHandler?(nil, "Parse data to json has been failed")
                         return
                     }
                     
                     var likedEvent: [EventObject] = []
                     
-                    documents.forEach({ (document) in
-                        
-                        guard let event = EventObject(json: document.data()) else {
-                            return
+                    likedEventsJson.forEach({ (id, event) in
+                        if let eventJson = event as? JSON {
+                            if let eventObject = EventObject(json: eventJson) {
+                                likedEvent.append(eventObject)
+                            }
                         }
-                        print(event.name)
-                        likedEvent.append(event)
                     })
                     
                     user.liked = likedEvent
@@ -79,7 +76,39 @@ class UserServices: NSObject {
                     self.currentUser = user
                     
                     completionHandler?(user, nil)
+                    
                 })
+                
+//                refUser.document(id).collection("liked").addSnapshotListener({ (snapshot, error) in
+//                    
+//                    if let error = error {
+//                        completionHandler?(nil, error.localizedDescription)
+//                        return
+//                    }
+//                    
+//                    guard let documents = snapshot?.documents else {
+//                        print("error")
+//                        completionHandler?(nil, "error")
+//                        return
+//                    }
+//                    
+//                    var likedEvent: [EventObject] = []
+//                    
+//                    documents.forEach({ (document) in
+//                        
+//                        guard let event = EventObject(json: document.data()) else {
+//                            return
+//                        }
+//                        //print(event.name)
+//                        likedEvent.append(event)
+//                    })
+//                    
+//                    user.liked = likedEvent
+//                    
+//                    self.currentUser = user
+//                    
+//                    completionHandler?(user, nil)
+//                })
                 
             } else {
                 completionHandler?(nil, "2")
@@ -509,7 +538,12 @@ class UserServices: NSObject {
 //            
 //        }
         
-        refUser.document(idUser).collection("liked").document(eventId).setData(eventJson, options: SetOptions.merge()) { (error) in
+//        refUser.document(idUser).collection("liked").document(eventId).setData(eventJson, options: SetOptions.merge()) { (error) in
+//            return completionHandler(error?.localizedDescription)
+//        }
+        
+        //for testing
+        refLikedEvents.document(idUser).setData([eventId : eventJson], options: SetOptions.merge()) { (error) in
             return completionHandler(error?.localizedDescription)
         }
         
@@ -528,9 +562,15 @@ class UserServices: NSObject {
             return completionHandler("Current user not found")
         }
         
-        refUser.document(idUser).collection("liked").document(id).delete { (error) in
+//        refUser.document(idUser).collection("liked").document(id).delete { (error) in
+//            return completionHandler(error?.localizedDescription)
+//        }
+        
+        //for testing
+        refLikedEvents.document(idUser).updateData([id : FieldValue.delete()]) { (error) in
             return completionHandler(error?.localizedDescription)
         }
+        
     }
     
     func deleteUsers() {
