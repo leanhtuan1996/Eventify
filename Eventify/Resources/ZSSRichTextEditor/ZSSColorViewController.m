@@ -19,22 +19,18 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Colors";
-    
-    // HTML Content to set in the editor
-    NSString *html = @"<p>This editor is using <strong>custom toolbar colors</strong>.</p>";
-    
-    // Set the base URL if you would like to use relative links, such as to images.
-    self.baseURL = [NSURL URLWithString:@"http://www.zedsaid.com"];
+    self.title = @"Chi tiết sự kiện";
     
     // Set the toolbar item color
-    self.toolbarItemTintColor = [UIColor redColor];
+    self.toolbarItemTintColor = [UIColor blackColor];
     
     // Set the toolbar selected color
-    self.toolbarItemSelectedTintColor = [UIColor blackColor];
+    self.toolbarItemSelectedTintColor = [UIColor brownColor];
+    
+    //self.enabledToolbarItems = @[ZSSRichTextEditorToolbarBold, ZSSRichTextEditorToolbarH1, ZSSRichTextEditorToolbarParagraph];
     
     // Set the HTML contents of the editor
-    [self setHTML:html];
+    //[self setHTML:html];
     
 }
 

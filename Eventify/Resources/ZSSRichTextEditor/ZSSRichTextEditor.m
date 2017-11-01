@@ -904,6 +904,8 @@ static CGFloat kDefaultScale = 0.5;
     
     self.toolbar.frame = CGRectMake(0, 0, toolbarWidth, 44);
     self.toolBarScroll.contentSize = CGSizeMake(self.toolbar.frame.size.width, 44);
+    
+    printf("Add custom tool bar");
 }
 
 
@@ -1561,6 +1563,8 @@ static CGFloat kDefaultScale = 0.5;
 }
 
 - (void)insertImage:(NSString *)url alt:(NSString *)alt {
+    [self.editorView stringByEvaluatingJavaScriptFromString:@"zss_editor.prepareInsert();"];
+    
     NSString *trigger = [NSString stringWithFormat:@"zss_editor.insertImage(\"%@\", \"%@\");", url, alt];
     [self.editorView stringByEvaluatingJavaScriptFromString:trigger];
 }
