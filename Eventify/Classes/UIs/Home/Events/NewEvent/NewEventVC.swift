@@ -84,6 +84,7 @@ class NewEventVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         if let user = UserServices.shared.currentUser {
             lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
@@ -95,7 +96,8 @@ class NewEventVC: UIViewController {
     func showDescriptionEditor() {
         
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DescriptionEditorVC") as? DescriptionEditorVC {
-            sb.delegate = self
+            //self.tabBarController?.tabBar.isHidden = true
+            //sb.delegate = self
             self.navigationController?.pushViewController(sb, animated: true)
         }
         

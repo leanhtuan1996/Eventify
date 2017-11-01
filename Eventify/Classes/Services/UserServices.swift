@@ -56,14 +56,14 @@ class UserServices: NSObject {
                         return
                     }
                     
-                    guard let likedEventsJson = snapshot?.data() else {
-                        completionHandler?(nil, "Parse data to json has been failed")
+                    guard let dataSnapshot = snapshot, dataSnapshot.exists else {
+                        completionHandler?(nil, "Snapshot not found")
                         return
                     }
                     
                     var likedEvent: [EventObject] = []
                     
-                    likedEventsJson.forEach({ (id, event) in
+                    dataSnapshot.data().forEach({ (id, event) in
                         if let eventJson = event as? JSON {
                             if let eventObject = EventObject(json: eventJson) {
                                 likedEvent.append(eventObject)
@@ -353,7 +353,7 @@ class UserServices: NSObject {
     }
     
     func signInWithFacebook(token: FBSDKAccessToken, completionHandler: @escaping (_ error: String?) -> Void) {
-        
+        //print(token.tokenString)
         let auth = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
         Auth.auth().signIn(with: auth) { (user, error) in
             if let error = error {
