@@ -56,7 +56,7 @@ class DescriptionEditorVC: UIViewController {
     
     func done() {
         //print(editor.contentHTML)
-        delegate?.discriptionEditor(with: editor.text)
+        delegate?.discriptionEditor(with: editor.text, html: editor.contentHTML)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -93,7 +93,7 @@ extension DescriptionEditorVC: UIImagePickerControllerDelegate, UINavigationCont
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let imageResized = resizeImage(image: image, newWidth: self.view.bounds.width) {
-                if let img = UIImageJPEGRepresentation(imageResized, 0.5) {
+                if let img = UIImageJPEGRepresentation(imageResized, 1) {
                     
                     self.loading.showLoadingDialog(self)
                     EventServices.shared.uploadImageDescriptionEvent(data: img, completionHandler: { (url, error) in

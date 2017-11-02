@@ -15,7 +15,7 @@ import Haneke
 
 let refEvent = Firestore.firestore().collection("Events")
 let refImageEventCoverStorage = Storage.storage().reference().child("Images").child("EventCover")
-let refImageEventDiscriptionsStorage = Storage.storage().reference().child("Images").child("EventDiscriptions")
+let refImageEventDiscriptionsStorage = Storage.storage().reference().child("Images").child("EventDescriptions")
 
 class EventServices: NSObject {
     static let shared = EventServices()
