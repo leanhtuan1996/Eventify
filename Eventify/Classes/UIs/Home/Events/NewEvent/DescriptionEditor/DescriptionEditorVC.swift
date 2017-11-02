@@ -55,9 +55,9 @@ class DescriptionEditorVC: UIViewController {
     }
     
     func done() {
-        print(editor.contentHTML)
-        //delegate?.discriptionEditor(with: editor.text)
-        //self.navigationController?.popViewController(animated: true)
+        //print(editor.contentHTML)
+        delegate?.discriptionEditor(with: editor.text)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func pickingImage() {

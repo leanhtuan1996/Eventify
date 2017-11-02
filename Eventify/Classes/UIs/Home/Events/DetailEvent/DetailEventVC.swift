@@ -19,10 +19,11 @@ class DetailEventVC: UIViewController {
     let loading = UIActivityIndicatorView()
     var isLiked = false
     
+    @IBOutlet weak var imgPreviewMaps: UIImageView!
+    @IBOutlet weak var descriptionView: UIWebView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblDescriptions: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblBy: UILabel!
     @IBOutlet weak var lblDateStart: UILabel!
@@ -52,8 +53,12 @@ class DetailEventVC: UIViewController {
         btnBookmark.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
         
         let tapToOpenMaps = UITapGestureRecognizer(target: self, action: #selector(self.openMaps))
+        let tapToOpenMaps2 = UITapGestureRecognizer(target: self, action: #selector(self.openMaps))
         lblAddress.isUserInteractionEnabled = true
         lblAddress.addGestureRecognizer(tapToOpenMaps)
+        
+        imgPreviewMaps.isUserInteractionEnabled = true
+        imgPreviewMaps.addGestureRecognizer(tapToOpenMaps2)
         
         self.imgAvata.layer.cornerRadius = 37.5
         self.imgAvata.clipsToBounds = true
@@ -97,7 +102,7 @@ class DetailEventVC: UIViewController {
         self.lblAddress.text = event.address?.address ?? "Không có vị trí cho sự kiện này"
         
         //descriptions
-        self.lblDescriptions.text = event.descriptionEvent ?? "Không có mô tả cho sự kiện này"
+        //self.lblDescriptions.text = event.descriptionEvent ?? "Không có mô tả cho sự kiện này"
         
         //price: from $ -> to $
         if let minPrice = self.minPrice, let maxPrice = self.maxPrice {
@@ -105,11 +110,17 @@ class DetailEventVC: UIViewController {
         }
         
         //maps
-        if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude, let addressName = self.event.address?.address {
-            let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longtitude, zoom: 8.0)
-            self.mapView.animate(to: camera)
-            self.addMarker(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longtitude), eventName: self.event.name ?? "Sự kiện không xác định", address: addressName)
+        if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude {
+
+            if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                
+                
+                if let url = URL(string: staticMapUrl), let data = NSData(contentsOf: url) {
+                    self.imgPreviewMaps.image = UIImage.convertFromData(data as Data)
+                }
+            }
         }
+        
         
         //orgernize
         if let user = event.by {
@@ -126,6 +137,12 @@ class DetailEventVC: UIViewController {
             
         }
         
+        
+//        let html = "<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width", initial-scale=1.0><title>VNStudy - Học lập trình trực tuyến</title><link rel="shortcut icon" type="image/png" href="http://vietnamson.com/frontend/img/fav.png" /><link rel="stylesheet" type="text/css" href="http://vietnamson.com/frontend/css//font-awesome.css" /><link rel="stylesheet" type="text/css" href="http://vietnamson.com/frontend/css/bootstrap.css" /><link rel="stylesheet" type="text/css" href="http://vietnamson.com/frontend/css/styles.css" /><script type="text/javascript" src="http://vietnamson.com/frontend/js/jquery-1.11.1.min.js"></script><script type="text/javascript" src="http://vietnamson.com/frontend/js/bootstrap.js"></script><noscript><meta http-equiv="refresh" content="0;URL='http://vietnamson.com/nojavascript'" /></noscript></head><body><div class="center users-top"><a href="http://vietnamson.com"><img src="http://vietnamson.com/frontend/img/logo.png" class="users-logo"/></a></div><div class="users-form self-center"><form method="post" id="frmLogin" class="form-horizontal"><div class="form-group"><label for="txtEmail" class="control-label col-md-3">Email đăng nhập</label><div class="col-md-9"><input class="form-control" id="txtEmail" placeholder="Email" name="txtEmail"></div></div><div class="form-group"><label for="txtPassword" class="control-label col-md-3">Mật khẩu</label><div class="col-md-9"><input type="password" class="form-control" placeholder="Password" name="txtPassword" id="txtPassword"></div></div><div class="center"><button type="submit" class="btn btn-danger" style="width: 250px">Đăng nhập</button></div></form><div><div class="col-md-3"></div><div class="col-md-9"><p style="color:red; padding-top: 5px;" id="txtMessage" class="p-12"></p></div></div><div class="center" class="p-12" style="margin-top: 10px;"><a href="http://vietnamson.com/quen-mat-khau">Quên mật khẩu</a></div></div><script type="text/javascript">$(document).ready(function() {$("#frmLogin").submit(function(){var message = '';var email = $('#txtEmail').val();var password = $('#txtPassword').val();var regex =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;if (email.length == 0) {message = 'Vui lòng nhập Email đăng nhập.';}else if (password.length == 0) {}else if (!regex.test(email)) {message = 'Emai đăng nhập không hợp lệ.';}$('#txtMessage').text(message);if (message.length == 0) {return true;}else{return false;}});});</script><div id="footer-text" class="whitebg footer-fix"><p><a href="http://vietnamson.com/release">VNStudy ver 0.2</a> - Copyright © 2017 Cty Việt Nam Sơn</p></div><footer class="footer-fix"><div class="right"><img src="http://vietnamson.com/frontend/img/ele.png" style="width:200px;height:200px;" /></div></footer></body></html>"
+        
+        //self.descriptionView.loadHTMLString(html, baseURL: nil)
+        
+        self.descriptionView.loadRequest(URLRequest(url: URL(string: "https://www.w3schools.com")!))
         
         //isLike?
         
@@ -198,7 +215,7 @@ class DetailEventVC: UIViewController {
         
         let addButton = UIAlertAction(title: "Thêm ngay", style: UIAlertActionStyle.default) { (btn) in
             self.loading.showLoadingDialog(self)
-            Helpers.addEventToCalendar(title: name, description: self.lblDescriptions.text, startDate: startDate, endDate: endDate, location: location, completion: { (error) in
+            Helpers.addEventToCalendar(title: name, description: "", startDate: startDate, endDate: endDate, location: location, completion: { (error) in
                 
                 let cancelButton = UIAlertAction(title: "Đã hiểu", style: UIAlertActionStyle.default, handler: { (btn) in
                     self.loading.stopAnimating()
@@ -270,18 +287,18 @@ class DetailEventVC: UIViewController {
     }
 }
 
-extension DetailEventVC {
-    func addMarker(coordinate: CLLocationCoordinate2D, eventName: String, address: String) {
-        let marker = GMSMarker()
-        self.mapView.clear()
-        marker.position = coordinate
-        marker.title = eventName
-        marker.snippet = address
-        marker.appearAnimation = .pop
-        marker.isDraggable = true
-        marker.isFlat = true
-        marker.map = mapView
-    }
-    
-    
-}
+//extension DetailEventVC {
+//    func addMarker(coordinate: CLLocationCoordinate2D, eventName: String, address: String) {
+//        let marker = GMSMarker()
+//        self.mapView.clear()
+//        marker.position = coordinate
+//        marker.title = eventName
+//        marker.snippet = address
+//        marker.appearAnimation = .pop
+//        marker.isDraggable = true
+//        marker.isFlat = true
+//        marker.map = mapView
+//    }
+//    
+//    
+//}
