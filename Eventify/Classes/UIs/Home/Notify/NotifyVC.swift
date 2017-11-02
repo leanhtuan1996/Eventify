@@ -8,14 +8,12 @@
 
 import UIKit
 
-class NotifyVC: ZSSColorViewController {
+class NotifyVC: UIViewController {
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.enabledToolbarItems = [ZSSRichTextEditorToolbarAll]
         
     }
 

@@ -97,7 +97,7 @@ class NewEventVC: UIViewController {
         
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DescriptionEditorVC") as? DescriptionEditorVC {
             //self.tabBarController?.tabBar.isHidden = true
-            //sb.delegate = self
+            sb.delegate = self
             self.navigationController?.pushViewController(sb, animated: true)
         }
         

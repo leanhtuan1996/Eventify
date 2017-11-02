@@ -1720,12 +1720,27 @@
                     <view key="view" contentMode="scaleToFill" id="1PV-X2-gK8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yf0-5S-5Nw" customClass="RichEditorView" customModule="RichEditorView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yf0-5S-5Nw" firstAttribute="leading" secondItem="1PV-X2-gK8" secondAttribute="leading" id="BDj-VV-uDP"/>
+                            <constraint firstAttribute="trailing" secondItem="yf0-5S-5Nw" secondAttribute="trailing" id="NoQ-d0-kda"/>
+                            <constraint firstItem="0kk-2X-2pU" firstAttribute="top" secondItem="yf0-5S-5Nw" secondAttribute="bottom" id="PgJ-8t-Uhf"/>
+                            <constraint firstItem="yf0-5S-5Nw" firstAttribute="top" secondItem="1PV-X2-gK8" secondAttribute="top" id="U1q-c8-v0g"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="editor" destination="yf0-5S-5Nw" id="ZOL-PS-SLD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W1F-Oy-v9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4447" y="5094"/>
+            <point key="canvasLocation" x="4445.6000000000004" y="5093.7031484257877"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="xjz-5O-bMU">

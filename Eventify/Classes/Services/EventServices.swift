@@ -247,16 +247,24 @@ class EventServices: NSObject {
         
         let keyPath = "\(currentUser.id)" + "\(Helpers.getTimeStamp()).jpg"
         
-        let uploadTask = refImageEventDiscriptionsStorage.child(keyPath).putData(imgData, metadata: nil) { (metaData, error) in
-            //print(metaData)
-            guard let metaData = metaData else {
+        refImageEventDiscriptionsStorage.child(keyPath).putData(imgData, metadata: nil) { (storage, error) in
+            guard let metaData = storage else {
                 return completionHandler(nil, "MetaData not found")
             }
             
             return completionHandler(metaData.downloadURL()?.absoluteString, nil)
         }
         
-        uploadTask.resume()
+//        let uploadTask = refImageEventDiscriptionsStorage.child(keyPath).putData(imgData, metadata: nil) { (metaData, error) in
+//            //print(metaData)
+//            guard let metaData = metaData else {
+//                return completionHandler(nil, "MetaData not found")
+//            }
+//            
+//            return completionHandler(metaData.downloadURL()?.absoluteString, nil)
+//        }
+//        
+//        uploadTask.resume()
         
     }
     
