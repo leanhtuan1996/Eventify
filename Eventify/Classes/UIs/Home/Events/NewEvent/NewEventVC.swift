@@ -223,11 +223,24 @@ class NewEventVC: UIViewController {
             }
             
             let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+                
+                self.finishedAddEvent()
+                
                 self.tabBarController?.selectedIndex = 0
             })
             
             self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
         }
+    }
+    
+    func finishedAddEvent() {
+        self.imgCover.image = UIImage()
+        self.lblDescriptionEvent.text = "Nhấp vào để soạn thảo"
+        self.lblNameEvent.text = ""
+        self.lblTimeStart.text = "Nhấp vào để chọn ngày"
+        self.lblTimeEnd.text = "Nhấp vào để chọn ngày"
+        self.lblAddress.text = "Nhấp vào để chọn địa chỉ"
+        self.lblEventType.text = "Nhấp vào để chọn loại sự kiện"
     }
     
     //for testing
