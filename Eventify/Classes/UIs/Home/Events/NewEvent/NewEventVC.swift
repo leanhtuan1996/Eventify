@@ -277,7 +277,7 @@ class NewEventVC: UIViewController {
 
 extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, EventDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func discriptionEditor(with text: String, html html: String) {
+    func discriptionEditor(with text: String, html: String) {
         self.lblDescriptionEvent.text = text
         self.descriptionEvent = html
     }

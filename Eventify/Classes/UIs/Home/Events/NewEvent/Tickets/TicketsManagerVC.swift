@@ -21,8 +21,14 @@ class TicketsManagerVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.backItem?.title = "Trở về"
+        self.title = "Quản lý vé"
+        let newTicketItem = UIBarButtonItem(title: "Thêm vé", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.addNewTicket))
+        self.navigationItem.setRightBarButton(newTicketItem, animated: true)
+        self.navigationController?.setTranslucent()
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         
         //load tickets
         loadTickets()
@@ -39,10 +45,10 @@ class TicketsManagerVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func btnAddClicked(_ sender: Any) {
+    func addNewTicket() {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "NewTicketVC") as? NewTicketVC {
             self.navigationController?.pushViewController(sb, animated: true)
-            sb.titleString = "Tạo vé mới"
+            sb.title = "Tạo vé mới"
         }
     }
 }
@@ -61,7 +67,9 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
         cell.ticketObject = tickets[indexPath.row]
         cell.lblNameTicket.text = tickets[indexPath.row].name
         cell.lblPrice.text = (tickets[indexPath.row].price?.toString() ?? "") + " VND"
-        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()
+        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()       
+        
+        
         return cell
         
     }
@@ -69,8 +77,20 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "NewTicketVC") as? NewTicketVC {
             sb.ticketObject = tickets[indexPath.row]
-            sb.titleString = "Chỉnh sửa vé"
+            sb.title = "Chỉnh sửa vé"
             self.navigationController?.pushViewController(sb, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Xoá") { (rowAction, indexPath) in
+            
+            print(indexPath.row)
+            
+            self.tickets.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        }
+        return [deleteAction]
     }
 }

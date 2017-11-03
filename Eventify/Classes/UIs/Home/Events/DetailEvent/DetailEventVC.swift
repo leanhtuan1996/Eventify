@@ -72,78 +72,115 @@ class DetailEventVC: UIViewController {
     
     func handlerEvent() {
         
-        //loading
-        loading.showLoadingDialog(self)
-        
-        //image cover
-        if let photoUrl = event.photoURL {
-            imgCover.downloadedFrom(path: photoUrl)
-        }
-        
-        //name
-        self.lblName.text = event.name
-        //by
-        self.lblBy.text = "Bởi: \(event.by?.fullName ?? "Không rõ")"
-        
-        /*
-         * day start - ex: 31 thg 10, 2017
-         * .get day
-         * .get month
-         * .get year
-         */
-        if let timeStart = event.timeStart, let timeEnd = event.timeEnd {
-            let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
-            let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
-            self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
-            self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
-        }
-        
-        //address
-        self.lblAddress.text = event.address?.address ?? "Không có vị trí cho sự kiện này"
-        
-        //descriptions
-        
-        if let descriptionEvent = self.event.descriptionEvent {
-            //self.descriptionView.loadRequest(URLRequest(url: URL(string: "https://www.w3schools.com")!))
-            //self.lblDescriptions.text = event.descriptionEvent ?? "Không có mô tả cho sự kiện này"
-            print(descriptionEvent)
-            self.descriptionView.loadHTMLString(descriptionEvent, baseURL: nil)
-        }
-        
-        //price: from $ -> to $
-        if let minPrice = self.minPrice, let maxPrice = self.maxPrice {
-            self.lblPrice.text = "Từ \(minPrice) - \(maxPrice) VNĐ"
-        }
-        
-        //maps
-        if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude {
-
-            if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+        DispatchQueue.global().async { 
+            //loading
+            
+            DispatchQueue.main.async(execute: { 
+                self.loading.showLoadingDialog(self)
+            })
+            
+            
+            //image cover
+            if let photoUrl = self.event.photoURL {
+                
+                DispatchQueue.main.async(execute: {
+                    self.imgCover.downloadedFrom(path: photoUrl)
+                })
+            }
+            
+            DispatchQueue.main.async(execute: {
+                //name
+                self.lblName.text = self.event.name
+                //by
+                self.lblBy.text = "Bởi: \(self.event.by?.fullName ?? "Không rõ")"
+            })
+            
+           
+            
+            /*
+             * day start - ex: 31 thg 10, 2017
+             * .get day
+             * .get month
+             * .get year
+             */
+            if let timeStart = self.event.timeStart, let timeEnd = self.event.timeEnd {
+                let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
+                let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
+                
+                DispatchQueue.main.async(execute: {
+                    self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
+                    self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
+                })
                 
                 
-                if let url = URL(string: staticMapUrl), let data = NSData(contentsOf: url) {
-                    self.imgPreviewMaps.image = UIImage.convertFromData(data as Data)
+            }
+            
+            DispatchQueue.main.async(execute: {
+                //address
+                self.lblAddress.text = self.event.address?.address ?? "Không có vị trí cho sự kiện này"
+            })
+            
+            
+            
+            //descriptions
+            
+            if let descriptionEvent = self.event.descriptionEvent {
+                
+                DispatchQueue.main.async(execute: {
+                    self.descriptionView.loadHTMLString(descriptionEvent, baseURL: nil)
+                })
+            }
+            
+            //price: from $ -> to $
+            if let minPrice = self.minPrice, let maxPrice = self.maxPrice {
+                
+                DispatchQueue.main.async(execute: {
+                     self.lblPrice.text = "Từ \(minPrice) - \(maxPrice) VNĐ"
+                })
+            }
+            
+            //maps
+            if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude {
+                
+                if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                    
+                    
+                    if let url = URL(string: staticMapUrl), let data = NSData(contentsOf: url) {
+                        
+                        DispatchQueue.main.async(execute: {
+                            self.imgPreviewMaps.image = UIImage.convertFromData(data as Data)
+                        })
+                    }
                 }
             }
-        }
-        
-        
-        //orgarnizer
-        if let user = event.by {
             
-            if let link = user.photoURL {
-                self.imgAvata.downloadedFrom(link: link)
-            } else {
-                self.imgAvata.image = #imageLiteral(resourceName: "avatar")
+            
+            //orgarnizer
+            if let user = self.event.by {
+                
+                if let link = user.photoURL {
+                    self.imgAvata.downloadedFrom(link: link)
+                } else {
+                    self.imgAvata.image = #imageLiteral(resourceName: "avatar")
+                }
+                
+                DispatchQueue.main.async(execute: {
+                    self.lblByName.text = "\(user.fullName ?? "Không rõ")"
+                    self.lblPhone.text = "\(user.phone ?? "Không rõ")"
+                    self.lblEmail.text = "\(user.email ?? "Không rõ")"
+                })
+                
+                
+                
             }
             
-            self.lblByName.text = "\(user.fullName ?? "Không rõ")"
-            self.lblPhone.text = "\(user.phone ?? "Không rõ")"
-            self.lblEmail.text = "\(user.email ?? "Không rõ")"
+            DispatchQueue.main.async(execute: {
+               self.loading.stopAnimating()
+            })
+            
             
         }
         
-        loading.stopAnimating()
     }
     
     func openMaps() {

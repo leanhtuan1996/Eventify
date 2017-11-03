@@ -42,5 +42,5 @@ target 'Eventify' do
     pod 'RichEditorView'
     #pod 'YYText'
     
-    #pod 'ZSSRichTextEditor'
+    #pod 'SWTableViewCell'
 end

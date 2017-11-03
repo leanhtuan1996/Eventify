@@ -11,13 +11,12 @@ import SkyFloatingLabelTextField
 
 class NewTicketVC: UIViewController, UITextFieldDelegate {
 
-    var titleString: String?
     var ticketObject = TicketObject()
     @IBOutlet weak var txtNameTicket: SkyFloatingLabelTextField!
      @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
      @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
      @IBOutlet weak var txtPrice: SkyFloatingLabelTextField!
-    @IBOutlet weak var lblTitleVC: UILabel!
+   
     let loading = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,20 +29,19 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         txtQuantity.text = ticketObject.quantity?.toString()
         txtPrice.text = ticketObject.price?.toString()
         
-        lblTitleVC.text = titleString
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.tabBarController?.tabBar.isHidden = true
-    }
-
-    @IBAction func btnBackClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let newTicketItem = UIBarButtonItem(title: "Xong", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.done))
+        self.navigationItem.setRightBarButton(newTicketItem, animated: true)
+        self.navigationController?.setTranslucent()
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        
     }
     
-    @IBAction func btnDoneClicked(_ sender: Any) {
+    func done() {
         
         if !txtNameTicket.hasText {
             txtNameTicket.errorMessage = "Trường này là bắt buộc"
@@ -69,10 +67,6 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
         
     }
-    
-    @IBAction func btnMoreClicked(_ sender: Any) {
-    }
-    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
