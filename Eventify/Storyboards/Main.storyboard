@@ -812,9 +812,6 @@
                                                         <state key="normal" title=" Email liên hệ">
                                                             <color key="titleColor" red="0.53996080160000004" green="0.54462438820000003" blue="0.63826191430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="btnShowMoreDiscriptions:" destination="tQ6-Ko-e7Q" eventType="touchUpInside" id="nlV-Qa-2wd"/>
-                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="latuan.httt0114@student.ctuet.edu.vn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Skz-c0-db1">
                                                         <rect key="frame" x="10" y="192" width="315" height="50"/>
@@ -831,9 +828,6 @@
                                                         <state key="normal" title="Số điện thoại liên hệ">
                                                             <color key="titleColor" red="0.53996080160000004" green="0.54462438820000003" blue="0.63826191430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="btnShowMoreDiscriptions:" destination="tQ6-Ko-e7Q" eventType="touchUpInside" id="EkJ-c6-Ili"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -945,6 +939,9 @@
                                         <state key="normal" title="XEM VÉ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="ticketDetailsClicked:" destination="tQ6-Ko-e7Q" eventType="touchUpInside" id="zaT-ea-vX8"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Từ 700.000 VND" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv6-VF-ncS">
                                         <rect key="frame" x="20" y="19" width="240" height="22"/>

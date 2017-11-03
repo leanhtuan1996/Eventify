@@ -21,7 +21,6 @@ class DetailEventVC: UIViewController {
     
     @IBOutlet weak var imgPreviewMaps: UIImageView!
     @IBOutlet weak var descriptionView: UIWebView!
-    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
@@ -44,6 +43,7 @@ class DetailEventVC: UIViewController {
     }
     
     func setUpUI() {
+        
         self.tabBarController?.tabBar.isHidden = true
         btnShare.layer.cornerRadius = 20
         btnShare.layer.borderWidth = 0.5
@@ -111,16 +111,12 @@ class DetailEventVC: UIViewController {
                     self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
                     self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
                 })
-                
-                
             }
             
             DispatchQueue.main.async(execute: {
                 //address
                 self.lblAddress.text = self.event.address?.address ?? "Không có vị trí cho sự kiện này"
             })
-            
-            
             
             //descriptions
             
@@ -154,7 +150,6 @@ class DetailEventVC: UIViewController {
                 }
             }
             
-            
             //orgarnizer
             if let user = self.event.by {
                 
@@ -169,9 +164,6 @@ class DetailEventVC: UIViewController {
                     self.lblPhone.text = "\(user.phone ?? "Không rõ")"
                     self.lblEmail.text = "\(user.email ?? "Không rõ")"
                 })
-                
-                
-                
             }
             
             DispatchQueue.main.async(execute: {
@@ -227,9 +219,10 @@ class DetailEventVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.backItem?.title = "Trở về"
+        self.navigationItem.title = ""
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -268,10 +261,7 @@ class DetailEventVC: UIViewController {
         self.showAlert("Bằng cách nhấn vào nút \("Thêm ngay"), sự kiện \(name) sẽ được thêm vào ứng dụng lịch của bạn", title: "Bạn có muốn thêm sự kiện \(name) vào lịch của bạn không?", buttons: [addButton, cancelButton])
         
     }
-    
-    @IBAction func btnShowMoreDiscriptions(_ sender: Any) {
-    }
-    
+        
     @IBAction func btnShare(_ sender: Any) {
         
         guard let event = self.event else {
@@ -318,6 +308,19 @@ class DetailEventVC: UIViewController {
         alertSharing.popoverPresentationController?.sourceView = self.view
         alertSharing.excludedActivityTypes = []
         self.present(alertSharing, animated: true, completion: nil)
+    }
+    
+    @IBAction func ticketDetailsClicked(_ sender: Any) {
+        if let vc = UIStoryboard(name: "Order", bundle: nil).instantiateViewController(withIdentifier: "TicketDetailsVC") as? TicketDetailsVC {
+            
+            vc.eventName = self.event.name
+            vc.byName = self.event.by?.fullName
+            vc.timeStart = self.event.timeStart
+            vc.timeEnd = self.event.timeEnd
+            vc.tickets = self.event.tickets ?? []
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

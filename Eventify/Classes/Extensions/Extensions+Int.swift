@@ -30,7 +30,24 @@ extension Int {
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         dateFormatter.locale = Locale.current
         
+        
         return (date.day, date.month, date.year, date.hour, date.minute)
+    }
+  
+    
+    //day of week - day - month - year - hour - minute
+    func getTime() -> (Int, Int, Int, Int, Int, Int) {
+        let dateFormatter = DateFormatter()
+        
+        let date = Date(timeIntervalSince1970: Double(self))
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        dateFormatter.locale = Locale.current
+        
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: date)
+
+        
+        return (weekDay, date.day, date.month, date.year, date.hour, date.minute)
     }
     
     func toDate() -> Date {

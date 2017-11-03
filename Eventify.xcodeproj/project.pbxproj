@@ -74,6 +74,11 @@
 		36F112811FA9B27B00B97951 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F112801FA9B27B00B97951 /* CoreGraphics.framework */; };
 		36F112831FA9B28000B97951 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F112821FA9B28000B97951 /* CoreText.framework */; };
 		36F112851FA9B29800B97951 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F112841FA9B29800B97951 /* UIKit.framework */; };
+		36F28D7F1FAC4700000A5359 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36F28D7E1FAC4700000A5359 /* Order.storyboard */; };
+		36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28D8E1FAC4A97000A5359 /* TicketDetailsVC.swift */; };
+		36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28D911FAC541E000A5359 /* TicketsOrderCell.swift */; };
+		36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F28D921FAC541E000A5359 /* TicketsOrderCell.xib */; };
+		36F28D971FAC72DC000A5359 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28D961FAC72DC000A5359 /* DayOfWeek.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -598,6 +603,11 @@
 		36F112801FA9B27B00B97951 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		36F112821FA9B28000B97951 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		36F112841FA9B29800B97951 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		36F28D7E1FAC4700000A5359 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
+		36F28D8E1FAC4A97000A5359 /* TicketDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketDetailsVC.swift; sourceTree = "<group>"; };
+		36F28D911FAC541E000A5359 /* TicketsOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsOrderCell.swift; sourceTree = "<group>"; };
+		36F28D921FAC541E000A5359 /* TicketsOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketsOrderCell.xib; sourceTree = "<group>"; };
+		36F28D961FAC72DC000A5359 /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		84574092EFF458EE0F57B42B /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1470,6 +1480,7 @@
 		367F3BCD1F7E34EB002222EB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				36F28D951FAC72A2000A5359 /* Enums */,
 				36225FF31FA1A0B800B2BE4C /* Protocols */,
 				36B683801F95FD8500CC4F09 /* Tests */,
 				367F3BCE1F7E34EB002222EB /* Apps */,
@@ -1610,6 +1621,7 @@
 			children = (
 				367F3BE81F7E34EB002222EB /* LaunchScreen.storyboard */,
 				367F3BE91F7E34EB002222EB /* Main.storyboard */,
+				36F28D7E1FAC4700000A5359 /* Order.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1645,6 +1657,7 @@
 		36B762251F7E9BDF009D3BE9 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				36F28D8C1FAC4956000A5359 /* OrderEvent */,
 				36B762381F7FB283009D3BE9 /* NewEvent */,
 				36B762271F7E9C83009D3BE9 /* DetailEvent */,
 				36B762291F7E9C83009D3BE9 /* EventsCell */,
@@ -1718,6 +1731,40 @@
 				36F111A71FA9B0AF00B97951 /* WWCalendarTimeSelector.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		36F28D8C1FAC4956000A5359 /* OrderEvent */ = {
+			isa = PBXGroup;
+			children = (
+				36F28D8D1FAC4A7F000A5359 /* TicketDetails */,
+			);
+			path = OrderEvent;
+			sourceTree = "<group>";
+		};
+		36F28D8D1FAC4A7F000A5359 /* TicketDetails */ = {
+			isa = PBXGroup;
+			children = (
+				36F28D901FAC5409000A5359 /* TicketsCell */,
+				36F28D8E1FAC4A97000A5359 /* TicketDetailsVC.swift */,
+			);
+			path = TicketDetails;
+			sourceTree = "<group>";
+		};
+		36F28D901FAC5409000A5359 /* TicketsCell */ = {
+			isa = PBXGroup;
+			children = (
+				36F28D911FAC541E000A5359 /* TicketsOrderCell.swift */,
+				36F28D921FAC541E000A5359 /* TicketsOrderCell.xib */,
+			);
+			path = TicketsCell;
+			sourceTree = "<group>";
+		};
+		36F28D951FAC72A2000A5359 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				36F28D961FAC72DC000A5359 /* DayOfWeek.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		81AB7D1D523A169706645BAA /* Frameworks */ = {
@@ -1941,9 +1988,11 @@
 			files = (
 				36F111AE1FA9B0AF00B97951 /* WWCalendarTimeSelector.storyboard in Resources */,
 				36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */,
+				36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */,
 				367F3BFA1F7E34EB002222EB /* Main.storyboard in Resources */,
 				3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */,
 				362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */,
+				36F28D7F1FAC4700000A5359 /* Order.storyboard in Resources */,
 				367F3C141F7E3639002222EB /* Images.xcassets in Resources */,
 				36001B0E1F875ED10031A1EE /* EventTypeCell.xib in Resources */,
 				367F3BF91F7E34EB002222EB /* LaunchScreen.storyboard in Resources */,
@@ -2085,15 +2134,18 @@
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
 				3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */,
+				36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
 				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
+				36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,
 				36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */,
 				367F3C101F7E360A002222EB /* SignInVC.swift in Sources */,
+				36F28D971FAC72DC000A5359 /* DayOfWeek.swift in Sources */,
 				36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */,
 				36001B121F8775160031A1EE /* SettingsVC.swift in Sources */,
 				367F3BF31F7E34EB002222EB /* Extensions+UIImageView.swift in Sources */,

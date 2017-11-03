@@ -43,4 +43,5 @@ target 'Eventify' do
     #pod 'YYText'
     
     #pod 'SWTableViewCell'
+    #pod 'Sparrow/LaunchAnimation’, :git => 'https://github.com/IvanVorobei/Sparrow.git’
 end
