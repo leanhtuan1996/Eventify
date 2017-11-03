@@ -51,6 +51,10 @@ class TicketsManagerVC: UIViewController {
             sb.title = "Tạo vé mới"
         }
     }
+    
+    func deleteTicket(with id: String) {
+        TicketManager.shared.deleteTicket(byId: id)
+    }
 }
 
 extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
@@ -85,7 +89,9 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Xoá") { (rowAction, indexPath) in
             
-            print(indexPath.row)
+            if let id = self.tickets[indexPath.row].id {
+                self.deleteTicket(with: id)
+            }
             
             self.tickets.remove(at: indexPath.row)
             
