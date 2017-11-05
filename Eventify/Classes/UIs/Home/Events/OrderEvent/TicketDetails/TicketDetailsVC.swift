@@ -15,6 +15,7 @@ class TicketDetailsVC: UIViewController {
     var timeStart: Int?
     var timeEnd: Int?
     var tickets: [TicketObject] = []
+    var ticketsToOrder: [TicketObject] = []
     var loading = UIActivityIndicatorView()
     
     @IBOutlet weak var lblEventName: UILabel!
@@ -22,6 +23,7 @@ class TicketDetailsVC: UIViewController {
     @IBOutlet weak var lblTimeStart: UILabel!
     @IBOutlet weak var lblTimeEnd: UILabel!
     @IBOutlet weak var tblTickets: UITableView!
+    @IBOutlet weak var lblTotalPrice: UILabel!
     
     
     override func viewDidLoad() {
@@ -40,11 +42,16 @@ class TicketDetailsVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.backItem?.title = "Trở về"
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
-        self.navigationController?.setTranslucent()
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setTranslucent(isTranslucent: true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        self.navigationItem.title = ""
+        self.navigationController?.setTranslucent(isTranslucent: false)
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -54,7 +61,7 @@ class TicketDetailsVC: UIViewController {
             
             DispatchQueue.main.async {
                 self.lblEventName.text = self.eventName
-                self.lblBy.text = self.byName
+                self.lblBy.text = "Bởi \(self.byName ?? "Không rõ")"
             }
             
             if let timeStart = self.timeStart, let timeEnd = self.timeEnd {
@@ -97,10 +104,45 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblTicketType.text = price == 0 ? "Miễn phí" : "\(price) VNĐ"
         }
         
+        cell.ticket = self.tickets[indexPath.row]
+        
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tickets.count == 0 ? 2 : self.tickets.count
+    }
+}
+
+extension TicketDetailsVC: OrderEventDelegate {
+    func chooseTicket(with ticket: TicketObject) {
+        print(ticket.toJSON())
+        if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
+            self.lblTotalPrice.text = (totalPrice + price).toString()
+            self.ticketsToOrder.append(ticket)
+        }
+        print(self.ticketsToOrder.count)
+    }
+    
+    func unChooseTicket(with ticket: TicketObject) {
+        print(ticket.toJSON())
+        if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
+            self.lblTotalPrice.text = (totalPrice - price).toString()
+            
+            if let id = ticket.id {
+                if let index = self.ticketsToOrder.index(where: { (ticketObject) -> Bool in
+                    
+                    if let ticketId = ticketObject.id {
+                        return id == ticketId
+                    }
+                    return false
+                }) {
+                    self.ticketsToOrder.remove(at: index)
+                }
+            }
+            
+        }
+        print(self.ticketsToOrder.count)
     }
 }

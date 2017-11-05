@@ -79,6 +79,8 @@
 		36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28D911FAC541E000A5359 /* TicketsOrderCell.swift */; };
 		36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F28D921FAC541E000A5359 /* TicketsOrderCell.xib */; };
 		36F28D971FAC72DC000A5359 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28D961FAC72DC000A5359 /* DayOfWeek.swift */; };
+		36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28DA41FAD718B000A5359 /* OrderEventDelegate.swift */; };
+		36F28DB31FAD91D8000A5359 /* TicketServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28DB21FAD91D8000A5359 /* TicketServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -608,6 +610,8 @@
 		36F28D911FAC541E000A5359 /* TicketsOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsOrderCell.swift; sourceTree = "<group>"; };
 		36F28D921FAC541E000A5359 /* TicketsOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketsOrderCell.xib; sourceTree = "<group>"; };
 		36F28D961FAC72DC000A5359 /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		36F28DA41FAD718B000A5359 /* OrderEventDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderEventDelegate.swift; sourceTree = "<group>"; };
+		36F28DB21FAD91D8000A5359 /* TicketServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketServices.swift; sourceTree = "<group>"; };
 		84574092EFF458EE0F57B42B /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -676,6 +680,7 @@
 			children = (
 				362260001FA1A0D000B2BE4C /* EventProtocols.swift */,
 				36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */,
+				36F28DA41FAD718B000A5359 /* OrderEventDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1557,6 +1562,7 @@
 				367F3BDE1F7E34EB002222EB /* UserServices.swift */,
 				36001B051F8747C40031A1EE /* TypeEventServices.swift */,
 				36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */,
+				36F28DB21FAD91D8000A5359 /* TicketServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2111,6 +2117,7 @@
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
 				362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */,
 				362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */,
+				36F28DB31FAD91D8000A5359 /* TicketServices.swift in Sources */,
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				36F111AB1FA9B0AF00B97951 /* NSDate+Timepiece.swift in Sources */,
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
@@ -2125,6 +2132,7 @@
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
 				362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */,
+				36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
 				36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */,
 				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,

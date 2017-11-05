@@ -10,13 +10,13 @@ import UIKit
 import SkyFloatingLabelTextField
 
 class NewTicketVC: UIViewController, UITextFieldDelegate {
-
-    var ticketObject = TicketObject()
+    
+    var ticketObject: TicketObject?
     @IBOutlet weak var txtNameTicket: SkyFloatingLabelTextField!
-     @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
-     @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
-     @IBOutlet weak var txtPrice: SkyFloatingLabelTextField!
-   
+    @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
+    @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
+    @IBOutlet weak var txtPrice: SkyFloatingLabelTextField!
+    
     let loading = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +25,11 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         txtQuantity.delegate = self
         txtPrice.delegate = self
         
-        txtNameTicket.text = ticketObject.name
-        txtQuantity.text = ticketObject.quantity?.toString()
-        txtPrice.text = ticketObject.price?.toString()
-        
+        if let ticket = self.ticketObject {
+            txtNameTicket.text = ticket.name
+            txtQuantity.text = ticket.quantity?.toString()
+            txtPrice.text = ticket.price?.toString()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +37,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         self.tabBarController?.tabBar.isHidden = true
         let newTicketItem = UIBarButtonItem(title: "Xong", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.done))
         self.navigationItem.setRightBarButton(newTicketItem, animated: true)
-        self.navigationController?.setTranslucent()
+        self.navigationController?.setTranslucent(isTranslucent: true)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         
     }
@@ -51,21 +52,63 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
             txtQuantity.errorMessage = "Trường này là bắt buộc"
             return
         }
-        loading.showLoadingDialog(self)
+        
         
         txtNameTicket.errorMessage = ""
         txtQuantity.errorMessage = ""
         
-        let ticket = TicketObject()
-        ticket.id = ticketObject.id
-        ticket.name = txtNameTicket.text
-        ticket.descriptions = txtDescription.text
-        ticket.quantity = txtQuantity.text?.toInt()
-        ticket.price = txtPrice.text?.toInt()
-        TicketManager.shared.addTicket(with: ticket)
-        loading.stopAnimating()
-        self.navigationController?.popViewController(animated: true)
-        
+        guard let idUser = UserServices.shared.currentUser?.id else {
+            self.showAlert("Id User not found", title: "error", buttons: nil)
+            return
+        }
+        self.dismissKeyboard()
+        //TicketManager.shared.addTicket(with: ticket)
+        self.loading.showLoadingDialog(self)
+        //edit, else => add
+        if let ticket = self.ticketObject {
+            ticket.name = txtNameTicket.text
+            ticket.descriptions = txtDescription.text
+            ticket.quantity = txtQuantity.text?.toInt()
+            ticket.price = txtPrice.text?.toInt()
+            
+            TicketServices.shared.editTicket(with: ticket, completionHandler: { (error) in
+                self.loading.stopAnimating()
+                
+                let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                
+                if let error = error {
+                    self.showAlert(error, title: "Add new ticket has been failed", buttons: [backButton])
+                    return
+                }
+                
+                self.navigationController?.popViewController(animated: true)
+            })
+            
+        } else {
+            let ticket = TicketObject()
+            ticket.id = "\(idUser)\(Helpers.getTimeStamp())"
+            ticket.name = txtNameTicket.text
+            ticket.descriptions = txtDescription.text
+            ticket.quantity = txtQuantity.text?.toInt()
+            ticket.price = txtPrice.text?.toInt()
+            
+            TicketServices.shared.addTicket(with: ticket) { (error) in
+                self.loading.stopAnimating()
+                
+                let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                
+                if let error = error {
+                    self.showAlert(error, title: "Add new ticket has been failed", buttons: [backButton])
+                    return
+                }
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

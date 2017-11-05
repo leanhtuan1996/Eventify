@@ -73,11 +73,6 @@ class EventObject: NSObject, Glossy  {
             return nil
         }
         
-        //set id for ticket
-        for ticket in tickets {
-            let id = Helpers.getTimeStamp()
-            ticket.id = id
-        }
         
         return jsonify([
             "id" ~~> id,

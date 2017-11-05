@@ -42,13 +42,15 @@ class UserServices: NSObject {
                 return
             }
             
-            guard let snapshot = snapshot else {
+            guard let snapshotDoc = snapshot, snapshotDoc.exists else {
                 print("2")
                 completionHandler?(nil, "2")
                 return
             }
             
-            if let user = UserObject(json: snapshot.data()) {
+            
+            
+            if let user = UserObject(json: snapshotDoc.data()) {
                 
                 refLikedEvents.document(user.id).addSnapshotListener({ (snapshot, error) in
                     if let error = error {

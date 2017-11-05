@@ -77,7 +77,6 @@ class NewEventVC: UIViewController {
         dateTimeSelector.delegate = self
         
         lblNameEvent.delegate = self
-        
         pickerImg.delegate = self
         
         lblNameEvent.returnKeyType = .done
@@ -90,9 +89,15 @@ class NewEventVC: UIViewController {
         
         if let user = UserServices.shared.currentUser {
             lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
+            
+            TicketServices.shared.getTickets(completionHandler: { (ticket, error) in
+                if let ticket = ticket, ticket.count > 0 {
+                    self.lblNumberTickets.text = "\(ticket.count) loại vé"
+                } else {
+                    self.lblNumberTickets.text = "Thêm vé"
+                }
+            })
         }
-        
-        lblNumberTickets.text = TicketManager.shared.getTickets().count.toString() + " loại vé"
     }
     
     func showDescriptionEditor() {
@@ -278,8 +283,8 @@ class NewEventVC: UIViewController {
 extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, EventDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func discriptionEditor(with text: String, html: String) {
-        self.lblDescriptionEvent.text = text
-        self.descriptionEvent = html
+        self.lblDescriptionEvent.text = text.isEmpty ? "Nhấp vào để soạn thảo" : text
+        self.descriptionEvent = html.isEmpty ? nil : html
     }
     
     func selectedAddress(with address: AddressObject) {

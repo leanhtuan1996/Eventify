@@ -106,10 +106,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HE1-Em-jfL">
-                                        <rect key="frame" x="5" y="30" width="270" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HE1-Em-jfL">
+                                        <rect key="frame" x="5" y="30" width="10.5" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="gFC-Z2-EIb"/>
+                                            <constraint firstAttribute="height" constant="25" id="Oy6-gM-wwN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,19 +125,29 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOo-KP-8CU">
+                                        <rect key="frame" x="25.5" y="32.5" width="40" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="CHz-mt-fMG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.53996080160000004" green="0.54462438820000003" blue="0.63826191430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="vnn-CW-dgJ" firstAttribute="leading" secondItem="HE1-Em-jfL" secondAttribute="trailing" constant="10" id="9Tx-Eh-61d"/>
                                     <constraint firstItem="vnn-CW-dgJ" firstAttribute="top" secondItem="sfo-AJ-kQD" secondAttribute="top" constant="5" id="Fb3-hl-WcZ"/>
+                                    <constraint firstItem="vOo-KP-8CU" firstAttribute="leading" secondItem="HE1-Em-jfL" secondAttribute="trailing" constant="10" id="GXn-7X-jkp"/>
                                     <constraint firstAttribute="height" constant="60" id="OOq-Xx-gqJ"/>
-                                    <constraint firstItem="HE1-Em-jfL" firstAttribute="leading" secondItem="sfo-AJ-kQD" secondAttribute="leading" constant="5" id="OPI-jE-jxb"/>
                                     <constraint firstItem="yca-Le-5C9" firstAttribute="leading" secondItem="sfo-AJ-kQD" secondAttribute="leading" constant="5" id="OaD-Oj-33h"/>
-                                    <constraint firstAttribute="bottom" secondItem="HE1-Em-jfL" secondAttribute="bottom" constant="5" id="bq9-65-u71"/>
+                                    <constraint firstAttribute="bottom" secondItem="HE1-Em-jfL" secondAttribute="bottom" constant="5" id="Zgt-ls-zr8"/>
+                                    <constraint firstItem="HE1-Em-jfL" firstAttribute="top" secondItem="yca-Le-5C9" secondAttribute="bottom" constant="5" id="c05-8o-eCO"/>
                                     <constraint firstAttribute="bottom" secondItem="vnn-CW-dgJ" secondAttribute="bottom" constant="5" id="h0h-NC-cMV"/>
                                     <constraint firstItem="yca-Le-5C9" firstAttribute="top" secondItem="sfo-AJ-kQD" secondAttribute="top" constant="5" id="tVe-hS-4kz"/>
-                                    <constraint firstItem="HE1-Em-jfL" firstAttribute="top" secondItem="yca-Le-5C9" secondAttribute="bottom" constant="5" id="tWH-dr-IFP"/>
                                     <constraint firstAttribute="trailing" secondItem="vnn-CW-dgJ" secondAttribute="trailing" constant="10" id="ucA-We-V6P"/>
+                                    <constraint firstItem="HE1-Em-jfL" firstAttribute="leading" secondItem="sfo-AJ-kQD" secondAttribute="leading" constant="5" id="w9P-Qy-Tkk"/>
+                                    <constraint firstItem="vOo-KP-8CU" firstAttribute="centerY" secondItem="HE1-Em-jfL" secondAttribute="centerY" id="xkf-qD-ruL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -163,6 +173,7 @@
                         <outlet property="lblEventName" destination="pdQ-7W-Ol3" id="6Dg-hy-rRR"/>
                         <outlet property="lblTimeEnd" destination="NYG-dV-Ydd" id="DiF-sy-MvB"/>
                         <outlet property="lblTimeStart" destination="A3P-L7-2hh" id="wBt-Eb-6Z8"/>
+                        <outlet property="lblTotalPrice" destination="HE1-Em-jfL" id="jmD-Qp-7SS"/>
                         <outlet property="tblTickets" destination="uYS-OJ-IFs" id="Xsi-rT-gRO"/>
                     </connections>
                 </viewController>

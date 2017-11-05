@@ -44,7 +44,6 @@ class TicketManager: NSObject {
     
     func deleteTicket(byId id: String) {
         var currentTickets = getTickets()
-        print("GET TICKET: \(id)")
         if let index = currentTickets.index(where: { (ticket) -> Bool in
             return id == ticket.id
         }) {
@@ -56,16 +55,15 @@ class TicketManager: NSObject {
     
     func addTicket(with ticket: TicketObject) {
         var currentTickets = getTickets()
-        
         if currentTickets.contains(where: { (t) -> Bool in
             return t.id == ticket.id
         }) {
             editTicket(with: ticket)
         } else {
-            ticket.id = currentTickets.count.toString()
+            if let idUser = UserServices.shared.currentUser?.id {
+                ticket.id = "\(idUser)\(Helpers.getTimeStamp())"
+            }
             currentTickets.append(ticket)
-            
-            print(currentTickets.count)
             
             //begin add to userdefault
             let ticketsData = NSKeyedArchiver.archivedData(withRootObject: currentTickets)

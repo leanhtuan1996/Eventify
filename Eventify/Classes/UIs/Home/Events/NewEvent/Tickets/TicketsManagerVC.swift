@@ -27,7 +27,7 @@ class TicketsManagerVC: UIViewController {
         self.title = "Quản lý vé"
         let newTicketItem = UIBarButtonItem(title: "Thêm vé", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.addNewTicket))
         self.navigationItem.setRightBarButton(newTicketItem, animated: true)
-        self.navigationController?.setTranslucent()
+        self.navigationController?.setTranslucent(isTranslucent: true)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         
         //load tickets
@@ -36,9 +36,14 @@ class TicketsManagerVC: UIViewController {
     }
     
     func loadTickets() {
-        tickets = TicketManager.shared.getTickets()
-        //print(tickets.count)
-        tblTickets.reloadData()
+        TicketServices.shared.getTickets { (tickets, error) in
+            if let error = error {
+                self.showAlert(error, title: "Get tickets have been failed", buttons: nil)
+                return
+            }
+            self.tickets = tickets ?? []
+            self.tblTickets.reloadData()
+        }
     }
   
     @IBAction func btnBackClicked(_ sender: Any) {
@@ -53,7 +58,13 @@ class TicketsManagerVC: UIViewController {
     }
     
     func deleteTicket(with id: String) {
-        TicketManager.shared.deleteTicket(byId: id)
+        //TicketManager.shared.deleteTicket(byId: id)
+        TicketServices.shared.deleteTicket(withId: id) { (error) in
+            if let error = error {
+                self.showAlert(error, title: "Thao tác bị lỗi", buttons: nil)
+                return
+            }
+        }
     }
 }
 
@@ -71,8 +82,7 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
         cell.ticketObject = tickets[indexPath.row]
         cell.lblNameTicket.text = tickets[indexPath.row].name
         cell.lblPrice.text = (tickets[indexPath.row].price?.toString() ?? "") + " VND"
-        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()       
-        
+        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()
         
         return cell
         

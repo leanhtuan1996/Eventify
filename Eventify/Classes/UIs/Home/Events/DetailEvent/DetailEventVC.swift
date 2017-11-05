@@ -219,10 +219,13 @@ class DetailEventVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.backItem?.title = "Trở về"
         self.navigationItem.title = ""
+        //self.navigationItem.backBarButtonItem?.title = "Trở về"
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        
         self.tabBarController?.tabBar.isHidden = true
     }
     

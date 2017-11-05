@@ -32,7 +32,7 @@ class TicketObject: NSObject, NSCoding, Glossy {
     required init?(json: JSON) {
         self.id = "id" <~~ json
         self.name = "name" <~~ json
-        self.descriptions = "description" <~~ json
+        self.descriptions = "descriptions" <~~ json
         self.quantity = "quantity" <~~ json
         self.price = "price" <~~ json
     }

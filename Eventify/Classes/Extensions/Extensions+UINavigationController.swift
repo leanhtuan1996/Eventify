@@ -21,10 +21,20 @@ extension UINavigationController {
         }
     }
     
-    func setTranslucent() {        
-        self.view.backgroundColor = .clear
+    func setTranslucent(isTranslucent: Bool) {
+        
+        if isTranslucent {
+            self.view.backgroundColor = .clear
+            self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationBar.shadowImage = UIImage()
+            self.navigationBar.isTranslucent = true
+            return
+        }
+        
+        self.view.backgroundColor = .white
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.isTranslucent = true
+        self.navigationBar.isTranslucent = false
+        
     }
 }

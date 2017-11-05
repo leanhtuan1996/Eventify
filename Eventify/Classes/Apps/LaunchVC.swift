@@ -21,14 +21,21 @@ class LaunchVC: UIViewController {
         //UserServices.shared.signOut()
        
         
+        
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             
             //Listen
             UserServices.shared.isLoggedIn(completionHandler: { (error) in
                 
+                TicketServices.shared.getTickets(completionHandler: { (ticket, error) in
+                    
+                })
+                
                 print("ISLOGGEDIN")
                 if let _ = error {
                     appDelegate.showSignInView()
+                    
+                    
                 }
                 else {
                     appDelegate.showMainView()
