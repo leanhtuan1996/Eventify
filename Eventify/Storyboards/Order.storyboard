@@ -193,241 +193,255 @@
                         <viewControllerLayoutGuide type="bottom" id="9mE-iv-3Vl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4ep-HJ-zgx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWo-6h-0ja">
                                 <rect key="frame" x="5" y="25" width="365" height="1"/>
                                 <color key="backgroundColor" red="0.53996080160000004" green="0.54462438820000003" blue="0.63826191430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="dD0-6R-jNr"/>
+                                    <constraint firstAttribute="height" constant="1" id="H12-ky-Prs"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBG-6V-jhh">
-                                <rect key="frame" x="0.0" y="31" width="375" height="576"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="gBG-6V-jhh">
+                                <rect key="frame" x="0.0" y="31" width="375" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyR-J7-eF5" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-hA-Fqn" userLabel="previewEvent">
-                                        <rect key="frame" x="10" y="10" width="355" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="765"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên sự kiện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-EY-HtL">
-                                                <rect key="frame" x="5" y="5" width="345" height="25"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bởi: Lê Tuấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aP-St-wwB">
-                                                <rect key="frame" x="5" y="35" width="345" height="20"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-hA-Fqn" userLabel="previewEvent">
+                                                <rect key="frame" x="10" y="10" width="355" height="145"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên sự kiện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-EY-HtL">
+                                                        <rect key="frame" x="5" y="5" width="345" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bởi: Lê Tuấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aP-St-wwB">
+                                                        <rect key="frame" x="5" y="34" width="345" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="ztc-3a-VFi"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thứ 6, ngày 3 tháng 11, 2017 vào lúc 9:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-dU-hdA">
+                                                        <rect key="frame" x="5" y="65" width="345" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="11e-yc-X00"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IM3-qW-VAv">
+                                                        <rect key="frame" x="171" y="90" width="13" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="21d-4T-Hld"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thứ 6, ngày 3 tháng 11, 2017 vào lúc 22:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc9-gw-DLS">
+                                                        <rect key="frame" x="5" y="110" width="345" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="4Oo-m9-w1t"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="RPm-i2-QbQ"/>
+                                                    <constraint firstItem="IM3-qW-VAv" firstAttribute="top" secondItem="Ihp-dU-hdA" secondAttribute="bottom" id="7Tz-1E-NkX"/>
+                                                    <constraint firstAttribute="bottom" secondItem="pc9-gw-DLS" secondAttribute="bottom" constant="10" id="7Ye-dX-Kq4"/>
+                                                    <constraint firstItem="pc9-gw-DLS" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="Ego-dy-7z6"/>
+                                                    <constraint firstItem="pc9-gw-DLS" firstAttribute="top" secondItem="IM3-qW-VAv" secondAttribute="bottom" id="OOb-oL-QUZ"/>
+                                                    <constraint firstItem="NDk-EY-HtL" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="a4c-x2-xln"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7aP-St-wwB" secondAttribute="trailing" constant="5" id="bbd-Df-pwF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pc9-gw-DLS" secondAttribute="trailing" constant="5" id="dAq-hV-ClA"/>
+                                                    <constraint firstItem="IM3-qW-VAv" firstAttribute="centerX" secondItem="Pwe-hA-Fqn" secondAttribute="centerX" id="dSo-6G-aCA"/>
+                                                    <constraint firstItem="Ihp-dU-hdA" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="e3J-QI-lfk"/>
+                                                    <constraint firstItem="7aP-St-wwB" firstAttribute="top" secondItem="NDk-EY-HtL" secondAttribute="bottom" constant="5" id="hDg-ah-fOe"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ihp-dU-hdA" secondAttribute="trailing" constant="5" id="hpr-Mg-PAb"/>
+                                                    <constraint firstItem="7aP-St-wwB" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="ptK-U5-uK7"/>
+                                                    <constraint firstItem="Ihp-dU-hdA" firstAttribute="top" secondItem="7aP-St-wwB" secondAttribute="bottom" constant="15" id="qgZ-Ax-MW7"/>
+                                                    <constraint firstItem="NDk-EY-HtL" firstAttribute="top" secondItem="Pwe-hA-Fqn" secondAttribute="top" constant="5" id="rir-T1-MUY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NDk-EY-HtL" secondAttribute="trailing" constant="5" id="sab-3F-YVF"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thứ 6, ngày 3 tháng 11, 2017 vào lúc 9:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-dU-hdA">
-                                                <rect key="frame" x="5" y="65" width="345" height="25"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOJ-Ui-kDf" userLabel="sessionView">
+                                                <rect key="frame" x="10" y="165" width="355" height="80"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScU-pY-1r0">
+                                                        <rect key="frame" x="15" y="28" width="51.5" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="51.5" id="IuZ-aX-1km"/>
+                                                            <constraint firstAttribute="height" constant="25" id="oCa-Vf-8Ui"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sau 12 phút, phiên làm việc này sẽ hết hạn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUu-EH-GfI">
+                                                        <rect key="frame" x="76.5" y="7.5" width="278.5" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="65" id="MZz-pz-FOe"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.89701165126432492" green="0.90207982063293457" blue="0.57432530999356857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="JIC-tH-HFs"/>
+                                                    <constraint firstAttribute="height" constant="80" id="1qi-X0-iiU"/>
+                                                    <constraint firstItem="ScU-pY-1r0" firstAttribute="leading" secondItem="nOJ-Ui-kDf" secondAttribute="leading" constant="15" id="fTv-9s-5vR"/>
+                                                    <constraint firstItem="QUu-EH-GfI" firstAttribute="centerY" secondItem="ScU-pY-1r0" secondAttribute="centerY" id="k5N-P1-5RR"/>
+                                                    <constraint firstItem="ScU-pY-1r0" firstAttribute="centerY" secondItem="nOJ-Ui-kDf" secondAttribute="centerY" id="kyq-2z-ebu"/>
+                                                    <constraint firstItem="QUu-EH-GfI" firstAttribute="leading" secondItem="ScU-pY-1r0" secondAttribute="trailing" constant="10" id="pZ9-Qx-utM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QUu-EH-GfI" secondAttribute="trailing" id="rgu-pa-p9h"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IM3-qW-VAv">
-                                                <rect key="frame" x="171" y="90" width="13" height="20"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkT-zh-WPB">
+                                                <rect key="frame" x="0.0" y="270" width="375" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin cá nhân" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ee-Qg-vS6">
+                                                        <rect key="frame" x="10" y="11" width="123.5" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="ci3-yi-Jjd"/>
+                                                    <constraint firstItem="2Ee-Qg-vS6" firstAttribute="leading" secondItem="QkT-zh-WPB" secondAttribute="leading" constant="10" id="BRs-Ei-nrO"/>
+                                                    <constraint firstAttribute="height" constant="40" id="eUs-7X-2AG"/>
+                                                    <constraint firstItem="2Ee-Qg-vS6" firstAttribute="centerY" secondItem="QkT-zh-WPB" secondAttribute="centerY" id="sr1-45-Eas"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thứ 6, ngày 3 tháng 11, 2017 vào lúc 22:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc9-gw-DLS">
-                                                <rect key="frame" x="5" y="110" width="345" height="25"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H8-mm-b80" userLabel="infoView">
+                                                <rect key="frame" x="10" y="315" width="355" height="250"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-m9-hEE" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="5" y="10" width="345" height="45"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="Yi6-bV-3ms"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Họ và Tên"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qMK-U7-jbS" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="5" y="70" width="345" height="45"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Số điện thoại"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QEX-q7-Y6r" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="5" y="130" width="345" height="45"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJn-cW-G3S" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="5" y="190" width="345" height="45"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Địa chỉ"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="Mja-j2-U3g"/>
+                                                    <constraint firstItem="qMK-U7-jbS" firstAttribute="trailing" secondItem="SKq-m9-hEE" secondAttribute="trailing" id="0m9-uj-ZfY"/>
+                                                    <constraint firstItem="qMK-U7-jbS" firstAttribute="leading" secondItem="SKq-m9-hEE" secondAttribute="leading" id="6Hy-t6-Abo"/>
+                                                    <constraint firstItem="MJn-cW-G3S" firstAttribute="top" secondItem="QEX-q7-Y6r" secondAttribute="bottom" constant="15" id="GWp-pI-zYV"/>
+                                                    <constraint firstItem="QEX-q7-Y6r" firstAttribute="height" secondItem="qMK-U7-jbS" secondAttribute="height" id="KPi-Nr-ezO"/>
+                                                    <constraint firstItem="MJn-cW-G3S" firstAttribute="height" secondItem="QEX-q7-Y6r" secondAttribute="height" id="WRA-3f-IjW"/>
+                                                    <constraint firstAttribute="height" constant="250" id="bwg-f6-yTT"/>
+                                                    <constraint firstItem="qMK-U7-jbS" firstAttribute="height" secondItem="SKq-m9-hEE" secondAttribute="height" id="dvG-bu-3ge"/>
+                                                    <constraint firstItem="qMK-U7-jbS" firstAttribute="top" secondItem="SKq-m9-hEE" secondAttribute="bottom" constant="15" id="eWP-4k-nan"/>
+                                                    <constraint firstItem="QEX-q7-Y6r" firstAttribute="trailing" secondItem="qMK-U7-jbS" secondAttribute="trailing" id="nJJ-Wa-bXw"/>
+                                                    <constraint firstItem="SKq-m9-hEE" firstAttribute="leading" secondItem="4H8-mm-b80" secondAttribute="leading" constant="5" id="pPq-4J-VbY"/>
+                                                    <constraint firstItem="SKq-m9-hEE" firstAttribute="top" secondItem="4H8-mm-b80" secondAttribute="top" constant="10" id="qMW-7f-3Ra"/>
+                                                    <constraint firstItem="QEX-q7-Y6r" firstAttribute="leading" secondItem="qMK-U7-jbS" secondAttribute="leading" id="qVm-9p-lKM"/>
+                                                    <constraint firstItem="MJn-cW-G3S" firstAttribute="leading" secondItem="QEX-q7-Y6r" secondAttribute="leading" id="rUk-tb-Ixx"/>
+                                                    <constraint firstItem="QEX-q7-Y6r" firstAttribute="top" secondItem="qMK-U7-jbS" secondAttribute="bottom" constant="15" id="sW5-mW-DYh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SKq-m9-hEE" secondAttribute="trailing" constant="5" id="uuA-Xe-DSh"/>
+                                                    <constraint firstItem="MJn-cW-G3S" firstAttribute="trailing" secondItem="QEX-q7-Y6r" secondAttribute="trailing" id="xHb-jL-PcL"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="pc9-gw-DLS" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="2Zf-n2-zOp"/>
-                                            <constraint firstAttribute="trailing" secondItem="pc9-gw-DLS" secondAttribute="trailing" constant="5" id="57s-4u-FhI"/>
-                                            <constraint firstItem="NDk-EY-HtL" firstAttribute="top" secondItem="Pwe-hA-Fqn" secondAttribute="top" constant="5" id="7eg-JE-8Og"/>
-                                            <constraint firstAttribute="trailing" secondItem="NDk-EY-HtL" secondAttribute="trailing" constant="5" id="C5v-PU-o01"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ihp-dU-hdA" secondAttribute="trailing" constant="5" id="IHW-Gl-PHF"/>
-                                            <constraint firstItem="Ihp-dU-hdA" firstAttribute="top" secondItem="7aP-St-wwB" secondAttribute="bottom" constant="10" id="JGD-ij-wRF"/>
-                                            <constraint firstItem="7aP-St-wwB" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="OrM-7V-Tds"/>
-                                            <constraint firstItem="IM3-qW-VAv" firstAttribute="centerX" secondItem="Ihp-dU-hdA" secondAttribute="centerX" id="S4u-LD-l18"/>
-                                            <constraint firstItem="pc9-gw-DLS" firstAttribute="top" secondItem="IM3-qW-VAv" secondAttribute="bottom" id="VLD-2b-z6U"/>
-                                            <constraint firstAttribute="trailing" secondItem="7aP-St-wwB" secondAttribute="trailing" constant="5" id="boT-Ds-DAu"/>
-                                            <constraint firstAttribute="height" constant="145" id="dvb-im-3JG"/>
-                                            <constraint firstItem="IM3-qW-VAv" firstAttribute="top" secondItem="Ihp-dU-hdA" secondAttribute="bottom" id="gFx-9k-JZW"/>
-                                            <constraint firstItem="NDk-EY-HtL" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="gX4-7u-nuv"/>
-                                            <constraint firstAttribute="bottom" secondItem="pc9-gw-DLS" secondAttribute="bottom" constant="10" id="kA4-xN-CUC"/>
-                                            <constraint firstItem="Ihp-dU-hdA" firstAttribute="leading" secondItem="Pwe-hA-Fqn" secondAttribute="leading" constant="5" id="mrS-QU-yLi"/>
-                                            <constraint firstItem="7aP-St-wwB" firstAttribute="top" secondItem="NDk-EY-HtL" secondAttribute="bottom" constant="5" id="yre-bs-dNa"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOJ-Ui-kDf" userLabel="sessionView">
-                                        <rect key="frame" x="5" y="160" width="365" height="80"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScU-pY-1r0">
-                                                <rect key="frame" x="15" y="28" width="51.5" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="51.5" id="PUk-0H-65W"/>
-                                                    <constraint firstAttribute="height" constant="25" id="eNA-BI-G3j"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sau 12 phút, phiên làm việc này sẽ hết hạn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUu-EH-GfI">
-                                                <rect key="frame" x="76.5" y="7.5" width="278.5" height="65"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="65" id="Bei-gr-nyd"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.89701165126432492" green="0.90207982063293457" blue="0.57432530999356857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="QUu-EH-GfI" firstAttribute="leading" secondItem="ScU-pY-1r0" secondAttribute="trailing" constant="10" id="0yS-TV-TVL"/>
-                                            <constraint firstItem="QUu-EH-GfI" firstAttribute="centerY" secondItem="ScU-pY-1r0" secondAttribute="centerY" id="7ay-OR-9XS"/>
-                                            <constraint firstAttribute="height" constant="80" id="8NB-yu-KE0"/>
-                                            <constraint firstAttribute="trailing" secondItem="QUu-EH-GfI" secondAttribute="trailing" constant="10" id="fuh-BU-ymM"/>
-                                            <constraint firstItem="ScU-pY-1r0" firstAttribute="centerY" secondItem="nOJ-Ui-kDf" secondAttribute="centerY" id="l77-nC-RcV"/>
-                                            <constraint firstItem="ScU-pY-1r0" firstAttribute="leading" secondItem="nOJ-Ui-kDf" secondAttribute="leading" constant="15" id="pjd-Pq-1p3"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H8-mm-b80" userLabel="infoView">
-                                        <rect key="frame" x="10" y="250" width="355" height="250"/>
-                                        <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-m9-hEE" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="5" y="20" width="345" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="hNi-zv-nHW"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Họ và Tên"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qMK-U7-jbS" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="5" y="80" width="345" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="KIw-Wg-A25"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Số điện thoại"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QEX-q7-Y6r" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="5" y="140" width="345" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="WAn-vH-bMw"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJn-cW-G3S" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="5" y="200" width="345" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="CeP-eO-nGO"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Địa chỉ"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                        <color key="value" red="0.13761224929999999" green="0.54843799370000001" blue="0.89674782750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="qMK-U7-jbS" firstAttribute="top" secondItem="SKq-m9-hEE" secondAttribute="bottom" constant="15" id="1aQ-ED-2go"/>
-                                            <constraint firstItem="qMK-U7-jbS" firstAttribute="trailing" secondItem="SKq-m9-hEE" secondAttribute="trailing" id="3Yq-4D-Xuu"/>
-                                            <constraint firstItem="MJn-cW-G3S" firstAttribute="trailing" secondItem="QEX-q7-Y6r" secondAttribute="trailing" id="BNd-4S-wRu"/>
-                                            <constraint firstAttribute="trailing" secondItem="SKq-m9-hEE" secondAttribute="trailing" constant="5" id="E76-lm-c6t"/>
-                                            <constraint firstItem="SKq-m9-hEE" firstAttribute="top" secondItem="4H8-mm-b80" secondAttribute="top" constant="20" id="F9L-6w-Zwv"/>
-                                            <constraint firstItem="SKq-m9-hEE" firstAttribute="leading" secondItem="4H8-mm-b80" secondAttribute="leading" constant="5" id="Feh-Be-kix"/>
-                                            <constraint firstItem="qMK-U7-jbS" firstAttribute="leading" secondItem="SKq-m9-hEE" secondAttribute="leading" id="KIB-X6-vZ2"/>
-                                            <constraint firstItem="QEX-q7-Y6r" firstAttribute="trailing" secondItem="qMK-U7-jbS" secondAttribute="trailing" id="SlR-Wr-M10"/>
-                                            <constraint firstItem="QEX-q7-Y6r" firstAttribute="top" secondItem="qMK-U7-jbS" secondAttribute="bottom" constant="15" id="Y6z-Xp-lxr"/>
-                                            <constraint firstItem="MJn-cW-G3S" firstAttribute="leading" secondItem="QEX-q7-Y6r" secondAttribute="leading" id="afY-Ni-iRd"/>
-                                            <constraint firstItem="MJn-cW-G3S" firstAttribute="top" secondItem="QEX-q7-Y6r" secondAttribute="bottom" constant="15" id="dLE-D8-e1j"/>
-                                            <constraint firstItem="QEX-q7-Y6r" firstAttribute="leading" secondItem="qMK-U7-jbS" secondAttribute="leading" id="pYi-5k-C1C"/>
-                                            <constraint firstAttribute="height" constant="250" id="rx5-3D-MH2"/>
+                                            <constraint firstItem="nOJ-Ui-kDf" firstAttribute="leading" secondItem="XyR-J7-eF5" secondAttribute="leading" constant="10" id="2ag-LS-LWY"/>
+                                            <constraint firstAttribute="trailing" secondItem="4H8-mm-b80" secondAttribute="trailing" constant="10" id="AgL-Ea-2hH"/>
+                                            <constraint firstItem="QkT-zh-WPB" firstAttribute="leading" secondItem="XyR-J7-eF5" secondAttribute="leading" id="Blm-IU-910"/>
+                                            <constraint firstItem="nOJ-Ui-kDf" firstAttribute="top" secondItem="Pwe-hA-Fqn" secondAttribute="bottom" constant="10" id="Fxn-2X-1vi"/>
+                                            <constraint firstAttribute="trailing" secondItem="nOJ-Ui-kDf" secondAttribute="trailing" constant="10" id="IK1-ZV-O7K"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pwe-hA-Fqn" secondAttribute="trailing" constant="10" id="TjB-ym-AUp"/>
+                                            <constraint firstItem="QkT-zh-WPB" firstAttribute="top" secondItem="nOJ-Ui-kDf" secondAttribute="bottom" constant="25" id="VN0-T1-Yba"/>
+                                            <constraint firstItem="4H8-mm-b80" firstAttribute="leading" secondItem="XyR-J7-eF5" secondAttribute="leading" constant="10" id="Zvg-kb-KFM"/>
+                                            <constraint firstItem="4H8-mm-b80" firstAttribute="top" secondItem="QkT-zh-WPB" secondAttribute="bottom" constant="5" id="gYa-KF-Av2"/>
+                                            <constraint firstAttribute="trailing" secondItem="QkT-zh-WPB" secondAttribute="trailing" id="h3v-WB-sLU"/>
+                                            <constraint firstItem="Pwe-hA-Fqn" firstAttribute="leading" secondItem="XyR-J7-eF5" secondAttribute="leading" constant="10" id="iKP-re-ba7"/>
+                                            <constraint firstItem="Pwe-hA-Fqn" firstAttribute="top" secondItem="XyR-J7-eF5" secondAttribute="top" constant="10" id="j8G-UX-ESo"/>
+                                            <constraint firstAttribute="bottom" secondItem="4H8-mm-b80" secondAttribute="bottom" constant="200" id="zQi-9S-sZd"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="nOJ-Ui-kDf" firstAttribute="leading" secondItem="gBG-6V-jhh" secondAttribute="leading" constant="5" id="35a-FU-jIN"/>
-                                    <constraint firstAttribute="bottom" secondItem="XyR-J7-eF5" secondAttribute="bottom" id="3jd-FN-TLW"/>
-                                    <constraint firstAttribute="bottom" secondItem="4H8-mm-b80" secondAttribute="bottom" constant="200" id="8Wk-fB-tag"/>
-                                    <constraint firstItem="Pwe-hA-Fqn" firstAttribute="leading" secondItem="gBG-6V-jhh" secondAttribute="leading" constant="10" id="BxM-fp-L3i"/>
-                                    <constraint firstAttribute="trailing" secondItem="4H8-mm-b80" secondAttribute="trailing" constant="10" id="CLO-KS-Qhq"/>
-                                    <constraint firstItem="nOJ-Ui-kDf" firstAttribute="top" secondItem="Pwe-hA-Fqn" secondAttribute="bottom" constant="5" id="EUr-dF-SjN"/>
-                                    <constraint firstAttribute="trailing" secondItem="nOJ-Ui-kDf" secondAttribute="trailing" constant="5" id="YD4-fq-HXt"/>
-                                    <constraint firstItem="XyR-J7-eF5" firstAttribute="leading" secondItem="gBG-6V-jhh" secondAttribute="leading" id="eKQ-Ih-MjW"/>
-                                    <constraint firstAttribute="trailing" secondItem="XyR-J7-eF5" secondAttribute="trailing" id="edA-Pt-iXg"/>
-                                    <constraint firstItem="Pwe-hA-Fqn" firstAttribute="top" secondItem="gBG-6V-jhh" secondAttribute="top" constant="10" id="gEY-MB-4xJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Pwe-hA-Fqn" secondAttribute="trailing" constant="10" id="gNy-mr-jgT"/>
-                                    <constraint firstItem="XyR-J7-eF5" firstAttribute="top" secondItem="gBG-6V-jhh" secondAttribute="top" id="jhY-yJ-dbw"/>
-                                    <constraint firstItem="4H8-mm-b80" firstAttribute="leading" secondItem="gBG-6V-jhh" secondAttribute="leading" constant="10" id="mQz-Hi-Y89"/>
-                                    <constraint firstItem="4H8-mm-b80" firstAttribute="top" secondItem="nOJ-Ui-kDf" secondAttribute="bottom" constant="10" id="tKd-eW-lf1"/>
+                                    <constraint firstItem="XyR-J7-eF5" firstAttribute="leading" secondItem="gBG-6V-jhh" secondAttribute="leading" id="B3U-gu-EEb"/>
+                                    <constraint firstItem="XyR-J7-eF5" firstAttribute="top" secondItem="gBG-6V-jhh" secondAttribute="top" id="Hri-Vi-wO5"/>
+                                    <constraint firstAttribute="trailing" secondItem="XyR-J7-eF5" secondAttribute="trailing" id="KAl-F4-NTj"/>
+                                    <constraint firstAttribute="bottom" secondItem="XyR-J7-eF5" secondAttribute="bottom" id="LYE-pw-dsm"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9D-J9-JXB">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="790" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạm tính" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXT-4s-sC1">
-                                        <rect key="frame" x="5" y="5" width="52.5" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="ucV-9T-OEz"/>
-                                        </constraints>
+                                        <rect key="frame" x="5" y="5" width="52.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -435,7 +449,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2a-4c-0fs">
                                         <rect key="frame" x="5" y="30" width="10.5" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="WQI-vX-tbF"/>
+                                            <constraint firstAttribute="height" constant="25" id="pfb-1K-pO0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -444,8 +458,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAg-qv-0Vm">
                                         <rect key="frame" x="285" y="5" width="80" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="Ioi-Zf-huC"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="yRI-MX-RiR"/>
+                                            <constraint firstAttribute="width" constant="80" id="awo-HP-g1r"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="TIẾP TỤC">
@@ -456,10 +469,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6d4-le-v1f">
-                                        <rect key="frame" x="25.5" y="32.5" width="40" height="20.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="nNy-3T-uFZ"/>
-                                        </constraints>
+                                        <rect key="frame" x="25.5" y="32.5" width="35.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -467,34 +477,37 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.53996080160000004" green="0.54462438820000003" blue="0.63826191430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="aXT-4s-sC1" firstAttribute="leading" secondItem="l9D-J9-JXB" secondAttribute="leading" constant="5" id="6WV-u7-uH6"/>
-                                    <constraint firstItem="LAg-qv-0Vm" firstAttribute="top" secondItem="l9D-J9-JXB" secondAttribute="top" constant="5" id="831-fN-ZNy"/>
-                                    <constraint firstAttribute="bottom" secondItem="LAg-qv-0Vm" secondAttribute="bottom" constant="5" id="9gB-q5-3ca"/>
-                                    <constraint firstItem="6d4-le-v1f" firstAttribute="centerY" secondItem="q2a-4c-0fs" secondAttribute="centerY" id="B0R-VS-NkL"/>
-                                    <constraint firstItem="q2a-4c-0fs" firstAttribute="leading" secondItem="l9D-J9-JXB" secondAttribute="leading" constant="5" id="OgL-i3-jub"/>
-                                    <constraint firstItem="6d4-le-v1f" firstAttribute="leading" secondItem="q2a-4c-0fs" secondAttribute="trailing" constant="10" id="S4b-vh-VVL"/>
-                                    <constraint firstAttribute="height" constant="60" id="X2t-PJ-umn"/>
-                                    <constraint firstItem="aXT-4s-sC1" firstAttribute="top" secondItem="l9D-J9-JXB" secondAttribute="top" constant="5" id="XnH-5X-ynW"/>
-                                    <constraint firstItem="q2a-4c-0fs" firstAttribute="top" secondItem="aXT-4s-sC1" secondAttribute="bottom" constant="5" id="Yh2-Mj-mw7"/>
-                                    <constraint firstAttribute="trailing" secondItem="LAg-qv-0Vm" secondAttribute="trailing" constant="10" id="vrt-J5-vYw"/>
+                                    <constraint firstAttribute="bottom" secondItem="LAg-qv-0Vm" secondAttribute="bottom" constant="5" id="E6L-y4-HeZ"/>
+                                    <constraint firstItem="LAg-qv-0Vm" firstAttribute="top" secondItem="l9D-J9-JXB" secondAttribute="top" constant="5" id="LFT-RE-FJK"/>
+                                    <constraint firstItem="q2a-4c-0fs" firstAttribute="leading" secondItem="l9D-J9-JXB" secondAttribute="leading" constant="5" id="OPE-db-gCf"/>
+                                    <constraint firstAttribute="bottom" secondItem="q2a-4c-0fs" secondAttribute="bottom" constant="5" id="RZd-qO-0TX"/>
+                                    <constraint firstItem="aXT-4s-sC1" firstAttribute="top" secondItem="l9D-J9-JXB" secondAttribute="top" constant="5" id="TDP-q8-GoL"/>
+                                    <constraint firstItem="6d4-le-v1f" firstAttribute="centerY" secondItem="q2a-4c-0fs" secondAttribute="centerY" id="p3z-du-pdV"/>
+                                    <constraint firstAttribute="trailing" secondItem="LAg-qv-0Vm" secondAttribute="trailing" constant="10" id="pm0-DS-gBp"/>
+                                    <constraint firstItem="LAg-qv-0Vm" firstAttribute="centerY" secondItem="l9D-J9-JXB" secondAttribute="centerY" id="rKH-qD-osk"/>
+                                    <constraint firstItem="aXT-4s-sC1" firstAttribute="leading" secondItem="l9D-J9-JXB" secondAttribute="leading" constant="5" id="sIL-WD-hWU"/>
+                                    <constraint firstAttribute="height" constant="60" id="vCB-sj-otd"/>
+                                    <constraint firstItem="6d4-le-v1f" firstAttribute="leading" secondItem="q2a-4c-0fs" secondAttribute="trailing" constant="10" id="y9i-fH-74Z"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XWo-6h-0ja" secondAttribute="trailing" constant="5" id="9sp-uK-Zgc"/>
-                            <constraint firstItem="XWo-6h-0ja" firstAttribute="top" secondItem="TZj-mb-kWs" secondAttribute="bottom" constant="5" id="DCl-p4-wNY"/>
-                            <constraint firstItem="gBG-6V-jhh" firstAttribute="top" secondItem="XWo-6h-0ja" secondAttribute="bottom" constant="5" id="TZv-N8-bH7"/>
-                            <constraint firstAttribute="trailing" secondItem="l9D-J9-JXB" secondAttribute="trailing" id="ZFE-vC-TKO"/>
-                            <constraint firstItem="XyR-J7-eF5" firstAttribute="width" secondItem="4ep-HJ-zgx" secondAttribute="width" id="b8Q-rY-Mor"/>
-                            <constraint firstAttribute="trailing" secondItem="gBG-6V-jhh" secondAttribute="trailing" id="cJh-gr-fd7"/>
-                            <constraint firstItem="l9D-J9-JXB" firstAttribute="leading" secondItem="4ep-HJ-zgx" secondAttribute="leading" id="dqn-pQ-nry"/>
-                            <constraint firstItem="l9D-J9-JXB" firstAttribute="top" secondItem="gBG-6V-jhh" secondAttribute="bottom" id="eku-OZ-rLx"/>
-                            <constraint firstItem="XWo-6h-0ja" firstAttribute="leading" secondItem="4ep-HJ-zgx" secondAttribute="leading" constant="5" id="o4q-fk-Dff"/>
-                            <constraint firstItem="9mE-iv-3Vl" firstAttribute="top" secondItem="l9D-J9-JXB" secondAttribute="bottom" id="oXE-zB-j4g"/>
-                            <constraint firstItem="gBG-6V-jhh" firstAttribute="leading" secondItem="4ep-HJ-zgx" secondAttribute="leading" id="yOt-4n-Rfa"/>
+                            <constraint firstAttribute="trailing" secondItem="XWo-6h-0ja" secondAttribute="trailing" constant="5" id="HeW-Hf-4I5"/>
+                            <constraint firstItem="gBG-6V-jhh" firstAttribute="top" secondItem="XWo-6h-0ja" secondAttribute="bottom" constant="5" id="I35-VJ-L4p"/>
+                            <constraint firstItem="l9D-J9-JXB" firstAttribute="top" secondItem="gBG-6V-jhh" secondAttribute="bottom" id="KQT-hA-hZu"/>
+                            <constraint firstItem="9mE-iv-3Vl" firstAttribute="top" secondItem="l9D-J9-JXB" secondAttribute="bottom" id="TZr-yu-Hsq"/>
+                            <constraint firstAttribute="trailing" secondItem="gBG-6V-jhh" secondAttribute="trailing" id="U4m-6L-HHh"/>
+                            <constraint firstItem="XWo-6h-0ja" firstAttribute="leading" secondItem="4ep-HJ-zgx" secondAttribute="leading" constant="5" id="bQh-gd-5dj"/>
+                            <constraint firstItem="l9D-J9-JXB" firstAttribute="leading" secondItem="4ep-HJ-zgx" secondAttribute="leading" id="e2o-eO-7Fm"/>
+                            <constraint firstItem="gBG-6V-jhh" firstAttribute="leading" secondItem="4ep-HJ-zgx" secondAttribute="leading" id="ihu-fs-A5d"/>
+                            <constraint firstItem="XyR-J7-eF5" firstAttribute="width" secondItem="4ep-HJ-zgx" secondAttribute="width" id="tOX-dw-uj9"/>
+                            <constraint firstAttribute="trailing" secondItem="l9D-J9-JXB" secondAttribute="trailing" id="uGB-OA-MhY"/>
+                            <constraint firstItem="XWo-6h-0ja" firstAttribute="top" secondItem="TZj-mb-kWs" secondAttribute="bottom" constant="5" id="z3L-HH-LMg"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="850"/>
                     <connections>
                         <outlet property="lblBy" destination="7aP-St-wwB" id="Wu8-16-62U"/>
                         <outlet property="lblEventName" destination="NDk-EY-HtL" id="1D2-oh-aPu"/>
@@ -604,7 +617,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Eh-pS-yar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228" y="1501.7991004497753"/>
+            <point key="canvasLocation" x="-228" y="1560"/>
         </scene>
     </scenes>
     <resources>

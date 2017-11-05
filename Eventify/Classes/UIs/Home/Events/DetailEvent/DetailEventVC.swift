@@ -225,6 +225,7 @@ class DetailEventVC: UIViewController {
         //self.navigationItem.backBarButtonItem?.title = "Trở về"
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.setTranslucent(isTranslucent: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

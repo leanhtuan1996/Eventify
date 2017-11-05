@@ -19,6 +19,7 @@ class InfoUserVC: UIViewController {
     var tickets: [TicketObject] = []
     var ticketsToOrder: [TicketObject] = []
     var loading = UIActivityIndicatorView()
+    let remainingTime = 720
     
     @IBOutlet weak var lblEventName: UILabel!
     @IBOutlet weak var lblBy: UILabel!
@@ -60,6 +61,8 @@ class InfoUserVC: UIViewController {
         txtPhoneNumber.delegate = self
         txtEmail.delegate = self
         txtAddress.delegate = self
+        
+        //self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.remainingOrder), userInfo: nil, repeats: true)
     }
     
     @IBAction func btnContinues(_ sender: Any) {
@@ -97,6 +100,10 @@ class InfoUserVC: UIViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "CompleteOrderVC") as? CompleteOrderVC {
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func remainingOrder() {
+       
     }
 }
 
