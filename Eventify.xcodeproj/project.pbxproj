@@ -81,6 +81,8 @@
 		36F28D971FAC72DC000A5359 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28D961FAC72DC000A5359 /* DayOfWeek.swift */; };
 		36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28DA41FAD718B000A5359 /* OrderEventDelegate.swift */; };
 		36F28DB31FAD91D8000A5359 /* TicketServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28DB21FAD91D8000A5359 /* TicketServices.swift */; };
+		36F28DB81FAEED74000A5359 /* InfoUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28DB71FAEED74000A5359 /* InfoUserVC.swift */; };
+		36F28DBB1FAEF9A9000A5359 /* CompleteOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F28DBA1FAEF9A9000A5359 /* CompleteOrderVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -612,6 +614,8 @@
 		36F28D961FAC72DC000A5359 /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		36F28DA41FAD718B000A5359 /* OrderEventDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderEventDelegate.swift; sourceTree = "<group>"; };
 		36F28DB21FAD91D8000A5359 /* TicketServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketServices.swift; sourceTree = "<group>"; };
+		36F28DB71FAEED74000A5359 /* InfoUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoUserVC.swift; sourceTree = "<group>"; };
+		36F28DBA1FAEF9A9000A5359 /* CompleteOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteOrderVC.swift; sourceTree = "<group>"; };
 		84574092EFF458EE0F57B42B /* Pods-Eventify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C4C96B1CFBB71E8A2529A /* Pods-Eventify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eventify/Pods-Eventify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1742,6 +1746,8 @@
 		36F28D8C1FAC4956000A5359 /* OrderEvent */ = {
 			isa = PBXGroup;
 			children = (
+				36F28DB91FAEF999000A5359 /* SuccessOrder */,
+				36F28DB61FAEED5B000A5359 /* InfoDetails */,
 				36F28D8D1FAC4A7F000A5359 /* TicketDetails */,
 			);
 			path = OrderEvent;
@@ -1771,6 +1777,22 @@
 				36F28D961FAC72DC000A5359 /* DayOfWeek.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		36F28DB61FAEED5B000A5359 /* InfoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				36F28DB71FAEED74000A5359 /* InfoUserVC.swift */,
+			);
+			path = InfoDetails;
+			sourceTree = "<group>";
+		};
+		36F28DB91FAEF999000A5359 /* SuccessOrder */ = {
+			isa = PBXGroup;
+			children = (
+				36F28DBA1FAEF9A9000A5359 /* CompleteOrderVC.swift */,
+			);
+			path = SuccessOrder;
 			sourceTree = "<group>";
 		};
 		81AB7D1D523A169706645BAA /* Frameworks */ = {
@@ -2111,6 +2133,7 @@
 			files = (
 				36F111AC1FA9B0AF00B97951 /* NSDateComponents+Timepiece.swift in Sources */,
 				367F3BF51F7E34EB002222EB /* EventServices.swift in Sources */,
+				36F28DBB1FAEF9A9000A5359 /* CompleteOrderVC.swift in Sources */,
 				36F111AD1FA9B0AF00B97951 /* String+Timepiece.swift in Sources */,
 				36B683821F95FD9700CC4F09 /* EventServicesTest.swift in Sources */,
 				36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */,
@@ -2144,6 +2167,7 @@
 				3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */,
 				36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
+				36F28DB81FAEED74000A5359 /* InfoUserVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
 				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,

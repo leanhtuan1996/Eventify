@@ -41,6 +41,7 @@ class TicketDetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.backItem?.title = "Trở về"
+        self.navigationItem.title = ""
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -48,12 +49,12 @@ class TicketDetailsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.setTranslucent(isTranslucent: true)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationItem.title = ""
-        self.navigationController?.setTranslucent(isTranslucent: false)
-        self.tabBarController?.tabBar.isHidden = false
-    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationItem.title = ""
+//        self.navigationController?.setTranslucent(isTranslucent: false)
+//        self.tabBarController?.tabBar.isHidden = false
+//    }
     
     func handlerInformations() {
         self.loading.showLoadingDialog(self)
@@ -79,6 +80,24 @@ class TicketDetailsVC: UIViewController {
             DispatchQueue.main.async {
                 self.loading.stopAnimating()
             }
+            
+        }
+    }
+    @IBAction func continuesClicked(_ sender: Any) {
+        
+        if self.ticketsToOrder.count == 0 {
+            self.showAlert("Bạn chưa chọn vé", title: "Oops", buttons: nil)
+            return
+        }
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "InfoUserVC") as? InfoUserVC {
+            vc.ticketsToOrder = self.ticketsToOrder
+            vc.byName = self.lblBy.text
+            vc.timeStart = self.lblTimeStart.text
+            vc.timeEnd = self.lblTimeEnd.text
+            vc.eventName = self.lblEventName.text
+            vc.totalPrice = self.lblTotalPrice.text
+            self.navigationController?.pushViewController(vc, animated: true)
             
         }
     }
@@ -111,7 +130,7 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tickets.count == 0 ? 2 : self.tickets.count
+        return self.tickets.count
     }
 }
 
