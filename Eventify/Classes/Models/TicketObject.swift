@@ -9,25 +9,27 @@
 import UIKit
 import Gloss
 
-class TicketObject: NSObject, NSCoding, Glossy {
+class TicketObject: NSObject, Glossy {
     var id: String?
     var name: String?
     var descriptions: String?
     var quantity: Int?
     var price: Int?
+    var sold: Int?
+    var remain: Int?
     
     override init() {
         
     }
     
-    required init(coder aDecoder: NSCoder) {
-        id = aDecoder.decodeObject(forKey: "id") as? String ?? ""
-        name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
-        descriptions = aDecoder.decodeObject(forKey: "descriptions") as? String ?? ""
-        quantity = aDecoder.decodeInteger(forKey: "quantity")
-        price = aDecoder.decodeInteger(forKey: "price")
-        super.init()
-    }
+//    required init(coder aDecoder: NSCoder) {
+//        id = aDecoder.decodeObject(forKey: "id") as? String ?? ""
+//        name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
+//        descriptions = aDecoder.decodeObject(forKey: "descriptions") as? String ?? ""
+//        quantity = aDecoder.decodeInteger(forKey: "quantity")
+//        price = aDecoder.decodeInteger(forKey: "price")
+//        super.init()
+//    }
     
     required init?(json: JSON) {
         self.id = "id" <~~ json
@@ -35,29 +37,31 @@ class TicketObject: NSObject, NSCoding, Glossy {
         self.descriptions = "descriptions" <~~ json
         self.quantity = "quantity" <~~ json
         self.price = "price" <~~ json
+        self.sold = "sold" <~~ json
+        self.remain = "remain" <~~ json
     }
     
-    func encode(with aCoder: NSCoder) {
-        if let idInt = id {
-            aCoder.encode(idInt, forKey: "id")
-        }
-        
-        if let quantityInt = quantity {
-            aCoder.encode(quantityInt, forKey: "quantity")
-        }
-        
-        if let priceInt = price {
-            aCoder.encode(priceInt, forKey: "price")
-        }
-        
-        if let nameString = name {
-            aCoder.encode(nameString, forKey: "name")
-        }
-        
-        if let descriptionsString = descriptions {
-            aCoder.encode(descriptionsString, forKey: "descriptions")
-        }
-    }
+//    func encode(with aCoder: NSCoder) {
+//        if let idInt = id {
+//            aCoder.encode(idInt, forKey: "id")
+//        }
+//        
+//        if let quantityInt = quantity {
+//            aCoder.encode(quantityInt, forKey: "quantity")
+//        }
+//        
+//        if let priceInt = price {
+//            aCoder.encode(priceInt, forKey: "price")
+//        }
+//        
+//        if let nameString = name {
+//            aCoder.encode(nameString, forKey: "name")
+//        }
+//        
+//        if let descriptionsString = descriptions {
+//            aCoder.encode(descriptionsString, forKey: "descriptions")
+//        }
+//    }
     
     func toJSON() -> JSON? {
         return jsonify(
@@ -65,7 +69,9 @@ class TicketObject: NSObject, NSCoding, Glossy {
              "quantity" ~~> self.quantity,
              "price" ~~> self.price,
              "name" ~~> self.name,
-             "descriptions" ~~> self.descriptions
+             "descriptions" ~~> self.descriptions,
+             "sold" ~~> self.sold,
+             "remain" ~~> self.remain
             ])
     }
     

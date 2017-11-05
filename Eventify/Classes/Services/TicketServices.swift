@@ -42,8 +42,6 @@ class TicketServices: NSObject {
                         return completionHandler(nil, "Convert value to json have been failed")
                     }
                     
-                    print(ticketJson)
-                    
                     if let ticket = TicketObject(json: ticketJson) {
                         tickets.append(ticket)
                     }

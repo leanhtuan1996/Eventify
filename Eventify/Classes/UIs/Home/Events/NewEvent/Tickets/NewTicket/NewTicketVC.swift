@@ -93,6 +93,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
             ticket.descriptions = txtDescription.text
             ticket.quantity = txtQuantity.text?.toInt()
             ticket.price = txtPrice.text?.toInt()
+            ticket.remain = txtQuantity.text?.toInt()
             
             TicketServices.shared.addTicket(with: ticket) { (error) in
                 self.loading.stopAnimating()

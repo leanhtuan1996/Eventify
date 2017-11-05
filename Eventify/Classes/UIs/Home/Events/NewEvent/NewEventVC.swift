@@ -86,7 +86,7 @@ class NewEventVC: UIViewController {
             lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
             
             TicketServices.shared.getTickets(isListen: true, completionHandler: { (tickets, error) in
-                if let tickets = tickets, tickets.count > 0 {
+                if let tickets = tickets {
                     self.lblNumberTickets.text = "\(tickets.count) loại vé"
                     self.newEvent.tickets = tickets
                     
@@ -99,6 +99,7 @@ class NewEventVC: UIViewController {
                     
                 } else {
                     self.lblNumberTickets.text = "Quản lý vé"
+                    
                 }
             })
         }

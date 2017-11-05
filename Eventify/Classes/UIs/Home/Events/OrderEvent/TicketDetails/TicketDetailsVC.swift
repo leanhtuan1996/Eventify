@@ -96,8 +96,8 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblNameTicket.text = name
         }
         
-        if let quantity = self.tickets[indexPath.row].quantity {
-            cell.lblTicketAvailable.text = "còn \(quantity) vé"
+        if let remaining = self.tickets[indexPath.row].remain {
+            cell.lblTicketAvailable.text = "còn \(remaining) vé"
         }
         
         if let price = self.tickets[indexPath.row].price {
@@ -117,16 +117,13 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
 
 extension TicketDetailsVC: OrderEventDelegate {
     func chooseTicket(with ticket: TicketObject) {
-        print(ticket.toJSON())
         if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice + price).toString()
             self.ticketsToOrder.append(ticket)
         }
-        print(self.ticketsToOrder.count)
     }
     
     func unChooseTicket(with ticket: TicketObject) {
-        print(ticket.toJSON())
         if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice - price).toString()
             
@@ -143,6 +140,5 @@ extension TicketDetailsVC: OrderEventDelegate {
             }
             
         }
-        print(self.ticketsToOrder.count)
     }
 }

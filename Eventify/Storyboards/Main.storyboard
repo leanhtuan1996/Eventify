@@ -933,9 +933,9 @@
                                 <rect key="frame" x="0.0" y="1540" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2A-eY-44a">
-                                        <rect key="frame" x="281" y="12" width="74" height="36"/>
+                                        <rect key="frame" x="294" y="0.0" width="61" height="60"/>
                                         <color key="backgroundColor" red="0.63533979650000005" green="0.63841462140000005" blue="0.74793773890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="XEM VÉ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -944,20 +944,22 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Từ 700.000 VND" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv6-VF-ncS">
-                                        <rect key="frame" x="20" y="19" width="240" height="22"/>
+                                        <rect key="frame" x="5" y="21.5" width="240" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="9Hn-2S-Hov"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.63533979650000005" green="0.63841462140000005" blue="0.74793773890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Z2A-eY-44a" secondAttribute="bottom" id="9Oa-H1-dD2"/>
                                     <constraint firstItem="Nv6-VF-ncS" firstAttribute="centerY" secondItem="wou-h5-Ewg" secondAttribute="centerY" id="Ev3-VE-ERw"/>
-                                    <constraint firstItem="Nv6-VF-ncS" firstAttribute="leading" secondItem="wou-h5-Ewg" secondAttribute="leading" constant="20" id="IK7-Sz-s05"/>
+                                    <constraint firstItem="Nv6-VF-ncS" firstAttribute="leading" secondItem="wou-h5-Ewg" secondAttribute="leading" constant="5" id="IK7-Sz-s05"/>
                                     <constraint firstAttribute="trailing" secondItem="Z2A-eY-44a" secondAttribute="trailing" constant="20" id="aKa-IW-EPg"/>
+                                    <constraint firstItem="Z2A-eY-44a" firstAttribute="top" secondItem="wou-h5-Ewg" secondAttribute="top" id="kVa-a8-PZ2"/>
                                     <constraint firstItem="Z2A-eY-44a" firstAttribute="centerY" secondItem="wou-h5-Ewg" secondAttribute="centerY" id="lgL-a9-Rsk"/>
                                     <constraint firstAttribute="height" constant="60" id="qZD-gO-DwQ"/>
                                 </constraints>
@@ -2552,7 +2554,7 @@
                 <navigationController storyboardIdentifier="navDiscovery" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xgj-To-8My" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="event" id="FX1-mo-f2v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P83-pO-uz1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P83-pO-uz1">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2571,7 +2573,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jax-Dj-2Vo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" id="moM-TK-frP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmt-1m-j3K">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tmt-1m-j3K">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2590,7 +2592,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eCx-KP-e6n" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="plus" id="HWc-D0-cGs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vcE-vv-7wx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vcE-vv-7wx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2613,7 +2615,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7i7-AK-sec" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="more" id="auB-ZF-Sjq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bj4-Jy-j0H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Bj4-Jy-j0H">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2632,7 +2634,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="mW6-H2-F16" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="alert" id="5AN-wJ-eXZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AuI-26-OZl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AuI-26-OZl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
