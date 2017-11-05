@@ -113,25 +113,35 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        //validate name
-        if !txtNameTicket.hasText {
-            txtNameTicket.errorMessage = "Trường này là bắt buộc"
+        if textField == self.txtNameTicket, !textField.hasText {
+            txtNameTicket.errorMessage = "Vui lòng nhập tên vé"
+            return
         } else {
             txtNameTicket.errorMessage = ""
         }
         
-        if !txtQuantity.hasText {
-            txtQuantity.errorMessage = "Trường này là bắt buộc"
+        if textField == self.txtQuantity, !textField.hasText {
+            txtQuantity.errorMessage = "Vui lòng nhập số lượng vé"
+            return
         } else {
             txtQuantity.errorMessage = ""
         }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        if let _ = txtQuantity.text?.toInt() {
-            txtQuantity.errorMessage = ""
-        } else {
+        if !textField.hasText {
+            
+            if textField == txtQuantity {
+                txtQuantity.errorMessage = ""
+            }
+            
+            return
+        }
+        
+        if textField == txtQuantity, let text = textField.text, !text.isInt() {
             txtQuantity.errorMessage = "Vui lòng nhập số"
         }
-        
     }
     
 }

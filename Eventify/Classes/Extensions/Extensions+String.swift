@@ -74,5 +74,10 @@ extension String {
         }
         return false
     }
+    
+    func isInt() -> Bool {
+        
+        return Int(self) != nil
+    }
 }
 

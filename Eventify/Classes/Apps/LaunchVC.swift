@@ -27,10 +27,6 @@ class LaunchVC: UIViewController {
             //Listen
             UserServices.shared.isLoggedIn(completionHandler: { (error) in
                 
-                TicketServices.shared.getTickets(completionHandler: { (ticket, error) in
-                    
-                })
-                
                 print("ISLOGGEDIN")
                 if let _ = error {
                     appDelegate.showSignInView()

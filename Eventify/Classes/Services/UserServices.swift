@@ -214,7 +214,6 @@ class UserServices: NSObject {
             userObject.email = user.email
             userObject.fullName = user.displayName
             userObject.phone = user.phoneNumber
-            
             if let photoUrl = user.photoURL {
                 userObject.photoURL = String(describing: photoUrl)
             }

@@ -16,70 +16,73 @@ let refTicket = Firestore.firestore().collection("Tickets")
 class TicketServices: NSObject {
     static let shared = TicketServices()
     
-    func getTickets(completionHandler: @escaping (_ tickets: [TicketObject]?, _ error: String?) -> Void ) {
+    func getTickets(isListen: Bool, completionHandler: @escaping (_ tickets: [TicketObject]?, _ error: String?) -> Void ) {
         
         guard let userId = UserServices.shared.currentUser?.id else {
             return completionHandler(nil, "User id not found")
         }
         
-        refTicket.document(userId).getDocument { (snapshot, error) in
-            
-            if let error = error {
-                return completionHandler(nil, error.localizedDescription)
-            }
-            
-            guard let snapshotDoc = snapshot else {
-                return completionHandler([], nil)
-            }
-            
-            if !snapshotDoc.exists {
-                return completionHandler(nil, nil)
-            }
-            
-            var tickets: [TicketObject] = []
-            
-            snapshotDoc.data().forEach({ (ticket, value) in
-                
-                guard let ticketJson = value as? JSON else {
-                    return completionHandler(nil, "Convert value to json have been failed")
+        if isListen {
+            refTicket.document(userId).addSnapshotListener { (snapshot, error) in
+                if let error = error {
+                    return completionHandler(nil, error.localizedDescription)
                 }
                 
-                if let ticket = TicketObject(json: ticketJson) {
-                    tickets.append(ticket)
+                guard let snapshotDoc = snapshot, snapshotDoc.exists else {
+                    return completionHandler(nil, "Snapshot not found")
                 }
-            })
-            
-            return completionHandler(tickets, nil)
+                
+                var tickets: [TicketObject] = []
+                
+                snapshotDoc.data().forEach({ (ticket, value) in
+                    
+                    //print(ticket)
+                    
+                    guard let ticketJson = value as? JSON else {
+                        return completionHandler(nil, "Convert value to json have been failed")
+                    }
+                    
+                    print(ticketJson)
+                    
+                    if let ticket = TicketObject(json: ticketJson) {
+                        tickets.append(ticket)
+                    }
+                })
+                
+                completionHandler(tickets, nil)
+                
+            }
+        } else {
+            refTicket.document(userId).getDocument { (snapshot, error) in
+                
+                if let error = error {
+                    return completionHandler(nil, error.localizedDescription)
+                }
+                
+                guard let snapshotDoc = snapshot else {
+                    return completionHandler([], nil)
+                }
+                
+                if !snapshotDoc.exists {
+                    return completionHandler(nil, nil)
+                }
+                
+                var tickets: [TicketObject] = []
+                
+                snapshotDoc.data().forEach({ (ticket, value) in
+                    
+                    guard let ticketJson = value as? JSON else {
+                        return completionHandler(nil, "Convert value to json have been failed")
+                    }
+                    
+                    if let ticket = TicketObject(json: ticketJson) {
+                        tickets.append(ticket)
+                    }
+                })
+                
+                return completionHandler(tickets, nil)
+            }
         }
-        //        refTicket.document(userId).addSnapshotListener { (snapshot, error) in
-        //            if let error = error {
-        //                return completionHandler(nil, error.localizedDescription)
-        //            }
-        //
-        //            guard let snapshotDoc = snapshot, snapshotDoc.exists else {
-        //                return completionHandler(nil, "Snapshot not found")
-        //            }
-        //
-        //            var tickets: [TicketObject] = []
-        //
-        //            snapshotDoc.data().forEach({ (ticket, value) in
-        //
-        //                //print(ticket)
-        //
-        //                guard let ticketJson = value as? JSON else {
-        //                    return completionHandler(nil, "Convert value to json have been failed")
-        //                }
-        //
-        //                print(ticketJson)
-        //
-        //                if let ticket = TicketObject(json: ticketJson) {
-        //                    tickets.append(ticket)
-        //                }
-        //            })
-        //
-        //            completionHandler(tickets, nil)
-        //
-        //        }
     }
     
     func getTicket(withId id: String, completionHandler: @escaping (_ ticket: TicketObject?, _ error: String?) -> Void) {

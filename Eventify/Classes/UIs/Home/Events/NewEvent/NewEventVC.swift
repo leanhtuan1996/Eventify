@@ -81,23 +81,32 @@ class NewEventVC: UIViewController {
         
         lblNameEvent.returnKeyType = .done
         lblNameEvent.delegate = self
+        
+        if let user = UserServices.shared.currentUser {
+            lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
+            
+            TicketServices.shared.getTickets(isListen: true, completionHandler: { (tickets, error) in
+                if let tickets = tickets, tickets.count > 0 {
+                    self.lblNumberTickets.text = "\(tickets.count) loại vé"
+                    self.newEvent.tickets = tickets
+                    
+                    self.navigationController?.viewControllers.forEach({ (vc) in
+                        if let ticketManager = vc as? TicketsManagerVC {
+                            ticketManager.tickets = tickets
+                            ticketManager.tblTickets.reloadData()
+                        }
+                    })
+                    
+                } else {
+                    self.lblNumberTickets.text = "Quản lý vé"
+                }
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        if let user = UserServices.shared.currentUser {
-            lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
-            
-            TicketServices.shared.getTickets(completionHandler: { (ticket, error) in
-                if let ticket = ticket, ticket.count > 0 {
-                    self.lblNumberTickets.text = "\(ticket.count) loại vé"
-                } else {
-                    self.lblNumberTickets.text = "Thêm vé"
-                }
-            })
-        }
     }
     
     func showDescriptionEditor() {
@@ -113,6 +122,7 @@ class NewEventVC: UIViewController {
     func showTicketsManager() {
         self.dismissKeyboard()
         if let sb = storyboard?.instantiateViewController(withIdentifier: "TicketsManagerVC") as? TicketsManagerVC {
+            sb.tickets = self.newEvent.tickets ?? []
             self.navigationController?.pushViewController(sb, animated: true)
         }
     }
@@ -194,11 +204,10 @@ class NewEventVC: UIViewController {
             return
         }
         
-        let tickets: [TicketObject] = TicketManager.shared.getTickets()
+        //let tickets: [TicketObject] = TicketManager.shared.getTickets()
         
         newEvent.name = name
         newEvent.address = address
-        newEvent.tickets = tickets
         newEvent.by = UserServices.shared.currentUser
         newEvent.descriptionEvent = descriptionEvent
         

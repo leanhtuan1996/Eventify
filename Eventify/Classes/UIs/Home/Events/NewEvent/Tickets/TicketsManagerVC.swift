@@ -29,23 +29,8 @@ class TicketsManagerVC: UIViewController {
         self.navigationItem.setRightBarButton(newTicketItem, animated: true)
         self.navigationController?.setTranslucent(isTranslucent: true)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
-        
-        //load tickets
-        loadTickets()
-        //TicketManager.shared.deleteTickets()
     }
     
-    func loadTickets() {
-        TicketServices.shared.getTickets { (tickets, error) in
-            if let error = error {
-                self.showAlert(error, title: "Get tickets have been failed", buttons: nil)
-                return
-            }
-            self.tickets = tickets ?? []
-            self.tblTickets.reloadData()
-        }
-    }
-  
     @IBAction func btnBackClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -81,7 +66,14 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.ticketObject = tickets[indexPath.row]
         cell.lblNameTicket.text = tickets[indexPath.row].name
-        cell.lblPrice.text = (tickets[indexPath.row].price?.toString() ?? "") + " VND"
+        
+        if let price = tickets[indexPath.row].price?.toString() {
+            cell.lblPrice.text = "\(price) VNĐ"
+        } else {
+            cell.lblPrice.text = "Miễn phí"
+        }
+        
+        
         cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()
         
         return cell
