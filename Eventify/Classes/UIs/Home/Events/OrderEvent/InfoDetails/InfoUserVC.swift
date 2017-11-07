@@ -57,10 +57,17 @@ class InfoUserVC: UIViewController {
         self.lblTimeEnd.text = self.timeEnd
         self.lblBy.text = self.byName
         
+        if let user = UserServices.shared.currentUser {
+            txtFullName.text = user.fullName
+            txtPhoneNumber.text = user.phone
+            //txtEmail.text = user.email
+            //txtAddress.text = user.address
+        }
+        
         txtFullName.delegate = self
         txtPhoneNumber.delegate = self
-        txtEmail.delegate = self
-        txtAddress.delegate = self
+        //txtEmail.delegate = self
+        //txtAddress.delegate = self
         
         //self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.remainingOrder), userInfo: nil, repeats: true)
     }
@@ -70,13 +77,13 @@ class InfoUserVC: UIViewController {
     }
     
     func continues() {
-        if !self.txtEmail.hasText {
-            self.txtEmail.errorMessage = "Vui lòng nhập Email"
-        }
-        
-        if !self.txtAddress.hasText {
-            self.txtAddress.errorMessage = "Vui lòng nhập Địa chỉ"
-        }
+//        if !self.txtEmail.hasText {
+//            self.txtEmail.errorMessage = "Vui lòng nhập Email"
+//        }
+//        
+//        if !self.txtAddress.hasText {
+//            self.txtAddress.errorMessage = "Vui lòng nhập Địa chỉ"
+//        }
         
         if !self.txtFullName.hasText {
             self.txtFullName.errorMessage = "Vui lòng nhập Họ và Tên"
@@ -87,7 +94,7 @@ class InfoUserVC: UIViewController {
             return
         }
         
-        guard let email = self.txtEmail.text, let address = self.txtAddress.text, let fullName = self.txtFullName.text, let phone = self.txtPhoneNumber.text else {
+        guard let fullName = self.txtFullName.text, let phone = self.txtPhoneNumber.text else {
             self.showAlert("Vui lòng nhập đầy đủ trường được yêu cầu", title: "Đặt vé thất bại", buttons: nil)
             return
         }
@@ -96,6 +103,8 @@ class InfoUserVC: UIViewController {
             self.txtPhoneNumber.errorMessage = "Vui lòng nhập số"
             return
         }
+        
+        
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "CompleteOrderVC") as? CompleteOrderVC {
             self.navigationController?.pushViewController(vc, animated: true)
@@ -109,17 +118,17 @@ class InfoUserVC: UIViewController {
 
 extension InfoUserVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == self.txtEmail {
-            self.txtEmail.errorMessage = ""
-        }
+//        if textField == self.txtEmail {
+//            self.txtEmail.errorMessage = ""
+//        }
         
         if textField == self.txtFullName {
             self.txtFullName.errorMessage = ""
         }
         
-        if textField == self.txtAddress {
-            self.txtAddress.errorMessage = ""
-        }
+//        if textField == self.txtAddress {
+//            self.txtAddress.errorMessage = ""
+//        }
         
         if textField == self.txtPhoneNumber {
             self.txtPhoneNumber.errorMessage = ""
@@ -142,12 +151,12 @@ extension InfoUserVC: UITextFieldDelegate {
             self.txtFullName.errorMessage = "Vui lòng nhập Họ và tên"
         }
         
-        if textField == self.txtAddress, !textField.hasText {
-            self.txtAddress.errorMessage = "Vui lòng nhập Địa chỉ"
-        }
-        
-        if textField == self.txtEmail, !textField.hasText {
-            self.txtEmail.errorMessage = "Vui lòng nhập Email"
-        }
+//        if textField == self.txtAddress, !textField.hasText {
+//            self.txtAddress.errorMessage = "Vui lòng nhập Địa chỉ"
+//        }
+//        
+//        if textField == self.txtEmail, !textField.hasText {
+//            self.txtEmail.errorMessage = "Vui lòng nhập Email"
+//        }
     }
 }

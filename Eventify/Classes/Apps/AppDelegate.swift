@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         FirebaseApp.configure()
         //Database.database().isPersistenceEnabled = true
-        Firestore.firestore().settings.isPersistenceEnabled = true
+        //Firestore.firestore().settings.isPersistenceEnabled = true
         
         GMSServices.provideAPIKey("AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")
         GMSPlacesClient.provideAPIKey("AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")

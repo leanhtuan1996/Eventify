@@ -22,15 +22,6 @@ class TicketObject: NSObject, Glossy {
         
     }
     
-//    required init(coder aDecoder: NSCoder) {
-//        id = aDecoder.decodeObject(forKey: "id") as? String ?? ""
-//        name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
-//        descriptions = aDecoder.decodeObject(forKey: "descriptions") as? String ?? ""
-//        quantity = aDecoder.decodeInteger(forKey: "quantity")
-//        price = aDecoder.decodeInteger(forKey: "price")
-//        super.init()
-//    }
-    
     required init?(json: JSON) {
         self.id = "id" <~~ json
         self.name = "name" <~~ json
@@ -40,28 +31,6 @@ class TicketObject: NSObject, Glossy {
         self.sold = "sold" <~~ json
         self.remain = "remain" <~~ json
     }
-    
-//    func encode(with aCoder: NSCoder) {
-//        if let idInt = id {
-//            aCoder.encode(idInt, forKey: "id")
-//        }
-//        
-//        if let quantityInt = quantity {
-//            aCoder.encode(quantityInt, forKey: "quantity")
-//        }
-//        
-//        if let priceInt = price {
-//            aCoder.encode(priceInt, forKey: "price")
-//        }
-//        
-//        if let nameString = name {
-//            aCoder.encode(nameString, forKey: "name")
-//        }
-//        
-//        if let descriptionsString = descriptions {
-//            aCoder.encode(descriptionsString, forKey: "descriptions")
-//        }
-//    }
     
     func toJSON() -> JSON? {
         return jsonify(
