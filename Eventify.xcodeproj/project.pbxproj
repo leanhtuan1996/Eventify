@@ -57,14 +57,6 @@
 		367F3C141F7E3639002222EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367F3C131F7E3639002222EB /* Images.xcassets */; };
 		367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C151F7E375D002222EB /* Extensions+UIViewController.swift */; };
 		367F3C181F7E37C3002222EB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C171F7E37C3002222EB /* Helpers.swift */; };
-		367F94EF1FB1DC020089DE7A /* EventObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94EE1FB1DC020089DE7A /* EventObjectTest.swift */; };
-		367F94F11FB1DC130089DE7A /* UserObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94F01FB1DC130089DE7A /* UserObjectTest.swift */; };
-		367F94F31FB1DC280089DE7A /* OrderObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94F21FB1DC280089DE7A /* OrderObjectTest.swift */; };
-		367F94F51FB1DC470089DE7A /* TicketObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94F41FB1DC470089DE7A /* TicketObjectTest.swift */; };
-		367F94F71FB1DC600089DE7A /* TypeObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94F61FB1DC600089DE7A /* TypeObjectTest.swift */; };
-		367F94F91FB1DC6E0089DE7A /* LikeEventObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94F81FB1DC6E0089DE7A /* LikeEventObjectTest.swift */; };
-		367F94FB1FB1DC7C0089DE7A /* AddressObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94FA1FB1DC7C0089DE7A /* AddressObjectTest.swift */; };
-		367F94FD1FB1DC8B0089DE7A /* TicketOrderObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F94FC1FB1DC8B0089DE7A /* TicketOrderObjectTest.swift */; };
 		36829F471F9F09E400D1465F /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36829F461F9F09E400D1465F /* Extensions+UIImage.swift */; };
 		3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */; };
 		36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */; };
@@ -602,14 +594,6 @@
 		367F3C131F7E3639002222EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		367F3C151F7E375D002222EB /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		367F3C171F7E37C3002222EB /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		367F94EE1FB1DC020089DE7A /* EventObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObjectTest.swift; sourceTree = "<group>"; };
-		367F94F01FB1DC130089DE7A /* UserObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectTest.swift; sourceTree = "<group>"; };
-		367F94F21FB1DC280089DE7A /* OrderObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderObjectTest.swift; sourceTree = "<group>"; };
-		367F94F41FB1DC470089DE7A /* TicketObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketObjectTest.swift; sourceTree = "<group>"; };
-		367F94F61FB1DC600089DE7A /* TypeObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeObjectTest.swift; sourceTree = "<group>"; };
-		367F94F81FB1DC6E0089DE7A /* LikeEventObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeEventObjectTest.swift; sourceTree = "<group>"; };
-		367F94FA1FB1DC7C0089DE7A /* AddressObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressObjectTest.swift; sourceTree = "<group>"; };
-		367F94FC1FB1DC8B0089DE7A /* TicketOrderObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderObjectTest.swift; sourceTree = "<group>"; };
 		36829F461F9F09E400D1465F /* Extensions+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
 		3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
@@ -1709,21 +1693,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		367F94EC1FB1DBF00089DE7A /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				367F94EE1FB1DC020089DE7A /* EventObjectTest.swift */,
-				367F94F01FB1DC130089DE7A /* UserObjectTest.swift */,
-				367F94F21FB1DC280089DE7A /* OrderObjectTest.swift */,
-				367F94F41FB1DC470089DE7A /* TicketObjectTest.swift */,
-				367F94F61FB1DC600089DE7A /* TypeObjectTest.swift */,
-				367F94F81FB1DC6E0089DE7A /* LikeEventObjectTest.swift */,
-				367F94FA1FB1DC7C0089DE7A /* AddressObjectTest.swift */,
-				367F94FC1FB1DC8B0089DE7A /* TicketOrderObjectTest.swift */,
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
 		367F94ED1FB1DBF00089DE7A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1734,7 +1703,6 @@
 		36B683801F95FD8500CC4F09 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				367F94EC1FB1DBF00089DE7A /* Objects */,
 				367F94ED1FB1DBF00089DE7A /* Services */,
 			);
 			path = Tests;
@@ -2224,7 +2192,6 @@
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
 				36829F471F9F09E400D1465F /* Extensions+UIImage.swift in Sources */,
 				36147DD11FB05425004F38DD /* TicketsOrderedCell.swift in Sources */,
-				367F94F31FB1DC280089DE7A /* OrderObjectTest.swift in Sources */,
 				36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */,
 				36242AB91FA725AD00C1F17B /* NotifyVC.swift in Sources */,
 				367F3BFF1F7E35C4002222EB /* LaunchVC.swift in Sources */,
@@ -2236,27 +2203,21 @@
 				362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */,
 				36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
-				367F94F51FB1DC470089DE7A /* TicketObjectTest.swift in Sources */,
 				36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */,
-				367F94F91FB1DC6E0089DE7A /* LikeEventObjectTest.swift in Sources */,
 				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,
 				36147DD41FB054A7004F38DD /* OrderServices.swift in Sources */,
 				3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
-				367F94F11FB1DC130089DE7A /* UserObjectTest.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
-				367F94FD1FB1DC8B0089DE7A /* TicketOrderObjectTest.swift in Sources */,
 				3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */,
-				367F94FB1FB1DC7C0089DE7A /* AddressObjectTest.swift in Sources */,
 				36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
 				36F28DB81FAEED74000A5359 /* InfoUserVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
 				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
-				367F94EF1FB1DC020089DE7A /* EventObjectTest.swift in Sources */,
 				36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */,
@@ -2276,7 +2237,6 @@
 				36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */,
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,
 				362C5E071F809E290033F9DB /* TicketObject.swift in Sources */,
-				367F94F71FB1DC600089DE7A /* TypeObjectTest.swift in Sources */,
 				36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */,
 				367F3C011F7E35F3002222EB /* ForgotPasswordVC.swift in Sources */,
 				36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */,
