@@ -15,8 +15,6 @@ class TicketOrderObjectTest: NSObject, Glossy {
     var QRCodeImgPath: String?
     
     override init() {
-        super.init()
-        self.id = ""
     }
     
     required init?(json: JSON) {
@@ -30,10 +28,6 @@ class TicketOrderObjectTest: NSObject, Glossy {
     
     //to json
     func toJSON() -> JSON? {
-        
-        guard let tickets = self.tickets, let id = self.id else {
-            return nil
-        }
         
         return jsonify([
             "idTicket" ~~> self.idTicket,

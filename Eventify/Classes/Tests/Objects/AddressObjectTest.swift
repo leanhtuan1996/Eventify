@@ -8,6 +8,6 @@
 
 import UIKit
 
-class AddressObjectTest: NSObject, AddressObject {
+class AddressObjectTest: AddressObject {
     
 }

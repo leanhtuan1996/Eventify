@@ -35,6 +35,11 @@
 		3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */; };
 		36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */; };
 		3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366580191FA1EDE8008A161F /* AddressObject.swift */; };
+		3673FFEB1FB2AF6F00831273 /* UserServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673FFEA1FB2AF6F00831273 /* UserServicesTest.swift */; };
+		3673FFF91FB2B3C300831273 /* LikedEventServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673FFF81FB2B3C300831273 /* LikedEventServicesTest.swift */; };
+		3673FFFB1FB2B3D200831273 /* EventServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673FFFA1FB2B3D200831273 /* EventServicesTest.swift */; };
+		3675231E1FB40A5300B75810 /* TicketServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675231D1FB40A5300B75810 /* TicketServicesTest.swift */; };
+		3675232C1FB40DD500B75810 /* TypeOfEventServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3675232B1FB40DD500B75810 /* TypeOfEventServicesTest.swift */; };
 		367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BCF1F7E34EB002222EB /* AppDelegate.swift */; };
 		367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD11F7E34EB002222EB /* Extensions+Data.swift */; };
 		367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BD21F7E34EB002222EB /* Extensions+Date.swift */; };
@@ -578,6 +583,11 @@
 		3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionEditorVC.swift; sourceTree = "<group>"; };
 		36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsServices.swift; sourceTree = "<group>"; };
 		366580191FA1EDE8008A161F /* AddressObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressObject.swift; sourceTree = "<group>"; };
+		3673FFEA1FB2AF6F00831273 /* UserServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServicesTest.swift; sourceTree = "<group>"; };
+		3673FFF81FB2B3C300831273 /* LikedEventServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedEventServicesTest.swift; sourceTree = "<group>"; };
+		3673FFFA1FB2B3D200831273 /* EventServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventServicesTest.swift; sourceTree = "<group>"; };
+		3675231D1FB40A5300B75810 /* TicketServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketServicesTest.swift; sourceTree = "<group>"; };
+		3675232B1FB40DD500B75810 /* TypeOfEventServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeOfEventServicesTest.swift; sourceTree = "<group>"; };
 		367F3BB81F7E337D002222EB /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367F3BCF1F7E34EB002222EB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367F3BD11F7E34EB002222EB /* Extensions+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Data.swift"; sourceTree = "<group>"; };
@@ -1727,6 +1737,11 @@
 		367F94ED1FB1DBF00089DE7A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3673FFEA1FB2AF6F00831273 /* UserServicesTest.swift */,
+				3673FFF81FB2B3C300831273 /* LikedEventServicesTest.swift */,
+				3673FFFA1FB2B3D200831273 /* EventServicesTest.swift */,
+				3675231D1FB40A5300B75810 /* TicketServicesTest.swift */,
+				3675232B1FB40DD500B75810 /* TypeOfEventServicesTest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2238,12 +2253,15 @@
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
 				367F94F51FB1DC470089DE7A /* TicketObjectTest.swift in Sources */,
 				36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */,
+				3675232C1FB40DD500B75810 /* TypeOfEventServicesTest.swift in Sources */,
 				367F94F91FB1DC6E0089DE7A /* LikeEventObjectTest.swift in Sources */,
 				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,
 				36147DD41FB054A7004F38DD /* OrderServices.swift in Sources */,
 				3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
+				3673FFFB1FB2B3D200831273 /* EventServicesTest.swift in Sources */,
 				367F94F11FB1DC130089DE7A /* UserObjectTest.swift in Sources */,
+				3673FFF91FB2B3C300831273 /* LikedEventServicesTest.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
@@ -2261,7 +2279,9 @@
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,
+				3673FFEB1FB2AF6F00831273 /* UserServicesTest.swift in Sources */,
 				36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */,
+				3675231E1FB40A5300B75810 /* TicketServicesTest.swift in Sources */,
 				367F3C101F7E360A002222EB /* SignInVC.swift in Sources */,
 				36F28D971FAC72DC000A5359 /* DayOfWeek.swift in Sources */,
 				36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */,

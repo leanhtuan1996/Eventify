@@ -19,7 +19,6 @@ class OrderObjectTest: NSObject, Glossy {
     var phoneNumber: String?
     
     override init() {
-        super.init()
         self.id = ""
     }
     
@@ -33,8 +32,8 @@ class OrderObjectTest: NSObject, Glossy {
         
         
         //orders -> SubCollection
-        if let orderByJSON: [JSON] = "orderBy" <~~ json {
-            self.orderBy = [UserObjectTest].from(jsonArray: orderByJSON)
+        if let orderBy: UserObjectTest = "orderBy" <~~ json {
+            self.orderBy = orderBy
         }
         
         //dateCreated
@@ -53,12 +52,8 @@ class OrderObjectTest: NSObject, Glossy {
     //to json
     func toJSON() -> JSON? {
         
-        guard let id = self.id else {
-            return nil
-        }
-        
         return jsonify([
-            "id" ~~> id,
+            "id" ~~> self.id,
             "dateCreated" ~~> self.dateCreated,
             "idEvent" ~~> self.idEvent,
             "fullName" ~~> self.fullName,

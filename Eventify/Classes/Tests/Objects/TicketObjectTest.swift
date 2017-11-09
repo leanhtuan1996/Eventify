@@ -54,12 +54,8 @@ class TicketObjectTest: NSObject, Glossy {
     
     func toJSON() -> JSON? {
         
-        guard let id = self.id else {
-            return nil
-        }
-        
         return jsonify(
-            ["id" ~~> id,
+            ["id" ~~> self.id,
              "name" ~~> self.name,
              "descriptions" ~~> self.descriptions,
              "quantitiesToSell" ~~> self.quantitiesToSell,

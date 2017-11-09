@@ -12,20 +12,25 @@ import Gloss
 class EventObjectTest: NSObject, Glossy {
     var id: String
     var name: String?
-    var address: AddressObject?
+    var address: AddressObjectTest?
     var dateCreated: Int?
     var dateEdited: Int?
     var photoCoverPath: String?
     var descriptionEvent: String?
-    var createdBy: UserObject?
+    var createdBy: UserObjectTest?
     var timeStart: Int?
     var timeEnd: Int?
-    var types: [EventTypeObject]?
-    var tickets: [TicketObject]?
+    var types: [TypeObjectTest]?
+    var tickets: [TicketObjectTest]?
+    var liked: [LikeEventObjectTest]?
+    var ordered: [OrderTicketObject]?
+    
     
     override init() {
-        super.init()
+        
         self.id = ""
+        
+        super.init()
     }
     
     required init?(json: JSON) {
@@ -37,18 +42,18 @@ class EventObjectTest: NSObject, Glossy {
         self.id = id
         
         //createdBy
-        if let byUser: UserObject = "createdBy" <~~ json {
+        if let byUser: UserObjectTest = "createdBy" <~~ json {
             self.createdBy = byUser
         }
         
         //types
         if let typeJSON: [JSON] = "types" <~~ json {
-            self.types = [EventTypeObject].from(jsonArray: typeJSON)
+            self.types = [TypeObjectTest].from(jsonArray: typeJSON)
         }
         
         //tickets
         if let ticketJSON: [JSON] = "tickets" <~~ json {
-            self.tickets = [TicketObject].from(jsonArray: ticketJSON)
+            self.tickets = [TicketObjectTest].from(jsonArray: ticketJSON)
         }
         
         //time to start event
@@ -71,26 +76,24 @@ class EventObjectTest: NSObject, Glossy {
         self.descriptionEvent = "descriptions" <~~ json
         
         //address object for event
-        if let address: AddressObject = "address" <~~ json {
+        if let address: AddressObjectTest = "address" <~~ json {
             self.address = address
         }
     }
     
     //to json
     func toJSON() -> JSON? {
-        
-        guard let tickets = self.tickets, let id = self.id else {
-            return nil
-        }
+//        
+//        guard let id = self.id else {
+//            return nil
+//        }
         
         return jsonify([
             "id" ~~> id,
             "name" ~~> self.name,
             "address" ~~> self.address?.toJSON(),
             "descriptions" ~~> self.descriptionEvent,
-            "createdBy" ~~> self.createdBy?.toJSON(),
-            "photoURL" ~~> self.photoURL,
-            "tickets" ~~> self.tickets?.toJSONArray(),
+            "photoCoverPath" ~~> self.photoCoverPath,
             "types" ~~> self.types?.toJSONArray(),
             "timeStart" ~~> self.timeStart,
             "timeEnd" ~~> self.timeEnd,

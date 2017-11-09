@@ -10,6 +10,6 @@ import UIKit
 
 protocol InteractiveEventProtocol {
     func sharingEvent(with content: String) -> Void
-    func likeEvent(with event: EventObject) -> Void
-    func unLikeEvent(with event: EventObject) -> Void
+    func likeEvent(with event: EventObjectTest) -> Void
+    func unLikeEvent(with event: EventObjectTest) -> Void
 }

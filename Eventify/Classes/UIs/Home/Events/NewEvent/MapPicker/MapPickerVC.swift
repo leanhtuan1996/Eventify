@@ -135,7 +135,7 @@ class MapPickerVC: UIViewController {
         marker.map = mapView
     }
     
-    func showAddressPickerAlert(with address: AddressObject) {
+    func showAddressPickerAlert(with address: AddressObjectTest) {
         if let addressName = address.address {
             let alert = UIAlertController(title: "Đã chọn được vị trí", message: addressName, preferredStyle: UIAlertControllerStyle.actionSheet)
             let chooseAction = UIAlertAction(title: "Chọn địa chỉ này", style: UIAlertActionStyle.default, handler: { (btn) in
@@ -180,7 +180,7 @@ extension MapPickerVC: GMSMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D) {
 
         
-        let address = AddressObject()
+        let address = AddressObjectTest()
         address.placeId = placeID
         address.address = name
         address.latitude = location.latitude
