@@ -25,7 +25,7 @@ class LaunchVC: UIViewController {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             
             //Listen
-            UserServicesTest.shared.isLoggedIn(completionHandler: { (error) in
+            UserServices.shared.isLoggedIn(completionHandler: { (error) in
                 
                 print("ISLOGGEDIN")
                 if let _ = error {

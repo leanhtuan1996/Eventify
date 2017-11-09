@@ -31,8 +31,8 @@ class NewEventVC: UIViewController {
     
     var descriptionEvent: String?
     
-    var newEvent: EventObjectTest = EventObjectTest()
-    var address: AddressObjectTest?
+    var newEvent: EventObject = EventObject()
+    var address: AddressObject?
     
     let loading = UIActivityIndicatorView()
     
@@ -82,10 +82,10 @@ class NewEventVC: UIViewController {
         lblNameEvent.returnKeyType = .done
         lblNameEvent.delegate = self
         
-        if let user = UserServicesTest.shared.currentUser {
+        if let user = UserServices.shared.currentUser {
             lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
             
-            TicketServicesTest.shared.getTickets(isListen: true, completionHandler: { (tickets, error) in
+            TicketServices.shared.getTickets(isListen: true, completionHandler: { (tickets, error) in
                 if let tickets = tickets {
                     self.lblNumberTickets.text = "\(tickets.count) loại vé"
                     self.newEvent.tickets = tickets
@@ -209,7 +209,7 @@ class NewEventVC: UIViewController {
         
         newEvent.name = name
         newEvent.address = address
-        newEvent.createdBy = UserServicesTest.shared.currentUser
+        newEvent.by = UserServices.shared.currentUser
         newEvent.descriptionEvent = descriptionEvent
         
         if let start = timeStart.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
@@ -230,7 +230,7 @@ class NewEventVC: UIViewController {
         //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
         
         
-        EventServicesTest.shared.addEvent(withEvent: self.newEvent) { (error) in
+        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
             self.loading.stopAnimating()
             if let error = error {
                 self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
@@ -259,34 +259,34 @@ class NewEventVC: UIViewController {
     }
     
     //for testing
-    //var count = 1
+    var count = 1
     func addEvent() {
-//        print(count)
-//        if count == 50 {
-//            self.timer?.invalidate()
-//            self.loading.stopAnimating()
-//        }
-//        
-//        let tickets: [TicketObjectTest] = TicketManager.shared.getTickets()
-//        
-//        newEvent.name = "Sự kiện thứ \(count)"
-//        newEvent.address = address
-//        newEvent.tickets = tickets
-//        newEvent.by = UserServices.shared.currentUser
-//        newEvent.descriptionEvent = "Mô tả thứ \(count)"
-//        newEvent.timeStart = Helpers.getTimeStampWithInt()
-//        newEvent.timeEnd = Helpers.getTimeStampWithInt()
-//        
-//        
-//        EventServices.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
-//            if let error  = error {
-//                print(error)
-//            } else {
-//                print("OK")
-//            }
-//        })
-//        
-//        self.count += 1
+        print(count)
+        if count == 50 {
+            self.timer?.invalidate()
+            self.loading.stopAnimating()
+        }
+        
+        let tickets: [TicketObject] = TicketManager.shared.getTickets()
+        
+        newEvent.name = "Sự kiện thứ \(count)"
+        newEvent.address = address
+        newEvent.tickets = tickets
+        newEvent.by = UserServices.shared.currentUser
+        newEvent.descriptionEvent = "Mô tả thứ \(count)"
+        newEvent.timeStart = Helpers.getTimeStampWithInt()
+        newEvent.timeEnd = Helpers.getTimeStampWithInt()
+        
+        
+        EventServices.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
+            if let error  = error {
+                print(error)
+            } else {
+                print("OK")
+            }
+        })
+        
+        self.count += 1
     }
 }
 
@@ -297,14 +297,14 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
         self.descriptionEvent = html.isEmpty ? nil : html
     }
     
-    func selectedAddress(with address: AddressObjectTest) {
+    func selectedAddress(with address: AddressObject) {
         self.isAddressPicked = true
         self.address = address
         self.lblAddress.text = address.address
         self.lblAddress.textColor = UIColor.black
     }
     
-    func selectedType(with type: TypeObjectTest) {
+    func selectedType(with type: EventTypeObject) {
         self.lblEventType.text = type.name
         
         if self.newEvent.types == nil {
@@ -365,13 +365,13 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let img = UIImageJPEGRepresentation(image, 0.5) {
                 self.imgCover.image = UIImage(data: img)
-                EventServicesTest.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
+                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
                     if let error = error {
                         print("Upload image had been failed: \(error)")
                         return
                     }
                     if let path = path {
-                        self.newEvent.photoCoverPath = path
+                        self.newEvent.photoURL = path
                         
                     }
                 })

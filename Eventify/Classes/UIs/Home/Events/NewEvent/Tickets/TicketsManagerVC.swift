@@ -11,7 +11,7 @@ import UIKit
 class TicketsManagerVC: UIViewController {
 
     @IBOutlet weak var tblTickets: UITableView!
-    var tickets: [TicketObjectTest] = []
+    var tickets: [TicketObject] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         tblTickets.delegate = self
@@ -44,7 +44,7 @@ class TicketsManagerVC: UIViewController {
     
     func deleteTicket(with id: String) {
         //TicketManager.shared.deleteTicket(byId: id)
-        TicketServicesTest.shared.deleteTicket(withId: id) { (error) in
+        TicketServices.shared.deleteTicket(withId: id) { (error) in
             if let error = error {
                 self.showAlert(error, title: "Thao tác bị lỗi", buttons: nil)
                 return
@@ -74,7 +74,7 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        cell.lblQuantitySold.text = tickets[indexPath.row].quantitiesToSell?.toString()
+        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()
         
         return cell
         
@@ -91,8 +91,9 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Xoá") { (rowAction, indexPath) in
             
-            self.deleteTicket(with: self.tickets[indexPath.row].id)
-            
+            if let id = self.tickets[indexPath.row].id {
+                self.deleteTicket(with: id)
+            }
             
             self.tickets.remove(at: indexPath.row)
             

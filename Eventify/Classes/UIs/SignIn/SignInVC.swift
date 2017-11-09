@@ -72,12 +72,12 @@ class SignInVC: UIViewController {
             return
         }
         
-        let userObject = UserObjectTest()
+        let userObject = UserObject()
         userObject.password = password
         userObject.email = email
         self.dismissKeyboard()
         activityIndicatorView.showLoadingDialog(self)
-        UserServicesTest.shared.signIn(with: userObject) { (error) in
+        UserServices.shared.signIn(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {
                 self.showAlert(error, title: "Sign In Error", buttons: nil)
@@ -110,7 +110,7 @@ class SignInVC: UIViewController {
             }
             
             
-            UserServicesTest.shared.signInWithFacebook(token: token, completionHandler: { (error) in
+            UserServices.shared.signInWithFacebook(token: token, completionHandler: { (error) in
                 self.activityIndicatorView.stopAnimating()
                 if let error = error {
                     //print(error)
@@ -132,7 +132,7 @@ class SignInVC: UIViewController {
     
     @IBAction func btnZalo(_ sender: Any) {
 //        self.activityIndicatorView.showLoadingDialog(self)
-//        UserServicesTestTest.shared.signInWithZalo(vc: self) { (error) in
+//        UserServicesTest.shared.signInWithZalo(vc: self) { (error) in
 //            self.activityIndicatorView.stopAnimating()
 //            if let error = error {
 //                self.showAlert(error, title: "Failed", buttons: nil)
@@ -176,7 +176,7 @@ extension SignInVC: UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate 
     // MARK: - SIGN IN FUNCTION WITH GID
     func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser, withError error: Error) {
         
-        UserServicesTest.shared.signInWithGoogle(authentication: user.authentication) { (error) in
+        UserServices.shared.signInWithGoogle(authentication: user.authentication) { (error) in
             self.activityIndicatorView.stopAnimating()
             
             if let error = error {

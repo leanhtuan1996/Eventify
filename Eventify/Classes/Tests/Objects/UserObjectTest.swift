@@ -12,7 +12,6 @@ import Gloss
 class UserObjectTest: NSObject, Glossy {
     var id: String
     var fullName: String?
-    var password: String?
     var email: String?
     var photoDisplayPath: String?
     var phoneNumber: String?
@@ -20,6 +19,7 @@ class UserObjectTest: NSObject, Glossy {
     var liked: [LikeEventObjectTest]?
     
     override init() {
+        super.init()
         self.id = ""
     }
     
@@ -58,8 +58,12 @@ class UserObjectTest: NSObject, Glossy {
     //to json
     func toJSON() -> JSON? {
         
+        guard let id = self.id else {
+            return nil
+        }
+        
         return jsonify([
-            "id" ~~> self.id,
+            "id" ~~> id,
             "fullName" ~~> self.fullName,
             "email" ~~> self.email,
             "phoneNumber" ~~> self.phoneNumber,

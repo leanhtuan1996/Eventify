@@ -36,7 +36,7 @@ target 'Eventify' do
     pod 'FBSDKLoginKit'
     
     # Pod for Zalo
-    #pod 'ZaloSDK'
+    pod 'ZaloSDK'
     
     # Pods for Editor
     pod 'RichEditorView'

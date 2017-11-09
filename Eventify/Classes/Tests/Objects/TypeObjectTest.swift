@@ -9,6 +9,6 @@
 import UIKit
 import Gloss
 
-class TypeObjectTest: EventTypeObject {
+class TypeObjectTest: NSObject, EventTypeObject {
     
 }

@@ -16,6 +16,7 @@ class LikeEventObjectTest: NSObject, Glossy {
     var dateLiked: Int?
     
     override init() {
+        super.init()
         self.id = ""
     }
     
@@ -41,9 +42,12 @@ class LikeEventObjectTest: NSObject, Glossy {
     //to json
     func toJSON() -> JSON? {
         
+        guard let id = self.id else {
+            return nil
+        }
         
         return jsonify([
-            "id" ~~> self.id,
+            "id" ~~> id,
             "idEvent" ~~> self.idEvent,
             "idUser" ~~> self.idUser,
             "dateLiked" ~~> self.dateLiked

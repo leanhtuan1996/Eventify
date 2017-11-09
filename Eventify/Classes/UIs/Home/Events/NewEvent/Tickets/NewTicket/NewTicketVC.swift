@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 
 class NewTicketVC: UIViewController, UITextFieldDelegate {
     
-    var ticketObject: TicketObjectTest?
+    var ticketObject: TicketObject?
     @IBOutlet weak var txtNameTicket: SkyFloatingLabelTextField!
     @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
     @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
@@ -27,7 +27,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         
         if let ticket = self.ticketObject {
             txtNameTicket.text = ticket.name
-            txtQuantity.text = ticket.quantitiesToSell?.toString()
+            txtQuantity.text = ticket.quantity?.toString()
             txtPrice.text = ticket.price?.toString()
         }
     }
@@ -57,7 +57,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         txtNameTicket.errorMessage = ""
         txtQuantity.errorMessage = ""
         
-        guard let idUser = UserServicesTest.shared.currentUser?.id else {
+        guard let idUser = UserServices.shared.currentUser?.id else {
             self.showAlert("Id User not found", title: "error", buttons: nil)
             return
         }
@@ -68,10 +68,10 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         if let ticket = self.ticketObject {
             ticket.name = txtNameTicket.text
             ticket.descriptions = txtDescription.text
-            ticket.quantitiesToSell = txtQuantity.text?.toInt()
+            ticket.quantity = txtQuantity.text?.toInt()
             ticket.price = txtPrice.text?.toInt()
             
-            TicketServicesTest.shared.editTicket(with: ticket, completionHandler: { (error) in
+            TicketServices.shared.editTicket(with: ticket, completionHandler: { (error) in
                 self.loading.stopAnimating()
                 
                 let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
@@ -87,15 +87,15 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
             })
             
         } else {
-            let ticket = TicketObjectTest()
+            let ticket = TicketObject()
             ticket.id = "\(idUser)\(Helpers.getTimeStamp())"
             ticket.name = txtNameTicket.text
             ticket.descriptions = txtDescription.text
-            ticket.quantitiesToSell = txtQuantity.text?.toInt()
+            ticket.quantity = txtQuantity.text?.toInt()
             ticket.price = txtPrice.text?.toInt()
-            ticket.quantitiesRemaining = txtQuantity.text?.toInt()
+            ticket.remain = txtQuantity.text?.toInt()
             
-            TicketServicesTest.shared.addTicket(with: ticket) { (error) in
+            TicketServices.shared.addTicket(with: ticket) { (error) in
                 self.loading.stopAnimating()
                 
                 let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in

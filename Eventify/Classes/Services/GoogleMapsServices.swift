@@ -15,7 +15,7 @@ class GoogleMapsServices: NSObject {
     let baseURL = "https://maps.googleapis.com/maps/api/geocode/json?"
     let apiKey = "AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw"
     
-    func getAddressForLatLng(latitude: String, longitude: String, completionHandler: @escaping(_ address: AddressObjectTest?, _ error: String?) -> Void) {
+    func getAddressForLatLng(latitude: String, longitude: String, completionHandler: @escaping(_ address: AddressObject?, _ error: String?) -> Void) {
         let geoRequest = "\(baseURL)latlng=\(latitude),\(longitude)&key=\(apiKey)"
         Alamofire.request(geoRequest)
             .validate()
@@ -32,7 +32,7 @@ class GoogleMapsServices: NSObject {
                     return completionHandler(nil, "Result not found")
                 }
                 //print(firstResult)
-                if let address = AddressObjectTest(json: firstResult) {
+                if let address = AddressObject(json: firstResult) {
                     return completionHandler(address, nil)
                 } else {
                     return completionHandler(nil, "Parse json to object has been failed")

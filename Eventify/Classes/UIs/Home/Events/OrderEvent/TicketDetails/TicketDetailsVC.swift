@@ -14,8 +14,8 @@ class TicketDetailsVC: UIViewController {
     var byName: String?
     var timeStart: Int?
     var timeEnd: Int?
-    var tickets: [TicketObjectTest] = []
-    var ticketsToOrder: [TicketObjectTest] = []
+    var tickets: [TicketObject] = []
+    var ticketsToOrder: [TicketObject] = []
     var loading = UIActivityIndicatorView()
     
     @IBOutlet weak var lblEventName: UILabel!
@@ -115,7 +115,7 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblNameTicket.text = name
         }
         
-        if let remaining = self.tickets[indexPath.row].quantitiesRemaining {
+        if let remaining = self.tickets[indexPath.row].remain {
             cell.lblTicketAvailable.text = "còn \(remaining) vé"
         }
         
@@ -135,33 +135,27 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TicketDetailsVC: OrderEventDelegate {
-    func chooseTicket(with ticket: TicketObjectTest) {
+    func chooseTicket(with ticket: TicketObject) {
         if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice + price).toString()
             self.ticketsToOrder.append(ticket)
         }
     }
     
-    func unChooseTicket(with ticket: TicketObjectTest) {
+    func unChooseTicket(with ticket: TicketObject) {
         if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice - price).toString()
             
-//            if let id = ticket.id {
-//                if let index = self.ticketsToOrder.index(where: { (ticketObject) -> Bool in
-//                    
-//                    if let ticketId = ticketObject.id {
-//                        return id == ticketId
-//                    }
-//                    return false
-//                }) {
-//                    self.ticketsToOrder.remove(at: index)
-//                }
-//            }
-            
-            if let index = self.ticketsToOrder.index(where: { (ticketObject) -> Bool in
-                return ticket.id == ticketObject.id
-            }) {
-                self.ticketsToOrder.remove(at: index)
+            if let id = ticket.id {
+                if let index = self.ticketsToOrder.index(where: { (ticketObject) -> Bool in
+                    
+                    if let ticketId = ticketObject.id {
+                        return id == ticketId
+                    }
+                    return false
+                }) {
+                    self.ticketsToOrder.remove(at: index)
+                }
             }
             
         }

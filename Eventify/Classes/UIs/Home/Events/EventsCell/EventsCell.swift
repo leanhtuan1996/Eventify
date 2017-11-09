@@ -20,7 +20,7 @@ class EventsCell: UITableViewCell {
     @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var btnLike: UIButton!
     
-    var event: EventObjectTest?
+    var event: EventObject?
     var delegate: InteractiveEventProtocol?
     var isLiked = false
     

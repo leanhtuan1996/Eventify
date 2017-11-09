@@ -15,7 +15,7 @@ class DetailEventVC: UIViewController {
     
     var minPrice: String?
     var maxPrice: String?
-    var event: EventObjectTest!
+    var event: EventObject!
     let loading = UIActivityIndicatorView()
     var isLiked = false
     
@@ -81,7 +81,7 @@ class DetailEventVC: UIViewController {
             
             
             //image cover
-            if let photoUrl = self.event.photoCoverPath {
+            if let photoUrl = self.event.photoURL {
                 
                 DispatchQueue.main.async(execute: {
                     self.imgCover.downloadedFrom(path: photoUrl)
@@ -92,7 +92,7 @@ class DetailEventVC: UIViewController {
                 //name
                 self.lblName.text = self.event.name
                 //by
-                self.lblBy.text = "Bởi: \(self.event.createdBy?.fullName ?? "Không rõ")"
+                self.lblBy.text = "Bởi: \(self.event.by?.fullName ?? "Không rõ")"
             })
             
            
@@ -151,9 +151,9 @@ class DetailEventVC: UIViewController {
             }
             
             //orgarnizer
-            if let user = self.event.createdBy {
+            if let user = self.event.by {
                 
-                if let link = user.photoDisplayPath {
+                if let link = user.photoURL {
                     self.imgAvata.downloadedFrom(link: link)
                 } else {
                     self.imgAvata.image = #imageLiteral(resourceName: "avatar")
@@ -161,7 +161,7 @@ class DetailEventVC: UIViewController {
                 
                 DispatchQueue.main.async(execute: {
                     self.lblByName.text = "\(user.fullName ?? "Không rõ")"
-                    self.lblPhone.text = "\(user.phoneNumber ?? "Không rõ")"
+                    self.lblPhone.text = "\(user.phone ?? "Không rõ")"
                     self.lblEmail.text = "\(user.email ?? "Không rõ")"
                 })
             }
@@ -169,7 +169,10 @@ class DetailEventVC: UIViewController {
             DispatchQueue.main.async(execute: {
                self.loading.stopAnimating()
             })
+            
+            
         }
+        
     }
     
     func openMaps() {
@@ -280,11 +283,11 @@ class DetailEventVC: UIViewController {
         if isLiked {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
             self.isLiked = false
-//            guard let id = self.event.id else {
-//                return
-//            }
+            guard let id = self.event.id else {
+                return
+            }
             
-            UserServicesTest.shared.UnlikeEvent(withId: self.event.id) { (error) in
+            UserServices.shared.UnlikeEvent(withId: id) { (error) in
                 if let error = error {
                     self.showAlert("Có lỗi không xác định đã xảy ra. \(error)", title: "Thích sự kiện thất bại", buttons: nil)
                     return
@@ -294,7 +297,7 @@ class DetailEventVC: UIViewController {
         } else {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
             self.isLiked = true
-            UserServicesTest.shared.likeEvent(withEvent: event, completionHandler: { (error) in
+            UserServices.shared.likeEvent(withEvent: event, completionHandler: { (error) in
                 if let error = error {
                     self.showAlert("Có lỗi không xác định đã xảy ra. \(error)", title: "Thích sự kiện thất bại", buttons: nil)
                     return
@@ -314,7 +317,7 @@ class DetailEventVC: UIViewController {
         if let vc = UIStoryboard(name: "Order", bundle: nil).instantiateViewController(withIdentifier: "TicketDetailsVC") as? TicketDetailsVC {
             
             vc.eventName = self.event.name
-            vc.byName = self.event.createdBy?.fullName
+            vc.byName = self.event.by?.fullName
             vc.timeStart = self.event.timeStart
             vc.timeEnd = self.event.timeEnd
             vc.tickets = self.event.tickets ?? []

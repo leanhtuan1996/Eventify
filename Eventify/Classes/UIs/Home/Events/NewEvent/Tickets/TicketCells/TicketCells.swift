@@ -10,7 +10,7 @@ import UIKit
 
 class TicketCells: UITableViewCell {
 
-    var ticketObject = TicketObjectTest()
+    var ticketObject = TicketObject()
     @IBOutlet weak var lblNameTicket: UILabel!
     @IBOutlet weak var lblQuantitySold: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
