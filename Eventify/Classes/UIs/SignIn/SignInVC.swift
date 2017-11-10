@@ -79,7 +79,7 @@ class SignInVC: UIViewController {
         activityIndicatorView.showLoadingDialog(self)
         
         UserServicesTest.shared.signIn(with: userObject) { (error) in
-            
+            print(error)
         }
         
         UserServices.shared.signIn(with: userObject) { (error) in

@@ -14,17 +14,19 @@ import FBSDKLoginKit
 import Gloss
 
 class UserServicesTest: NSObject {
-    static let shared = UserServicesTest()
+    
+    static let shared: UserServicesTest = {
+        print("INIT USERSERVICETEST")
+        SocketIOServices.shared.join(withNameSpace: "/user")
+        return UserServicesTest()
+    }()
     
     let socket = SocketIOServices.shared
     let socketUser = SocketIOServices.shared.socket
     
-    override init() {
-        socket.join(withNameSpace: "/user")
-        super.init()
-    }
+    var count = 0
     
-    var currentUser: UserObject?
+    var currentUser: UserObjectTest?
     
     func getMyInformations(withId id: String?, completionHandler: ((_ user: UserObject?, _ error: String? ) -> Void )? = nil ) {
        
@@ -51,14 +53,19 @@ class UserServicesTest: NSObject {
             return completionHandler("Parse user to json has been failed")
         }
         
-        //listen
-        socketUser.on("sign-up") { (data, ack) in
-            print(data)
-        }
         
         //request to server
         socketUser.emit("sign-up", with: [userJson])
         
+        socketUser.off("sign-up")
+        
+        //listen
+        socketUser.on("sign-up") { (data, ack) in
+            print(data)
+            self.count += 1
+            print(self.count)
+            
+        }
     }
     
     func signIn(with user: UserObject, completionHandler: @escaping(_ error: String?) -> Void) {
@@ -66,10 +73,11 @@ class UserServicesTest: NSObject {
             return completionHandler("Email or password are required!")
         }
         
-        if !socket.isConnected() { socket.establishConnection() }
+        if socket.isNotConnected() { socket.establishConnection() }
+        
+        if socket.isDisconnected() { socket.reConnect() }
         
         let userObject = UserObject()
-        userObject.id = ""
         userObject.email = email
         userObject.password = password
         
@@ -77,14 +85,41 @@ class UserServicesTest: NSObject {
             return completionHandler("Parse user to json has been failed")
         }
         
-        //listen
-        socketUser.on("sign-in") { (data, ack) in
-            print(data)
-        }
-        
         //request to server
         socketUser.emit("sign-in", with: [userJson])
         
+        //delete previous listener
+        socketUser.off("sign-in")
+        
+        //add new listener
+        socketUser.on("sign-in") { (data, ack) in
+            
+            if data.isEmpty || data.count == 0 {
+                return completionHandler("Data not found")
+            }
+            
+            guard let json = data.first as? JSON else {
+                print("Convert data to json has been failed")
+                return completionHandler("Convert data to json has been failed")
+            }
+            
+            if let errors = json["errors"] as? [String] {
+                if errors.count != 0 {
+                    return completionHandler(errors[0])
+                } else {
+                    return completionHandler("Error not found")
+                }
+            }
+            
+            guard let user = UserObjectTest(json: json) else {
+                print("FAILED")
+                return
+            }
+            
+            self.currentUser = user
+            
+            return completionHandler(nil)
+        }
     }
     
     func isLoggedIn(completionHandler: @escaping(_ error: String?) -> Void) {

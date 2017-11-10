@@ -14,10 +14,13 @@ let baseUrl: String = "http://192.168.31.96:3000"
 class SocketIOServices: NSObject {
     static let shared = SocketIOServices()
     
-    let socket = SocketIOClient(socketURL: URL(string: baseUrl)!)
+    //let socket = SocketIOClient(socketURL: URL(string: baseUrl)!)
+    
+    let socket = SocketIOClient(socketURL: URL(string: baseUrl)!, config: [SocketIOClientConfiguration.Element.reconnects(true), SocketIOClientConfiguration.Element.reconnectAttempts(30), SocketIOClientConfiguration.Element.reconnectWait(3)])
+    
     
     func establishConnection() {
-        print("CONNECT")
+        print("CONNECTED")
         
         if isConnected() { return }
         
@@ -40,6 +43,15 @@ class SocketIOServices: NSObject {
         }
     }
     
+    func isNotConnected() -> Bool {
+        switch socket.status {
+        case .notConnected:
+            return true
+        default:
+            return false
+        }
+    }
+    
     func isDisconnected() -> Bool {
         switch socket.status {
         case .disconnected:
@@ -55,11 +67,8 @@ class SocketIOServices: NSObject {
         }
     }
     
+    
     func join(withNameSpace name: String) {
-        
-        if !isConnected() { establishConnection() }
-        
-        if isDisconnected() { reConnect() }
         
         socket.joinNamespace(name)
         
@@ -69,13 +78,10 @@ class SocketIOServices: NSObject {
     
     func leaveNamespace() {
         
-        if !isConnected() { establishConnection() }
-        
-        if isDisconnected() { reConnect() }
-        
         socket.leaveNamespace()
         
-         print("Socket was leaved to User namespace")
+        print("Socket was leaved to User namespace")
     }
-
+    
+    
 }

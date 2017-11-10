@@ -35,6 +35,8 @@
 		3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */; };
 		366410351FB56DBA000E2516 /* UserServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410341FB56DBA000E2516 /* UserServicesTest.swift */; };
 		3664103A1FB56FD6000E2516 /* SocketIOServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410391FB56FD6000E2516 /* SocketIOServices.swift */; };
+		3664103D1FB5B0B9000E2516 /* EventObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664103C1FB5B0B9000E2516 /* EventObjectTest.swift */; };
+		3664103F1FB5B0D1000E2516 /* UserObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664103E1FB5B0D1000E2516 /* UserObjectTest.swift */; };
 		36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */; };
 		3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366580191FA1EDE8008A161F /* AddressObject.swift */; };
 		367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BCF1F7E34EB002222EB /* AppDelegate.swift */; };
@@ -572,6 +574,8 @@
 		3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionEditorVC.swift; sourceTree = "<group>"; };
 		366410341FB56DBA000E2516 /* UserServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServicesTest.swift; sourceTree = "<group>"; };
 		366410391FB56FD6000E2516 /* SocketIOServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOServices.swift; sourceTree = "<group>"; };
+		3664103C1FB5B0B9000E2516 /* EventObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObjectTest.swift; sourceTree = "<group>"; };
+		3664103E1FB5B0D1000E2516 /* UserObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectTest.swift; sourceTree = "<group>"; };
 		36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsServices.swift; sourceTree = "<group>"; };
 		366580191FA1EDE8008A161F /* AddressObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressObject.swift; sourceTree = "<group>"; };
 		367F3BB81F7E337D002222EB /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1494,6 +1498,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3664103B1FB5B084000E2516 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				3664103C1FB5B0B9000E2516 /* EventObjectTest.swift */,
+				3664103E1FB5B0D1000E2516 /* UserObjectTest.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		367F3BAF1F7E337D002222EB = {
 			isa = PBXGroup;
 			children = (
@@ -1709,6 +1722,7 @@
 		36B683801F95FD8500CC4F09 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3664103B1FB5B084000E2516 /* Objects */,
 				367F94ED1FB1DBF00089DE7A /* Services */,
 			);
 			path = Tests;
@@ -2194,6 +2208,7 @@
 				36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */,
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
 				362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */,
+				3664103D1FB5B0B9000E2516 /* EventObjectTest.swift in Sources */,
 				362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */,
 				36F28DB31FAD91D8000A5359 /* TicketServices.swift in Sources */,
 				36147DC91FB053B0004F38DD /* TicketsOrderedVC.swift in Sources */,
@@ -2209,6 +2224,7 @@
 				36F111A81FA9B0AF00B97951 /* Duration.swift in Sources */,
 				362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */,
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
+				3664103F1FB5B0D1000E2516 /* UserObjectTest.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
 				362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */,
 				36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */,
