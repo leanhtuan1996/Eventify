@@ -77,6 +77,11 @@ class SignInVC: UIViewController {
         userObject.email = email
         self.dismissKeyboard()
         activityIndicatorView.showLoadingDialog(self)
+        
+        UserServicesTest.shared.signIn(with: userObject) { (error) in
+            
+        }
+        
         UserServices.shared.signIn(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {

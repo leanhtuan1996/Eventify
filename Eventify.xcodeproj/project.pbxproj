@@ -33,6 +33,8 @@
 		362C5E121F810CD10033F9DB /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E111F810CD10033F9DB /* EventObject.swift */; };
 		362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C5E131F810D760033F9DB /* EventTypeObject.swift */; };
 		3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */; };
+		366410351FB56DBA000E2516 /* UserServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410341FB56DBA000E2516 /* UserServicesTest.swift */; };
+		3664103A1FB56FD6000E2516 /* SocketIOServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410391FB56FD6000E2516 /* SocketIOServices.swift */; };
 		36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */; };
 		3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366580191FA1EDE8008A161F /* AddressObject.swift */; };
 		367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BCF1F7E34EB002222EB /* AppDelegate.swift */; };
@@ -568,6 +570,8 @@
 		3644EFC91F9F2FC70037F1D1 /* SwitchUserSample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwitchUserSample.xcodeproj; sourceTree = "<group>"; };
 		3651A8521FA9BCAF00D91954 /* Eventify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Eventify-Bridging-Header.h"; sourceTree = "<group>"; };
 		3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionEditorVC.swift; sourceTree = "<group>"; };
+		366410341FB56DBA000E2516 /* UserServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServicesTest.swift; sourceTree = "<group>"; };
+		366410391FB56FD6000E2516 /* SocketIOServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOServices.swift; sourceTree = "<group>"; };
 		36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsServices.swift; sourceTree = "<group>"; };
 		366580191FA1EDE8008A161F /* AddressObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressObject.swift; sourceTree = "<group>"; };
 		367F3BB81F7E337D002222EB /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1602,6 +1606,7 @@
 				36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */,
 				36F28DB21FAD91D8000A5359 /* TicketServices.swift */,
 				36147DD31FB054A7004F38DD /* OrderServices.swift */,
+				366410391FB56FD6000E2516 /* SocketIOServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1696,6 +1701,7 @@
 		367F94ED1FB1DBF00089DE7A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				366410341FB56DBA000E2516 /* UserServicesTest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2135,6 +2141,8 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RichEditorView/RichEditorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -2158,6 +2166,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichEditorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarscreamSocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -2223,6 +2233,7 @@
 				36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,
 				36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */,
+				366410351FB56DBA000E2516 /* UserServicesTest.swift in Sources */,
 				367F3C101F7E360A002222EB /* SignInVC.swift in Sources */,
 				36F28D971FAC72DC000A5359 /* DayOfWeek.swift in Sources */,
 				36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */,
@@ -2237,6 +2248,7 @@
 				36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */,
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,
 				362C5E071F809E290033F9DB /* TicketObject.swift in Sources */,
+				3664103A1FB56FD6000E2516 /* SocketIOServices.swift in Sources */,
 				36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */,
 				367F3C011F7E35F3002222EB /* ForgotPasswordVC.swift in Sources */,
 				36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */,

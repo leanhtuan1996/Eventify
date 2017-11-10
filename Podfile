@@ -44,4 +44,7 @@ target 'Eventify' do
     
     #pod 'SWTableViewCell'
     #pod 'Sparrow/LaunchAnimation’, :git => 'https://github.com/IvanVorobei/Sparrow.git’
+    
+    #Pod for socket.io
+     pod 'Socket.IO-Client-Swift', '~> 11.1.3'
 end
