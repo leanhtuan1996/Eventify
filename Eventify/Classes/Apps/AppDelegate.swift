@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")
         GMSPlacesClient.provideAPIKey("AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")
         
-        SocketIOServices.shared.establishConnection()
-        
         //ZaloSDK.sharedInstance().initialize(withAppId: "3201380157403447726")
     }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import EventKit
+import Gloss
 
 class Helpers: NSObject {
     static func validateEmail(_ candidate: String) -> Bool {
@@ -183,5 +184,29 @@ class Helpers: NSObject {
         })
     }
     
+    static func errorHandler(with data: [Any], completionHandler: @escaping (_ json: JSON?, _ error: String?) -> Void ) {
+        //check data is nil or empty
+        if data.isEmpty || data.count == 0 {
+            return completionHandler(nil, "Data not found")
+        }
+        
+        //get the first value in data and try parse to json
+        guard let json = data.first as? JSON else {
+            return completionHandler(nil, "Convert data to json has been failed")
+        }
+        
+        //errors handler
+        if let errors = json["errors"] as? [String] {
+            if errors.count != 0 {
+                return completionHandler(nil, errors[0])
+            } else {
+                return completionHandler(nil, "Error not found")
+            }
+        }
+        
+        print(json)
+        
+        return completionHandler(json, nil)
+    }
     
 }

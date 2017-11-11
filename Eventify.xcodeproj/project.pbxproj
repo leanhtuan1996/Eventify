@@ -37,6 +37,12 @@
 		3664103A1FB56FD6000E2516 /* SocketIOServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410391FB56FD6000E2516 /* SocketIOServices.swift */; };
 		3664103D1FB5B0B9000E2516 /* EventObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664103C1FB5B0B9000E2516 /* EventObjectTest.swift */; };
 		3664103F1FB5B0D1000E2516 /* UserObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664103E1FB5B0D1000E2516 /* UserObjectTest.swift */; };
+		366410411FB5FC8E000E2516 /* TicketObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410401FB5FC8E000E2516 /* TicketObjectTest.swift */; };
+		366410431FB5FCDA000E2516 /* LikeEventObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410421FB5FCDA000E2516 /* LikeEventObjectTest.swift */; };
+		366410451FB5FCF7000E2516 /* OrderObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410441FB5FCF7000E2516 /* OrderObjectTest.swift */; };
+		366410471FB5FD15000E2516 /* TicketOrderObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410461FB5FD15000E2516 /* TicketOrderObjectTest.swift */; };
+		366410491FB6B25C000E2516 /* TicketServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366410481FB6B25C000E2516 /* TicketServicesTest.swift */; };
+		3664104B1FB6DBF8000E2516 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664104A1FB6DBF8000E2516 /* UserManager.swift */; };
 		36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */; };
 		3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366580191FA1EDE8008A161F /* AddressObject.swift */; };
 		367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3BCF1F7E34EB002222EB /* AppDelegate.swift */; };
@@ -576,6 +582,12 @@
 		366410391FB56FD6000E2516 /* SocketIOServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOServices.swift; sourceTree = "<group>"; };
 		3664103C1FB5B0B9000E2516 /* EventObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObjectTest.swift; sourceTree = "<group>"; };
 		3664103E1FB5B0D1000E2516 /* UserObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObjectTest.swift; sourceTree = "<group>"; };
+		366410401FB5FC8E000E2516 /* TicketObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketObjectTest.swift; sourceTree = "<group>"; };
+		366410421FB5FCDA000E2516 /* LikeEventObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeEventObjectTest.swift; sourceTree = "<group>"; };
+		366410441FB5FCF7000E2516 /* OrderObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderObjectTest.swift; sourceTree = "<group>"; };
+		366410461FB5FD15000E2516 /* TicketOrderObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderObjectTest.swift; sourceTree = "<group>"; };
+		366410481FB6B25C000E2516 /* TicketServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketServicesTest.swift; sourceTree = "<group>"; };
+		3664104A1FB6DBF8000E2516 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		36657FF31FA1EC82008A161F /* GoogleMapsServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsServices.swift; sourceTree = "<group>"; };
 		366580191FA1EDE8008A161F /* AddressObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressObject.swift; sourceTree = "<group>"; };
 		367F3BB81F7E337D002222EB /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1503,6 +1515,10 @@
 			children = (
 				3664103C1FB5B0B9000E2516 /* EventObjectTest.swift */,
 				3664103E1FB5B0D1000E2516 /* UserObjectTest.swift */,
+				366410401FB5FC8E000E2516 /* TicketObjectTest.swift */,
+				366410421FB5FCDA000E2516 /* LikeEventObjectTest.swift */,
+				366410441FB5FCF7000E2516 /* OrderObjectTest.swift */,
+				366410461FB5FD15000E2516 /* TicketOrderObjectTest.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1593,6 +1609,7 @@
 			isa = PBXGroup;
 			children = (
 				362C5E081F809F150033F9DB /* TicketManager.swift */,
+				3664104A1FB6DBF8000E2516 /* UserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1715,6 +1732,7 @@
 			isa = PBXGroup;
 			children = (
 				366410341FB56DBA000E2516 /* UserServicesTest.swift */,
+				366410481FB6B25C000E2516 /* TicketServicesTest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2212,6 +2230,7 @@
 				362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */,
 				36F28DB31FAD91D8000A5359 /* TicketServices.swift in Sources */,
 				36147DC91FB053B0004F38DD /* TicketsOrderedVC.swift in Sources */,
+				366410491FB6B25C000E2516 /* TicketServicesTest.swift in Sources */,
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				36F111AB1FA9B0AF00B97951 /* NSDate+Timepiece.swift in Sources */,
 				367F3BED1F7E34EB002222EB /* Extensions+Data.swift in Sources */,
@@ -2230,13 +2249,16 @@
 				36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
 				36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */,
+				366410431FB5FCDA000E2516 /* LikeEventObjectTest.swift in Sources */,
 				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,
 				36147DD41FB054A7004F38DD /* OrderServices.swift in Sources */,
 				3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */,
+				366410411FB5FC8E000E2516 /* TicketObjectTest.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
+				366410471FB5FD15000E2516 /* TicketOrderObjectTest.swift in Sources */,
 				3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */,
 				36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
@@ -2245,6 +2267,7 @@
 				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
 				36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */,
+				3664104B1FB6DBF8000E2516 /* UserManager.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,
@@ -2264,6 +2287,7 @@
 				36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */,
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,
 				362C5E071F809E290033F9DB /* TicketObject.swift in Sources */,
+				366410451FB5FCF7000E2516 /* OrderObjectTest.swift in Sources */,
 				3664103A1FB56FD6000E2516 /* SocketIOServices.swift in Sources */,
 				36657FF41FA1EC82008A161F /* GoogleMapsServices.swift in Sources */,
 				367F3C011F7E35F3002222EB /* ForgotPasswordVC.swift in Sources */,

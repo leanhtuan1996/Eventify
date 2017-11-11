@@ -84,7 +84,7 @@ class EventObjectTest: NSObject, Glossy {
         }
         
         return jsonify([
-            "id" ~~> self.id,
+            "_id" ~~> self.id,
             "name" ~~> self.name,
             "address" ~~> self.address?.toJSON(),
             "descriptions" ~~> self.descriptionEvent,

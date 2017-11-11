@@ -15,37 +15,59 @@ import Gloss
 
 class UserServicesTest: NSObject {
     
-    static let shared: UserServicesTest = {
-        print("INIT USERSERVICETEST")
-        SocketIOServices.shared.join(withNameSpace: "/user")
-        return UserServicesTest()
-    }()
+    static let shared = UserServicesTest()
     
     let socket = SocketIOServices.shared
     let socketUser = SocketIOServices.shared.socket
     
-    var count = 0
-    
-    var currentUser: UserObjectTest?
-    
-    func getMyInformations(withId id: String?, completionHandler: ((_ user: UserObject?, _ error: String? ) -> Void )? = nil ) {
+    func getInformations(with token: String, completionHandler: @escaping ((_ user: UserObjectTest?, _ error: String? ) -> Void )) {
+        
+        socketUser.emit("get-informations", with: [token])
+        
+        socketUser.off("get-informations")
+        
+        socketUser.on("get-informations") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, let user = UserObjectTest.init(json: json) else {
+                    return completionHandler(nil, "Convert json to object has been failed")
+                }
+                
+                return completionHandler(user, nil)
+            })
+        }
        
     }
     
-    func getUserInformations(withId id: String, completionHandler: @escaping (_ user: UserObject?, _ error: String?) -> Void ) {
+    func getInformations(completionHandler: @escaping ((_ user: UserObjectTest?, _ error: String? ) -> Void )) {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler(nil, "Token not found")
+        }
         
+        socketUser.emit("get-informations", with: [token])
+        
+        socketUser.off("get-informations")
+        
+        socketUser.on("get-informations") { (data, ack) in
+            print(data)
+        }
     }
     
+    
     //sign up with email & password
-    func signUp(with user: UserObject, completionHandler: @escaping(_ error: String?) -> Void) {
+    func signUp(with user: UserObjectTest, completionHandler: @escaping(_ error: String?) -> Void) {
         guard let email = user.email, let password = user.password else {
             return completionHandler("Email or password are required!")
         }
         
-        if !socket.isConnected() { socket.establishConnection() }
+        if socket.isNotConnected() { socket.establishConnection() }
         
-        let userObject = UserObject()
-        userObject.id = ""
+        if socket.isDisconnected() { socket.reConnect() }
+        
+        let userObject = UserObjectTest()
         userObject.email = email
         userObject.password = password
         
@@ -61,14 +83,37 @@ class UserServicesTest: NSObject {
         
         //listen
         socketUser.on("sign-up") { (data, ack) in
-            print(data)
-            self.count += 1
-            print(self.count)
+            //check data is nil or empty
+            if data.isEmpty || data.count == 0 {
+                return completionHandler("Data not found")
+            }
             
+            //get the first value in data and try parse to json
+            guard let json = data.first as? JSON else {
+                return completionHandler("Convert data to json has been failed")
+            }
+            
+            //errors handler
+            if let errors = json["errors"] as? [String] {
+                if errors.count != 0 {
+                    return completionHandler(errors[0])
+                } else {
+                    return completionHandler("Error not found")
+                }
+            }
+            
+            //try parse from json to object
+            guard let user = UserObjectTest(json: json) else {
+                return completionHandler("Convert json to object has been failed")
+            }
+            
+            UserManager.shared.setUser(with: user)
+            
+            return completionHandler(nil)
         }
     }
     
-    func signIn(with user: UserObject, completionHandler: @escaping(_ error: String?) -> Void) {
+    func signIn(with user: UserObjectTest, completionHandler: @escaping(_ error: String?) -> Void) {
         guard let email = user.email, let password = user.password else {
             return completionHandler("Email or password are required!")
         }
@@ -77,7 +122,7 @@ class UserServicesTest: NSObject {
         
         if socket.isDisconnected() { socket.reConnect() }
         
-        let userObject = UserObject()
+        let userObject = UserObjectTest()
         userObject.email = email
         userObject.password = password
         
@@ -94,15 +139,17 @@ class UserServicesTest: NSObject {
         //add new listener
         socketUser.on("sign-in") { (data, ack) in
             
+            //check data is nil or empty
             if data.isEmpty || data.count == 0 {
                 return completionHandler("Data not found")
             }
             
+            //get the first value in data and try parse to json
             guard let json = data.first as? JSON else {
-                print("Convert data to json has been failed")
                 return completionHandler("Convert data to json has been failed")
             }
             
+            //errors handler
             if let errors = json["errors"] as? [String] {
                 if errors.count != 0 {
                     return completionHandler(errors[0])
@@ -111,12 +158,12 @@ class UserServicesTest: NSObject {
                 }
             }
             
+            //try parse from json to object
             guard let user = UserObjectTest(json: json) else {
-                print("FAILED")
-                return
+                return completionHandler("Convert json to object has been failed")
             }
             
-            self.currentUser = user
+            UserManager.shared.setUser(with: user)
             
             return completionHandler(nil)
         }
@@ -128,7 +175,7 @@ class UserServicesTest: NSObject {
     }
     
     func signOut() {
-       
+       UserManager.shared.editToken(nil)
     }
     
     func signInWithGoogle(authentication: GIDAuthentication?, completionHandler: @escaping (_ error: String?) -> Void) {

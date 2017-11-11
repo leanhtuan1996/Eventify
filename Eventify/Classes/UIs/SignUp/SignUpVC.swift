@@ -91,8 +91,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         userObject.password = password
         userObject.email = email
         
-        UserServicesTest.shared.signUp(with: userObject) { (error) in
-            
+        //for test
+        let userObjectTest = UserObjectTest()
+        userObjectTest.password = password
+        userObjectTest.email = email
+        
+        UserServicesTest.shared.signUp(with: userObjectTest) { (error) in
+            print(error)
         }
         
         UserServices.shared.signUp(with: userObject) { (error) in

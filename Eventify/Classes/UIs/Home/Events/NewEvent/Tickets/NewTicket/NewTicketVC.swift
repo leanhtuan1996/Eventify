@@ -95,6 +95,18 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
             ticket.price = txtPrice.text?.toInt()
             ticket.remain = txtQuantity.text?.toInt()
             
+            //for testing
+            let ticketTest = TicketObjectTest()
+            ticketTest.name = txtNameTicket.text
+            ticketTest.descriptions = txtDescription.text
+            ticketTest.quantitiesToSell = txtQuantity.text?.toInt()
+            ticketTest.price = txtPrice.text?.toInt()
+            ticketTest.quantitiesRemaining = txtQuantity.text?.toInt()
+            
+            TicketServicesTest.shared.addTicket(with: ticketTest, completionHandler: { (ticket, error) in
+                print(error)
+            })
+            
             TicketServices.shared.addTicket(with: ticket) { (error) in
                 self.loading.stopAnimating()
                 

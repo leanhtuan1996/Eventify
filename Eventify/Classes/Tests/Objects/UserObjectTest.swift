@@ -12,11 +12,13 @@ import Gloss
 class UserObjectTest: NSObject, Glossy {
     var id: String
     var fullName: String?
+    var password: String?
     var email: String?
+    var token: String?
     var photoDisplayPath: String?
     var phoneNumber: String?
-    //var orders: [OrderObjectTest]?
-    //var liked: [LikeEventObjectTest]?
+    var orders: [OrderObjectTest]?
+    var liked: [LikeEventObjectTest]?
     
     override init() {
         self.id = ""
@@ -31,16 +33,18 @@ class UserObjectTest: NSObject, Glossy {
         }
         self.id = id
         
-        
         //orders
         if let ordersJSON: [JSON] = "orders" <~~ json {
-            //self.orders = [OrderObjectTest].from(jsonArray: ordersJSON)
+            self.orders = [OrderObjectTest].from(jsonArray: ordersJSON)
         }
         
         //liked
         if let likedJSON: [JSON] = "liked" <~~ json {
-            //self.liked = [LikeEventObjectTest].from(jsonArray: likedJSON)
+            self.liked = [LikeEventObjectTest].from(jsonArray: likedJSON)
         }
+        
+        //token 
+        self.token = "token" <~~ json
         
         //full name
         self.fullName = "fullName" <~~ json
@@ -66,6 +70,7 @@ class UserObjectTest: NSObject, Glossy {
             "id" ~~> id,
             "fullName" ~~> self.fullName,
             "email" ~~> self.email,
+            "password" ~~> self.password,
             "phoneNumber" ~~> self.phoneNumber,
             "photoDisplayPath" ~~> self.photoDisplayPath
             ])

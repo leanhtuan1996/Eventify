@@ -75,11 +75,24 @@ class SignInVC: UIViewController {
         let userObject = UserObject()
         userObject.password = password
         userObject.email = email
+        
+        //for test
+        let userObjectTest = UserObjectTest()
+        userObjectTest.password = password
+        userObjectTest.email = email
+        
         self.dismissKeyboard()
         activityIndicatorView.showLoadingDialog(self)
         
-        UserServicesTest.shared.signIn(with: userObject) { (error) in
-            print(error)
+        UserServicesTest.shared.signIn(with: userObjectTest) { (error) in
+            //self.activityIndicatorView.stopAnimating()
+            if let error = error {
+                //self.showAlert(error, title: "Sign In Error", buttons: nil)
+                return
+            }
+//            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//                appDelegate.showMainView()
+//            }
         }
         
         UserServices.shared.signIn(with: userObject) { (error) in

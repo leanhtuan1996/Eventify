@@ -29,6 +29,15 @@ class TicketsManagerVC: UIViewController {
         self.navigationItem.setRightBarButton(newTicketItem, animated: true)
         self.navigationController?.setTranslucent(isTranslucent: true)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        
+        TicketServicesTest.shared.getTickets(completionHandler: { (tickets, error) in
+            
+        })
+        
+        TicketServicesTest.shared.deleteTicket(withId: "5a06920edb0186a5046604c0") { (error) in
+            print(error)
+        }
+        
     }
     
     @IBAction func btnBackClicked(_ sender: Any) {
@@ -43,6 +52,7 @@ class TicketsManagerVC: UIViewController {
     }
     
     func deleteTicket(with id: String) {
+        
         //TicketManager.shared.deleteTicket(byId: id)
         TicketServices.shared.deleteTicket(withId: id) { (error) in
             if let error = error {

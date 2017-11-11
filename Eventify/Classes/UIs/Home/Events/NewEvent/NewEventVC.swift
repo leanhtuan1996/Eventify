@@ -82,6 +82,7 @@ class NewEventVC: UIViewController {
         lblNameEvent.returnKeyType = .done
         lblNameEvent.delegate = self
         
+       
         if let user = UserServices.shared.currentUser {
             lblByOrganizer.text = "Bởi " + (user.fullName ?? "")
             
