@@ -24,22 +24,27 @@ class UserServicesTest: NSObject {
         
         socketUser.emit("get-informations", with: [token])
         
-        socketUser.off("get-informations")
-        
-        socketUser.on("get-informations") { (data, ack) in
+        socketUser.once("get-informations") { (data, ack) in
+            
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+               
                 if let error = error {
                     return completionHandler(nil, error)
                 }
                 
-                guard let json = json, let user = UserObjectTest.init(json: json) else {
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                guard let user = UserObjectTest(json: json[0]) else {
                     return completionHandler(nil, "Convert json to object has been failed")
                 }
                 
                 return completionHandler(user, nil)
+                
             })
         }
-       
+        
     }
     
     func getInformations(completionHandler: @escaping ((_ user: UserObjectTest?, _ error: String? ) -> Void )) {
@@ -49,9 +54,7 @@ class UserServicesTest: NSObject {
         
         socketUser.emit("get-informations", with: [token])
         
-        socketUser.off("get-informations")
-        
-        socketUser.on("get-informations") { (data, ack) in
+        socketUser.once("get-informations") { (data, ack) in
             print(data)
         }
     }
@@ -83,33 +86,24 @@ class UserServicesTest: NSObject {
         
         //listen
         socketUser.on("sign-up") { (data, ack) in
-            //check data is nil or empty
-            if data.isEmpty || data.count == 0 {
-                return completionHandler("Data not found")
-            }
-            
-            //get the first value in data and try parse to json
-            guard let json = data.first as? JSON else {
-                return completionHandler("Convert data to json has been failed")
-            }
-            
-            //errors handler
-            if let errors = json["errors"] as? [String] {
-                if errors.count != 0 {
-                    return completionHandler(errors[0])
-                } else {
-                    return completionHandler("Error not found")
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
                 }
-            }
-            
-            //try parse from json to object
-            guard let user = UserObjectTest(json: json) else {
-                return completionHandler("Convert json to object has been failed")
-            }
-            
-            UserManager.shared.setUser(with: user)
-            
-            return completionHandler(nil)
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                guard let user = UserObjectTest(json: json[0]) else {
+                    return completionHandler("Convert json to object has been failed")
+                }
+                
+                UserManager.shared.setUser(with: user)
+                
+                return completionHandler(nil)
+                
+            })
         }
     }
     
@@ -139,33 +133,24 @@ class UserServicesTest: NSObject {
         //add new listener
         socketUser.on("sign-in") { (data, ack) in
             
-            //check data is nil or empty
-            if data.isEmpty || data.count == 0 {
-                return completionHandler("Data not found")
-            }
-            
-            //get the first value in data and try parse to json
-            guard let json = data.first as? JSON else {
-                return completionHandler("Convert data to json has been failed")
-            }
-            
-            //errors handler
-            if let errors = json["errors"] as? [String] {
-                if errors.count != 0 {
-                    return completionHandler(errors[0])
-                } else {
-                    return completionHandler("Error not found")
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
                 }
-            }
-            
-            //try parse from json to object
-            guard let user = UserObjectTest(json: json) else {
-                return completionHandler("Convert json to object has been failed")
-            }
-            
-            UserManager.shared.setUser(with: user)
-            
-            return completionHandler(nil)
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                guard let user = UserObjectTest(json: json[0]) else {
+                    return completionHandler("Convert json to object has been failed")
+                }
+                
+                UserManager.shared.setUser(with: user)
+                
+                return completionHandler(nil)
+                
+            })
         }
     }
     
@@ -175,7 +160,7 @@ class UserServicesTest: NSObject {
     }
     
     func signOut() {
-       UserManager.shared.editToken(nil)
+        UserManager.shared.editToken(nil)
     }
     
     func signInWithGoogle(authentication: GIDAuthentication?, completionHandler: @escaping (_ error: String?) -> Void) {
@@ -184,16 +169,16 @@ class UserServicesTest: NSObject {
     }
     
     func signInWithFacebook(token: FBSDKAccessToken, completionHandler: @escaping (_ error: String?) -> Void) {
-       
+        
     }
     
     func signInWithZalo(vc: UIViewController, completionHandler: @escaping (_ error: String?) -> Void) {
         
-       
+        
     }
     
     func forgotPasswordWithEmail(withEmail email: String, completionHandler: @escaping(_ error: String?) -> Void ) {
-           }
+    }
     
     func updateEmail(withEmail email: String, completionHandler: @escaping (_ error: String? ) -> Void ) {
         
@@ -208,14 +193,14 @@ class UserServicesTest: NSObject {
     }
     
     func updatePhotoURL(withImage image: Data, completionHandler: @escaping (_ error: String?) -> Void) {
-            }
+    }
     
     func updateFullname(withFullname fullname: String, completionHandler: @escaping (_ error: String?) -> Void) {
-       
+        
     }
     
     func likeEvent(withEvent event: EventObject, completionHandler: @escaping (_ error: String?) -> Void ) {
-            }
+    }
     
     func UnlikeEvent(withId id: String, completionHandler: @escaping (_ error: String?) -> Void ) {
         
@@ -223,13 +208,13 @@ class UserServicesTest: NSObject {
     }
     
     func deleteUsers() {
-       
+        
         
         
     }
     
     func deleteUsers(batchSize: Int = 100, completion: ((Error?) -> ())? = nil) {
-       
+        
     }
-
+    
 }

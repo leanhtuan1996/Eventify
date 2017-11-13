@@ -69,6 +69,7 @@
 		367F3C181F7E37C3002222EB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C171F7E37C3002222EB /* Helpers.swift */; };
 		36829F471F9F09E400D1465F /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36829F461F9F09E400D1465F /* Extensions+UIImage.swift */; };
 		3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */; };
+		36ADCE861FB9609B00B87642 /* TypeEventServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ADCE851FB9609B00B87642 /* TypeEventServicesTest.swift */; };
 		36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */; };
 		36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7622A1F7E9C83009D3BE9 /* EventsCell.swift */; };
 		36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B7622B1F7E9C83009D3BE9 /* EventsCell.xib */; };
@@ -76,6 +77,8 @@
 		36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */; };
 		36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */; };
 		36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */; };
+		36D8B8401FB7EE6400D8F8E3 /* EventServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D8B83F1FB7EE6400D8F8E3 /* EventServicesTest.swift */; };
+		36D8B84E1FB83D6C00D8F8E3 /* TypeObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D8B84D1FB83D6C00D8F8E3 /* TypeObjectTest.swift */; };
 		36F111A81FA9B0AF00B97951 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A01FA9B0AF00B97951 /* Duration.swift */; };
 		36F111A91FA9B0AF00B97951 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A11FA9B0AF00B97951 /* Int+Timepiece.swift */; };
 		36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A21FA9B0AF00B97951 /* NSCalendar+Timepiece.swift */; };
@@ -616,6 +619,7 @@
 		367F3C171F7E37C3002222EB /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		36829F461F9F09E400D1465F /* Extensions+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
 		3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36ADCE851FB9609B00B87642 /* TypeEventServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEventServicesTest.swift; sourceTree = "<group>"; };
 		36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
 		36B7622A1F7E9C83009D3BE9 /* EventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
 		36B7622B1F7E9C83009D3BE9 /* EventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsCell.xib; sourceTree = "<group>"; };
@@ -623,6 +627,8 @@
 		36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
 		36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveEventProtocol.swift; sourceTree = "<group>"; };
+		36D8B83F1FB7EE6400D8F8E3 /* EventServicesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventServicesTest.swift; sourceTree = "<group>"; };
+		36D8B84D1FB83D6C00D8F8E3 /* TypeObjectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeObjectTest.swift; sourceTree = "<group>"; };
 		36F111A01FA9B0AF00B97951 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		36F111A11FA9B0AF00B97951 /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
 		36F111A21FA9B0AF00B97951 /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
@@ -1519,6 +1525,7 @@
 				366410421FB5FCDA000E2516 /* LikeEventObjectTest.swift */,
 				366410441FB5FCF7000E2516 /* OrderObjectTest.swift */,
 				366410461FB5FD15000E2516 /* TicketOrderObjectTest.swift */,
+				36D8B84D1FB83D6C00D8F8E3 /* TypeObjectTest.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1733,6 +1740,8 @@
 			children = (
 				366410341FB56DBA000E2516 /* UserServicesTest.swift */,
 				366410481FB6B25C000E2516 /* TicketServicesTest.swift */,
+				36D8B83F1FB7EE6400D8F8E3 /* EventServicesTest.swift */,
+				36ADCE851FB9609B00B87642 /* TypeEventServicesTest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2245,6 +2254,7 @@
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
 				3664103F1FB5B0D1000E2516 /* UserObjectTest.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
+				36ADCE861FB9609B00B87642 /* TypeEventServicesTest.swift in Sources */,
 				362C5E141F810D760033F9DB /* EventTypeObject.swift in Sources */,
 				36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
@@ -2253,6 +2263,7 @@
 				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,
 				36147DD41FB054A7004F38DD /* OrderServices.swift in Sources */,
 				3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */,
+				36D8B8401FB7EE6400D8F8E3 /* EventServicesTest.swift in Sources */,
 				366410411FB5FC8E000E2516 /* TicketObjectTest.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
@@ -2283,6 +2294,7 @@
 				36F111AF1FA9B0AF00B97951 /* WWCalendarTimeSelector.swift in Sources */,
 				36F111A91FA9B0AF00B97951 /* Int+Timepiece.swift in Sources */,
 				367F3BF41F7E34EB002222EB /* Extensions+UINavigationController.swift in Sources */,
+				36D8B84E1FB83D6C00D8F8E3 /* TypeObjectTest.swift in Sources */,
 				36147DB91FB0503D004F38DD /* OrderTicketObject.swift in Sources */,
 				36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */,
 				367F3BF01F7E34EB002222EB /* Extensions+NSError.swift in Sources */,

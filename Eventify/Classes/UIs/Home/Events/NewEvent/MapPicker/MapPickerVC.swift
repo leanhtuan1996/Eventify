@@ -184,7 +184,7 @@ extension MapPickerVC: GMSMapViewDelegate, CLLocationManagerDelegate {
         address.placeId = placeID
         address.address = name
         address.latitude = location.latitude
-        address.longtutude = location.longitude
+        address.longitude = location.longitude
         self.showAddressPickerAlert(with: address)
         
     }

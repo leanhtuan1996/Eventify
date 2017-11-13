@@ -136,7 +136,7 @@ class DetailEventVC: UIViewController {
             }
             
             //maps
-            if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longtutude {
+            if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longitude {
                 
                 if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
                     
@@ -177,7 +177,7 @@ class DetailEventVC: UIViewController {
     
     func openMaps() {
         //options: Google Maps & Apple Maps
-        guard let latitude = event.address?.latitude, let longtitude = event.address?.longtutude, let addressName = event.address?.address, let placeId = event.address?.placeId else {
+        guard let latitude = event.address?.latitude, let longtitude = event.address?.longitude, let addressName = event.address?.address, let placeId = event.address?.placeId else {
             return
         }
         

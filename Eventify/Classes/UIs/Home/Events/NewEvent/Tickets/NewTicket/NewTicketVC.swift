@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 
 class NewTicketVC: UIViewController, UITextFieldDelegate {
     
-    var ticketObject: TicketObject?
+    var ticketObject: TicketObjectTest?
     @IBOutlet weak var txtNameTicket: SkyFloatingLabelTextField!
     @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
     @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
@@ -27,7 +27,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         
         if let ticket = self.ticketObject {
             txtNameTicket.text = ticket.name
-            txtQuantity.text = ticket.quantity?.toString()
+            txtQuantity.text = ticket.quantitiesToSell?.toString()
             txtPrice.text = ticket.price?.toString()
         }
     }
@@ -57,10 +57,6 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         txtNameTicket.errorMessage = ""
         txtQuantity.errorMessage = ""
         
-        guard let idUser = UserServices.shared.currentUser?.id else {
-            self.showAlert("Id User not found", title: "error", buttons: nil)
-            return
-        }
         self.dismissKeyboard()
         //TicketManager.shared.addTicket(with: ticket)
         self.loading.showLoadingDialog(self)
@@ -68,10 +64,12 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         if let ticket = self.ticketObject {
             ticket.name = txtNameTicket.text
             ticket.descriptions = txtDescription.text
-            ticket.quantity = txtQuantity.text?.toInt()
+            ticket.quantitiesToSell = txtQuantity.text?.toInt()
             ticket.price = txtPrice.text?.toInt()
+            ticket.maxQuantitiesToOrder = 10
+            ticket.quantitiesRemaining = txtQuantity.text?.toInt()
             
-            TicketServices.shared.editTicket(with: ticket, completionHandler: { (error) in
+            TicketServicesTest.shared.editTicket(with: ticket, completionHandler: { (error) in
                 self.loading.stopAnimating()
                 
                 let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
@@ -86,14 +84,22 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
                 self.navigationController?.popViewController(animated: true)
             })
             
+//            TicketServices.shared.editTicket(with: ticket, completionHandler: { (error) in
+//                self.loading.stopAnimating()
+//                
+//                let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
+//                    self.navigationController?.popViewController(animated: true)
+//                })
+//                
+//                if let error = error {
+//                    self.showAlert(error, title: "Add new ticket has been failed", buttons: [backButton])
+//                    return
+//                }
+//                
+//                self.navigationController?.popViewController(animated: true)
+//            })
+            
         } else {
-            let ticket = TicketObject()
-            ticket.id = "\(idUser)\(Helpers.getTimeStamp())"
-            ticket.name = txtNameTicket.text
-            ticket.descriptions = txtDescription.text
-            ticket.quantity = txtQuantity.text?.toInt()
-            ticket.price = txtPrice.text?.toInt()
-            ticket.remain = txtQuantity.text?.toInt()
             
             //for testing
             let ticketTest = TicketObjectTest()
@@ -104,10 +110,6 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
             ticketTest.quantitiesRemaining = txtQuantity.text?.toInt()
             
             TicketServicesTest.shared.addTicket(with: ticketTest, completionHandler: { (ticket, error) in
-                print(error)
-            })
-            
-            TicketServices.shared.addTicket(with: ticket) { (error) in
                 self.loading.stopAnimating()
                 
                 let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
@@ -120,7 +122,22 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
                 }
                 
                 self.navigationController?.popViewController(animated: true)
-            }
+            })
+            
+//            TicketServices.shared.addTicket(with: ticket) { (error) in
+//                self.loading.stopAnimating()
+//                
+//                let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
+//                    self.navigationController?.popViewController(animated: true)
+//                })
+//                
+//                if let error = error {
+//                    self.showAlert(error, title: "Add new ticket has been failed", buttons: [backButton])
+//                    return
+//                }
+//                
+//                self.navigationController?.popViewController(animated: true)
+//            }
         }
     }
     

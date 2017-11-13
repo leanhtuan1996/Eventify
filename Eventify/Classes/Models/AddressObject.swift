@@ -13,7 +13,7 @@ import Gloss
 class AddressObject: NSObject, Glossy {
     var placeId: String
     var latitude: Double?
-    var longtutude: Double?
+    var longitude: Double?
     var address: String?
     
     override init() {
@@ -32,27 +32,31 @@ class AddressObject: NSObject, Glossy {
             print(geometry)
             if let location = geometry["location"] as? JSON {
                 self.latitude = location["lat"] as? Double
-                self.longtutude = location["lng"] as? Double
+                self.longitude = location["lng"] as? Double
             }
         }
         
+        self.address = "formatted_address" <~~ json
+        
+        //for api
         if let lat: Double = "lat" <~~ json {
             self.latitude = lat
         }
         
         if let lng: Double = "lng" <~~ json {
-            self.longtutude = lng
+            self.longitude = lng
         }
         
-        self.address = "formatted_address" <~~ json
+        self.address = "address" <~~ json
+        
     }
     
     func toJSON() -> JSON? {
         return jsonify([
             "place_id" ~~> self.placeId,
-            "lat" ~~> self.latitude,
-            "lng" ~~> self.longtutude,
-            "formatted_address" ~~> self.address
+            "latitude" ~~> self.latitude,
+            "longitude" ~~> self.longitude,
+            "address" ~~> self.address
             ])
     }
 }

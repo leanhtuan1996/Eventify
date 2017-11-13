@@ -17,11 +17,11 @@ class EventObjectTest: NSObject, Glossy {
     var dateEdited: Int?
     var photoCoverPath: String?
     var descriptionEvent: String?
-    var createdBy: UserObject?
+    var createdBy: UserObjectTest?
     var timeStart: Int?
     var timeEnd: Int?
-    var types: [EventTypeObject]?
-    var tickets: [TicketObject]?
+    var types: [TypeObjectTest]?
+    var tickets: [TicketObjectTest]?
     
     override init() {
         self.id = ""
@@ -37,18 +37,18 @@ class EventObjectTest: NSObject, Glossy {
         self.id = id
         
         //createdBy
-        if let byUser: UserObject = "createdBy" <~~ json {
+        if let byUser: UserObjectTest = "createdBy" <~~ json {
             self.createdBy = byUser
         }
         
         //types
         if let typeJSON: [JSON] = "types" <~~ json {
-            self.types = [EventTypeObject].from(jsonArray: typeJSON)
+            self.types = [TypeObjectTest].from(jsonArray: typeJSON)
         }
         
         //tickets
         if let ticketJSON: [JSON] = "tickets" <~~ json {
-            self.tickets = [TicketObject].from(jsonArray: ticketJSON)
+            self.tickets = [TicketObjectTest].from(jsonArray: ticketJSON)
         }
         
         //time to start event
@@ -90,7 +90,7 @@ class EventObjectTest: NSObject, Glossy {
             "descriptions" ~~> self.descriptionEvent,
             "createdBy" ~~> self.createdBy?.toJSON(),
             "photoCoverPath" ~~> self.photoCoverPath,
-            "tickets" ~~> self.tickets?.toJSONArray(),
+            "tickets" ~~> tickets.toJSONArray(),
             "types" ~~> self.types?.toJSONArray(),
             "timeStart" ~~> self.timeStart,
             "timeEnd" ~~> self.timeEnd,

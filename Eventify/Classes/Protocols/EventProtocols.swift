@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EventDelegate {
-    func selectedType(with type: EventTypeObject) -> Void
+    func selectedType(with type: TypeObjectTest) -> Void
     func selectedAddress(with address: AddressObject) -> Void
     func discriptionEditor(with text: String, html: String) -> Void
 }

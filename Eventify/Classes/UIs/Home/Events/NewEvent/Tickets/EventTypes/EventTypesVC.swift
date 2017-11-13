@@ -11,7 +11,7 @@ import UIKit
 class EventTypesVC: UIViewController {
 
     @IBOutlet weak var popupView: UIView!
-    var eventTypes: [EventTypeObject] = []
+    var eventTypes: [TypeObjectTest] = []
     @IBOutlet weak var tblTypes: UITableView!
     var delegate: EventDelegate!
     override func viewDidLoad() {
@@ -60,7 +60,7 @@ class EventTypesVC: UIViewController {
     }
     
     func loadEventTypes() {
-        TypeEventServices.shared.getTypesEvent { (types, error) in
+        TypeEventServicesTest.shared.getTypesEvent { (types, error) in
             if let error = error {
                 print(error)
                 return
@@ -70,6 +70,18 @@ class EventTypesVC: UIViewController {
                 self.tblTypes.reloadData()
             }
         }
+        
+        
+//        TypeEventServices.shared.getTypesEvent { (types, error) in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//            if let types = types {
+//                self.eventTypes = types
+//                self.tblTypes.reloadData()
+//            }
+//        }
     }
   
 }

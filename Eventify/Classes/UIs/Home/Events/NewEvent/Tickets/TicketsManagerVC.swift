@@ -9,9 +9,9 @@
 import UIKit
 
 class TicketsManagerVC: UIViewController {
-
+    
     @IBOutlet weak var tblTickets: UITableView!
-    var tickets: [TicketObject] = []
+    var tickets: [TicketObjectTest] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         tblTickets.delegate = self
@@ -30,20 +30,12 @@ class TicketsManagerVC: UIViewController {
         self.navigationController?.setTranslucent(isTranslucent: true)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         
-        TicketServicesTest.shared.getTickets(completionHandler: { (tickets, error) in
-            
-        })
-        
-        TicketServicesTest.shared.deleteTicket(withId: "5a06920edb0186a5046604c0") { (error) in
-            print(error)
-        }
-        
     }
     
     @IBAction func btnBackClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     func addNewTicket() {
         if let sb = storyboard?.instantiateViewController(withIdentifier: "NewTicketVC") as? NewTicketVC {
             self.navigationController?.pushViewController(sb, animated: true)
@@ -54,7 +46,13 @@ class TicketsManagerVC: UIViewController {
     func deleteTicket(with id: String) {
         
         //TicketManager.shared.deleteTicket(byId: id)
-        TicketServices.shared.deleteTicket(withId: id) { (error) in
+        //        TicketServices.shared.deleteTicket(withId: id) { (error) in
+        //            if let error = error {
+        //                self.showAlert(error, title: "Thao tác bị lỗi", buttons: nil)
+        //                return
+        //            }
+        //        }
+        TicketServicesTest.shared.deleteTicket(withId: id) { (error) in
             if let error = error {
                 self.showAlert(error, title: "Thao tác bị lỗi", buttons: nil)
                 return
@@ -84,7 +82,7 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()
+        cell.lblQuantitySold.text = tickets[indexPath.row].quantitiesToSell?.toString()
         
         return cell
         
@@ -101,10 +99,7 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Xoá") { (rowAction, indexPath) in
             
-            if let id = self.tickets[indexPath.row].id {
-                self.deleteTicket(with: id)
-            }
-            
+            self.deleteTicket(with: self.tickets[indexPath.row].id)
             self.tickets.remove(at: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)

@@ -28,24 +28,24 @@ class TicketServicesTest: NSObject {
         socketTicket.off("get-tickets")
         
         socketTicket.on("get-tickets") { (data, ack) in
-            
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 
                 if let error = error {
                     return completionHandler(nil, error)
                 }
                 
-//                //try parse from json to object
-//                guard let json = json as? [JSON] else {
-//                    return completionHandler(nil, "Convert json to array has been failed")
-//                }
-//                
-//                if let tickets = [TicketObjectTest].from(jsonArray: json) {
-//                    print(tickets[0].id)
-//                    return completionHandler(tickets, nil)
-//                } else {
-//                    return completionHandler(nil, "Convert json to object has been failed")
-//                }
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                if json[0].isEmpty { return completionHandler([], nil) }
+                
+                //try parse from json to object
+                guard let tickets = [TicketObjectTest].from(jsonArray: json) else {
+                    return completionHandler(nil, "Convert json to object has been failed")
+                }
+                
+                return completionHandler(tickets, nil)
                 
             })
         }
@@ -69,51 +69,40 @@ class TicketServicesTest: NSObject {
         
         socketTicket.once("new-ticket") { (data, ack) in
           
-            //check data is nil or empty
-            if data.isEmpty || data.count == 0 {
-                return completionHandler(nil, "Data not found")
-            }
-            
-            //get the first value in data and try parse to json
-            guard let json = data.first as? JSON else {
-                return completionHandler(nil, "Convert data to json has been failed")
-            }
-            
-            //errors handler
-            if let errors = json["errors"] as? [String] {
-                if errors.count != 0 {
-                    return completionHandler(nil, errors[0])
-                } else {
-                    return completionHandler(nil, "Error not found")
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
                 }
-            }
-            
-            //try parse from json to object
-            guard let ticket = TicketObjectTest(json: json) else {
-                return completionHandler(nil, "Convert json to object has been failed")
-            }
-            
-            return completionHandler(ticket, nil)
-        }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                //try parse from json to object
+                guard let ticket = TicketObjectTest(json: json[0]) else {
+                    return completionHandler(nil, "Convert json to object has been failed")
+                }
+                
+                return completionHandler(ticket, nil)
+                
+            })
+       }
     }
     
-    func editTicket(with ticket: TicketObject, completionHandler: @escaping (_ error: String?) -> Void) {
-        guard let userId = UserServices.shared.currentUser?.id else {
-            return completionHandler("User id not found")
-        }
-        
-        guard let ticketId = ticket.id else {
-            return completionHandler("ticket id not found")
+    func editTicket(with ticket: TicketObjectTest, completionHandler: @escaping (_ error: String?) -> Void) {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler("Token not found")
         }
         
         guard let ticketJson = ticket.toJSON() else {
-            return completionHandler("Convert ticket to json has been failed")
+            return completionHandler("Convert ticket object to json has been failed")
         }
+       
+        socketTicket.emit("edit-ticket", with: [ticketJson, token])
         
-        refTicket.document(userId).updateData([ticketId : ticketJson]) { (error) in
-            return completionHandler(error?.localizedDescription)
+        socketTicket.on("edit-ticket") { (data, ack) in
+            
         }
-        
     }
     
     func deleteTicket(withId id: String, completionHandler: @escaping (_ error: String?) -> Void) {
