@@ -22,7 +22,6 @@ class DiscoverVC: UIViewController {
     var refreshControl: UIRefreshControl!
     var isLoadingMore = false
     var previousController: UIViewController?
-    let loading = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,9 +71,7 @@ class DiscoverVC: UIViewController {
     }
     
     func loadEvents() {
-        self.loading.showLoadingDialog(self)
         EventServicesTest.shared.getEvents { (events, error) in
-            self.loading.stopAnimating()
             
             if self.refreshControl.isRefreshing {
                 self.refreshControl.endRefreshing()
@@ -187,8 +184,8 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address?.address
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
-        //cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? []).0) VNĐ"
-        //cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
+        cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? []).0) VNĐ"
+        cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
         cell.delegate = self
         if let url = events[indexPath.row].photoCoverPath {
             cell.imgPhoto.downloadedFrom(link: url)
@@ -233,15 +230,15 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
             //                }
             //            }
             //
-            //            sb.event = events[indexPath.row]
-            //            sb.minPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).0
-            //            sb.maxPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).1
-            //            self.navigationController?.pushViewController(sb, animated: true)
-            //            self.tabBarController?.hidesBottomBarWhenPushed = true
+            sb.event = events[indexPath.row]
+            sb.minPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).0
+            sb.maxPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).1
+            self.navigationController?.pushViewController(sb, animated: true)
+            self.tabBarController?.hidesBottomBarWhenPushed = true
         }
     }
     
-    func handlerPrice(for tickets: [TicketObject]) -> (String, String) {
+    func handlerPrice(for tickets: [TicketObjectTest]) -> (String, String) {
         
         if tickets.count > 0 {
             
@@ -264,7 +261,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         
     }
     
-    func handlerTypes(for types: [EventTypeObject]) -> String {
+    func handlerTypes(for types: [TypeObjectTest]) -> String {
         
         var string = ""
         

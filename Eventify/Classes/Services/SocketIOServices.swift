@@ -9,7 +9,7 @@
 import UIKit
 import SocketIO
 
-let baseUrl: String = "http://192.168.31.96:8080"
+let baseUrl: String = "http://localhost:8080"
 
 class SocketIOServices: NSObject {
     static let shared = SocketIOServices()

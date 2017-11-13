@@ -16,8 +16,8 @@ class InfoUserVC: UIViewController {
     var timeStart: String?
     var timeEnd: String?
     var totalPrice: String?
-    var tickets: [TicketObject] = []
-    var ticketsToOrder: [TicketObject] = []
+    var tickets: [TicketObjectTest] = []
+    var ticketsToOrder: [TicketObjectTest] = []
     var loading = UIActivityIndicatorView()
     let remainingTime = 720
     
@@ -57,9 +57,9 @@ class InfoUserVC: UIViewController {
         self.lblTimeEnd.text = self.timeEnd
         self.lblBy.text = self.byName
         
-        if let user = UserServices.shared.currentUser {
+        if let user = UserManager.shared.currentUser {
             txtFullName.text = user.fullName
-            txtPhoneNumber.text = user.phone
+            txtPhoneNumber.text = user.phoneNumber
             //txtEmail.text = user.email
             //txtAddress.text = user.address
         }

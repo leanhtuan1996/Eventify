@@ -39,11 +39,11 @@ class AddressObject: NSObject, Glossy {
         self.address = "formatted_address" <~~ json
         
         //for api
-        if let lat: Double = "lat" <~~ json {
+        if let lat: Double = "latitude" <~~ json {
             self.latitude = lat
         }
         
-        if let lng: Double = "lng" <~~ json {
+        if let lng: Double = "longitude" <~~ json {
             self.longitude = lng
         }
         

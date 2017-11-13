@@ -19,8 +19,7 @@ class TicketsOrderCell: UITableViewCell {
     @IBOutlet weak var btnMinus: UIButton!
     @IBOutlet weak var lblQuantity: UILabel!
     var delegate: OrderEventDelegate?
-    var ticket: TicketObject?
-    let maximumToOrder = 15
+    var ticket: TicketObjectTest?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,11 +40,11 @@ class TicketsOrderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func btnPlusClicked(_ sender: Any) {
-        guard let quantityString = self.lblQuantity.text, let quantity = quantityString.toInt(), let quantityTicket = self.ticket?.quantity else {
+        guard let quantityString = self.lblQuantity.text, let quantity = quantityString.toInt(), let quantityTicket = self.ticket?.quantitiesToSell else {
             return
         }
         
-        if quantity == self.maximumToOrder { return }
+        if quantity == self.ticket?.maxQuantitiesToOrder { return }
         
         if quantity >= quantityTicket { return }
         
