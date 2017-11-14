@@ -27,7 +27,7 @@ class UserServicesTest: NSObject {
         socketUser.once("get-informations") { (data, ack) in
             
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
-               
+                
                 if let error = error {
                     return completionHandler(nil, error)
                 }
@@ -199,12 +199,50 @@ class UserServicesTest: NSObject {
         
     }
     
-    func likeEvent(withEvent event: EventObject, completionHandler: @escaping (_ error: String?) -> Void ) {
+    func getLikedEvents(completionHandler: @escaping (_ idEvents: [String]?, _ error: String? ) -> Void ) {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler(nil, "Token of User is required")
+        }
+        
+        socketUser.emit("get-liked-events", with: [token])
+        
+        socketUser.off("get-liked-events")
+        
+        socketUser.on("get-liked-events") { (data, ack) in
+            //check data is nil or empty
+            //print(data)
+            if data.isEmpty || data.count == 0 {
+                return completionHandler(nil, "Data not found")
+            }
+            
+            guard let array = data[0] as? [String] else {
+                return completionHandler([], nil)
+            }
+            
+            return completionHandler(array, nil)
+            
+        }
     }
     
-    func UnlikeEvent(withId id: String, completionHandler: @escaping (_ error: String?) -> Void ) {
+    //    func getLikedEvents(completionHandler: @escaping (_ Events: [EventObjectTest]?, _ error: String?) -> Void ) {
+    //
+    //    }
+    
+    func likeEvent(with id: String) {
         
+        guard let token = UserManager.shared.currentUser?.token else {
+            return
+        }
         
+        socketUser.emit("like-event", with: [id, token])
+        
+    }
+    
+    func UnlikeEvent(with id: String) {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return
+        }
+        socketUser.emit("unlike-event", with: [id, token])
     }
     
     func deleteUsers() {

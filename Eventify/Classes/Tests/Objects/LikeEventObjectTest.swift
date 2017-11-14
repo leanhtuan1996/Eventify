@@ -23,7 +23,7 @@ class LikeEventObjectTest: NSObject, Glossy {
     required init?(json: JSON) {
         
         //Id has not nil
-        guard let id: String = "id" <~~ json else {
+        guard let id: String = "_id" <~~ json else {
             return nil
         }
         self.id = id
@@ -43,7 +43,7 @@ class LikeEventObjectTest: NSObject, Glossy {
     func toJSON() -> JSON? {
         
         return jsonify([
-            "id" ~~> self.id,
+            "_id" ~~> self.id,
             "idEvent" ~~> self.idEvent,
             "idUser" ~~> self.idUser,
             "dateLiked" ~~> self.dateLiked

@@ -22,6 +22,7 @@ class EventObjectTest: NSObject, Glossy {
     var timeEnd: Int?
     var types: [TypeObjectTest]?
     var tickets: [TicketObjectTest]?
+    //var liked: [LikeEventObjectTest]?
     
     override init() {
         self.id = ""
@@ -74,6 +75,12 @@ class EventObjectTest: NSObject, Glossy {
         if let address: AddressObject = "address" <~~ json {
             self.address = address
         }
+        
+        //like object
+        //if let liked: [String] = "liked" <~~ json {
+            //self.liked = [LikeEventObjectTest].from(jsonArray: liked)
+            //print(liked)
+        //}
     }
     
     //to json

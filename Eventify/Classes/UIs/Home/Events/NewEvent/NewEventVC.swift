@@ -341,7 +341,8 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
     func discriptionEditor(with text: String, html: String) {
         self.lblDescriptionEvent.text = text.isEmpty ? "Nhấp vào để soạn thảo" : text
         self.descriptionEvent = html.isEmpty ? nil : html
-    }
+        self.newEvent.descriptionEvent = html.isEmpty ? nil : html
+    
     
     func selectedAddress(with address: AddressObject) {
         self.isAddressPicked = true

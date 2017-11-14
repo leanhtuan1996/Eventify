@@ -39,6 +39,8 @@ class EventServicesTest: NSObject {
                     return completionHandler([], nil)
                 }
                 
+                //print(json)
+                
                 //try parse from json to object
                 guard let events = [EventObjectTest].from(jsonArray: json) else {
                     return completionHandler(nil, "Path not found")
