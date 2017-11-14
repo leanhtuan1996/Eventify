@@ -33,6 +33,7 @@ class GoogleMapsServices: NSObject {
                 }
                 //print(firstResult)
                 if let address = AddressObject(json: firstResult) {
+                    
                     return completionHandler(address, nil)
                 } else {
                     return completionHandler(nil, "Parse json to object has been failed")

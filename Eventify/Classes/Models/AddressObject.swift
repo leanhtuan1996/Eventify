@@ -22,6 +22,7 @@ class AddressObject: NSObject, Glossy {
     }
     
     required init?(json: JSON) {
+        
         guard let placeId: String = "place_id" <~~ json else {
             return nil
         }
@@ -29,14 +30,15 @@ class AddressObject: NSObject, Glossy {
         
         //for get place with google maps
         if let geometry: JSON = "geometry" <~~ json {
-            print(geometry)
             if let location = geometry["location"] as? JSON {
                 self.latitude = location["lat"] as? Double
                 self.longitude = location["lng"] as? Double
             }
         }
         
-        self.address = "formatted_address" <~~ json
+        if let address: String = "formatted_address" <~~ json {
+            self.address = address
+        }
         
         //for api
         if let lat: Double = "latitude" <~~ json {
@@ -47,7 +49,11 @@ class AddressObject: NSObject, Glossy {
             self.longitude = lng
         }
         
-        self.address = "address" <~~ json
+        if let address: String = "address" <~~ json {
+            self.address = address
+        }
+        
+        
         
     }
     

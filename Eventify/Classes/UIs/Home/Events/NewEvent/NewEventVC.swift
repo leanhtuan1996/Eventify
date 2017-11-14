@@ -307,32 +307,32 @@ class NewEventVC: UIViewController {
     //for testing
     var count = 1
     func addEvent() {
-//        print(count)
-//        if count == 50 {
-//            self.timer?.invalidate()
-//            self.loading.stopAnimating()
-//        }
-//        
-//        let tickets: [TicketObject] = TicketManager.shared.getTickets()
-//        
-//        newEvent.name = "Sự kiện thứ \(count)"
-//        newEvent.address = address
-//        newEvent.tickets = tickets
-//        newEvent.by = UserServices.shared.currentUser
-//        newEvent.descriptionEvent = "Mô tả thứ \(count)"
-//        newEvent.timeStart = Helpers.getTimeStampWithInt()
-//        newEvent.timeEnd = Helpers.getTimeStampWithInt()
-//        
-//        
-//        EventServices.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
-//            if let error  = error {
-//                print(error)
-//            } else {
-//                print("OK")
-//            }
-//        })
-//        
-//        self.count += 1
+        //        print(count)
+        //        if count == 50 {
+        //            self.timer?.invalidate()
+        //            self.loading.stopAnimating()
+        //        }
+        //
+        //        let tickets: [TicketObject] = TicketManager.shared.getTickets()
+        //
+        //        newEvent.name = "Sự kiện thứ \(count)"
+        //        newEvent.address = address
+        //        newEvent.tickets = tickets
+        //        newEvent.by = UserServices.shared.currentUser
+        //        newEvent.descriptionEvent = "Mô tả thứ \(count)"
+        //        newEvent.timeStart = Helpers.getTimeStampWithInt()
+        //        newEvent.timeEnd = Helpers.getTimeStampWithInt()
+        //
+        //
+        //        EventServices.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
+        //            if let error  = error {
+        //                print(error)
+        //            } else {
+        //                print("OK")
+        //            }
+        //        })
+        //
+        //        self.count += 1
     }
 }
 
@@ -342,7 +342,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
         self.lblDescriptionEvent.text = text.isEmpty ? "Nhấp vào để soạn thảo" : text
         self.descriptionEvent = html.isEmpty ? nil : html
         self.newEvent.descriptionEvent = html.isEmpty ? nil : html
-    
+    }
     
     func selectedAddress(with address: AddressObject) {
         self.isAddressPicked = true
@@ -423,16 +423,16 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
                     }
                 })
                 
-//                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
-//                    if let error = error {
-//                        print("Upload image had been failed: \(error)")
-//                        return
-//                    }
-//                    if let path = path {
-//                        self.newEvent.photoURL = path
-//                        
-//                    }
-//                })
+                //                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
+                //                    if let error = error {
+                //                        print("Upload image had been failed: \(error)")
+                //                        return
+                //                    }
+                //                    if let path = path {
+                //                        self.newEvent.photoURL = path
+                //
+                //                    }
+                //                })
             }
         }
     }
