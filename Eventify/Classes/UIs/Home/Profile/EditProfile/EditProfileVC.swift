@@ -9,7 +9,7 @@
 import UIKit
 
 class EditProfileVC: UIViewController {
-
+    
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
@@ -24,18 +24,27 @@ class EditProfileVC: UIViewController {
     func setUpUi() {
         imgAvatar.layer.cornerRadius = 50
         
-        if let photoUrl = UserServices.shared.currentUser?.photoURL {
+        if let photoUrl = UserManager.shared.currentUser?.photoDisplayPath {
             self.imgAvatar.downloadedFrom(link: photoUrl)
-            imgCover.downloadedFrom(link: photoUrl)
+            imgCover.downloadedFrom(link: photoUrl, { (image, error) in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        self.imgCover.image = #imageLiteral(resourceName: "avatar")
+                    } else {
+                        self.imgCover.image = image
+                    }
+                    self.imgCover.addBlurEffect()
+                }
+            })
         } else {
             self.imgAvatar.image = #imageLiteral(resourceName: "avatar")
+            self.imgCover.image = #imageLiteral(resourceName: "avatar")
+            self.imgCover.addBlurEffect()
         }
         
-        imgCover.addBlurEffect()
-        
-        
+        self.lblName.text = UserManager.shared.currentUser?.fullName
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.view.backgroundColor = .clear
@@ -78,7 +87,7 @@ class EditProfileVC: UIViewController {
     @IBAction func btnLogOutClicked(_ sender: Any) {
         let loading = UIActivityIndicatorView()
         loading.showLoadingDialog(self)
-        UserServices.shared.signOut()
+        UserManager.shared.setUser(with: nil)
         
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.showSignInView()

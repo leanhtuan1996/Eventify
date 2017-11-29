@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1031" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17B48" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -207,7 +207,7 @@
                                 <rect key="frame" x="0.0" y="31" width="375" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyR-J7-eF5" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="615"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-hA-Fqn" userLabel="previewEvent">
                                                 <rect key="frame" x="10" y="10" width="355" height="145"/>
@@ -388,7 +388,7 @@
                                             <constraint firstAttribute="trailing" secondItem="QkT-zh-WPB" secondAttribute="trailing" id="h3v-WB-sLU"/>
                                             <constraint firstItem="Pwe-hA-Fqn" firstAttribute="leading" secondItem="XyR-J7-eF5" secondAttribute="leading" constant="10" id="iKP-re-ba7"/>
                                             <constraint firstItem="Pwe-hA-Fqn" firstAttribute="top" secondItem="XyR-J7-eF5" secondAttribute="top" constant="10" id="j8G-UX-ESo"/>
-                                            <constraint firstAttribute="bottom" secondItem="4H8-mm-b80" secondAttribute="bottom" constant="100" id="zQi-9S-sZd"/>
+                                            <constraint firstAttribute="bottom" secondItem="4H8-mm-b80" secondAttribute="bottom" constant="150" id="zQi-9S-sZd"/>
                                         </constraints>
                                     </view>
                                 </subviews>

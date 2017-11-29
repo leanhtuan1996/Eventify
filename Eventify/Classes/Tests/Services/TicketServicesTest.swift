@@ -37,7 +37,6 @@ class TicketServicesTest: NSObject {
                 guard let json = json, json.count > 0 else {
                     return completionHandler(nil, "Data is empty")
                 }
-                
                 if json[0].isEmpty { return completionHandler([], nil) }
                 
                 //try parse from json to object
@@ -56,13 +55,13 @@ class TicketServicesTest: NSObject {
         
     }
     
-    func addTicket(with ticket: TicketObjectTest, completionHandler: @escaping (_ ticket: TicketObjectTest?, _ error: String?) -> Void) {
+    func addTicket(with ticket: TicketObjectTest, completionHandler: @escaping (_ error: String?) -> Void) {
         
         guard let token = UserManager.shared.currentUser?.token else {
-            return completionHandler(nil, "Token not found")
+            return completionHandler("Token not found")
         }
         guard let ticketJson = ticket.toJSON() else {
-            return completionHandler(nil, "Convert ticket object to json has been failed")
+            return completionHandler("Convert ticket object to json has been failed")
         }
         
         socketTicket.emit("new-ticket", with: [ticketJson, token])
@@ -71,20 +70,14 @@ class TicketServicesTest: NSObject {
           
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
-                    return completionHandler(nil, error)
+                    return completionHandler(error)
                 }
                 
                 guard let json = json, json.count > 0 else {
-                    return completionHandler(nil, "Data is empty")
+                    return completionHandler("Data is empty")
                 }
                 
-                //try parse from json to object
-                guard let ticket = TicketObjectTest(json: json[0]) else {
-                    return completionHandler(nil, "Convert json to object has been failed")
-                }
-                
-                return completionHandler(ticket, nil)
-                
+                return completionHandler(nil)
             })
        }
     }
@@ -101,12 +94,21 @@ class TicketServicesTest: NSObject {
         socketTicket.emit("edit-ticket", with: [ticketJson, token])
         
         socketTicket.on("edit-ticket") { (data, ack) in
-            
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                return completionHandler(nil)
+            })
         }
     }
     
     func deleteTicket(withId id: String, completionHandler: @escaping (_ error: String?) -> Void) {
-        
         
         guard let token = UserManager.shared.currentUser?.token else {
             print("User id not found")
@@ -115,10 +117,18 @@ class TicketServicesTest: NSObject {
         
         socketTicket.emit("delete-ticket", with: [id, token])
         
-        socketTicket.off("delete-ticket")
-        
-        socketTicket.on("delete-ticket") { (data, ack) in
-            print(data)
+        socketTicket.once("delete-ticket") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                return completionHandler(nil)
+            })
         }
     }
     

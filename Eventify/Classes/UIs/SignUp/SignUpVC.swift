@@ -13,6 +13,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtConfirmPassword: UITextField!
+    @IBOutlet weak var txtFullname: UITextField!
+    @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var btnSignIn: UIButton!
     
@@ -41,7 +43,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         txtPassword.attributedPlaceholder =
             NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
         txtPassword.textColor = UIColor.white
-        txtPassword.tag = 2
+        txtPassword.tag = 4
         txtPassword.delegate = self
         
         //Password textField
@@ -52,8 +54,30 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         txtConfirmPassword.attributedPlaceholder =
             NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
         txtConfirmPassword.textColor = UIColor.white
-        txtConfirmPassword.tag = 3
+        txtConfirmPassword.tag = 5
         txtConfirmPassword.delegate = self
+        
+        //txtFullname textField
+        txtFullname.layer.borderColor = UIColor.white.cgColor
+        txtFullname.layer.borderWidth = 1
+        txtFullname.layer.cornerRadius = 5
+        txtFullname.backgroundColor = UIColor.clear
+        txtFullname.attributedPlaceholder =
+            NSAttributedString(string: "Họ và Tên", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        txtFullname.textColor = UIColor.white
+        txtFullname.tag = 2
+        txtFullname.delegate = self
+        
+        //Phone number textField
+        txtPhoneNumber.layer.borderColor = UIColor.white.cgColor
+        txtPhoneNumber.layer.borderWidth = 1
+        txtPhoneNumber.layer.cornerRadius = 5
+        txtPhoneNumber.backgroundColor = UIColor.clear
+        txtPhoneNumber.attributedPlaceholder =
+            NSAttributedString(string: "Số điện thoại", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        txtPhoneNumber.textColor = UIColor.white
+        txtPhoneNumber.tag = 3
+        txtPhoneNumber.delegate = self
         
         //Sign In button
         btnSignIn.layer.cornerRadius = 10
@@ -63,20 +87,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - FUNCTIONS
     
     func signUp() {
-        if !(txtEmail.hasText && txtPassword.hasText) {
+        if !(txtEmail.hasText && txtPassword.hasText && txtFullname.hasText && txtPhoneNumber.hasText) {
             self.showAlert("Fields are required", title: "Please fill all fields are required!", buttons: nil)
             return
         }
         
-        guard let email = txtEmail.text, let password = txtPassword.text, let retypePassword = txtConfirmPassword.text else {
+        guard let email = txtEmail.text, let password = txtPassword.text, let retypePassword = txtConfirmPassword.text, let fullName = txtFullname.text, let phoneNumber = txtPhoneNumber.text else {
             self.showAlert("Fields are required", title: "Please fill all fields are required!", buttons: nil)
             return
         }
@@ -87,14 +106,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
         
         activityIndicatorView.showLoadingDialog(self)
-        let userObject = UserObject()
-        userObject.password = password
-        userObject.email = email
         
         //for test
         let userObjectTest = UserObjectTest()
         userObjectTest.password = password
         userObjectTest.email = email
+        userObjectTest.fullName = fullName
+        userObjectTest.phoneNumber = phoneNumber
         
         UserServicesTest.shared.signUp(with: userObjectTest) { (error) in
             self.activityIndicatorView.stopAnimating()

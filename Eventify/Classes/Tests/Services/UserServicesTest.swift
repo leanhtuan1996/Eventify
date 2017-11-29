@@ -62,19 +62,12 @@ class UserServicesTest: NSObject {
     
     //sign up with email & password
     func signUp(with user: UserObjectTest, completionHandler: @escaping(_ error: String?) -> Void) {
-        guard let email = user.email, let password = user.password else {
-            return completionHandler("Email or password are required!")
-        }
         
         if socket.isNotConnected() { socket.establishConnection() }
         
         if socket.isDisconnected() { socket.reConnect() }
         
-        let userObject = UserObjectTest()
-        userObject.email = email
-        userObject.password = password
-        
-        guard let userJson = userObject.toJSON() else {
+        guard let userJson = user.toJSON() else {
             return completionHandler("Parse user to json has been failed")
         }
         
@@ -82,10 +75,8 @@ class UserServicesTest: NSObject {
         //request to server
         socketUser.emit("sign-up", with: [userJson])
         
-        socketUser.off("sign-up")
-        
         //listen
-        socketUser.on("sign-up") { (data, ack) in
+        socketUser.once("sign-up") { (data, ack) in
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
                     return completionHandler(error)
@@ -116,22 +107,15 @@ class UserServicesTest: NSObject {
         
         if socket.isDisconnected() { socket.reConnect() }
         
-        let userObject = UserObjectTest()
-        userObject.email = email
-        userObject.password = password
-        
-        guard let userJson = userObject.toJSON() else {
+        guard let userJson = user.toJSON() else {
             return completionHandler("Parse user to json has been failed")
         }
         
         //request to server
         socketUser.emit("sign-in", with: [userJson])
         
-        //delete previous listener
-        socketUser.off("sign-in")
-        
         //add new listener
-        socketUser.on("sign-in") { (data, ack) in
+        socketUser.once("sign-in") { (data, ack) in
             
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {

@@ -27,8 +27,9 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         
         if let ticket = self.ticketObject {
             txtNameTicket.text = ticket.name
-            txtQuantity.text = ticket.quantitiesToSell?.toString()
+            txtQuantity.text = ticket.quantity?.toString()
             txtPrice.text = ticket.price?.toString()
+            txtDescription.text = ticket.descriptions
         }
     }
     
@@ -64,10 +65,8 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         if let ticket = self.ticketObject {
             ticket.name = txtNameTicket.text
             ticket.descriptions = txtDescription.text
-            ticket.quantitiesToSell = txtQuantity.text?.toInt()
+            ticket.quantity = txtQuantity.text?.toInt()
             ticket.price = txtPrice.text?.toInt()
-            ticket.maxQuantitiesToOrder = 10
-            ticket.quantitiesRemaining = txtQuantity.text?.toInt()
             
             TicketServicesTest.shared.editTicket(with: ticket, completionHandler: { (error) in
                 self.loading.stopAnimating()
@@ -83,33 +82,15 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
                 
                 self.navigationController?.popViewController(animated: true)
             })
-            
-//            TicketServices.shared.editTicket(with: ticket, completionHandler: { (error) in
-//                self.loading.stopAnimating()
-//                
-//                let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
-//                    self.navigationController?.popViewController(animated: true)
-//                })
-//                
-//                if let error = error {
-//                    self.showAlert(error, title: "Add new ticket has been failed", buttons: [backButton])
-//                    return
-//                }
-//                
-//                self.navigationController?.popViewController(animated: true)
-//            })
-            
         } else {
             
-            //for testing
             let ticketTest = TicketObjectTest()
             ticketTest.name = txtNameTicket.text
             ticketTest.descriptions = txtDescription.text
-            ticketTest.quantitiesToSell = txtQuantity.text?.toInt()
+            ticketTest.quantity = txtQuantity.text?.toInt()
             ticketTest.price = txtPrice.text?.toInt()
-            ticketTest.quantitiesRemaining = txtQuantity.text?.toInt()
             
-            TicketServicesTest.shared.addTicket(with: ticketTest, completionHandler: { (ticket, error) in
+            TicketServicesTest.shared.addTicket(with: ticketTest, completionHandler: { (error) in
                 self.loading.stopAnimating()
                 
                 let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in

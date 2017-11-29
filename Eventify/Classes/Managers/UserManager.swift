@@ -70,11 +70,19 @@ class UserManager: NSObject {
         }
     }
     
-    func setUser(with user: UserObjectTest) {
-        self.currentUser = user
+    func setUser(with user: UserObjectTest?) {
         
-        if let token = user.token {
-            self.editToken(token)
+        if let user = user {
+            self.currentUser = user
+            
+            if let token = user.token {
+                self.editToken(token)
+            }
+        } else {
+            self.currentUser = nil
+            self.editToken(nil)
         }
+        
+        
     }
 }

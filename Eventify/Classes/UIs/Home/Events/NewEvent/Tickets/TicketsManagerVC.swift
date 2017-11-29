@@ -82,7 +82,7 @@ extension TicketsManagerVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        cell.lblQuantitySold.text = tickets[indexPath.row].quantitiesToSell?.toString()
+        cell.lblQuantitySold.text = tickets[indexPath.row].quantity?.toString()
         
         return cell
         

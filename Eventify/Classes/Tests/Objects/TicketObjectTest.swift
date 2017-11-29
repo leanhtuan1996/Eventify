@@ -9,15 +9,14 @@
 import UIKit
 import Gloss
 
-
 class TicketObjectTest: NSObject, Glossy {
     var id: String
     var name: String?
     var descriptions: String?
     var createdBy: UserObjectTest?
     var dateCreated: Int?
-    var quantitiesToSell: Int?
-    var maxQuantitiesToOrder: Int = 10
+    var quantity: Int?
+    var maxToOrder: Int = 10
     var price: Int?
     var quantitiesSold: Int?
     var quantitiesRemaining: Int?
@@ -35,8 +34,8 @@ class TicketObjectTest: NSObject, Glossy {
         
         self.id = id
         self.name = "name" <~~ json
-        self.descriptions = "descriptions" <~~ json
-        self.quantitiesToSell = "quantitiesToSell" <~~ json
+        self.descriptions = "description" <~~ json
+        self.quantity = "quantity" <~~ json
         self.dateCreated = "dateCreated" <~~ json
         
         //createdBy
@@ -44,8 +43,8 @@ class TicketObjectTest: NSObject, Glossy {
             self.createdBy = byUser
         }
         
-        if let maxQuantitiesToOrder: Int = "maxQuantitiesToOrder" <~~ json {
-            self.maxQuantitiesToOrder = maxQuantitiesToOrder
+        if let maxToOrder: Int = "maxToOrder" <~~ json {
+            self.maxToOrder = maxToOrder
         }
         
         self.price = "price" <~~ json
@@ -58,10 +57,10 @@ class TicketObjectTest: NSObject, Glossy {
         return jsonify(
             ["_id" ~~> id,
              "name" ~~> self.name,
-             "descriptions" ~~> self.descriptions,
-             "quantitiesToSell" ~~> self.quantitiesToSell,
+             "description" ~~> self.descriptions,
+             "quantity" ~~> self.quantity,
              "dateCreated" ~~> self.dateCreated,
-             "maxQuantitiesToOrder" ~~> self.maxQuantitiesToOrder,
+             "maxToOrder" ~~> self.maxToOrder,
              "price" ~~> self.price,
              "quantitiesSold" ~~> self.quantitiesSold,
              "quantitiesRemaining" ~~> self.quantitiesRemaining

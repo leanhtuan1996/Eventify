@@ -9,14 +9,13 @@
 import UIKit
 import SocketIO
 
-let baseUrl: String = "http://192.168.31.96:8080"
+//let baseUrl: String = "https://www.estenials.me"
+let baseUrl: String = "http://127.0.0.1:8080"
 
 class SocketIOServices: NSObject {
     static let shared = SocketIOServices()
     
-    var namespaceJoined: [String] = []
-    
-    let socket = SocketIOClient(socketURL: URL(string: baseUrl)!, config: [SocketIOClientConfiguration.Element.reconnects(true), SocketIOClientConfiguration.Element.reconnectAttempts(120), SocketIOClientConfiguration.Element.reconnectWait(3)])
+    let socket = SocketIOClient(socketURL: URL(string: baseUrl)!, config: [SocketIOClientConfiguration.Element.reconnects(true), SocketIOClientConfiguration.Element.reconnectAttempts(120), SocketIOClientConfiguration.Element.reconnectWait(3), SocketIOClientConfiguration.Element.compress, SocketIOClientConfiguration.Element.nsp("/")])
     
     
     func establishConnection(completionHandler: (() -> Void)? = nil) {
@@ -71,35 +70,4 @@ class SocketIOServices: NSObject {
             socket.reconnect()
         }
     }
-    
-    
-    func join(withNameSpace name: String) {
-        
-        if self.checkExistNamespace(with: name) {
-            print("exist")
-            return
-        }
-        socket.joinNamespace(name)
-        self.namespaceJoined.append(name)
-        print("Socket was joined to \(name) namespace")
-        
-    }
-    
-    func leaveNamespace() {
-        
-        socket.leaveNamespace()
-        
-        print("Socket was leaved to namespace")
-    }
-    
-    
-    func checkExistNamespace(with name: String) -> Bool {
-        if self.namespaceJoined.contains(where: { (namespace) -> Bool in
-            return name == namespace
-        }) {
-            return true
-        }
-        return false
-    }
-    
 }

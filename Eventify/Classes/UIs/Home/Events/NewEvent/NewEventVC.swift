@@ -98,6 +98,8 @@ class NewEventVC: UIViewController {
                 self.lblNumberTickets.text = "Quản lý vé"
             }
         }
+        
+        lblByOrganizer.text = "Bởi \(UserManager.shared.currentUser?.fullName ?? "không rõ")"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -208,37 +210,6 @@ class NewEventVC: UIViewController {
         newEvent.descriptionEvent = descriptionEvent
         newEvent.createdBy = UserManager.shared.currentUser
         
-        //        var ticketsTest: [TicketObjectTest] = []
-        //        if let tickets = newEvent.tickets {
-        //            tickets.forEach({ (ticket) in
-        //                let ticketTest = TicketObjectTest()
-        //                ticketTest.name = ticket.name
-        //                ticketTest.quantitiesToSell = ticket.quantity
-        //                ticketTest.price = ticket.price
-        //                ticketTest.descriptions = ticket.descriptions
-        //                ticketTest.maxQuantitiesToOrder = 10
-        //                ticketTest.quantitiesRemaining = ticket.quantity
-        //                ticketsTest.append(ticketTest)
-        //            })
-        //        }
-        //
-        //        var typesTest: [TypeObjectTest] = []
-        //
-        //        if let types = newEvent.types {
-        //            types.forEach({ (type) in
-        //                let typeTest = TypeObjectTest()
-        //
-        //                if let id = type.id {
-        //                    typeTest.id = id
-        //                }
-        //
-        //                typeTest.name = type.name
-        //                typesTest.append(typeTest)
-        //            })
-        //        }
-        
-        
-        
         if let start = timeStart.toTimeStamp(format: "dd/MM/yyyy HH:mm") {
             newEvent.timeStart = start.toDouble()?.toInt()
         }
@@ -266,32 +237,8 @@ class NewEventVC: UIViewController {
             })
             
             self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
-            
         }
-        
         self.dismissKeyboard()
-        //self.loading.showLoadingDialog(self)
-        
-        //for testing
-        //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addEvent), userInfo: nil, repeats: true)
-        
-        
-        //        EventServices.shared.addEvent(withEvent: self.newEvent) { (error) in
-        //            self.loading.stopAnimating()
-        //            if let error = error {
-        //                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-        //                return
-        //            }
-        //
-        //            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-        //
-        //                self.finishedAddEvent()
-        //
-        //                self.tabBarController?.selectedIndex = 0
-        //            })
-        //
-        //            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
-        //        }
     }
     
     func finishedAddEvent() {
@@ -302,37 +249,7 @@ class NewEventVC: UIViewController {
         self.lblTimeEnd.text = "Nhấp vào để chọn ngày"
         self.lblAddress.text = "Nhấp vào để chọn địa chỉ"
         self.lblEventType.text = "Nhấp vào để chọn loại sự kiện"
-    }
-    
-    //for testing
-    var count = 1
-    func addEvent() {
-        //        print(count)
-        //        if count == 50 {
-        //            self.timer?.invalidate()
-        //            self.loading.stopAnimating()
-        //        }
-        //
-        //        let tickets: [TicketObject] = TicketManager.shared.getTickets()
-        //
-        //        newEvent.name = "Sự kiện thứ \(count)"
-        //        newEvent.address = address
-        //        newEvent.tickets = tickets
-        //        newEvent.by = UserServices.shared.currentUser
-        //        newEvent.descriptionEvent = "Mô tả thứ \(count)"
-        //        newEvent.timeStart = Helpers.getTimeStampWithInt()
-        //        newEvent.timeEnd = Helpers.getTimeStampWithInt()
-        //
-        //
-        //        EventServices.shared.addEvent(withEvent: newEvent, completionHandler: { (error) in
-        //            if let error  = error {
-        //                print(error)
-        //            } else {
-        //                print("OK")
-        //            }
-        //        })
-        //
-        //        self.count += 1
+        self.newEvent.types = nil
     }
 }
 
@@ -422,17 +339,6 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
                         self.newEvent.photoCoverPath = path
                     }
                 })
-                
-                //                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
-                //                    if let error = error {
-                //                        print("Upload image had been failed: \(error)")
-                //                        return
-                //                    }
-                //                    if let path = path {
-                //                        self.newEvent.photoURL = path
-                //
-                //                    }
-                //                })
             }
         }
     }

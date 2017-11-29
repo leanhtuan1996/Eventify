@@ -11,7 +11,7 @@ import UIKit
 class ProfileVC: UIViewController {
     
     @IBOutlet weak var imgAvatar: UIImageView!
-    var user: UserObject?
+    var user: UserObjectTest?
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var tblProfile: UITableView!
@@ -24,11 +24,11 @@ class ProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if let user = UserServices.shared.currentUser {
+        if let user = UserManager.shared.currentUser {
             lblName.text = user.fullName
             lblEmail.text = user.email
             
-            if let photoUrl = user.photoURL {
+            if let photoUrl = user.photoDisplayPath {
                 self.imgAvatar.downloadedFrom(link: photoUrl)
             } else {
                 self.imgAvatar.image = #imageLiteral(resourceName: "avatar")

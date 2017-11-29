@@ -36,7 +36,7 @@ extension UIImageView
     }
     func downloadedFrom(link: String, _ completionHandler: ((_ image: UIImage?, _ error: String?) -> Void)? = nil) {
         
-        guard let url = URL(string: link) else { return }
+        guard let url = URL(string: link) else { completionHandler?(nil, "FAIL"); return }
         
         downloadedFrom(url: url) { (image, error) in
             completionHandler?(image, error)

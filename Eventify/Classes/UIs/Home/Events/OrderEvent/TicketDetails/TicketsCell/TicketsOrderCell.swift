@@ -40,11 +40,11 @@ class TicketsOrderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func btnPlusClicked(_ sender: Any) {
-        guard let quantityString = self.lblQuantity.text, let quantity = quantityString.toInt(), let quantityTicket = self.ticket?.quantitiesToSell else {
+        guard let quantityString = self.lblQuantity.text, let quantity = quantityString.toInt(), let quantityTicket = self.ticket?.quantity else {
             return
         }
         
-        if quantity == self.ticket?.maxQuantitiesToOrder { return }
+        if quantity == self.ticket?.maxToOrder { return }
         
         if quantity >= quantityTicket { return }
         
