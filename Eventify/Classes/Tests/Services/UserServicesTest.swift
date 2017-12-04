@@ -9,7 +9,6 @@
 import UIKit
 import SocketIO
 import GoogleSignIn
-import FirebaseCore
 import FBSDKLoginKit
 import Gloss
 
@@ -17,14 +16,13 @@ class UserServicesTest: NSObject {
     
     static let shared = UserServicesTest()
     
-    let socket = SocketIOServices.shared
-    let socketUser = SocketIOServices.shared.socket
+    let socket = SocketIOServices.shared.socket
     
     func getInformations(with token: String, completionHandler: @escaping ((_ user: UserObjectTest?, _ error: String? ) -> Void )) {
         
-        socketUser.emit("get-informations", with: [token])
+        socket.emit("get-informations", with: [token])
         
-        socketUser.once("get-informations") { (data, ack) in
+        socket.once("get-informations") { (data, ack) in
             
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 
@@ -52,9 +50,9 @@ class UserServicesTest: NSObject {
             return completionHandler(nil, "Token not found")
         }
         
-        socketUser.emit("get-informations", with: [token])
+        socket.emit("get-informations", with: [token])
         
-        socketUser.once("get-informations") { (data, ack) in
+        socket.once("get-informations") { (data, ack) in
             print(data)
         }
     }
@@ -63,20 +61,16 @@ class UserServicesTest: NSObject {
     //sign up with email & password
     func signUp(with user: UserObjectTest, completionHandler: @escaping(_ error: String?) -> Void) {
         
-        if socket.isNotConnected() { socket.establishConnection() }
-        
-        if socket.isDisconnected() { socket.reConnect() }
-        
         guard let userJson = user.toJSON() else {
             return completionHandler("Parse user to json has been failed")
         }
         
         
         //request to server
-        socketUser.emit("sign-up", with: [userJson])
+        socket.emit("sign-up", with: [userJson])
         
         //listen
-        socketUser.once("sign-up") { (data, ack) in
+        socket.once("sign-up") { (data, ack) in
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
                     return completionHandler(error)
@@ -103,19 +97,15 @@ class UserServicesTest: NSObject {
             return completionHandler("Email or password are required!")
         }
         
-        if socket.isNotConnected() { socket.establishConnection() }
-        
-        if socket.isDisconnected() { socket.reConnect() }
-        
         guard let userJson = user.toJSON() else {
             return completionHandler("Parse user to json has been failed")
         }
         
         //request to server
-        socketUser.emit("sign-in", with: [userJson])
+        socket.emit("sign-in", with: [userJson])
         
         //add new listener
-        socketUser.once("sign-in") { (data, ack) in
+        socket.once("sign-in") { (data, ack) in
             
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
@@ -188,11 +178,11 @@ class UserServicesTest: NSObject {
             return completionHandler(nil, "Token of User is required")
         }
         
-        socketUser.emit("get-liked-events", with: [token])
+        socket.emit("get-liked-events", with: [token])
         
-        socketUser.off("get-liked-events")
+        socket.off("get-liked-events")
         
-        socketUser.on("get-liked-events") { (data, ack) in
+        socket.on("get-liked-events") { (data, ack) in
             //check data is nil or empty
             //print(data)
             if data.isEmpty || data.count == 0 {
@@ -218,7 +208,7 @@ class UserServicesTest: NSObject {
             return
         }
         
-        socketUser.emit("like-event", with: [id, token])
+        socket.emit("like-event", with: [id, token])
         
     }
     
@@ -226,7 +216,7 @@ class UserServicesTest: NSObject {
         guard let token = UserManager.shared.currentUser?.token else {
             return
         }
-        socketUser.emit("unlike-event", with: [id, token])
+        socket.emit("unlike-event", with: [id, token])
     }
     
     func deleteUsers() {

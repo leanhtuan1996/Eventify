@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
 import ZaloSDK
@@ -23,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var orientationLock = UIInterfaceOrientationMask.portrait
 
     override init() {
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         //Database.database().isPersistenceEnabled = true
         //Firestore.firestore().settings.isPersistenceEnabled = true
         

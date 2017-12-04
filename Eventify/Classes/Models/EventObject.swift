@@ -8,7 +8,6 @@
 
 import UIKit
 import Gloss
-import Firebase
 import Dollar
 
 

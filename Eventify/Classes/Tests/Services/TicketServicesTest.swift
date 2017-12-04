@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import Firebase
 import Gloss
 
 class TicketServicesTest: NSObject {
     static let shared = TicketServicesTest()
     
-    let socket = SocketIOServices.shared
-    let socketTicket = SocketIOServices.shared.socket
+    let socket = SocketIOServices.shared.socket
     
     func getTickets(completionHandler: @escaping (_ tickets: [TicketObjectTest]?, _ error: String?) -> Void ) {
         
@@ -23,11 +21,11 @@ class TicketServicesTest: NSObject {
             return completionHandler(nil, "User id not found")
         }
         
-        socketTicket.emit("get-tickets", with: [token])
+        socket.emit("get-tickets", with: [token])
         
-        socketTicket.off("get-tickets")
+        socket.off("get-tickets")
         
-        socketTicket.on("get-tickets") { (data, ack) in
+        socket.on("get-tickets") { (data, ack) in
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 
                 if let error = error {
@@ -64,9 +62,9 @@ class TicketServicesTest: NSObject {
             return completionHandler("Convert ticket object to json has been failed")
         }
         
-        socketTicket.emit("new-ticket", with: [ticketJson, token])
+        socket.emit("new-ticket", with: [ticketJson, token])
         
-        socketTicket.once("new-ticket") { (data, ack) in
+        socket.once("new-ticket") { (data, ack) in
           
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
@@ -91,9 +89,9 @@ class TicketServicesTest: NSObject {
             return completionHandler("Convert ticket object to json has been failed")
         }
        
-        socketTicket.emit("edit-ticket", with: [ticketJson, token])
+        socket.emit("edit-ticket", with: [ticketJson, token])
         
-        socketTicket.on("edit-ticket") { (data, ack) in
+        socket.once("edit-ticket") { (data, ack) in
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
                     return completionHandler(error)
@@ -115,9 +113,9 @@ class TicketServicesTest: NSObject {
             return completionHandler("User id not found")
         }
         
-        socketTicket.emit("delete-ticket", with: [id, token])
+        socket.emit("delete-ticket", with: [id, token])
         
-        socketTicket.once("delete-ticket") { (data, ack) in
+        socket.once("delete-ticket") { (data, ack) in
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
                     return completionHandler(error)
@@ -131,8 +129,4 @@ class TicketServicesTest: NSObject {
             })
         }
     }
-    
-    
-    
 }
-
