@@ -9,11 +9,11 @@ target 'Eventify' do
     pod 'Alamofire'
     
     # Pods for Google Firebase
-    pod 'Firebase/Core'
-    pod 'Firebase/Database'
-    pod 'Firebase/Auth'
-    pod 'Firebase/Storage'
-    pod 'Firebase/Firestore'
+    #pod 'Firebase/Core'
+    #pod 'Firebase/Database'
+    #pod 'Firebase/Auth'
+   # pod 'Firebase/Storage'
+   # pod 'Firebase/Firestore'
     
     # Pods for Google Plus
     pod 'GoogleSignIn'
