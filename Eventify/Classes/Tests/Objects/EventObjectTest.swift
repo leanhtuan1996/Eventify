@@ -30,7 +30,7 @@ class EventObjectTest: NSObject, Glossy {
     }
     
     required init?(json: JSON) {
-        
+        //print(json)
         //Id has not nil
         guard let id: String = "_id" <~~ json else {
             return nil
@@ -48,8 +48,8 @@ class EventObjectTest: NSObject, Glossy {
         }
         
         //tickets
-        if let ticketJSON: [JSON] = "tickets" <~~ json {
-            self.tickets = [TicketObjectTest].from(jsonArray: ticketJSON)
+        if let ticketsArray: [JSON] = "tickets" <~~ json {
+            self.tickets = [TicketObjectTest].from(jsonArray: ticketsArray)
         }
         
         //time to start event

@@ -165,8 +165,8 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         cell.lblName.text = events[indexPath.row].name
         cell.lblAddress.text = events[indexPath.row].address?.address
         cell.lblTimeStart.text = events[indexPath.row].timeStart?.toTimestampString()
-        cell.lblPrice.text = "Từ \(handlerPrice(for: events[indexPath.row].tickets ?? []).0) VNĐ"
-        cell.lblNameOfType.text = handlerTypes(for: events[indexPath.row].types ?? [])
+        cell.lblPrice.text = "Từ \(Helpers.handlerPrice(for: events[indexPath.row].tickets ?? []).0) VNĐ"
+        cell.lblNameOfType.text = Helpers.handlerTypes(for: events[indexPath.row].types ?? [])
         cell.delegate = self
         if let url = events[indexPath.row].photoCoverPath {
             cell.imgPhoto.downloadedFrom(link: url)
@@ -202,55 +202,13 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
                 sb.isLiked = false
             }
             
-            sb.event = events[indexPath.row]
-            sb.minPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).0
-            sb.maxPrice = handlerPrice(for: events[indexPath.row].tickets ?? []).1
+            sb.idEvent = self.events[indexPath.row].id
             self.navigationController?.pushViewController(sb, animated: true)
             self.tabBarController?.hidesBottomBarWhenPushed = true
         }
     }
     
-    func handlerPrice(for tickets: [TicketObjectTest]) -> (String, String) {
         
-        if tickets.count > 0 {
-            
-            var min = tickets[0].price ?? 0
-            var max = tickets[0].price ?? 0
-            
-            //Get all price in array
-            for ticket in tickets {
-                if let price = ticket.price {
-                    min = price < min ? price : min
-                    max = price > max ? price : max
-                }
-            }
-            
-            return (min.toString(), max.toString())
-            
-        } else {
-            return ("0", "0")
-        }
-        
-    }
-    
-    func handlerTypes(for types: [TypeObjectTest]) -> String {
-        
-        var string = ""
-        
-        var index = 0
-        for type in types {
-            if index != types.count - 1 {
-                string += (type.name ?? "") + ", "
-            } else {
-                string += (type.name ?? "")
-            }
-            index += 1
-        }
-        
-        
-        return string
-    }
-    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         // UITableView only moves in one direction, y axis

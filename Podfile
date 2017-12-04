@@ -14,6 +14,7 @@ target 'Eventify' do
     #pod 'Firebase/Auth'
    # pod 'Firebase/Storage'
    # pod 'Firebase/Firestore'
+
     
     # Pods for Google Plus
     pod 'GoogleSignIn'

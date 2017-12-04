@@ -26,16 +26,23 @@ class OrderObjectTest: NSObject, Glossy {
     required init?(json: JSON) {
         
         //Id has not nil
-        guard let id: String = "id" <~~ json else {
+        guard let id: String = "_id" <~~ json else {
             return nil
         }
         self.id = id
         
         
         //orders
-        //        if let orderByJSON: [JSON] = "orderBy" <~~ json {
-        //            self.orderBy = [UserObjectTest].from(jsonArray: orderByJSON)
-        //        }
+        if let orderBy: UserObjectTest = "orderby" <~~ json {
+            self.orderBy = orderBy
+        }
+        
+        //tickets 
+        if let ticketJson: [JSON] = "tickets" <~~ json {
+            if let ticketsArray = [TicketOrderObjectTest].from(jsonArray: ticketJson) {
+                self.ticketsOrder = ticketsArray
+            }
+        }
         
         //dateCreated
         self.dateCreated = "dateCreated" <~~ json
@@ -54,9 +61,10 @@ class OrderObjectTest: NSObject, Glossy {
     func toJSON() -> JSON? {
         
         return jsonify([
-            "id" ~~> id,
+            "_id" ~~> id,
             "dateCreated" ~~> self.dateCreated,
             "idEvent" ~~> self.idEvent,
+            "tickets" ~~> self.ticketsOrder?.toJSONArray(),
             "fullName" ~~> self.fullName,
             "phoneNumber" ~~> self.phoneNumber
             ])

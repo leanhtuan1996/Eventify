@@ -10,7 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 
 class InfoUserVC: UIViewController {
-
+    
     var eventName: String?
     var byName: String?
     var timeStart: String?
@@ -34,15 +34,19 @@ class InfoUserVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Trở về", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setUpUi()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.backItem?.title = "Trở về"
-    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        self.navigationController?.navigationBar.backItem?.title = "Trở về"
+    //    }
     
     func setUpUi() {
         
@@ -76,17 +80,30 @@ class InfoUserVC: UIViewController {
         continues()
     }
     
+    func back(sender: UIBarButtonItem) {
+        
+        let backAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.destructive, handler: { (action) in
+            self.loading.showLoadingDialog(self)
+            OrderServices.shared.cancelOrder(completionHandler: { (error) in
+                self.loading.stopAnimating()
+                if let error = error {
+                    self.showAlert(error, title: "Oops", buttons: nil)
+                    return
+                }
+                _ = self.navigationController?.popViewController(animated: true)
+            })
+        })
+        
+        let keepAction = UIAlertAction(title: "Huỷ bỏ", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        self.showAlert("Trở về sẽ mất hết số vé đang mua của bạn", title: "Bạn có muốn trở về không?", buttons: [backAction, keepAction ])
+    }
+    
     func continues() {
-//        if !self.txtEmail.hasText {
-//            self.txtEmail.errorMessage = "Vui lòng nhập Email"
-//        }
-//        
-//        if !self.txtAddress.hasText {
-//            self.txtAddress.errorMessage = "Vui lòng nhập Địa chỉ"
-//        }
         
         if !self.txtFullName.hasText {
             self.txtFullName.errorMessage = "Vui lòng nhập Họ và Tên"
+            return
         }
         
         if !self.txtPhoneNumber.hasText {
@@ -99,36 +116,52 @@ class InfoUserVC: UIViewController {
             return
         }
         
+        if fullName.isEmpty {
+            self.txtFullName.errorMessage = "Vui lòng nhập Họ và Tên"
+            return
+        }
+        
+        if phone.isEmpty {
+            self.txtPhoneNumber.errorMessage = "Vui lòng nhập số điện thoại"
+            return
+        }
+        
         if !phone.isInt() {
             self.txtPhoneNumber.errorMessage = "Vui lòng nhập số"
             return
         }
         
-        
-        
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "CompleteOrderVC") as? CompleteOrderVC {
-            self.navigationController?.pushViewController(vc, animated: true)
+        self.loading.showLoadingDialog(self)
+        OrderServices.shared.newOrder(withName: fullName, andPhone: phone) { (error) in
+            self.loading.stopAnimating()
+            if let error = error {
+                self.showAlert(error, title: "Mua vé thất bại", buttons: nil)
+                return
+            }
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "CompleteOrderVC") as? CompleteOrderVC {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
     func remainingOrder() {
-       
+        
     }
 }
 
 extension InfoUserVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField == self.txtEmail {
-//            self.txtEmail.errorMessage = ""
-//        }
+        //        if textField == self.txtEmail {
+        //            self.txtEmail.errorMessage = ""
+        //        }
         
         if textField == self.txtFullName {
             self.txtFullName.errorMessage = ""
         }
         
-//        if textField == self.txtAddress {
-//            self.txtAddress.errorMessage = ""
-//        }
+        //        if textField == self.txtAddress {
+        //            self.txtAddress.errorMessage = ""
+        //        }
         
         if textField == self.txtPhoneNumber {
             self.txtPhoneNumber.errorMessage = ""
@@ -151,12 +184,12 @@ extension InfoUserVC: UITextFieldDelegate {
             self.txtFullName.errorMessage = "Vui lòng nhập Họ và tên"
         }
         
-//        if textField == self.txtAddress, !textField.hasText {
-//            self.txtAddress.errorMessage = "Vui lòng nhập Địa chỉ"
-//        }
-//        
-//        if textField == self.txtEmail, !textField.hasText {
-//            self.txtEmail.errorMessage = "Vui lòng nhập Email"
-//        }
+        //        if textField == self.txtAddress, !textField.hasText {
+        //            self.txtAddress.errorMessage = "Vui lòng nhập Địa chỉ"
+        //        }
+        //
+        //        if textField == self.txtEmail, !textField.hasText {
+        //            self.txtEmail.errorMessage = "Vui lòng nhập Email"
+        //        }
     }
 }

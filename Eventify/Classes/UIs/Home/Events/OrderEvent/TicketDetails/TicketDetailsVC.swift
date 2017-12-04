@@ -10,12 +10,13 @@ import UIKit
 
 class TicketDetailsVC: UIViewController {
     
+    var idEvent: String?
     var eventName: String?
     var byName: String?
     var timeStart: Int?
     var timeEnd: Int?
     var tickets: [TicketObjectTest] = []
-    var ticketsToOrder: [TicketObjectTest] = []
+    var ticketsToOrder: [TicketOrderObjectTest] = []
     var loading = UIActivityIndicatorView()
     
     @IBOutlet weak var lblEventName: UILabel!
@@ -24,7 +25,6 @@ class TicketDetailsVC: UIViewController {
     @IBOutlet weak var lblTimeEnd: UILabel!
     @IBOutlet weak var tblTickets: UITableView!
     @IBOutlet weak var lblTotalPrice: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +49,12 @@ class TicketDetailsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.setTranslucent(isTranslucent: true)
     }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationItem.title = ""
-//        self.navigationController?.setTranslucent(isTranslucent: false)
-//        self.tabBarController?.tabBar.isHidden = false
-//    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        self.navigationItem.title = ""
+    //        self.navigationController?.setTranslucent(isTranslucent: false)
+    //        self.tabBarController?.tabBar.isHidden = false
+    //    }
     
     func handlerInformations() {
         self.loading.showLoadingDialog(self)
@@ -90,18 +90,27 @@ class TicketDetailsVC: UIViewController {
             return
         }
         
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "InfoUserVC") as? InfoUserVC {
-            vc.ticketsToOrder = self.ticketsToOrder
-            vc.byName = self.lblBy.text
-            vc.timeStart = self.lblTimeStart.text
-            vc.timeEnd = self.lblTimeEnd.text
-            vc.eventName = self.lblEventName.text
-            vc.totalPrice = self.lblTotalPrice.text
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+        let order = OrderObjectTest()
+        order.idEvent = self.idEvent
+        order.ticketsOrder = self.ticketsToOrder
+        
+        self.loading.showLoadingDialog(self)
+        OrderServices.shared.beginOrder(order: order) { (error) in
+            self.loading.stopAnimating()
+            if let error = error {
+                self.showAlert(error, title: "Có lỗi xảy ra", buttons: nil)
+                return
+            }
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InfoUserVC") as? InfoUserVC {
+                vc.byName = self.lblBy.text
+                vc.timeStart = self.lblTimeStart.text
+                vc.timeEnd = self.lblTimeEnd.text
+                vc.eventName = self.lblEventName.text
+                vc.totalPrice = self.lblTotalPrice.text
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
-    
 }
 
 extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
@@ -135,25 +144,38 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TicketDetailsVC: OrderEventDelegate {
-    func chooseTicket(with ticket: TicketObjectTest) {
-        if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
-            self.lblTotalPrice.text = (totalPrice + price).toString()
-            self.ticketsToOrder.append(ticket)
+    func chooseTicket(with ticket: TicketObjectTest, quantity: Int) {
+        if  let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
+            self.lblTotalPrice.text = (totalPrice + (ticket.price ?? 0)).toString()
+            print(quantity)
+            
+            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
+                return element.idTicket == ticket.id
+            }) {
+                self.ticketsToOrder[index].quantityBought = quantity
+            } else {
+                let orderTicket = TicketOrderObjectTest()
+                orderTicket.idTicket = ticket.id
+                orderTicket.quantityBought = quantity
+                self.ticketsToOrder.append(orderTicket)
+            }
+            
         }
     }
     
-    func unChooseTicket(with ticket: TicketObjectTest) {
-        if let price = ticket.price, let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
-            self.lblTotalPrice.text = (totalPrice - price).toString()
+    func unChooseTicket(with ticket: TicketObjectTest, quantity: Int) {
+        if let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
+            self.lblTotalPrice.text = (totalPrice - (ticket.price ?? 0)).toString()
             
-            
-                if let index = self.ticketsToOrder.index(where: { (ticketObject) -> Bool in
-                    return ticket.id == ticketObject.id
-                }) {
+            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
+                return ticket.id == element.idTicket
+            }) {
+                self.ticketsToOrder[index].quantityBought = quantity
+                
+                if quantity == 0 {
                     self.ticketsToOrder.remove(at: index)
                 }
-            
-            
+            }
         }
     }
 }

@@ -206,4 +206,45 @@ class Helpers: NSObject {
         return completionHandler(json, nil)
     }
     
+    static func handlerPrice(for tickets: [TicketObjectTest]) -> (String, String) {
+        
+        if tickets.count > 0 {
+            
+            var min = tickets[0].price ?? 0
+            var max = tickets[0].price ?? 0
+            
+            //Get all price in array
+            for ticket in tickets {
+                if let price = ticket.price {
+                    min = price < min ? price : min
+                    max = price > max ? price : max
+                }
+            }
+            
+            return (min.toString(), max.toString())
+            
+        } else {
+            return ("0", "0")
+        }
+        
+    }
+    
+    static func handlerTypes(for types: [TypeObjectTest]) -> String {
+        
+        var string = ""
+        
+        var index = 0
+        for type in types {
+            if index != types.count - 1 {
+                string += (type.name ?? "") + ", "
+            } else {
+                string += (type.name ?? "")
+            }
+            index += 1
+        }
+        
+        
+        return string
+    }
+
 }

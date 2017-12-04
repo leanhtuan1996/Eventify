@@ -51,7 +51,7 @@ class TicketsOrderCell: UITableViewCell {
         self.lblQuantity.text = (quantity + 1).toString()
         
         if let ticket = self.ticket {
-            self.delegate?.chooseTicket(with: ticket)
+            self.delegate?.chooseTicket(with: ticket, quantity: quantity + 1)
         }
     }
     
@@ -65,7 +65,7 @@ class TicketsOrderCell: UITableViewCell {
         self.lblQuantity.text = (quantity - 1).toString()
         
         if let ticket = self.ticket {
-            self.delegate?.unChooseTicket(with: ticket)
+            self.delegate?.unChooseTicket(with: ticket, quantity: quantity - 1)
         }
     }
 }
