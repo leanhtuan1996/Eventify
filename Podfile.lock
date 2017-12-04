@@ -6,60 +6,11 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BoringSSL (9.0):
-    - BoringSSL/Implementation (= 9.0)
-    - BoringSSL/Interface (= 9.0)
-  - BoringSSL/Implementation (9.0):
-    - BoringSSL/Interface (= 9.0)
-  - BoringSSL/Interface (9.0)
   - Dollar (6.2.1)
   - FBSDKCoreKit (4.27.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.27.1):
     - FBSDKCoreKit
-  - Firebase/Auth (4.3.0):
-    - Firebase/Core
-    - FirebaseAuth (= 4.2.1)
-  - Firebase/Core (4.3.0):
-    - FirebaseAnalytics (= 4.0.4)
-    - FirebaseCore (= 4.0.8)
-  - Firebase/Database (4.3.0):
-    - Firebase/Core
-    - FirebaseDatabase (= 4.1.0)
-  - Firebase/Firestore (4.3.0):
-    - Firebase/Core
-    - FirebaseFirestore (= 0.8.0)
-  - Firebase/Storage (4.3.0):
-    - Firebase/Core
-    - FirebaseStorage (= 2.0.2)
-  - FirebaseAnalytics (4.0.4):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-    - nanopb (~> 0.3)
-  - FirebaseAuth (4.2.1):
-    - FirebaseAnalytics (~> 4.0)
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
-    - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.8):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-    - nanopb (~> 0.3)
-  - FirebaseDatabase (4.1.0):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseCore (~> 4.0)
-    - leveldb-library (~> 1.18)
-  - FirebaseFirestore (0.8.0):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseAuth (~> 4.2)
-    - FirebaseCore (~> 4.0)
-    - gRPC-ProtoRPC (~> 1.0)
-    - leveldb-library (~> 1.18)
-    - Protobuf (~> 3.1)
-  - FirebaseInstanceID (2.0.4)
-  - FirebaseStorage (2.0.2):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseCore (~> 4.0)
-    - GTMSessionFetcher/Core (~> 1.1)
   - Gloss (1.2.4)
   - GoogleMaps (2.4.0):
     - GoogleMaps/Maps (= 2.4.0)
@@ -76,29 +27,11 @@ PODS:
   - GoogleToolboxForMac/DebugUtils (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3):
     - GoogleToolboxForMac/DebugUtils (= 2.1.3)
     - GoogleToolboxForMac/Defines (= 2.1.3)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
-  - gRPC (1.6.5):
-    - gRPC-Core (= 1.6.5)
-    - gRPC-RxLibrary (= 1.6.5)
-  - gRPC-Core (1.6.5):
-    - gRPC-Core/Implementation (= 1.6.5)
-    - gRPC-Core/Interface (= 1.6.5)
-  - gRPC-Core/Implementation (1.6.5):
-    - BoringSSL (~> 9.0)
-    - gRPC-Core/Interface (= 1.6.5)
-    - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.6.5)
-  - gRPC-ProtoRPC (1.6.5):
-    - gRPC (= 1.6.5)
-    - gRPC-RxLibrary (= 1.6.5)
-    - Protobuf (~> 3.0)
-  - gRPC-RxLibrary (1.6.5)
   - GTMOAuth2 (1.1.5):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.12):
@@ -107,13 +40,6 @@ PODS:
   - GTMSessionFetcher/Full (1.1.12):
     - GTMSessionFetcher/Core (= 1.1.12)
   - HanekeSwift (0.10.1)
-  - leveldb-library (1.18.3)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - Protobuf (3.4.0)
   - RichEditorView (4.0.0)
   - SkyFloatingLabelTextField (3.2.1)
   - Socket.IO-Client-Swift (11.1.3):
@@ -127,11 +53,6 @@ DEPENDENCIES:
   - Dollar
   - FBSDKCoreKit
   - FBSDKLoginKit
-  - Firebase/Auth
-  - Firebase/Core
-  - Firebase/Database
-  - Firebase/Firestore
-  - Firebase/Storage
   - Gloss
   - GoogleMaps
   - GooglePlaces
@@ -155,39 +76,23 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BoringSSL: 19083b821ef3ae0f758fae15482e183003b1e265
   Dollar: 197e92d0fc1ded259363f33f883704b7b550472b
   FBSDKCoreKit: 03365dad5d790249196ffad8be4f6d8a2d98f932
   FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
-  Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
-  FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
-  FirebaseAuth: d7f047fbeab98062b98ea933b8d934e0fb1190e2
-  FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
-  FirebaseDatabase: 607284a103e961d7f5863ee603cab5e85f443bd6
-  FirebaseFirestore: 8e2fd99a621ae6fc6acfac3bdea824fe9d9c128d
-  FirebaseInstanceID: 70c2b877e9338971b2429ea5a4293df6961aa44e
-  FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
   GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
   GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
   GoogleSignIn: 8c599fc10d25b2af86a3f82fd9631e863f2b1400
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  gRPC: 42f915ce322b1abc5241621acc776f2fdb0a2039
-  gRPC-Core: 54211a073d238ec8569be06e1a939a72f081a3e9
-  gRPC-ProtoRPC: 4299db62f86df58c88844ccb50f5c48993e704f6
-  gRPC-RxLibrary: 1b1c9c9cf666709ad7714cb0e0f3c44dc0cbfb0b
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   HanekeSwift: 4113367892828e7700d24a384027de6ebc79aad1
-  leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   RichEditorView: e5990b1a092539559def9df135e064b29ab97e68
   SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
   Socket.IO-Client-Swift: b8e59ddc16bc3609ca2f49a4b50253f095d535c8
   StarscreamSocketIO: 00b54e4208481ca5cef089545353aaf126bae16d
   ZaloSDK: 9bb20d9cea224e716918c946320355e74b66e019
 
-PODFILE CHECKSUM: 43b37103598794558b8a385e43d5db926164cede
+PODFILE CHECKSUM: 38e551be24f2f36e558348fa60dd45092f56ead5
 
-COCOAPODS: 1.4.0.beta.1
+COCOAPODS: 1.3.1

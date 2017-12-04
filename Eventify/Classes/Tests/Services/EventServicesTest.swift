@@ -35,6 +35,8 @@ class EventServicesTest: NSObject {
                     return completionHandler(nil, "Data is empty")
                 }
                 
+                //print(json)
+                
                 if json[0].isEmpty {
                     return completionHandler([], nil)
                 }
@@ -57,8 +59,32 @@ class EventServicesTest: NSObject {
     }
     
     //Done
-    func getEvent(withId id: String, completionHandler: @escaping (_ event: EventObject?, _ error: String?) -> Void)  {
+    func getEvent(withId id: String, completionHandler: @escaping (_ event: EventObjectTest?, _ error: String?) -> Void)  {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler(nil, "Token not found")
+        }
         
+        socketEvent.emit("get-event", with: [id, token])
+        
+        socketEvent.off("get-event")
+        
+        socketEvent.on("get-event") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                guard let event = EventObjectTest(json: json[0]) else {
+                    return completionHandler(nil, "Convert json to object has been failed")
+                }
+                
+                return completionHandler(event, nil)
+            })
+        }
     }
     
     func getEventByIdUser(withIdUser id: String) {

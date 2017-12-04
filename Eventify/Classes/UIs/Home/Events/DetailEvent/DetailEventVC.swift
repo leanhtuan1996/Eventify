@@ -13,11 +13,10 @@ import MapKit
 
 class DetailEventVC: UIViewController {
     
-    var minPrice: String?
-    var maxPrice: String?
-    var event: EventObjectTest!
+    var idEvent: String!
+    var event: EventObjectTest?
+    var isLiked: Bool!
     let loading = UIActivityIndicatorView()
-    var isLiked = false
     
     @IBOutlet weak var imgPreviewMaps: UIImageView!
     @IBOutlet weak var descriptionView: UIWebView!
@@ -39,7 +38,6 @@ class DetailEventVC: UIViewController {
         super.viewDidLoad()
         
         setUpUI()
-        handlerEvent()
     }
     
     func setUpUI() {
@@ -71,110 +69,192 @@ class DetailEventVC: UIViewController {
     }
     
     func handlerEvent() {
+        self.loading.showLoadingDialog(self)
         
-        DispatchQueue.global().async { 
-            //loading
-            
-            DispatchQueue.main.async(execute: { 
-                self.loading.showLoadingDialog(self)
-            })
-            
-            
-            //image cover
-            if let photoUrl = self.event.photoCoverPath {
+        EventServicesTest.shared.getEvent(withId: self.idEvent) { (event, error) in
+            self.loading.stopAnimating()
+            if let error = error {
+                self.showAlert(error, title: "Loading event has been failed", buttons: nil);
+            } else {
+                guard let event = event else {
+                    self.showAlert("Event not found", title: "error", buttons: nil)
+                    return
+                }
                 
-                DispatchQueue.main.async(execute: {
+                self.event = event
+                
+                if let photoUrl = event.photoCoverPath {
                     self.imgCover.downloadedFrom(link: photoUrl)
-                })
-            }
-            
-            DispatchQueue.main.async(execute: {
-                //name
-                self.lblName.text = self.event.name
-                //by
-                self.lblBy.text = "Bởi: \(self.event.createdBy?.fullName ?? "Không rõ")"
-            })
-            
-           
-            
-            /*
-             * day start - ex: 31 thg 10, 2017
-             * .get day
-             * .get month
-             * .get year
-             */
-            if let timeStart = self.event.timeStart, let timeEnd = self.event.timeEnd {
-                let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
-                let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
+                }
                 
-                DispatchQueue.main.async(execute: {
+                //name
+                self.lblName.text = event.name
+                //by
+                self.lblBy.text = "Bởi: \(event.createdBy?.fullName ?? "Không rõ")"
+                
+                
+                /*
+                 * day start - ex: 31 thg 10, 2017
+                 * .get day
+                 * .get month
+                 * .get year
+                 */
+                if let timeStart = event.timeStart, let timeEnd = event.timeEnd {
+                    let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
+                    let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
                     self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
                     self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
-                })
-            }
-            
-            DispatchQueue.main.async(execute: {
+                    
+                }
+                
                 //address
-                self.lblAddress.text = self.event.address?.address ?? "Không có vị trí cho sự kiện này"
-            })
-            
-            //descriptions
-            
-            if let descriptionEvent = self.event.descriptionEvent {
+                self.lblAddress.text = event.address?.address ?? "Không có vị trí cho sự kiện này"
                 
-                DispatchQueue.main.async(execute: {
+                
+                //descriptions
+                
+                if let descriptionEvent = event.descriptionEvent {
                     self.descriptionView.loadHTMLString(descriptionEvent, baseURL: nil)
-                })
-            }
-            
-            //price: from $ -> to $
-            if let minPrice = self.minPrice, let maxPrice = self.maxPrice {
+                }
                 
-                DispatchQueue.main.async(execute: {
-                     self.lblPrice.text = "Từ \(minPrice) - \(maxPrice) VNĐ"
-                })
-            }
-            
-            //maps
-            if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longitude {
+                //price: from $ -> to $
                 
-                if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                if let tickets = event.tickets {
+                    self.lblPrice.text = "Từ \(Helpers.handlerPrice(for: tickets).0) - \(Helpers.handlerPrice(for: tickets).1) VNĐ"
+                }
+                
+                
+                //maps
+                if let latitude = event.address?.latitude, let longtitude = event.address?.longitude {
                     
-                    
-                    if let url = URL(string: staticMapUrl), let data = NSData(contentsOf: url) {
+                    if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
                         
-                        DispatchQueue.main.async(execute: {
+                        if let url = URL(string: staticMapUrl), let data = NSData(contentsOf: url) {
                             self.imgPreviewMaps.image = UIImage.convertFromData(data as Data)
-                        })
+                        }
                     }
                 }
-            }
-            
-            //orgarnizer
-            if let user = self.event.createdBy {
                 
-                if let link = user.photoDisplayPath {
-                    self.imgAvata.downloadedFrom(link: link)
-                } else {
-                    self.imgAvata.image = #imageLiteral(resourceName: "avatar")
-                }
-                
-                DispatchQueue.main.async(execute: {
+                //orgarnizer
+                if let user = event.createdBy {
+                    
+                    if let link = user.photoDisplayPath {
+                        self.imgAvata.downloadedFrom(link: link)
+                    } else {
+                        self.imgAvata.image = #imageLiteral(resourceName: "avatar")
+                    }
+                    
                     self.lblByName.text = "\(user.fullName ?? "Không rõ")"
                     self.lblPhone.text = "\(user.phoneNumber ?? "Không rõ")"
                     self.lblEmail.text = "\(user.email ?? "Không rõ")"
-                })
+                    
+                }
             }
-            
-            DispatchQueue.main.async(execute: {
-               self.loading.stopAnimating()
-            })
         }
     }
     
+    //        DispatchQueue.global().async {
+    //            //loading
+    //
+    //            DispatchQueue.main.async(execute: {
+    //                self.loading.showLoadingDialog(self)
+    //            })//
+    //
+    //            //image cover
+    //            if let photoUrl = self.event.photoCoverPath {
+    //
+    //                DispatchQueue.main.async(execute: {
+    //                    self.imgCover.downloadedFrom(link: photoUrl)
+    //                })
+    //            }
+    //
+    //            DispatchQueue.main.async(execute: {
+    //                //name
+    //                self.lblName.text = self.event.name
+    //                //by
+    //                self.lblBy.text = "Bởi: \(self.event.createdBy?.fullName ?? "Không rõ")"
+    //            })
+    //
+    //
+    //
+    //            /*
+    //             * day start - ex: 31 thg 10, 2017
+    //             * .get day
+    //             * .get month
+    //             * .get year
+    //             */
+    //            if let timeStart = self.event.timeStart, let timeEnd = self.event.timeEnd {
+    //                let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
+    //                let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
+    //
+    //                DispatchQueue.main.async(execute: {
+    //                    self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
+    //                    self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
+    //                })
+    //            }
+    //
+    //            DispatchQueue.main.async(execute: {
+    //                //address
+    //                self.lblAddress.text = self.event.address?.address ?? "Không có vị trí cho sự kiện này"
+    //            })
+    //
+    //            //descriptions
+    //
+    //            if let descriptionEvent = self.event.descriptionEvent {
+    //
+    //                DispatchQueue.main.async(execute: {
+    //                    self.descriptionView.loadHTMLString(descriptionEvent, baseURL: nil)
+    //                })
+    //            }
+    //
+    //            //price: from $ -> to $
+    //            if let minPrice = self.minPrice, let maxPrice = self.maxPrice {
+    //
+    //                DispatchQueue.main.async(execute: {
+    //                     self.lblPrice.text = "Từ \(minPrice) - \(maxPrice) VNĐ"
+    //                })
+    //            }
+    //
+    //            //maps
+    //            if let latitude = self.event.address?.latitude, let longtitude = self.event.address?.longitude {
+    //
+    //                if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+    //
+    //
+    //                    if let url = URL(string: staticMapUrl), let data = NSData(contentsOf: url) {
+    //
+    //                        DispatchQueue.main.async(execute: {
+    //                            self.imgPreviewMaps.image = UIImage.convertFromData(data as Data)
+    //                        })
+    //                    }
+    //                }
+    //            }
+    //
+    //            //orgarnizer
+    //            if let user = self.event.createdBy {
+    //
+    //                if let link = user.photoDisplayPath {
+    //                    self.imgAvata.downloadedFrom(link: link)
+    //                } else {
+    //                    self.imgAvata.image = #imageLiteral(resourceName: "avatar")
+    //                }
+    //
+    //                DispatchQueue.main.async(execute: {
+    //                    self.lblByName.text = "\(user.fullName ?? "Không rõ")"
+    //                    self.lblPhone.text = "\(user.phoneNumber ?? "Không rõ")"
+    //                    self.lblEmail.text = "\(user.email ?? "Không rõ")"
+    //                })
+    //            }
+    //
+    //            DispatchQueue.main.async(execute: {
+    //               self.loading.stopAnimating()
+    //            })
+    //        }
+    //}
+    
     func openMaps() {
         //options: Google Maps & Apple Maps
-        guard let latitude = event.address?.latitude, let longtitude = event.address?.longitude, let addressName = event.address?.address, let placeId = event.address?.placeId else {
+        guard let latitude = event?.address?.latitude, let longtitude = event?.address?.longitude, let addressName = event?.address?.address, let placeId = event?.address?.placeId else {
             return
         }
         
@@ -219,10 +299,10 @@ class DetailEventVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.backItem?.title = "Trở về"
         self.navigationItem.title = ""
-        //self.navigationItem.backBarButtonItem?.title = "Trở về"
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setTranslucent(isTranslucent: false)
+        handlerEvent()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -233,7 +313,7 @@ class DetailEventVC: UIViewController {
     
     @IBAction func btnAddToCalendar(_ sender: Any) {
         
-        guard let name = lblName.text, let dateStart = event.timeStart, let dateEnd = event.timeEnd, let location = event.address else {
+        guard let name = lblName.text, let dateStart = event?.timeStart, let dateEnd = event?.timeEnd, let location = event?.address else {
             return
         }
         
@@ -261,7 +341,7 @@ class DetailEventVC: UIViewController {
         self.showAlert("Bằng cách nhấn vào nút \("Thêm ngay"), sự kiện \(name) sẽ được thêm vào ứng dụng lịch của bạn", title: "Bạn có muốn thêm sự kiện \(name) vào lịch của bạn không?", buttons: [addButton, cancelButton])
         
     }
-        
+    
     @IBAction func btnShare(_ sender: Any) {
         
         guard let event = self.event else {
@@ -276,12 +356,12 @@ class DetailEventVC: UIViewController {
         if isLiked {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
             self.isLiked = false
-            UserServicesTest.shared.UnlikeEvent(with: self.event.id)
+            UserServicesTest.shared.UnlikeEvent(with: self.idEvent)
             
         } else {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
             self.isLiked = true
-            UserServicesTest.shared.likeEvent(with: self.event.id)
+            UserServicesTest.shared.likeEvent(with: self.idEvent)
         }
     }
     
@@ -295,11 +375,12 @@ class DetailEventVC: UIViewController {
     @IBAction func ticketDetailsClicked(_ sender: Any) {
         if let vc = UIStoryboard(name: "Order", bundle: nil).instantiateViewController(withIdentifier: "TicketDetailsVC") as? TicketDetailsVC {
             
-            vc.eventName = self.event.name
-            vc.byName = self.event.createdBy?.fullName
-            vc.timeStart = self.event.timeStart
-            vc.timeEnd = self.event.timeEnd
-            vc.tickets = self.event.tickets ?? []
+            vc.eventName = self.event?.name
+            vc.byName = self.event?.createdBy?.fullName
+            vc.timeStart = self.event?.timeStart
+            vc.timeEnd = self.event?.timeEnd
+            vc.tickets = self.event?.tickets ?? []
+            vc.idEvent = self.event?.id
             
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -318,6 +399,6 @@ class DetailEventVC: UIViewController {
 //        marker.isFlat = true
 //        marker.map = mapView
 //    }
-//    
-//    
+//
+//
 //}

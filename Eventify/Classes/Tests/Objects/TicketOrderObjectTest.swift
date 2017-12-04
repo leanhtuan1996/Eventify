@@ -12,7 +12,7 @@ import Gloss
 class TicketOrderObjectTest: NSObject, Glossy {
     var id: String
     var idTicket: String?
-    var quantityBought: String?
+    var quantityBought: Int?
     var QRCodeImgPath: String?
     
     override init() {
@@ -30,7 +30,7 @@ class TicketOrderObjectTest: NSObject, Glossy {
         
         self.idTicket = "idTicket" <~~ json
         
-        self.quantityBought = "quantityBought" <~~ json
+        self.quantityBought = "quantity" <~~ json
         
         self.QRCodeImgPath = "QRCodeImgPath" <~~ json
     }
@@ -40,7 +40,7 @@ class TicketOrderObjectTest: NSObject, Glossy {
         
         return jsonify([
             "idTicket" ~~> self.idTicket,
-            "quantityBought" ~~> self.quantityBought,
+            "quantity" ~~> self.quantityBought,
             "QRCodeImgPath" ~~> self.QRCodeImgPath
             ])
     }
