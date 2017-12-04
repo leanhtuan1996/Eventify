@@ -10,6 +10,10 @@ import UIKit
 
 class TicketsOrderedCell: UITableViewCell {
 
+    @IBOutlet weak var lblTotalTickets: UILabel!
+    @IBOutlet weak var lblTimeStart: UILabel!
+    @IBOutlet weak var lblNameEvent: UILabel!
+    @IBOutlet weak var lblLocation: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

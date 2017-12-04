@@ -1653,7 +1653,7 @@
                                             <color key="titleColor" red="0.1215686277" green="0.01176470611" blue="0.42352941630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnEditProfileClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="fAn-WP-G46"/>
+                                            <action selector="btnEditProfileClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="pQo-l7-AGJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1720,7 +1720,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnTicketsClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="sbQ-b3-L5K"/>
+                                            <action selector="btnTicketsClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="UkJ-3X-tHK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHV-WZ-Vmh">
@@ -1730,7 +1730,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnSavedEventsClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="ZZX-Rl-J4I"/>
+                                            <action selector="btnSavedEventsClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="H2y-Az-cVd"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ip-BI-1wz" userLabel="saparator">
@@ -1759,6 +1759,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fix-jx-pkh">
                                 <rect key="frame" x="0.0" y="301" width="375" height="317"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1783,10 +1784,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="DWA-tv-Aqc"/>
                     <connections>
-                        <outlet property="imgAvatar" destination="wlv-Wg-Vgs" id="n7a-Wy-ITF"/>
-                        <outlet property="lblEmail" destination="tYJ-vx-xHA" id="Mxt-8X-ScX"/>
-                        <outlet property="lblName" destination="mNv-LH-rmf" id="FTr-ds-RtU"/>
-                        <outlet property="tblProfile" destination="Fix-jx-pkh" id="pEr-Kp-YvI"/>
+                        <outlet property="imgAvatar" destination="wlv-Wg-Vgs" id="fk1-MS-eZr"/>
+                        <outlet property="lblEmail" destination="tYJ-vx-xHA" id="Oe4-eS-FyH"/>
+                        <outlet property="lblName" destination="mNv-LH-rmf" id="elp-BR-ntj"/>
+                        <outlet property="tblProfile" destination="Fix-jx-pkh" id="elX-bj-AON"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buE-DF-0vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1825,7 +1826,6 @@
                                         </state>
                                         <connections>
                                             <action selector="btnDoneClicked:" destination="uUG-ro-ChH" eventType="touchUpInside" id="6ia-3l-gOe"/>
-                                            <action selector="btnEditProfileClicked:" destination="Kfq-C1-DYw" eventType="touchUpInside" id="cgC-Nm-Bku"/>
                                         </connections>
                                     </button>
                                 </subviews>

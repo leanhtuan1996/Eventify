@@ -14,7 +14,7 @@ class OrderObject: NSObject, Glossy {
     var orderBy: UserObject?
     var dateCreated: Int?
     var ticketsOrder: [TicketOrderObject]?
-    var idEvent: String?
+    var event: EventObject?
     var fullName: String?
     var phoneNumber: String?
     
@@ -48,7 +48,10 @@ class OrderObject: NSObject, Glossy {
         self.dateCreated = "dateCreated" <~~ json
         
         //idEvent
-        self.idEvent = "idEvent" <~~ json
+        //self.idEvent = "idEvent" <~~ json
+        if let event: EventObject = "event" <~~ json {
+            self.event = event
+        }
         
         //display fullName
         self.fullName = "fullName" <~~ json
@@ -63,7 +66,7 @@ class OrderObject: NSObject, Glossy {
         return jsonify([
             "_id" ~~> id,
             "dateCreated" ~~> self.dateCreated,
-            "idEvent" ~~> self.idEvent,
+            "idEvent" ~~> self.event?.id,
             "tickets" ~~> self.ticketsOrder?.toJSONArray(),
             "fullName" ~~> self.fullName,
             "phoneNumber" ~~> self.phoneNumber

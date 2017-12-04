@@ -34,9 +34,9 @@ class UserObject: NSObject, Glossy {
         self.id = id
         
         //orders
-        if let ordersJSON: [JSON] = "orders" <~~ json {
-            self.orders = [OrderObject].from(jsonArray: ordersJSON)
-        }
+//        if let ordersJSON: [JSON] = "orders" <~~ json {
+//            self.orders = [OrderObject].from(jsonArray: ordersJSON)
+//        }
         
         //liked
         if let likedString: [String] = "liked" <~~ json {

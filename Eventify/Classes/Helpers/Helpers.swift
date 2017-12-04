@@ -220,7 +220,7 @@ class Helpers: NSObject {
                     max = price > max ? price : max
                 } else {
                     min = 0
-                }                
+                }
             }
             
             return (min.toString(), max.toString())

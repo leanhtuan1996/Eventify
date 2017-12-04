@@ -75,6 +75,8 @@ class UserManager: NSObject {
         if let user = user {
             self.currentUser = user
             
+            OrderServices.shared.getOrders()
+            
             if let token = user.token {
                 self.editToken(token)
             }

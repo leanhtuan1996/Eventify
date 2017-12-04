@@ -375,12 +375,12 @@ class DetailEventVC: UIViewController {
     @IBAction func ticketDetailsClicked(_ sender: Any) {
         if let vc = UIStoryboard(name: "Order", bundle: nil).instantiateViewController(withIdentifier: "TicketDetailsVC") as? TicketDetailsVC {
             
-            vc.eventName = self.event?.name
-            vc.byName = self.event?.createdBy?.fullName
-            vc.timeStart = self.event?.timeStart
-            vc.timeEnd = self.event?.timeEnd
-            vc.tickets = self.event?.tickets ?? []
-            vc.idEvent = self.event?.id
+            vc.event = self.event
+//            vc.byName = self.event?.createdBy?.fullName
+//            vc.timeStart = self.event?.timeStart
+//            vc.timeEnd = self.event?.timeEnd
+//            vc.tickets = self.event?.tickets ?? []
+//            vc.idEvent = self.event?.id
             
             self.navigationController?.pushViewController(vc, animated: true)
         }

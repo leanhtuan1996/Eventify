@@ -10,12 +10,12 @@ import UIKit
 
 class TicketDetailsVC: UIViewController {
     
-    var idEvent: String?
-    var eventName: String?
-    var byName: String?
-    var timeStart: Int?
-    var timeEnd: Int?
-    var tickets: [TicketObject] = []
+    var event: EventObject?
+//    var eventName: String?
+//    var byName: String?
+//    var timeStart: Int?
+//    var timeEnd: Int?
+//    var tickets: [TicketObject] = []
     var ticketsToOrder: [TicketOrderObject] = []
     var loading = UIActivityIndicatorView()
     
@@ -61,11 +61,11 @@ class TicketDetailsVC: UIViewController {
         DispatchQueue.global().async {
             
             DispatchQueue.main.async {
-                self.lblEventName.text = self.eventName
-                self.lblBy.text = "Bởi \(self.byName ?? "Không rõ")"
+                self.lblEventName.text = self.event?.name
+                self.lblBy.text = "Bởi \(self.event?.createdBy?.fullName ?? "Không rõ")"
             }
             
-            if let timeStart = self.timeStart, let timeEnd = self.timeEnd {
+            if let timeStart = self.event?.timeStart, let timeEnd = self.event?.timeEnd {
                 //day - month - year - hour - minute
                 let (dayOfWeek, day, month, year, hour, minute) = timeStart.getTime()
                 let (dayOfWeek_end, day_end, month_end, year_end, hour_end, minute_end) = timeEnd.getTime()
@@ -91,7 +91,7 @@ class TicketDetailsVC: UIViewController {
         }
         
         let order = OrderObject()
-        order.idEvent = self.idEvent
+        order.event = self.event
         order.ticketsOrder = self.ticketsToOrder
         
         self.loading.showLoadingDialog(self)
@@ -115,31 +115,36 @@ class TicketDetailsVC: UIViewController {
 
 extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TicketsOrderCell", for: indexPath) as? TicketsOrderCell, self.tickets.count > 0 else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TicketsOrderCell", for: indexPath) as? TicketsOrderCell, let tickets = self.event?.tickets, tickets.count > 0 else {
             
             return UITableViewCell()
         }
         
-        if let name = self.tickets[indexPath.row].name {
+        if let name = tickets[indexPath.row].name {
             cell.lblNameTicket.text = name
         }
         
-        if let remaining = self.tickets[indexPath.row].quantitiesRemaining {
+        if let remaining = tickets[indexPath.row].quantitiesRemaining {
             cell.lblTicketAvailable.text = "còn \(remaining) vé"
         }
         
-        if let price = self.tickets[indexPath.row].price {
+        if let price = tickets[indexPath.row].price {
             cell.lblTicketType.text = price == 0 ? "Miễn phí" : "\(price) VNĐ"
         }
         
-        cell.ticket = self.tickets[indexPath.row]
+        cell.ticket = tickets[indexPath.row]
         
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tickets.count
+        
+        guard let tickets = self.event?.tickets else {
+            return 0
+        }
+        
+        return tickets.count
     }
 }
 

@@ -80,9 +80,10 @@ class OrderServices: NSObject {
         }
     }
     
-    func getOrders(completionHandler: @escaping (_ orders: [OrderObject]?, _ error: String?) -> Void) {
+    func getOrders(_ completionHandler: ((_ error: String?) -> Void)? = nil) {
         guard let token = UserManager.shared.currentUser?.token else {
-            return completionHandler(nil, "Token is required!")
+            completionHandler?("Token is required!")
+            return
         }
         
         socket.emit("get-orders", with: [token])
@@ -92,27 +93,33 @@ class OrderServices: NSObject {
         socket.on("get-orders") { (data, ack) in
             Helpers.errorHandler(with: data, completionHandler: { (json, error) in
                 if let error = error {
-                    return completionHandler(nil, error)
+                    completionHandler?(error)
+                    return
                 }
                 
                 guard let json = json, json.count > 0 else {
-                    return completionHandler(nil, "Data is empty")
+                    completionHandler?("Data is empty")
+                    return
                 }
                 
                 //print(json)
                 
                 if json[0].isEmpty {
-                    return completionHandler([], nil)
+                    completionHandler?(nil)
+                    return
                 }
                 
                 //print(json)
                 
                 //try parse from json to object
                 guard let orders = [OrderObject].from(jsonArray: json) else {
-                    return completionHandler(nil, "Path not found")
+                    completionHandler?("Path not found")
+                    return
                 }
                 
-                return completionHandler(orders, nil)
+                UserManager.shared.currentUser?.orders = orders
+                
+                completionHandler?(nil)
             })
         }
     }
