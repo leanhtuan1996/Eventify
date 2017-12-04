@@ -31,7 +31,7 @@ class NewEventVC: UIViewController {
     
     var descriptionEvent: String?
     
-    var newEvent: EventObjectTest = EventObjectTest()
+    var newEvent: EventObject = EventObject()
     var address: AddressObject?
     
     let loading = UIActivityIndicatorView()
@@ -82,7 +82,7 @@ class NewEventVC: UIViewController {
         lblNameEvent.returnKeyType = .done
         lblNameEvent.delegate = self
         
-        TicketServicesTest.shared.getTickets { (tickets, error) in
+        TicketServices.shared.getTickets { (tickets, error) in
             if let tickets = tickets {
                 self.lblNumberTickets.text = "\(tickets.count) loại vé"
                 self.newEvent.tickets = tickets
@@ -222,7 +222,7 @@ class NewEventVC: UIViewController {
             return
         }
         
-        EventServicesTest.shared.addEvent(withEvent: newEvent) { (error) in
+        EventServices.shared.addEvent(withEvent: newEvent) { (error) in
             self.loading.stopAnimating()
             if let error = error {
                 self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
@@ -268,7 +268,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
         self.lblAddress.textColor = UIColor.black
     }
     
-    func selectedType(with type: TypeObjectTest) {
+    func selectedType(with type: TypeObject) {
         self.lblEventType.text = type.name
         
         if self.newEvent.types == nil {
@@ -330,7 +330,7 @@ extension NewEventVC: WWCalendarTimeSelectorProtocol, UITextFieldDelegate, Event
             if let img = UIImageJPEGRepresentation(image, 0.5) {
                 self.imgCover.image = UIImage(data: img)
                 
-                EventServicesTest.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
+                EventServices.shared.uploadImageCover(data: img, completionHandler: { (path, error) in
                     if let error = error {
                         print("Upload image had been failed: \(error)")
                         return

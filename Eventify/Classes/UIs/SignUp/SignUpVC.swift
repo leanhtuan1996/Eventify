@@ -107,14 +107,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         activityIndicatorView.showLoadingDialog(self)
         
-        //for test
-        let userObjectTest = UserObjectTest()
-        userObjectTest.password = password
-        userObjectTest.email = email
-        userObjectTest.fullName = fullName
-        userObjectTest.phoneNumber = phoneNumber
+        //for 
+        let userObject = UserObject()
+        userObject.password = password
+        userObject.email = email
+        userObject.fullName = fullName
+        userObject.phoneNumber = phoneNumber
         
-        UserServicesTest.shared.signUp(with: userObjectTest) { (error) in
+        UserServices.shared.signUp(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {
                 self.showAlert(error, title: "Sign In Error", buttons: nil)

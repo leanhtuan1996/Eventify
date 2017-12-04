@@ -17,7 +17,7 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var tblEvents: UITableView!
     @IBOutlet weak var saparatorView: UIView!
     
-    var events: [EventObjectTest] = []
+    var events: [EventObject] = []
     var likedEvents: [String] = []
     var refreshControl: UIRefreshControl!
     var isLoadingMore = false
@@ -72,7 +72,7 @@ class DiscoverVC: UIViewController {
     }
     
     func loadEvents() {
-        EventServicesTest.shared.getEvents { (events, error) in
+        EventServices.shared.getEvents { (events, error) in
             
             if let error = error {
                 self.refreshControl.endRefreshing()
@@ -87,7 +87,7 @@ class DiscoverVC: UIViewController {
             }
         }
         
-        UserServicesTest.shared.getLikedEvents { (idEvents, error) in            
+        UserServices.shared.getLikedEvents { (idEvents, error) in            
             print("LOADING LIKE")
             if let idEvents = idEvents {
                 self.likedEvents = idEvents
@@ -237,12 +237,12 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         self.present(alertSharing, animated: true, completion: nil)
     }
     
-    func unLikeEvent(with event: EventObjectTest) {
-        UserServicesTest.shared.UnlikeEvent(with: event.id)
+    func unLikeEvent(with event: EventObject) {
+        UserServices.shared.UnlikeEvent(with: event.id)
     }
     
-    func likeEvent(with event: EventObjectTest) {
-        UserServicesTest.shared.likeEvent(with: event.id)
+    func likeEvent(with event: EventObject) {
+        UserServices.shared.likeEvent(with: event.id)
     }
     
 }

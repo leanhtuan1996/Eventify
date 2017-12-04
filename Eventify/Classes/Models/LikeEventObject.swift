@@ -1,5 +1,5 @@
 //
-//  TicketOrderObjectTest.swift
+//  LikeEventObjectTest.swift
 //  Eventify
 //
 //  Created by Lê Anh Tuấn on 11/10/17.
@@ -9,11 +9,11 @@
 import UIKit
 import Gloss
 
-class TicketOrderObjectTest: NSObject, Glossy {
+class LikeEventObject: NSObject, Glossy {
     var id: String
-    var idTicket: String?
-    var quantityBought: Int?
-    var QRCodeImgPath: String?
+    var idEvent: String?
+    var idUser: String?
+    var dateLiked: Int?
     
     override init() {
         self.id = ""
@@ -22,26 +22,31 @@ class TicketOrderObjectTest: NSObject, Glossy {
     
     required init?(json: JSON) {
         
+        //Id has not nil
         guard let id: String = "_id" <~~ json else {
             return nil
         }
-        
         self.id = id
         
-        self.idTicket = "idTicket" <~~ json
         
-        self.quantityBought = "quantity" <~~ json
+        //idEvent
+        self.idEvent = "idEvent" <~~ json
         
-        self.QRCodeImgPath = "QRCodeImgPath" <~~ json
+        //idUser
+        self.idUser = "idUser" <~~ json
+        
+        //dateLiked
+        self.dateLiked = "dateLiked" <~~ json
     }
     
     //to json
     func toJSON() -> JSON? {
         
         return jsonify([
-            "idTicket" ~~> self.idTicket,
-            "quantity" ~~> self.quantityBought,
-            "QRCodeImgPath" ~~> self.QRCodeImgPath
+            "_id" ~~> self.id,
+            "idEvent" ~~> self.idEvent,
+            "idUser" ~~> self.idUser,
+            "dateLiked" ~~> self.dateLiked
             ])
     }
     

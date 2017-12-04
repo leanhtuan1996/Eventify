@@ -13,9 +13,9 @@ class OrderServices: NSObject {
     static let shared = OrderServices()
     let socket = SocketIOServices.shared.socket
     
-    var currentOrder: OrderObjectTest?
+    var currentOrder: OrderObject?
     
-    func beginOrder(order: OrderObjectTest, completionHandler: @escaping (_ error: String? ) -> Void) {
+    func beginOrder(order: OrderObject, completionHandler: @escaping (_ error: String? ) -> Void) {
         guard let token = UserManager.shared.currentUser?.token else {
             return completionHandler("Token is required!")
         }
@@ -38,7 +38,7 @@ class OrderServices: NSObject {
                 
                 print(json)
                 
-                guard let order = OrderObjectTest(json: json[0]) else {
+                guard let order = OrderObject(json: json[0]) else {
                     return completionHandler("Convert json to object has been failed")
                 }
                 
@@ -80,7 +80,7 @@ class OrderServices: NSObject {
         }
     }
     
-    func getOrders(completionHandler: @escaping (_ orders: [OrderObjectTest]?, _ error: String?) -> Void) {
+    func getOrders(completionHandler: @escaping (_ orders: [OrderObject]?, _ error: String?) -> Void) {
         guard let token = UserManager.shared.currentUser?.token else {
             return completionHandler(nil, "Token is required!")
         }
@@ -108,7 +108,7 @@ class OrderServices: NSObject {
                 //print(json)
                 
                 //try parse from json to object
-                guard let orders = [OrderObjectTest].from(jsonArray: json) else {
+                guard let orders = [OrderObject].from(jsonArray: json) else {
                     return completionHandler(nil, "Path not found")
                 }
                 
@@ -117,7 +117,7 @@ class OrderServices: NSObject {
         }
     }
     
-    func getOrder(byId id: String, completionHandler: @escaping (_ order: OrderObjectTest?, _ error: String?) -> Void) {
+    func getOrder(byId id: String, completionHandler: @escaping (_ order: OrderObject?, _ error: String?) -> Void) {
         guard let token = UserManager.shared.currentUser?.token else {
             return completionHandler(nil, "Token is required!")
         }
@@ -136,7 +136,7 @@ class OrderServices: NSObject {
                     return completionHandler(nil, "Data is empty")
                 }
                 
-                guard let order = OrderObjectTest(json: json[0]) else {
+                guard let order = OrderObject(json: json[0]) else {
                     return completionHandler(nil, "Convert json to object has been failed")
                 }
                 

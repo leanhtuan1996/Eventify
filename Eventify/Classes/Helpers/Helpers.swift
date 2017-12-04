@@ -206,7 +206,7 @@ class Helpers: NSObject {
         return completionHandler(json, nil)
     }
     
-    static func handlerPrice(for tickets: [TicketObjectTest]) -> (String, String) {
+    static func handlerPrice(for tickets: [TicketObject]) -> (String, String) {
         
         if tickets.count > 0 {
             
@@ -229,7 +229,7 @@ class Helpers: NSObject {
         
     }
     
-    static func handlerTypes(for types: [TypeObjectTest]) -> String {
+    static func handlerTypes(for types: [TypeObject]) -> String {
         
         var string = ""
         

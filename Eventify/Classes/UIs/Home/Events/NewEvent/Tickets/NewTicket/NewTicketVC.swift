@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 
 class NewTicketVC: UIViewController, UITextFieldDelegate {
     
-    var ticketObject: TicketObjectTest?
+    var ticketObject: TicketObject?
     @IBOutlet weak var txtNameTicket: SkyFloatingLabelTextField!
     @IBOutlet weak var txtDescription: SkyFloatingLabelTextField!
     @IBOutlet weak var txtQuantity: SkyFloatingLabelTextField!
@@ -68,7 +68,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
             ticket.quantity = txtQuantity.text?.toInt()
             ticket.price = txtPrice.text?.toInt()
             
-            TicketServicesTest.shared.editTicket(with: ticket, completionHandler: { (error) in
+            TicketServices.shared.editTicket(with: ticket, completionHandler: { (error) in
                 self.loading.stopAnimating()
                 
                 let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in
@@ -84,13 +84,13 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
             })
         } else {
             
-            let ticketTest = TicketObjectTest()
-            ticketTest.name = txtNameTicket.text
-            ticketTest.descriptions = txtDescription.text
-            ticketTest.quantity = txtQuantity.text?.toInt()
-            ticketTest.price = txtPrice.text?.toInt()
+            let ticket = TicketObject()
+            ticket.name = txtNameTicket.text
+            ticket.descriptions = txtDescription.text
+            ticket.quantity = txtQuantity.text?.toInt()
+            ticket.price = txtPrice.text?.toInt()
             
-            TicketServicesTest.shared.addTicket(with: ticketTest, completionHandler: { (error) in
+            TicketServices.shared.addTicket(with: ticket, completionHandler: { (error) in
                 self.loading.stopAnimating()
                 
                 let backButton = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.default, handler: { (btn) in

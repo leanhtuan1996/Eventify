@@ -72,14 +72,14 @@ class SignInVC: UIViewController {
             return
         }
         
-        let userObjectTest = UserObjectTest()
-        userObjectTest.password = password
-        userObjectTest.email = email
+        let userObject = UserObject()
+        userObject.password = password
+        userObject.email = email
         
         self.dismissKeyboard()
         activityIndicatorView.showLoadingDialog(self)
         
-        UserServicesTest.shared.signIn(with: userObjectTest) { (error) in
+        UserServices.shared.signIn(with: userObject) { (error) in
             self.activityIndicatorView.stopAnimating()
             if let error = error {
                 self.showAlert(error, title: "Sign In Error", buttons: nil)
@@ -134,7 +134,7 @@ class SignInVC: UIViewController {
     
     @IBAction func btnZalo(_ sender: Any) {
 //        self.activityIndicatorView.showLoadingDialog(self)
-//        UserServicesTest.shared.signInWithZalo(vc: self) { (error) in
+//        UserServices.shared.signInWithZalo(vc: self) { (error) in
 //            self.activityIndicatorView.stopAnimating()
 //            if let error = error {
 //                self.showAlert(error, title: "Failed", buttons: nil)

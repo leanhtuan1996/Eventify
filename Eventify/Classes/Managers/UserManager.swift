@@ -13,7 +13,7 @@ class UserManager: NSObject {
     
     let userDefault = UserDefaults.standard
     
-    var currentUser: UserObjectTest?
+    var currentUser: UserObject?
     var token: String?
     
     
@@ -51,7 +51,7 @@ class UserManager: NSObject {
         print("verifyToken")
         if let token = self.getToken() {
             
-            UserServicesTest.shared.getInformations(with: token, completionHandler: { (user, error) in
+            UserServices.shared.getInformations(with: token, completionHandler: { (user, error) in
                 if let error = error {
                     //remove token 
                     self.editToken(nil)
@@ -70,7 +70,7 @@ class UserManager: NSObject {
         }
     }
     
-    func setUser(with user: UserObjectTest?) {
+    func setUser(with user: UserObject?) {
         
         if let user = user {
             self.currentUser = user

@@ -10,7 +10,7 @@ import UIKit
 
 class EventTypeCell: UITableViewCell {
 
-    var eventType: TypeObjectTest!
+    var eventType: TypeObject!
     @IBOutlet weak var lblName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

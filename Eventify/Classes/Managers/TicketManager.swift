@@ -60,7 +60,7 @@ class TicketManager: NSObject {
         }) {
             editTicket(with: ticket)
         } else {
-            if let idUser = UserServices.shared.currentUser?.id {
+            if let idUser = UserManager.shared.currentUser?.id {
                 ticket.id = "\(idUser)\(Helpers.getTimeStamp())"
             }
             currentTickets.append(ticket)

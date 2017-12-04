@@ -11,7 +11,7 @@ import UIKit
 class ProfileVC: UIViewController {
     
     @IBOutlet weak var imgAvatar: UIImageView!
-    var user: UserObjectTest?
+    var user: UserObject?
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var tblProfile: UITableView!

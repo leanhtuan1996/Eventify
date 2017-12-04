@@ -1,86 +1,103 @@
 //
-//  EventObject.swift
+//  UserObjectTest.swift
 //  Eventify
 //
-//  Created by Lê Anh Tuấn on 10/1/17.
+//  Created by Lê Anh Tuấn on 11/10/17.
 //  Copyright © 2017 Lê Anh Tuấn. All rights reserved.
 //
 
 import UIKit
 import Gloss
-import Dollar
 
-
-class EventObject: NSObject, Glossy  {
-    var id: String?
+class EventObject: NSObject, Glossy {
+    var id: String
     var name: String?
-    var photoURL: String?
-    var by: UserObject?
-    var descriptionEvent: String?
-    var timeStart: Int?
-    var timeEnd: Int?
+    var address: AddressObject?
     var dateCreated: Int?
     var dateEdited: Int?
-    var address: AddressObject?
-    var types: [EventTypeObject]?
+    var photoCoverPath: String?
+    var descriptionEvent: String?
+    var createdBy: UserObject?
+    var timeStart: Int?
+    var timeEnd: Int?
+    var types: [TypeObject]?
     var tickets: [TicketObject]?
+    //var liked: [LikeEventObjectTest]?
     
-    override init() { }
+    override init() {
+        self.id = ""
+        super.init()
+    }
     
     required init?(json: JSON) {
-        guard let id: String = "id" <~~ json else {
+        //print(json)
+        //Id has not nil
+        guard let id: String = "_id" <~~ json else {
             return nil
         }
+        self.id = id
         
-        if let byUser: UserObject = "by" <~~ json {
-            self.by = byUser
+        //createdBy
+        if let byUser: UserObject = "createdBy" <~~ json {
+            self.createdBy = byUser
         }
         
-
         //types
         if let typeJSON: [JSON] = "types" <~~ json {
-            self.types = [EventTypeObject].from(jsonArray: typeJSON)
+            self.types = [TypeObject].from(jsonArray: typeJSON)
         }
         
         //tickets
-        if let ticketJSON: [JSON] = "tickets" <~~ json {
-            self.tickets = [TicketObject].from(jsonArray: ticketJSON)
+        if let ticketsArray: [JSON] = "tickets" <~~ json {
+            self.tickets = [TicketObject].from(jsonArray: ticketsArray)
         }
         
+        //time to start event
         if let timeStart: Int = "timeStart" <~~ json {
             self.timeStart = timeStart
         }
         
+        //time to stop event
         if let timeEnd: Int = "timeEnd" <~~ json {
             self.timeEnd = timeEnd
         }
         
-        self.id = id
+        //name of event
         self.name = "name" <~~ json
-        self.photoURL = "photoURL" <~~ json
-        self.descriptionEvent = "descriptionEvent" <~~ json
         
+        //cover image for event
+        self.photoCoverPath = "photoCoverPath" <~~ json
+        
+        //description of event
+        self.descriptionEvent = "descriptions" <~~ json
+        
+        //address object for event
         if let address: AddressObject = "address" <~~ json {
             self.address = address
         }
+        
+        //like object
+        //if let liked: [String] = "liked" <~~ json {
+        //self.liked = [LikeEventObjectTest].from(jsonArray: liked)
+        //print(liked)
+        //}
     }
     
     //to json
     func toJSON() -> JSON? {
         
-        guard let tickets = self.tickets, let id = self.id else {
+        guard let tickets = self.tickets else {
             return nil
         }
         
-        
         return jsonify([
-            "id" ~~> id,
+            "_id" ~~> self.id,
             "name" ~~> self.name,
             "address" ~~> self.address?.toJSON(),
-            "descriptionEvent" ~~> self.descriptionEvent,
-            "by" ~~> self.by?.toJSON(),
-            "photoURL" ~~> self.photoURL,
-            "tickets" ~~> self.tickets?.toJSONArray(),
+            "descriptions" ~~> self.descriptionEvent,
+            "createdBy" ~~> self.createdBy?.toJSON(),
+            "photoCoverPath" ~~> self.photoCoverPath,
+            "tickets" ~~> tickets.toJSONArray(),
             "types" ~~> self.types?.toJSONArray(),
             "timeStart" ~~> self.timeStart,
             "timeEnd" ~~> self.timeEnd,
@@ -88,6 +105,5 @@ class EventObject: NSObject, Glossy  {
             "dateEdited" ~~> self.dateEdited
             ])
     }
-    
     
 }

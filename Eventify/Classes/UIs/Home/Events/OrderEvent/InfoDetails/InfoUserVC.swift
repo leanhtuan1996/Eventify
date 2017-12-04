@@ -16,8 +16,8 @@ class InfoUserVC: UIViewController {
     var timeStart: String?
     var timeEnd: String?
     var totalPrice: String?
-    var tickets: [TicketObjectTest] = []
-    var ticketsToOrder: [TicketObjectTest] = []
+    var tickets: [TicketObject] = []
+    var ticketsToOrder: [TicketObject] = []
     var loading = UIActivityIndicatorView()
     let remainingTime = 720
     

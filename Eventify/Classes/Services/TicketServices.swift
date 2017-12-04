@@ -2,84 +2,51 @@
 //  TicketServices.swift
 //  Eventify
 //
-//  Created by Lê Anh Tuấn on 11/4/17.
+//  Created by Lê Anh Tuấn on 11/11/17.
 //  Copyright © 2017 Lê Anh Tuấn. All rights reserved.
 //
 
 import UIKit
 import Gloss
 
-
-//let refTicket = Firestore.firestore().collection("Tickets")
-
 class TicketServices: NSObject {
     static let shared = TicketServices()
     
-    func getTickets(isListen: Bool, completionHandler: @escaping (_ tickets: [TicketObject]?, _ error: String?) -> Void ) {
+    let socket = SocketIOServices.shared.socket
+    
+    func getTickets(completionHandler: @escaping (_ tickets: [TicketObject]?, _ error: String?) -> Void ) {
         
-//        guard let userId = UserServices.shared.currentUser?.id else {
-//            return completionHandler(nil, "User id not found")
-//        }
-//        
-//        if isListen {
-//            refTicket.document(userId).addSnapshotListener { (snapshot, error) in
-//                if let error = error {
-//                    return completionHandler(nil, error.localizedDescription)
-//                }
-//                
-//                guard let snapshotDoc = snapshot, snapshotDoc.exists else {
-//                    return completionHandler(nil, "Snapshot not found")
-//                }
-//                
-//                var tickets: [TicketObject] = []
-//                
-//                snapshotDoc.data().forEach({ (ticket, value) in
-//                    
-//                    //print(ticket)
-//                    
-//                    guard let ticketJson = value as? JSON else {
-//                        return completionHandler(nil, "Convert value to json have been failed")
-//                    }
-//                    
-//                    if let ticket = TicketObject(json: ticketJson) {
-//                        tickets.append(ticket)
-//                    }
-//                })
-//                
-//                completionHandler(tickets, nil)
-//                
-//            }
-//        } else {
-//            refTicket.document(userId).getDocument { (snapshot, error) in
-//                
-//                if let error = error {
-//                    return completionHandler(nil, error.localizedDescription)
-//                }
-//                
-//                guard let snapshotDoc = snapshot else {
-//                    return completionHandler([], nil)
-//                }
-//                
-//                if !snapshotDoc.exists {
-//                    return completionHandler(nil, nil)
-//                }
-//                
-//                var tickets: [TicketObject] = []
-//                
-//                snapshotDoc.data().forEach({ (ticket, value) in
-//                    
-//                    guard let ticketJson = value as? JSON else {
-//                        return completionHandler(nil, "Convert value to json have been failed")
-//                    }
-//                    
-//                    if let ticket = TicketObject(json: ticketJson) {
-//                        tickets.append(ticket)
-//                    }
-//                })
-//                
-//                return completionHandler(tickets, nil)
-//            }
-//        }
+        guard let token = UserManager.shared.currentUser?.token else {
+            print("User id not found")
+            return completionHandler(nil, "User id not found")
+        }
+        
+        socket.emit("get-tickets", with: [token])
+        
+        socket.off("get-tickets")
+        
+        socket.on("get-tickets") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                if json[0].isEmpty { return completionHandler([], nil) }
+                
+                //try parse from json to object
+                guard let tickets = [TicketObject].from(jsonArray: json) else {
+                    return completionHandler(nil, "Convert json to object has been failed")
+                }
+                
+                return completionHandler(tickets, nil)
+                
+            })
+        }
+        
     }
     
     func getTicket(withId id: String, completionHandler: @escaping (_ ticket: TicketObject?, _ error: String?) -> Void) {
@@ -88,49 +55,78 @@ class TicketServices: NSObject {
     
     func addTicket(with ticket: TicketObject, completionHandler: @escaping (_ error: String?) -> Void) {
         
-//        guard let userId = UserServices.shared.currentUser?.id else {
-//            return completionHandler("User id not found")
-//        }
-//        guard let ticketJson = ticket.toJSON() else     {
-//            return completionHandler("Convert ticket object to json has been failed")
-//        }
-//        
-//        let id = "\(userId)\(Helpers.getTimeStamp())"
-//        ticket.id = id
-//        
-//        refTicket.document(userId).setData([id : ticketJson], options: SetOptions.merge()) { (error) in
-//            return completionHandler(error?.localizedDescription)
-//        }
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler("Token not found")
+        }
+        guard let ticketJson = ticket.toJSON() else {
+            return completionHandler("Convert ticket object to json has been failed")
+        }
+        
+        socket.emit("new-ticket", with: [ticketJson, token])
+        
+        socket.once("new-ticket") { (data, ack) in
+            
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                return completionHandler(nil)
+            })
+        }
     }
     
     func editTicket(with ticket: TicketObject, completionHandler: @escaping (_ error: String?) -> Void) {
-//        guard let userId = UserServices.shared.currentUser?.id else {
-//            return completionHandler("User id not found")
-//        }
-//        
-//        guard let ticketId = ticket.id else {
-//            return completionHandler("ticket id not found")
-//        }
-//        
-//        guard let ticketJson = ticket.toJSON() else {
-//            return completionHandler("Convert ticket to json has been failed")
-//        }
-//        
-//        refTicket.document(userId).updateData([ticketId : ticketJson]) { (error) in
-//            return completionHandler(error?.localizedDescription)
-//        }
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler("Token not found")
+        }
         
+        guard let ticketJson = ticket.toJSON() else {
+            return completionHandler("Convert ticket object to json has been failed")
+        }
+        
+        socket.emit("edit-ticket", with: [ticketJson, token])
+        
+        socket.once("edit-ticket") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                return completionHandler(nil)
+            })
+        }
     }
     
     func deleteTicket(withId id: String, completionHandler: @escaping (_ error: String?) -> Void) {
         
-//        guard let userId = UserServices.shared.currentUser?.id else {
-//            return completionHandler("User id not found")
-//        }
-//        
-//        refTicket.document(userId).updateData([id : FieldValue.delete()]) { (error) in
-//            return completionHandler(error?.localizedDescription)
-//        }
+        guard let token = UserManager.shared.currentUser?.token else {
+            print("User id not found")
+            return completionHandler("User id not found")
+        }
+        
+        socket.emit("delete-ticket", with: [id, token])
+        
+        socket.once("delete-ticket") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                return completionHandler(nil)
+            })
+        }
     }
-    
 }

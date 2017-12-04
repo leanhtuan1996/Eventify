@@ -1,8 +1,8 @@
 //
-//  TicketObject.swift
+//  TicketObjectTest.swift
 //  Eventify
 //
-//  Created by Lê Anh Tuấn on 10/1/17.
+//  Created by Lê Anh Tuấn on 11/10/17.
 //  Copyright © 2017 Lê Anh Tuấn. All rights reserved.
 //
 
@@ -10,38 +10,59 @@ import UIKit
 import Gloss
 
 class TicketObject: NSObject, Glossy {
-    var id: String?
+    var id: String
     var name: String?
     var descriptions: String?
+    var createdBy: UserObject?
+    var dateCreated: Int?
     var quantity: Int?
+    var maxToOrder: Int = 10
     var price: Int?
-    var sold: Int?
-    var remain: Int?
+    var quantitiesSold: Int?
+    var quantitiesRemaining: Int?
     
     override init() {
-        
+        self.id = ""
+        super.init()
     }
     
     required init?(json: JSON) {
-        self.id = "_id" <~~ json
+        
+        guard let id: String = "_id" <~~ json else {
+            return nil
+        }
+        
+        self.id = id
         self.name = "name" <~~ json
-        self.descriptions = "descriptions" <~~ json
+        self.descriptions = "description" <~~ json
         self.quantity = "quantity" <~~ json
+        self.dateCreated = "dateCreated" <~~ json
+        
+        //createdBy
+        if let byUser: UserObject = "createdBy" <~~ json {
+            self.createdBy = byUser
+        }
+        
+        if let maxToOrder: Int = "maxToOrder" <~~ json {
+            self.maxToOrder = maxToOrder
+        }
+        
         self.price = "price" <~~ json
-        self.sold = "sold" <~~ json
-        self.remain = "remain" <~~ json
+        self.quantitiesSold = "quantitiesSold" <~~ json
+        self.quantitiesRemaining = "quantitiesRemaining" <~~ json
     }
     
-    func toJSON() -> JSON? {
+    func toJSON() -> JSON? {        
         return jsonify(
-            ["id" ~~> self.id,
-             "quantity" ~~> self.quantity,
-             "price" ~~> self.price,
+            ["_id" ~~> id,
              "name" ~~> self.name,
-             "descriptions" ~~> self.descriptions,
-             "sold" ~~> self.sold,
-             "remain" ~~> self.remain
+             "description" ~~> self.descriptions,
+             "quantity" ~~> self.quantity,
+             "dateCreated" ~~> self.dateCreated,
+             "maxToOrder" ~~> self.maxToOrder,
+             "price" ~~> self.price,
+             "quantitiesSold" ~~> self.quantitiesSold,
+             "quantitiesRemaining" ~~> self.quantitiesRemaining
             ])
     }
-    
 }

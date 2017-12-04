@@ -14,7 +14,7 @@ import MapKit
 class DetailEventVC: UIViewController {
     
     var idEvent: String!
-    var event: EventObjectTest?
+    var event: EventObject?
     var isLiked: Bool!
     let loading = UIActivityIndicatorView()
     
@@ -24,7 +24,7 @@ class DetailEventVC: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblBy: UILabel!
-    @IBOutlet weak var lblDateStart: UILabel!
+    @IBOutlet weak var lblDayStart: UILabel!
     @IBOutlet weak var lblDuration: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var imgAvata: UIImageView!
@@ -71,7 +71,7 @@ class DetailEventVC: UIViewController {
     func handlerEvent() {
         self.loading.showLoadingDialog(self)
         
-        EventServicesTest.shared.getEvent(withId: self.idEvent) { (event, error) in
+        EventServices.shared.getEvent(withId: self.idEvent) { (event, error) in
             self.loading.stopAnimating()
             if let error = error {
                 self.showAlert(error, title: "Loading event has been failed", buttons: nil);
@@ -100,10 +100,10 @@ class DetailEventVC: UIViewController {
                  * .get year
                  */
                 if let timeStart = event.timeStart, let timeEnd = event.timeEnd {
-                    let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
+                    let (dayStart, mountStart, yearStart, hourStart, minuart) = timeStart.getTime()
                     let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
-                    self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
-                    self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
+                    self.lblDayStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
+                    self.lblDuration.text = "\(hourStart):\(minuart) - \(hourEnd):\(minuteEnd)"
                     
                 }
                 
@@ -184,12 +184,12 @@ class DetailEventVC: UIViewController {
     //             * .get year
     //             */
     //            if let timeStart = self.event.timeStart, let timeEnd = self.event.timeEnd {
-    //                let (dayStart, mountStart, yearStart, hourStart, minuteStart) = timeStart.getTime()
+    //                let (dayStart, mountStart, yearStart, hourStart, minuart) = timeStart.getTime()
     //                let (_, _, _, hourEnd, minuteEnd) = timeEnd.getTime()
     //
     //                DispatchQueue.main.async(execute: {
-    //                    self.lblDateStart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
-    //                    self.lblDuration.text = "\(hourStart):\(minuteStart) - \(hourEnd):\(minuteEnd)"
+    //                    self.lblDaart.text = "\(dayStart) thg \(mountStart), \(yearStart)"
+    //                    self.lblDuration.text = "\(hourStart):\(minuart) - \(hourEnd):\(minuteEnd)"
     //                })
     //            }
     //
@@ -313,11 +313,11 @@ class DetailEventVC: UIViewController {
     
     @IBAction func btnAddToCalendar(_ sender: Any) {
         
-        guard let name = lblName.text, let dateStart = event?.timeStart, let dateEnd = event?.timeEnd, let location = event?.address else {
+        guard let name = lblName.text, let daart = event?.timeStart, let dateEnd = event?.timeEnd, let location = event?.address else {
             return
         }
         
-        let startDate = dateStart.toDate()
+        let startDate = daart.toDate()
         let endDate = dateEnd.toDate()
         
         let addButton = UIAlertAction(title: "Thêm ngay", style: UIAlertActionStyle.default) { (btn) in
@@ -356,12 +356,12 @@ class DetailEventVC: UIViewController {
         if isLiked {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
             self.isLiked = false
-            UserServicesTest.shared.UnlikeEvent(with: self.idEvent)
+            UserServices.shared.UnlikeEvent(with: self.idEvent)
             
         } else {
             self.btnBookmark.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
             self.isLiked = true
-            UserServicesTest.shared.likeEvent(with: self.idEvent)
+            UserServices.shared.likeEvent(with: self.idEvent)
         }
     }
     

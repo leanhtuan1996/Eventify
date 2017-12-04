@@ -9,11 +9,11 @@
 import UIKit
 import Gloss
 
-class OrderObjectTest: NSObject, Glossy {
+class OrderObject: NSObject, Glossy {
     var id: String
-    var orderBy: UserObjectTest?
+    var orderBy: UserObject?
     var dateCreated: Int?
-    var ticketsOrder: [TicketOrderObjectTest]?
+    var ticketsOrder: [TicketOrderObject]?
     var idEvent: String?
     var fullName: String?
     var phoneNumber: String?
@@ -33,13 +33,13 @@ class OrderObjectTest: NSObject, Glossy {
         
         
         //orders
-        if let orderBy: UserObjectTest = "orderby" <~~ json {
+        if let orderBy: UserObject = "orderby" <~~ json {
             self.orderBy = orderBy
         }
         
-        //tickets 
+        //tickets
         if let ticketJson: [JSON] = "tickets" <~~ json {
-            if let ticketsArray = [TicketOrderObjectTest].from(jsonArray: ticketJson) {
+            if let ticketsArray = [TicketOrderObject].from(jsonArray: ticketJson) {
                 self.ticketsOrder = ticketsArray
             }
         }

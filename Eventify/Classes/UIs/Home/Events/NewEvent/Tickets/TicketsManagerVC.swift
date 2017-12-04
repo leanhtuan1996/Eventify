@@ -11,7 +11,7 @@ import UIKit
 class TicketsManagerVC: UIViewController {
     
     @IBOutlet weak var tblTickets: UITableView!
-    var tickets: [TicketObjectTest] = []
+    var tickets: [TicketObject] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         tblTickets.delegate = self
@@ -52,7 +52,7 @@ class TicketsManagerVC: UIViewController {
         //                return
         //            }
         //        }
-        TicketServicesTest.shared.deleteTicket(withId: id) { (error) in
+        TicketServices.shared.deleteTicket(withId: id) { (error) in
             if let error = error {
                 self.showAlert(error, title: "Thao tác bị lỗi", buttons: nil)
                 return

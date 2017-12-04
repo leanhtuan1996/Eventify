@@ -19,7 +19,7 @@ class TicketsOrderCell: UITableViewCell {
     @IBOutlet weak var btnMinus: UIButton!
     @IBOutlet weak var lblQuantity: UILabel!
     var delegate: OrderEventDelegate?
-    var ticket: TicketObjectTest?
+    var ticket: TicketObject?
     
     override func awakeFromNib() {
         super.awakeFromNib()

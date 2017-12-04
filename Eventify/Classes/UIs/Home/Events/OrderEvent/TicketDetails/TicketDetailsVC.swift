@@ -15,8 +15,8 @@ class TicketDetailsVC: UIViewController {
     var byName: String?
     var timeStart: Int?
     var timeEnd: Int?
-    var tickets: [TicketObjectTest] = []
-    var ticketsToOrder: [TicketOrderObjectTest] = []
+    var tickets: [TicketObject] = []
+    var ticketsToOrder: [TicketOrderObject] = []
     var loading = UIActivityIndicatorView()
     
     @IBOutlet weak var lblEventName: UILabel!
@@ -90,7 +90,7 @@ class TicketDetailsVC: UIViewController {
             return
         }
         
-        let order = OrderObjectTest()
+        let order = OrderObject()
         order.idEvent = self.idEvent
         order.ticketsOrder = self.ticketsToOrder
         
@@ -144,7 +144,7 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TicketDetailsVC: OrderEventDelegate {
-    func chooseTicket(with ticket: TicketObjectTest, quantity: Int) {
+    func chooseTicket(with ticket: TicketObject, quantity: Int) {
         if  let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice + (ticket.price ?? 0)).toString()
             print(quantity)
@@ -154,7 +154,7 @@ extension TicketDetailsVC: OrderEventDelegate {
             }) {
                 self.ticketsToOrder[index].quantityBought = quantity
             } else {
-                let orderTicket = TicketOrderObjectTest()
+                let orderTicket = TicketOrderObject()
                 orderTicket.idTicket = ticket.id
                 orderTicket.quantityBought = quantity
                 self.ticketsToOrder.append(orderTicket)
@@ -163,7 +163,7 @@ extension TicketDetailsVC: OrderEventDelegate {
         }
     }
     
-    func unChooseTicket(with ticket: TicketObjectTest, quantity: Int) {
+    func unChooseTicket(with ticket: TicketObject, quantity: Int) {
         if let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice - (ticket.price ?? 0)).toString()
             

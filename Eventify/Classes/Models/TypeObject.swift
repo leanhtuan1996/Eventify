@@ -1,5 +1,5 @@
 //
-//  TypeObjectTest.swift
+//  TypeObject.swift
 //  Eventify
 //
 //  Created by Lê Anh Tuấn on 11/12/17.
@@ -9,7 +9,7 @@
 import UIKit
 import Gloss
 
-class TypeObjectTest: NSObject, Glossy {
+class TypeObject: NSObject, Glossy {
     var id: String
     var name: String?
     
