@@ -218,15 +218,16 @@ class Helpers: NSObject {
                 if let price = ticket.price {
                     min = price < min ? price : min
                     max = price > max ? price : max
-                }
+                } else {
+                    min = 0
+                }                
             }
             
             return (min.toString(), max.toString())
             
-        } else {
-            return ("0", "0")
         }
         
+        return ("0", "0")
     }
     
     static func handlerTypes(for types: [TypeObject]) -> String {
