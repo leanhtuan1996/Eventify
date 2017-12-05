@@ -18,7 +18,6 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var saparatorView: UIView!
     
     var events: [EventObject] = []
-    var likedEvents: [String] = []
     var refreshControl: UIRefreshControl!
     var isLoadingMore = false
     var previousController: UIViewController?
@@ -87,12 +86,8 @@ class DiscoverVC: UIViewController {
             }
         }
         
-        UserServices.shared.getLikedEvents { (idEvents, error) in            
-            print("LOADING LIKE")
-            if let idEvents = idEvents {
-                self.likedEvents = idEvents
-            }
-            
+        UserServices.shared.getLikedEvents { (error) in
+            self.tblEvents.reloadData()
         }
     }
     
@@ -173,18 +168,35 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         }
         
         
-        if self.likedEvents.contains(where: { (id) -> Bool in
-            return id == events[indexPath.row].id
-        }) {
-            DispatchQueue.main.async {
-                cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
-                cell.isLiked = true
+//        if self.likedEvents.contains(where: { (id) -> Bool in
+//            return id == events[indexPath.row].id
+//        }) {
+//            DispatchQueue.main.async {
+//                cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+//                cell.isLiked = true
+//            }
+//            
+//        } else {
+//            DispatchQueue.main.async {
+//                cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
+//                cell.isLiked = false
+//            }
+//        }
+        
+        if let likes = UserManager.shared.currentUser?.liked {
+            if likes.contains(where: { (event) -> Bool in
+                return event.id == events[indexPath.row].id
+            }) {
+                            DispatchQueue.main.async {
+                                cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+                                cell.isLiked = true
+                            }
+            } else {
+                            DispatchQueue.main.async {
+                                cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
+                                cell.isLiked = false
+                            }
             }
-            
-        } else {
-            DispatchQueue.main.async {cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
-                cell.isLiked = false }
-            
         }
         
         return cell
@@ -194,12 +206,14 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC {
             
-            if self.likedEvents.contains(where: { (id) -> Bool in
-                return id == events[indexPath.row].id
-            }) {
-                sb.isLiked = true
-            } else {
-                sb.isLiked = false
+            if let likes = UserManager.shared.currentUser?.liked {
+                if likes.contains(where: { (event) -> Bool in
+                    return event.id == events[indexPath.row].id
+                }) {
+                    sb.isLiked = true
+                } else {
+                    sb.isLiked = false
+                }
             }
             
             sb.idEvent = self.events[indexPath.row].id

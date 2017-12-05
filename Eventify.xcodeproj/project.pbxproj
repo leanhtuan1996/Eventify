@@ -58,11 +58,9 @@
 		367F3C181F7E37C3002222EB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F3C171F7E37C3002222EB /* Helpers.swift */; };
 		36829F471F9F09E400D1465F /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36829F461F9F09E400D1465F /* Extensions+UIImage.swift */; };
 		3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */; };
-		369F74FA1FD5432B00126F68 /* LikeEventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F74F91FD5432B00126F68 /* LikeEventObject.swift */; };
 		369F74FC1FD5434600126F68 /* OrderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F74FB1FD5434600126F68 /* OrderObject.swift */; };
 		369F74FE1FD5437300126F68 /* TicketOrderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F74FD1FD5437300126F68 /* TicketOrderObject.swift */; };
 		369F75001FD5439100126F68 /* TypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F74FF1FD5439100126F68 /* TypeObject.swift */; };
-		369F75041FD5738600126F68 /* TicketsOrderedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F75031FD5738600126F68 /* TicketsOrderedVC.swift */; };
 		369F75081FD57DDB00126F68 /* InfoUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F75071FD57DDB00126F68 /* InfoUserView.swift */; };
 		36B7622C1F7E9C83009D3BE9 /* DetailEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */; };
 		36B7622D1F7E9C83009D3BE9 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7622A1F7E9C83009D3BE9 /* EventsCell.swift */; };
@@ -71,6 +69,8 @@
 		36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */; };
 		36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */; };
 		36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */; };
+		36EC9A611FD63CF900447EAB /* LikedEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC9A5F1FD63CF900447EAB /* LikedEventsCell.swift */; };
+		36EC9A621FD63CF900447EAB /* LikedEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC9A601FD63CF900447EAB /* LikedEventsCell.xib */; };
 		36F111A81FA9B0AF00B97951 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A01FA9B0AF00B97951 /* Duration.swift */; };
 		36F111A91FA9B0AF00B97951 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A11FA9B0AF00B97951 /* Int+Timepiece.swift */; };
 		36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A21FA9B0AF00B97951 /* NSCalendar+Timepiece.swift */; };
@@ -600,11 +600,9 @@
 		367F3C171F7E37C3002222EB /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		36829F461F9F09E400D1465F /* Extensions+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
 		3699BFBE1F7E435100D37DDC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		369F74F91FD5432B00126F68 /* LikeEventObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeEventObject.swift; sourceTree = "<group>"; };
 		369F74FB1FD5434600126F68 /* OrderObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderObject.swift; sourceTree = "<group>"; };
 		369F74FD1FD5437300126F68 /* TicketOrderObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderObject.swift; sourceTree = "<group>"; };
 		369F74FF1FD5439100126F68 /* TypeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeObject.swift; sourceTree = "<group>"; };
-		369F75031FD5738600126F68 /* TicketsOrderedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsOrderedVC.swift; sourceTree = "<group>"; };
 		369F75071FD57DDB00126F68 /* InfoUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoUserView.swift; sourceTree = "<group>"; };
 		36B762281F7E9C83009D3BE9 /* DetailEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventVC.swift; sourceTree = "<group>"; };
 		36B7622A1F7E9C83009D3BE9 /* EventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
@@ -613,6 +611,8 @@
 		36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
 		36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveEventProtocol.swift; sourceTree = "<group>"; };
+		36EC9A5F1FD63CF900447EAB /* LikedEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedEventsCell.swift; sourceTree = "<group>"; };
+		36EC9A601FD63CF900447EAB /* LikedEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikedEventsCell.xib; sourceTree = "<group>"; };
 		36F111A01FA9B0AF00B97951 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		36F111A11FA9B0AF00B97951 /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
 		36F111A21FA9B0AF00B97951 /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
@@ -701,16 +701,8 @@
 			isa = PBXGroup;
 			children = (
 				36147DCC1FB05403004F38DD /* TicketsOrderedCell */,
-				369F75031FD5738600126F68 /* TicketsOrderedVC.swift */,
 			);
 			path = Tickets;
-			sourceTree = "<group>";
-		};
-		36147DC71FB05393004F38DD /* Liked */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Liked;
 			sourceTree = "<group>";
 		};
 		36147DCC1FB05403004F38DD /* TicketsOrderedCell */ = {
@@ -1605,7 +1597,6 @@
 				362C5E061F809E290033F9DB /* TicketObject.swift */,
 				362C5E111F810CD10033F9DB /* EventObject.swift */,
 				366580191FA1EDE8008A161F /* AddressObject.swift */,
-				369F74F91FD5432B00126F68 /* LikeEventObject.swift */,
 				369F74FB1FD5434600126F68 /* OrderObject.swift */,
 				369F74FD1FD5437300126F68 /* TicketOrderObject.swift */,
 				369F74FF1FD5439100126F68 /* TypeObject.swift */,
@@ -1706,8 +1697,8 @@
 		367F3C081F7E35FD002222EB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				36EC9A5D1FD63CD000447EAB /* Liked */,
 				36147DC61FB05393004F38DD /* Tickets */,
-				36147DC71FB05393004F38DD /* Liked */,
 				36B762351F7E9D1C009D3BE9 /* EditProfile */,
 				367F3C091F7E35FD002222EB /* ProfileVC.swift */,
 			);
@@ -1784,6 +1775,23 @@
 				3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */,
 			);
 			path = DescriptionEditor;
+			sourceTree = "<group>";
+		};
+		36EC9A5D1FD63CD000447EAB /* Liked */ = {
+			isa = PBXGroup;
+			children = (
+				36EC9A5E1FD63CE200447EAB /* LikedEventsCell */,
+			);
+			path = Liked;
+			sourceTree = "<group>";
+		};
+		36EC9A5E1FD63CE200447EAB /* LikedEventsCell */ = {
+			isa = PBXGroup;
+			children = (
+				36EC9A5F1FD63CF900447EAB /* LikedEventsCell.swift */,
+				36EC9A601FD63CF900447EAB /* LikedEventsCell.xib */,
+			);
+			path = LikedEventsCell;
 			sourceTree = "<group>";
 		};
 		36F1119E1FA9B0AF00B97951 /* WWCalendarTimeSelector */ = {
@@ -2086,6 +2094,7 @@
 				36147DCB1FB053CE004F38DD /* TicketsOrdered.storyboard in Resources */,
 				36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */,
 				367F3BFA1F7E34EB002222EB /* Main.storyboard in Resources */,
+				36EC9A621FD63CF900447EAB /* LikedEventsCell.xib in Resources */,
 				3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */,
 				362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */,
 				36147DD21FB05425004F38DD /* TicketsOrderedCell.xib in Resources */,
@@ -2196,7 +2205,6 @@
 				36B762341F7E9CF5009D3BE9 /* DiscoverVC.swift in Sources */,
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
 				362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */,
-				369F75041FD5738600126F68 /* TicketsOrderedVC.swift in Sources */,
 				362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */,
 				36F28DB31FAD91D8000A5359 /* TicketServices.swift in Sources */,
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
@@ -2215,13 +2223,13 @@
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
 				36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */,
+				36EC9A611FD63CF900447EAB /* LikedEventsCell.swift in Sources */,
 				367F3BF21F7E34EB002222EB /* Extensions+UIActivityIndicatorView.swift in Sources */,
 				36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */,
 				362C5E121F810CD10033F9DB /* EventObject.swift in Sources */,
 				36147DD41FB054A7004F38DD /* OrderServices.swift in Sources */,
 				3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
-				369F74FA1FD5432B00126F68 /* LikeEventObject.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,

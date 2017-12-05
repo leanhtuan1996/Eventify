@@ -173,9 +173,10 @@ class UserServices: NSObject {
         
     }
     
-    func getLikedEvents(completionHandler: @escaping (_ idEvents: [String]?, _ error: String? ) -> Void ) {
+    func getLikedEvents(_ completionHandler:  ((_ error: String? ) -> Void)? = nil ) {
         guard let token = UserManager.shared.currentUser?.token else {
-            return completionHandler(nil, "Token of User is required")
+             completionHandler?("Token of User is required")
+            return
         }
         
         socket.emit("get-liked-events", with: [token])
@@ -183,24 +184,40 @@ class UserServices: NSObject {
         socket.off("get-liked-events")
         
         socket.on("get-liked-events") { (data, ack) in
-            //check data is nil or empty
-            //print(data)
-            if data.isEmpty || data.count == 0 {
-                return completionHandler(nil, "Data not found")
-            }
-            
-            guard let array = data[0] as? [String] else {
-                return completionHandler([], nil)
-            }
-            
-            return completionHandler(array, nil)
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    completionHandler?(error)
+                    return
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    completionHandler?("Data is empty")
+                    return
+                }
+                
+                //print(json)
+                
+                if json[0].isEmpty {
+                    UserManager.shared.currentUser?.liked = []
+                    completionHandler?(nil)
+                    return
+                }
+                
+                //print(json)
+                
+                //try parse from json to object
+                guard let events = [EventObject].from(jsonArray: json) else {
+                    completionHandler?("Path not found")
+                    return
+                }
+                
+                UserManager.shared.currentUser?.liked = events
+                
+                completionHandler?(nil)
+            })
             
         }
     }
-    
-    //    func getLikedEvents(completionHandler: @escaping (_ Events: [EventObject]?, _ error: String?) -> Void ) {
-    //
-    //    }
     
     func likeEvent(with id: String) {
         

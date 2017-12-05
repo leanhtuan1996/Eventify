@@ -18,7 +18,7 @@ class UserObject: NSObject, Glossy {
     var photoDisplayPath: String?
     var phoneNumber: String?
     var orders: [OrderObject]?
-    var liked: [String]?
+    var liked: [EventObject]?
     
     override init() {
         self.id = ""
@@ -39,10 +39,10 @@ class UserObject: NSObject, Glossy {
 //        }
         
         //liked
-        if let likedString: [String] = "liked" <~~ json {
-            //self.liked = [LikeEventObjectTest].from(jsonArray: likedJSON)
-            self.liked = likedString
-        }
+//        if let liked: [EventObject] = "liked" <~~ json {
+//            //self.liked = [LikeEventObjectTest].from(jsonArray: likedJSON)
+//            self.liked = liked
+//        }
         
         //token
         self.token = "token" <~~ json
@@ -62,10 +62,6 @@ class UserObject: NSObject, Glossy {
     
     //to json
     func toJSON() -> JSON? {
-        //
-        //        guard let id = self.id else {
-        //            return nil
-        //        }
         
         return jsonify([
             "id" ~~> id,

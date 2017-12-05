@@ -27,6 +27,7 @@ class ProfileVC: UIViewController {
         tblProfile.dataSource = self
         tblProfile.estimatedRowHeight = 90
         tblProfile.register(UINib(nibName: "TicketsOrderedCell", bundle: nil), forCellReuseIdentifier: "TicketsOrderedCell")
+        tblProfile.register(UINib(nibName: "LikedEventsCell", bundle: nil), forCellReuseIdentifier: "LikedEventsCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +92,11 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         default:
-            return UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LikedEventsCell", for: indexPath) as? LikedEventsCell else {
+                return UITableViewCell()
+            }
+            
+            return cell
         }
     }
     
