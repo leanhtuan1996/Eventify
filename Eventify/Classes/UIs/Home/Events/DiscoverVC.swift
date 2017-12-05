@@ -167,35 +167,19 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
             cell.imgPhoto.downloadedFrom(link: url)
         }
         
-        
-//        if self.likedEvents.contains(where: { (id) -> Bool in
-//            return id == events[indexPath.row].id
-//        }) {
-//            DispatchQueue.main.async {
-//                cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
-//                cell.isLiked = true
-//            }
-//            
-//        } else {
-//            DispatchQueue.main.async {
-//                cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
-//                cell.isLiked = false
-//            }
-//        }
-        
         if let likes = UserManager.shared.currentUser?.liked {
             if likes.contains(where: { (event) -> Bool in
                 return event.id == events[indexPath.row].id
             }) {
-                            DispatchQueue.main.async {
-                                cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
-                                cell.isLiked = true
-                            }
+                DispatchQueue.main.async {
+                    cell.btnLike.setImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+                    cell.isLiked = true
+                }
             } else {
-                            DispatchQueue.main.async {
-                                cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
-                                cell.isLiked = false
-                            }
+                DispatchQueue.main.async {
+                    cell.btnLike.setImage(#imageLiteral(resourceName: "unlike"), for: UIControlState.normal)
+                    cell.isLiked = false
+                }
             }
         }
         
@@ -222,7 +206,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         }
     }
     
-        
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         // UITableView only moves in one direction, y axis

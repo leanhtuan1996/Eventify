@@ -32,6 +32,9 @@ class ProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
         OrderServices.shared.getOrders { (error) in
             if let error = error {
                 self.showAlert(error, title: "Whoops", buttons: nil)
@@ -137,11 +140,24 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let user = UserManager.shared.currentUser else {
+            return
+        }
+        
         switch self.infoView {
         case .tickets:
-            print("tickets")
+            guard let orders = user.orders else {
+                return
+            }
         default:
-            print("likes")
+            guard let likes = user.liked, let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC else {
+                return
+            }
+            
+            detailVC.event = likes[indexPath.row]
+            detailVC.isLiked = true
+            self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
 }
