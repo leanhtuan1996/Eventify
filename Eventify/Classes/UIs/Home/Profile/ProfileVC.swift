@@ -25,7 +25,7 @@ class ProfileVC: UIViewController {
         
         tblProfile.delegate = self
         tblProfile.dataSource = self
-        tblProfile.estimatedRowHeight = 90
+        tblProfile.estimatedRowHeight = 70
         tblProfile.register(UINib(nibName: "TicketsOrderedCell", bundle: nil), forCellReuseIdentifier: "TicketsOrderedCell")
         tblProfile.register(UINib(nibName: "LikedEventsCell", bundle: nil), forCellReuseIdentifier: "LikedEventsCell")
     }
@@ -35,6 +35,14 @@ class ProfileVC: UIViewController {
         OrderServices.shared.getOrders { (error) in
             if let error = error {
                 self.showAlert(error, title: "Whoops", buttons: nil)
+                return
+            }
+            self.tblProfile.reloadData()
+        }
+        
+        UserServices.shared.getLikedEvents { (error) in
+            if let error = error {
+                self.showAlert(error, title: "Whoops", buttons: nil);
                 return
             }
             self.tblProfile.reloadData()
@@ -92,9 +100,17 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LikedEventsCell", for: indexPath) as? LikedEventsCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LikedEventsCell", for: indexPath) as? LikedEventsCell, let likes = user.liked else {
                 return UITableViewCell()
             }
+            
+            if let url = likes[indexPath.row].photoCoverPath {
+                cell.imgCover.downloadedFrom(link: url)
+            }
+            cell.event = likes[indexPath.row]
+            cell.lblLocation.text = likes[indexPath.row].address?.address
+            cell.lblNameEvent.text = likes[indexPath.row].name
+            cell.lblTimeStart.text = likes[indexPath.row].timeStart?.toTimestampString()
             
             return cell
         }
