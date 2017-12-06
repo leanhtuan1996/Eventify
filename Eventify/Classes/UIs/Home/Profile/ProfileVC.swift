@@ -64,9 +64,10 @@ class ProfileVC: UIViewController {
     }
     
     override func didMove(toParentViewController parent: UIViewController?) {
-        UIView.animate(withDuration: 0.3) { 
+        //show tabbar when dismiss view detail ticket
+        if parent == nil {
             self.tabBarController?.tabBar.isHidden = false
-        }        
+        }
     }
     
     // MARK: - ACTIONS

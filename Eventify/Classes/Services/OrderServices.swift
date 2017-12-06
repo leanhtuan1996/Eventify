@@ -107,15 +107,11 @@ class OrderServices: NSObject {
                     return
                 }
                 
-                print(json)
-                
                 //try parse from json to object
                 guard let orders = [OrderObject].from(jsonArray: json) else {
                     completionHandler?("Path not found")
                     return
                 }
-                
-                print(orders[0].fullName)
                 
                 UserManager.shared.currentUser?.orders = orders
                 

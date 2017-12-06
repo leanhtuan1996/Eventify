@@ -89,8 +89,6 @@ extension DetailTicketsOrderedVC: UICollectionViewDelegate, UICollectionViewData
             cell.imgQRCode.downloadedFrom(link: link)
         }
         
-        print(order.fullName)
-        
         cell.lblAddress.text = order.event?.address?.address ?? "Không rõ"
         cell.lblFullName.text = order.fullName ?? "Không rõ"
         cell.lblIdOfOrder.text = "#\(order.id)"
