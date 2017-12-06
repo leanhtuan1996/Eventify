@@ -11,11 +11,6 @@ import UIKit
 class TicketDetailsVC: UIViewController {
     
     var event: EventObject?
-//    var eventName: String?
-//    var byName: String?
-//    var timeStart: Int?
-//    var timeEnd: Int?
-//    var tickets: [TicketObject] = []
     var ticketsToOrder: [TicketOrderObject] = []
     var loading = UIActivityIndicatorView()
     
@@ -149,35 +144,44 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TicketDetailsVC: OrderEventDelegate {
-    func chooseTicket(with ticket: TicketObject, quantity: Int) {
+    func chooseTicket(with ticket: TicketObject) {
         if  let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice + (ticket.price ?? 0)).toString()
-            print(quantity)
             
-            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
-                return element.idTicket == ticket.id
-            }) {
-                self.ticketsToOrder[index].quantityBought = quantity
-            } else {
-                let orderTicket = TicketOrderObject()
-                orderTicket.idTicket = ticket.id
-                orderTicket.quantityBought = quantity
-                self.ticketsToOrder.append(orderTicket)
-            }
+//            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
+//                return element.idTicket == ticket.id
+//            }) {
+//                self.ticketsToOrder[index].quantityBought = quantity
+//            } else {
+//                let orderTicket = TicketOrderObject()
+//                orderTicket.idTicket = ticket.id
+//                orderTicket.quantityBought = quantity
+//                self.ticketsToOrder.append(orderTicket)
+//            }
+            let ticketToOrder = TicketOrderObject()
+            ticketToOrder.id = ticket.id
+            self.ticketsToOrder.append(ticketToOrder)
             
         }
     }
     
-    func unChooseTicket(with ticket: TicketObject, quantity: Int) {
+    func unChooseTicket(with ticket: TicketObject) {
         if let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice - (ticket.price ?? 0)).toString()
             
-            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
-                return ticket.id == element.idTicket
+//            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
+//                return ticket.id == element.idTicket
+//            }) {
+//                self.ticketsToOrder[index].quantityBought = quantity
+//                
+//                if quantity == 0 {
+//                    self.ticketsToOrder.remove(at: index)
+//                }
+//            }
+            if let ticket = self.ticketsToOrder.first(where: { (element) -> Bool in
+                return element.id == ticket.id
             }) {
-                self.ticketsToOrder[index].quantityBought = quantity
-                
-                if quantity == 0 {
+                if let index = self.ticketsToOrder.index(of: ticket) {
                     self.ticketsToOrder.remove(at: index)
                 }
             }

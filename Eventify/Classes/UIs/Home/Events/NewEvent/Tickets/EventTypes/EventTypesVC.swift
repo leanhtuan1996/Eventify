@@ -39,7 +39,7 @@ class EventTypesVC: UIViewController {
         self.view.alpha = 0.0
         UIView.animate(withDuration: 0.25, animations: {
             self.view.alpha = 1.0
-            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.view.transform = CGAffineTransform.identity
         })
     }
     
@@ -52,7 +52,7 @@ class EventTypesVC: UIViewController {
             if finished
             {
                 print("QUIT")
-                self.willMove(toParentViewController: nil)
+                self.didMove(toParentViewController: nil)
                 self.view.removeFromSuperview()
                 self.removeFromParentViewController()
             }

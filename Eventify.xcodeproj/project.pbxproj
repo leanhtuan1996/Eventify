@@ -71,6 +71,9 @@
 		36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */; };
 		36EC9A611FD63CF900447EAB /* LikedEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC9A5F1FD63CF900447EAB /* LikedEventsCell.swift */; };
 		36EC9A621FD63CF900447EAB /* LikedEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC9A601FD63CF900447EAB /* LikedEventsCell.xib */; };
+		36EC9A681FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC9A661FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift */; };
+		36EC9A691FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC9A671FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib */; };
+		36EC9A6B1FD7D1D600447EAB /* DetailTicketsOrderedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC9A6A1FD7D1D600447EAB /* DetailTicketsOrderedVC.swift */; };
 		36F111A81FA9B0AF00B97951 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A01FA9B0AF00B97951 /* Duration.swift */; };
 		36F111A91FA9B0AF00B97951 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A11FA9B0AF00B97951 /* Int+Timepiece.swift */; };
 		36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F111A21FA9B0AF00B97951 /* NSCalendar+Timepiece.swift */; };
@@ -613,6 +616,9 @@
 		36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveEventProtocol.swift; sourceTree = "<group>"; };
 		36EC9A5F1FD63CF900447EAB /* LikedEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedEventsCell.swift; sourceTree = "<group>"; };
 		36EC9A601FD63CF900447EAB /* LikedEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikedEventsCell.xib; sourceTree = "<group>"; };
+		36EC9A661FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTicketsOrderedCell.swift; sourceTree = "<group>"; };
+		36EC9A671FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTicketsOrderedCell.xib; sourceTree = "<group>"; };
+		36EC9A6A1FD7D1D600447EAB /* DetailTicketsOrderedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTicketsOrderedVC.swift; sourceTree = "<group>"; };
 		36F111A01FA9B0AF00B97951 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		36F111A11FA9B0AF00B97951 /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
 		36F111A21FA9B0AF00B97951 /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
@@ -700,6 +706,7 @@
 		36147DC61FB05393004F38DD /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
+				36EC9A641FD7D18F00447EAB /* DetailTicketsOrdered */,
 				36147DCC1FB05403004F38DD /* TicketsOrderedCell */,
 			);
 			path = Tickets;
@@ -1794,6 +1801,24 @@
 			path = LikedEventsCell;
 			sourceTree = "<group>";
 		};
+		36EC9A641FD7D18F00447EAB /* DetailTicketsOrdered */ = {
+			isa = PBXGroup;
+			children = (
+				36EC9A651FD7D19000447EAB /* DetailTicketsOrderedCell */,
+				36EC9A6A1FD7D1D600447EAB /* DetailTicketsOrderedVC.swift */,
+			);
+			path = DetailTicketsOrdered;
+			sourceTree = "<group>";
+		};
+		36EC9A651FD7D19000447EAB /* DetailTicketsOrderedCell */ = {
+			isa = PBXGroup;
+			children = (
+				36EC9A661FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift */,
+				36EC9A671FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib */,
+			);
+			path = DetailTicketsOrderedCell;
+			sourceTree = "<group>";
+		};
 		36F1119E1FA9B0AF00B97951 /* WWCalendarTimeSelector */ = {
 			isa = PBXGroup;
 			children = (
@@ -2091,6 +2116,7 @@
 			files = (
 				36F111AE1FA9B0AF00B97951 /* WWCalendarTimeSelector.storyboard in Resources */,
 				36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */,
+				36EC9A691FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib in Resources */,
 				36147DCB1FB053CE004F38DD /* TicketsOrdered.storyboard in Resources */,
 				36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */,
 				367F3BFA1F7E34EB002222EB /* Main.storyboard in Resources */,
@@ -2221,6 +2247,7 @@
 				36F111A81FA9B0AF00B97951 /* Duration.swift in Sources */,
 				362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */,
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
+				36EC9A681FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift in Sources */,
 				367F3BFD1F7E3537002222EB /* UserObject.swift in Sources */,
 				36F28DA51FAD718B000A5359 /* OrderEventDelegate.swift in Sources */,
 				36EC9A611FD63CF900447EAB /* LikedEventsCell.swift in Sources */,
@@ -2255,6 +2282,7 @@
 				36001B061F8747C40031A1EE /* TypeEventServices.swift in Sources */,
 				36F111AF1FA9B0AF00B97951 /* WWCalendarTimeSelector.swift in Sources */,
 				36F111A91FA9B0AF00B97951 /* Int+Timepiece.swift in Sources */,
+				36EC9A6B1FD7D1D600447EAB /* DetailTicketsOrderedVC.swift in Sources */,
 				369F75001FD5439100126F68 /* TypeObject.swift in Sources */,
 				367F3BF41F7E34EB002222EB /* Extensions+UINavigationController.swift in Sources */,
 				36F111AA1FA9B0AF00B97951 /* NSCalendar+Timepiece.swift in Sources */,

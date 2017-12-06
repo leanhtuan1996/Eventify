@@ -1287,6 +1287,55 @@
             </objects>
             <point key="canvasLocation" x="4446" y="2367"/>
         </scene>
+        <!--Detail Tickets OrderedVC-->
+        <scene sceneID="opf-bL-KOp">
+            <objects>
+                <viewController storyboardIdentifier="DetailTicketsOrderedVC" id="BOH-eN-TZQ" customClass="DetailTicketsOrderedVC" customModule="Eventify" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oMS-1X-KI5"/>
+                        <viewControllerLayoutGuide type="bottom" id="wAL-wL-CDm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6hA-eh-7Xc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcn-5Z-3wx">
+                                <rect key="frame" x="5" y="30" width="44" height="34"/>
+                                <state key="normal" title="Đóng"/>
+                                <connections>
+                                    <action selector="btnReturnClicked:" destination="BOH-eN-TZQ" eventType="touchUpInside" id="aj8-IN-eCA"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ksv-iI-Efl">
+                                <rect key="frame" x="0.0" y="69" width="375" height="598"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oTQ-V0-8No">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ksv-iI-Efl" firstAttribute="top" secondItem="Gcn-5Z-3wx" secondAttribute="bottom" constant="5" id="5fR-bF-MBv"/>
+                            <constraint firstItem="ksv-iI-Efl" firstAttribute="leading" secondItem="6hA-eh-7Xc" secondAttribute="leading" id="D0n-Ne-az3"/>
+                            <constraint firstAttribute="trailing" secondItem="ksv-iI-Efl" secondAttribute="trailing" id="IX9-TO-6QV"/>
+                            <constraint firstItem="Gcn-5Z-3wx" firstAttribute="leading" secondItem="6hA-eh-7Xc" secondAttribute="leading" constant="5" id="ZSF-pZ-yAo"/>
+                            <constraint firstItem="Gcn-5Z-3wx" firstAttribute="top" secondItem="oMS-1X-KI5" secondAttribute="bottom" constant="10" id="ePY-fH-8pr"/>
+                            <constraint firstAttribute="bottom" secondItem="ksv-iI-Efl" secondAttribute="bottom" id="lT7-4o-e7W"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionTickets" destination="ksv-iI-Efl" id="gAN-GG-uLp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AdT-A2-NLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3606" y="3045"/>
+        </scene>
         <!--New TicketVC-->
         <scene sceneID="zRj-lV-NSe">
             <objects>

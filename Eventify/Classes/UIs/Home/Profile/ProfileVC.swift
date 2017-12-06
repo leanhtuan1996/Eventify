@@ -63,6 +63,12 @@ class ProfileVC: UIViewController {
         }
     }
     
+    override func didMove(toParentViewController parent: UIViewController?) {
+        UIView.animate(withDuration: 0.3) { 
+            self.tabBarController?.tabBar.isHidden = false
+        }        
+    }
+    
     // MARK: - ACTIONS
     
     @IBAction func btnEditProfileClicked(_ sender: Any) {
@@ -96,7 +102,14 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.lblTotalTickets.text = "\(orders[indexPath.row].ticketsOrder?.count ?? 0) vé"
+            if let ticketsOrder = orders[indexPath.row].ticketsOrder {
+                cell.lblTotalTickets.text = "\(ticketsOrder.count.toString()) vé"
+                
+            } else {
+                cell.lblTotalTickets.text = "0 vé"
+            }
+            
+            
             cell.lblLocation.text = orders[indexPath.row].event?.address?.address
             cell.lblNameEvent.text = orders[indexPath.row].event?.name
             cell.lblTimeStart.text = orders[indexPath.row].event?.timeStart?.toTimestampString()
@@ -150,6 +163,21 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             guard let orders = user.orders else {
                 return
             }
+            
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailTicketsOrderedVC") as? DetailTicketsOrderedVC else {
+                return
+            }
+            
+            vc.order = orders[indexPath.row]
+            
+            self.addChildViewController(vc)
+            vc.view.frame = self.view.frame
+            self.view.addSubview(vc.view)
+            vc.didMove(toParentViewController: self)
+            
+            //self.present(vc, animated: true, completion: nil)
+            
+            
         default:
             guard let likes = user.liked, let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC else {
                 return

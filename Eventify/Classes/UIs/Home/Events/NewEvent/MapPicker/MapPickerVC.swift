@@ -169,7 +169,6 @@ extension MapPickerVC: GMSMapViewDelegate, CLLocationManagerDelegate {
                 print(error)
                 return
             }
-            print(address?.toJSON())
             if let address = address {
                 self.showAddressPickerAlert(with: address)
             }

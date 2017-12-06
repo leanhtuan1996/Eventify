@@ -53,7 +53,7 @@ class UserServices: NSObject {
         socket.emit("get-informations", with: [token])
         
         socket.once("get-informations") { (data, ack) in
-            print(data)
+            //print(data)
         }
     }
     

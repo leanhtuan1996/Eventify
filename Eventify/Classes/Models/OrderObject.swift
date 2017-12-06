@@ -24,13 +24,22 @@ class OrderObject: NSObject, Glossy {
     }
     
     required init?(json: JSON) {
-        
+                
         //Id has not nil
         guard let id: String = "_id" <~~ json else {
             return nil
         }
         self.id = id
         
+        if let informations: JSON = "informations" <~~ json {
+            if let phoneNumber = informations["phoneNumber"] as? Int {
+                self.phoneNumber = phoneNumber.toString()
+            }
+            
+            if let fullName = informations["fullName"] as? String {
+                self.fullName = fullName
+            }
+        }
         
         //orders
         if let orderBy: UserObject = "orderby" <~~ json {
@@ -52,12 +61,6 @@ class OrderObject: NSObject, Glossy {
         if let event: EventObject = "event" <~~ json {
             self.event = event
         }
-        
-        //display fullName
-        self.fullName = "fullName" <~~ json
-        
-        //phoneNumber
-        self.phoneNumber = "phoneNumber" <~~ json
     }
     
     //to json

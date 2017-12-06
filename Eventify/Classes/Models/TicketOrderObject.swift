@@ -11,8 +11,6 @@ import Gloss
 
 class TicketOrderObject: NSObject, Glossy {
     var id: String
-    var idTicket: String?
-    var quantityBought: Int?
     var QRCodeImgPath: String?
     
     override init() {
@@ -28,20 +26,15 @@ class TicketOrderObject: NSObject, Glossy {
         
         self.id = id
         
-        self.idTicket = "idTicket" <~~ json
-        
-        self.quantityBought = "quantity" <~~ json
-        
-        self.QRCodeImgPath = "QRCodeImgPath" <~~ json
+        self.QRCodeImgPath = "QRCode" <~~ json
     }
     
     //to json
     func toJSON() -> JSON? {
         
         return jsonify([
-            "idTicket" ~~> self.idTicket,
-            "quantity" ~~> self.quantityBought,
-            "QRCodeImgPath" ~~> self.QRCodeImgPath
+            "id" ~~> self.id,
+            "QRCode" ~~> self.QRCodeImgPath
             ])
     }
     

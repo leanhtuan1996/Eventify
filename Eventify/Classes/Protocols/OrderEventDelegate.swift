@@ -9,6 +9,6 @@
 import Foundation
 
 protocol OrderEventDelegate {
-    func chooseTicket(with ticket: TicketObject, quantity: Int) -> Void
-    func unChooseTicket(with ticket: TicketObject, quantity: Int) -> Void
+    func chooseTicket(with ticket: TicketObject) -> Void
+    func unChooseTicket(with ticket: TicketObject) -> Void
 }

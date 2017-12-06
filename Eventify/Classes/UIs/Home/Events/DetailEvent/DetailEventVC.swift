@@ -69,6 +69,7 @@ class DetailEventVC: UIViewController {
     }
     
     func loadEvent(withId id: String) {
+        self.loading.showLoadingDialog(self)
         EventServices.shared.getEvent(withId: id) { (event, error) in
             if let error = error {
                 self.showAlert(error, title: "Loading event has been failed", buttons: nil);
@@ -86,6 +87,11 @@ class DetailEventVC: UIViewController {
     }
     
     func handlerEvent(withEvent event: EventObject) {
+        
+        if !self.loading.isAnimating {
+            self.loading.showLoadingDialog(self)
+        }
+        
         if let photoUrl = event.photoCoverPath {
             self.imgCover.downloadedFrom(link: photoUrl)
         }
@@ -152,6 +158,8 @@ class DetailEventVC: UIViewController {
             self.lblEmail.text = "\(user.email ?? "Không rõ")"
             
         }
+        
+        self.loading.stopAnimating()
     }
     
     func openMaps() {

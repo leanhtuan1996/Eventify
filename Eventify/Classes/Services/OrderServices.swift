@@ -36,8 +36,6 @@ class OrderServices: NSObject {
                     return completionHandler("Data is empty")
                 }
                 
-                print(json)
-                
                 guard let order = OrderObject(json: json[0]) else {
                     return completionHandler("Convert json to object has been failed")
                 }
@@ -109,13 +107,15 @@ class OrderServices: NSObject {
                     return
                 }
                 
-                //print(json)
+                print(json)
                 
                 //try parse from json to object
                 guard let orders = [OrderObject].from(jsonArray: json) else {
                     completionHandler?("Path not found")
                     return
                 }
+                
+                print(orders[0].fullName)
                 
                 UserManager.shared.currentUser?.orders = orders
                 
