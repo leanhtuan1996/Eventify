@@ -44,12 +44,6 @@ class TicketDetailsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.setTranslucent(isTranslucent: true)
     }
-    //
-    //    override func viewWillDisappear(_ animated: Bool) {
-    //        self.navigationItem.title = ""
-    //        self.navigationController?.setTranslucent(isTranslucent: false)
-    //        self.tabBarController?.tabBar.isHidden = false
-    //    }
     
     func handlerInformations() {
         self.loading.showLoadingDialog(self)
@@ -147,17 +141,6 @@ extension TicketDetailsVC: OrderEventDelegate {
     func chooseTicket(with ticket: TicketObject) {
         if  let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice + (ticket.price ?? 0)).toString()
-            
-//            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
-//                return element.idTicket == ticket.id
-//            }) {
-//                self.ticketsToOrder[index].quantityBought = quantity
-//            } else {
-//                let orderTicket = TicketOrderObject()
-//                orderTicket.idTicket = ticket.id
-//                orderTicket.quantityBought = quantity
-//                self.ticketsToOrder.append(orderTicket)
-//            }
             let ticketToOrder = TicketOrderObject()
             ticketToOrder.id = ticket.id
             self.ticketsToOrder.append(ticketToOrder)
@@ -169,15 +152,6 @@ extension TicketDetailsVC: OrderEventDelegate {
         if let totalPriceString = self.lblTotalPrice.text, let totalPrice = totalPriceString.toInt() {
             self.lblTotalPrice.text = (totalPrice - (ticket.price ?? 0)).toString()
             
-//            if let index = self.ticketsToOrder.index(where: { (element) -> Bool in
-//                return ticket.id == element.idTicket
-//            }) {
-//                self.ticketsToOrder[index].quantityBought = quantity
-//                
-//                if quantity == 0 {
-//                    self.ticketsToOrder.remove(at: index)
-//                }
-//            }
             if let ticket = self.ticketsToOrder.first(where: { (element) -> Bool in
                 return element.id == ticket.id
             }) {

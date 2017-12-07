@@ -13,6 +13,7 @@ import ZaloSDK
 import ZaloSDKCoreKit
 import GooglePlaces
 import GoogleMaps
+import Reachability
 
 
 @UIApplicationMain
@@ -20,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var orientationLock = UIInterfaceOrientationMask.portrait
-
+    let reachability = Reachability()!
+    
     override init() {
         //FirebaseApp.configure()
         //Database.database().isPersistenceEnabled = true
@@ -30,10 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")
         
         //ZaloSDK.sharedInstance().initialize(withAppId: "3201380157403447726")
+        
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //detect lost connection with server
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        
+        do{
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -102,6 +114,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordVC") as? ForgotPasswordVC {
             self.window?.rootViewController = vc
         }
+    }
+    
+    func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi, .cellular:
+            hideNotiLostConnection()
+        case .none:
+            showNotiLostConnection()
+        }
+    }
+    
+    func showNotiLostConnection() {
+//        if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
+//            vc.view.frame = self.view.frame
+//            self.view.addSubview(vc.view)
+//        }
+    }
+    
+    func hideNotiLostConnection() {
+        print("CONNECTED")
     }
 
 }

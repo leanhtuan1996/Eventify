@@ -8,6 +8,7 @@
 
 import UIKit
 import Dollar
+import Reachability
 
 class DiscoverVC: UIViewController {
     
@@ -119,8 +120,15 @@ class DiscoverVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tblEvents.reloadData()
+        
+//        if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
+//            if let tabBar = self.tabBarController {
+//                tabBar.addChildViewController(vc)
+//                vc.view.frame = tabBar.view.frame
+//                tabBar.view.addSubview(vc.view)
+//            }
+//        }
     }
-    
     
     @IBAction func btnEventsClicked(_ sender: Any) {
         btnEvents.backgroundColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)

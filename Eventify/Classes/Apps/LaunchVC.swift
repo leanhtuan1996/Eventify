@@ -10,43 +10,38 @@ import UIKit
 
 class LaunchVC: UIViewController {
     
+    @IBOutlet weak var imgLogo: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TicketManager.shared.deleteTickets()
-        
-        //EventServices.shared.deleteEvents()
-        
-        //UserServices.shared.deleteUsers()
-        
-        //UserServices.shared.signOut()
-        
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            
-            SocketIOServices.shared.establishConnection {
-                UserManager.shared.verifyToken({ (error) in
-                    
-                    if let error = error {
-                        print(error)
-                        appDelegate.showSignInView()
-                    } else {
-                        appDelegate.showMainView()
-                    }
-                })
             }
-            
-            //Listen
-            //UserServices.shared.isLoggedIn(completionHandler: { (error) in
-                
-                //                print("ISLOGGEDIN")
-                //                if let _ = error {
-                //                    appDelegate.showSignInView()
-                //
-                //
-                //                }
-                //                else {
-                //                    appDelegate.showMainView()
-                //                }
-            //})
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            SocketIOServices.shared.establishConnection(completionHandler: { (error) in
+                if error == nil {
+                    UserManager.shared.verifyToken({ (error) in
+                        self.hideVC(appDelegate, error)
+                    })
+                } else {
+                    self.hideVC(appDelegate, error)
+                }
+            })
         }
     }
+    
+    func hideVC(_ appDelegate: AppDelegate, _ error: String?) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut, .curveLinear], animations: {
+            self.imgLogo.transform = CGAffineTransform(scaleX: 10, y: 10)
+            self.imgLogo.backgroundColor = UIColor.clear.withAlphaComponent(1)
+        }) { (finish) in
+            if error != nil {
+                appDelegate.showSignInView()
+            } else {
+                appDelegate.showMainView()
+            }
+        }
+    }
+    
+    
 }

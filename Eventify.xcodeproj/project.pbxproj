@@ -69,6 +69,8 @@
 		36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */; };
 		36B7623A1F7FB2CB009D3BE9 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */; };
 		36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */; };
+		36D471511FD91B010056792B /* Dialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D471501FD91B010056792B /* Dialog.storyboard */; };
+		36D471531FD91F900056792B /* DialogNetworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D471521FD91F900056792B /* DialogNetworkVC.swift */; };
 		36EC9A611FD63CF900447EAB /* LikedEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC9A5F1FD63CF900447EAB /* LikedEventsCell.swift */; };
 		36EC9A621FD63CF900447EAB /* LikedEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC9A601FD63CF900447EAB /* LikedEventsCell.xib */; };
 		36EC9A681FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC9A661FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift */; };
@@ -614,6 +616,8 @@
 		36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		36B762391F7FB2CB009D3BE9 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
 		36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveEventProtocol.swift; sourceTree = "<group>"; };
+		36D471501FD91B010056792B /* Dialog.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dialog.storyboard; sourceTree = "<group>"; };
+		36D471521FD91F900056792B /* DialogNetworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogNetworkVC.swift; sourceTree = "<group>"; };
 		36EC9A5F1FD63CF900447EAB /* LikedEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedEventsCell.swift; sourceTree = "<group>"; };
 		36EC9A601FD63CF900447EAB /* LikedEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikedEventsCell.xib; sourceTree = "<group>"; };
 		36EC9A661FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTicketsOrderedCell.swift; sourceTree = "<group>"; };
@@ -1628,6 +1632,7 @@
 		367F3BDF1F7E34EB002222EB /* UIs */ = {
 			isa = PBXGroup;
 			children = (
+				36D4714F1FD91ACC0056792B /* Dialogs */,
 				367F3BE01F7E34EB002222EB /* ForgotPassword */,
 				367F3BE11F7E34EB002222EB /* Home */,
 				367F3BE21F7E34EB002222EB /* SignIn */,
@@ -1687,6 +1692,7 @@
 				367F3BE91F7E34EB002222EB /* Main.storyboard */,
 				36F28D7E1FAC4700000A5359 /* Order.storyboard */,
 				36147DCA1FB053CE004F38DD /* TicketsOrdered.storyboard */,
+				36D471501FD91B010056792B /* Dialog.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1782,6 +1788,14 @@
 				3651ADAA1FAA1BA500D91954 /* DescriptionEditorVC.swift */,
 			);
 			path = DescriptionEditor;
+			sourceTree = "<group>";
+		};
+		36D4714F1FD91ACC0056792B /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				36D471521FD91F900056792B /* DialogNetworkVC.swift */,
+			);
+			path = Dialogs;
 			sourceTree = "<group>";
 		};
 		36EC9A5D1FD63CD000447EAB /* Liked */ = {
@@ -2121,6 +2135,7 @@
 				36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */,
 				367F3BFA1F7E34EB002222EB /* Main.storyboard in Resources */,
 				36EC9A621FD63CF900447EAB /* LikedEventsCell.xib in Resources */,
+				36D471511FD91B010056792B /* Dialog.storyboard in Resources */,
 				3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */,
 				362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */,
 				36147DD21FB05425004F38DD /* TicketsOrderedCell.xib in Resources */,
@@ -2189,6 +2204,7 @@
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HanekeSwift/Haneke.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RichEditorView/RichEditorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
@@ -2206,6 +2222,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichEditorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
@@ -2232,6 +2249,7 @@
 				367F3BEC1F7E34EB002222EB /* AppDelegate.swift in Sources */,
 				362C5E051F8094800033F9DB /* NewTicketVC.swift in Sources */,
 				362260011FA1A0D000B2BE4C /* EventProtocols.swift in Sources */,
+				36D471531FD91F900056792B /* DialogNetworkVC.swift in Sources */,
 				36F28DB31FAD91D8000A5359 /* TicketServices.swift in Sources */,
 				367F3C0E1F7E35FD002222EB /* ProfileVC.swift in Sources */,
 				36F111AB1FA9B0AF00B97951 /* NSDate+Timepiece.swift in Sources */,

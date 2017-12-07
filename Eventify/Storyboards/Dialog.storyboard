@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17B1003" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Dialog NetworkVC-->
+        <scene sceneID="ZEm-xJ-952">
+            <objects>
+                <viewController storyboardIdentifier="DialogNetworkVC" id="0dN-3S-YpL" customClass="DialogNetworkVC" customModule="Eventify" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="52m-fP-C6v"/>
+                        <viewControllerLayoutGuide type="bottom" id="rfL-vL-h12"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FNv-Jg-aWu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEb-sU-QKe">
+                                <rect key="frame" x="112.5" y="283.5" width="150" height="100"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0C1-Hn-BH4">
+                                        <rect key="frame" x="54.5" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="6qs-0k-hMd"/>
+                                            <constraint firstAttribute="height" constant="40" id="FD5-BU-DvI"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mất kết nối tới máy chủ, đang cố kết nối lại..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uu5-mP-LXQ">
+                                        <rect key="frame" x="10" y="35" width="130" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="g2b-fa-BBP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="0C1-Hn-BH4" firstAttribute="top" secondItem="BEb-sU-QKe" secondAttribute="top" id="4Eu-Lk-6AY"/>
+                                    <constraint firstAttribute="height" constant="100" id="B5h-by-ROz"/>
+                                    <constraint firstItem="0C1-Hn-BH4" firstAttribute="centerX" secondItem="BEb-sU-QKe" secondAttribute="centerX" id="PB5-NU-FSR"/>
+                                    <constraint firstItem="Uu5-mP-LXQ" firstAttribute="leading" secondItem="BEb-sU-QKe" secondAttribute="leading" constant="10" id="TWm-Pn-S8P"/>
+                                    <constraint firstAttribute="width" constant="150" id="Tb5-JQ-Qbu"/>
+                                    <constraint firstItem="Uu5-mP-LXQ" firstAttribute="centerX" secondItem="BEb-sU-QKe" secondAttribute="centerX" id="Yc8-R7-gMT"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uu5-mP-LXQ" secondAttribute="bottom" constant="5" id="YwD-Ji-JsL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uu5-mP-LXQ" secondAttribute="trailing" constant="10" id="re7-64-ZxZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BEb-sU-QKe" firstAttribute="centerX" secondItem="FNv-Jg-aWu" secondAttribute="centerX" id="OMQ-Fe-WVl"/>
+                            <constraint firstItem="BEb-sU-QKe" firstAttribute="centerY" secondItem="FNv-Jg-aWu" secondAttribute="centerY" id="bUk-KR-45S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="viewDialog" destination="BEb-sU-QKe" id="v8x-sr-xUT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KAL-J1-qfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47" y="122"/>
+        </scene>
+    </scenes>
+</document>

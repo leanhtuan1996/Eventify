@@ -18,15 +18,16 @@ class SocketIOServices: NSObject {
     let socket = SocketIOClient(socketURL: URL(string: baseUrl)!, config: [SocketIOClientConfiguration.Element.reconnects(true), SocketIOClientConfiguration.Element.reconnectAttempts(120), SocketIOClientConfiguration.Element.reconnectWait(3), SocketIOClientConfiguration.Element.compress, SocketIOClientConfiguration.Element.nsp("/")])
     
     
-    func establishConnection(completionHandler: (() -> Void)? = nil) {
+    func establishConnection(completionHandler: ((_ error: String?) -> Void)? = nil) {
         
-        if isConnected() { completionHandler?(); return }
+        if isConnected() { completionHandler?(nil); return }
         
-        socket.connect()
+        socket.connect(timeoutAfter: 10.0) { 
+            completionHandler?("Connect to server has been failed!")
+        }
         
         socket.once("joined") { (data, ack) in
-            print("CONNECTED")
-            completionHandler?()
+            completionHandler?(nil)
             return
         }
     }

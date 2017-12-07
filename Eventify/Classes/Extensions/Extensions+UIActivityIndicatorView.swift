@@ -11,12 +11,12 @@ import UIKit
 extension UIActivityIndicatorView {
     
     func showLoadingDialog(_ toVC: UIViewController) {
-        
         self.activityIndicatorViewStyle = .whiteLarge
         self.color = UIColor.white
-        toVC.view.addSubview(self)
-        self.frame = toVC.view.bounds
-        self.center = toVC.view.center
+        toVC.tabBarController?.view.addSubview(self)
+        //toVC.view.addSubview(self)
+        self.frame = toVC.tabBarController?.view.bounds ?? toVC.view.bounds
+        self.center = toVC.tabBarController?.view.center ?? toVC.view.center
         self.backgroundColor = UIColor.clear.withAlphaComponent(0.3)
         self.startAnimating()
     }

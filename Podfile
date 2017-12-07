@@ -48,4 +48,7 @@ target 'Eventify' do
     
     #Pod for socket.io
      pod 'Socket.IO-Client-Swift', '~> 11.1.3'
+     
+     #pod for detect available network
+     pod 'ReachabilitySwift'
 end

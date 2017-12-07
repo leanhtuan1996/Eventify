@@ -36,8 +36,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="YkS-ff-Ax0">
                                 <rect key="frame" x="100" y="105" width="175" height="175"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="Glf-yb-waZ"/>
-                                    <constraint firstAttribute="height" constant="175" id="oEl-b4-TjT"/>
+                                    <constraint firstAttribute="width" constant="175" id="10B-Ra-ZJY"/>
+                                    <constraint firstAttribute="height" constant="175" id="qhm-2Z-TiG"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eventify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l76-3D-eH6">
@@ -49,16 +49,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FR4-9g-88k" secondAttribute="bottom" id="KYe-Fi-1i0"/>
-                            <constraint firstAttribute="trailing" secondItem="FR4-9g-88k" secondAttribute="trailing" id="Sdy-CG-9f7"/>
-                            <constraint firstItem="YkS-ff-Ax0" firstAttribute="centerX" secondItem="FR4-9g-88k" secondAttribute="centerX" id="ShV-j6-ttY"/>
-                            <constraint firstItem="FR4-9g-88k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Xcy-Im-K74"/>
-                            <constraint firstItem="FR4-9g-88k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b19-SH-LXI"/>
-                            <constraint firstItem="YkS-ff-Ax0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="85" id="bth-b1-aj4"/>
-                            <constraint firstItem="l76-3D-eH6" firstAttribute="top" secondItem="YkS-ff-Ax0" secondAttribute="bottom" constant="30" id="hhQ-0C-9nw"/>
-                            <constraint firstItem="l76-3D-eH6" firstAttribute="centerX" secondItem="YkS-ff-Ax0" secondAttribute="centerX" id="jYL-S9-3VA"/>
+                            <constraint firstItem="YkS-ff-Ax0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="85" id="Fu4-VZ-kG7"/>
+                            <constraint firstItem="YkS-ff-Ax0" firstAttribute="centerX" secondItem="FR4-9g-88k" secondAttribute="centerX" id="NUM-uh-nWZ"/>
+                            <constraint firstAttribute="trailing" secondItem="FR4-9g-88k" secondAttribute="trailing" id="Q9d-hr-u6c"/>
+                            <constraint firstItem="l76-3D-eH6" firstAttribute="top" secondItem="YkS-ff-Ax0" secondAttribute="bottom" constant="30" id="Ra0-Kr-rNj"/>
+                            <constraint firstItem="FR4-9g-88k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wij-9P-SUz"/>
+                            <constraint firstItem="FR4-9g-88k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ulg-BT-Tit"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FR4-9g-88k" secondAttribute="bottom" id="wO3-xs-4b8"/>
+                            <constraint firstItem="l76-3D-eH6" firstAttribute="centerX" secondItem="YkS-ff-Ax0" secondAttribute="centerX" id="z23-tq-kiB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imgLogo" destination="YkS-ff-Ax0" id="D4P-Pu-wjG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
