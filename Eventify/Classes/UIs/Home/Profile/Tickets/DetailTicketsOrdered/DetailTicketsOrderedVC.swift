@@ -97,6 +97,24 @@ extension DetailTicketsOrderedVC: UICollectionViewDelegate, UICollectionViewData
         cell.lblNameOfCreated.text = order.event?.createdBy?.fullName ?? "Không rõ"
         cell.lblNumberOfTickets.text = "Ticket \(indexPath.row + 1) of \(order.ticketsOrder?.count ?? 0)"
         
+        var name: String?
+        
+        for ticket in order.event?.tickets ?? [] {
+            if ticket.id == order.ticketsOrder?[indexPath.row].id  ?? "" {
+                name = ticket.name
+                break
+            }
+        }
+//        
+//        order.event?.tickets?.forEach({ (ticket) in
+//            if ticket.id == order.ticketsOrder?[indexPath.row].id  ?? "" {
+//                name = ticket.name
+//                break
+//            }
+//        })
+        
+        cell.lblNameOfTicket.text = name ?? "Không rõ"
+        
         return cell
     }
     
