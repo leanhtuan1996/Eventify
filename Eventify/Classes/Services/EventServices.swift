@@ -53,9 +53,40 @@ class EventServices: NSObject {
         }
     }
     
-    func getMoreEvents(completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void ) {
+    func getMoreEvents(_ from: Int, completionHandler: @escaping(_ events: [EventObject]?, _ error: String?) -> Void ) {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler(nil, "Token not found")
+        }
         
-        
+        socketEvent.emit("get-more-events", with: [from, token])
+        socketEvent.off("get-more-events")
+        socketEvent.on("get-more-events") { (data, ack) in
+            
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                //print(json)
+                
+                if json[0].isEmpty {
+                    return completionHandler([], nil)
+                }
+                
+                //print(json)
+                
+                //try parse from json to object
+                guard let events = [EventObject].from(jsonArray: json) else {
+                    return completionHandler(nil, "Path not found")
+                }
+                
+                return completionHandler(events, nil)
+            })
+        }
     }
     
     //Done

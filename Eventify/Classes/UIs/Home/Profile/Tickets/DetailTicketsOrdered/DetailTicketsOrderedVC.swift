@@ -127,7 +127,7 @@ extension DetailTicketsOrderedVC: UICollectionViewDelegate, UICollectionViewData
         targetContentOffset.pointee = scrollView.contentOffset
         
         let pageWidth = Float(self.view.bounds.width)
-        let minSpace: Float = 10.0
+        let minSpace: Float = 5.0
         let cellToSwipe: Double = Double(Float((scrollView.contentOffset.x))/Float(pageWidth+minSpace)) + Double(0.5)
         
         let newIndexPath = IndexPath(row: Int(cellToSwipe), section:0)

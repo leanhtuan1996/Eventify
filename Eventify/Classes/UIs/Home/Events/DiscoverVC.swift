@@ -93,23 +93,22 @@ class DiscoverVC: UIViewController {
     }
     
     func loadMoreEvents() {
-        //        EventServices.shared.getMoreEvents(completionHandler: { (events, error) in
-        //
-        //            if let error = error {
-        //                print(error)
-        //                return
-        //            }
-        //
-        //            if let events = events {
-        //                if events.count == 0 { return }
-        //
-        //                events.forEach({ (event) in
-        //                    self.events.append(event)
-        //                })
-        //
-        //                self.tblEvents.reloadData()
-        //            }
-        //        })
+        EventServices.shared.getMoreEvents(self.events.count, completionHandler: { (events, error) in
+            
+//            if let error = error {
+//                return
+//            }
+            
+            if let events = events {
+                if events.count == 0 { return }
+                
+                events.forEach({ (event) in
+                    self.events.append(event)
+                })
+                
+                self.tblEvents.reloadData()
+            }
+        })
     }
     
     
@@ -121,13 +120,13 @@ class DiscoverVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tblEvents.reloadData()
         
-//        if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
-//            if let tabBar = self.tabBarController {
-//                tabBar.addChildViewController(vc)
-//                vc.view.frame = tabBar.view.frame
-//                tabBar.view.addSubview(vc.view)
-//            }
-//        }
+        //        if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
+        //            if let tabBar = self.tabBarController {
+        //                tabBar.addChildViewController(vc)
+        //                vc.view.frame = tabBar.view.frame
+        //                tabBar.view.addSubview(vc.view)
+        //            }
+        //        }
     }
     
     @IBAction func btnEventsClicked(_ sender: Any) {

@@ -15,7 +15,7 @@ class DetailEventVC: UIViewController {
     
     var idEvent: String!
     var event: EventObject?
-    var isLiked: Bool!
+    var isLiked: Bool = false
     let loading = UIActivityIndicatorView()
     
     @IBOutlet weak var imgPreviewMaps: UIImageView!

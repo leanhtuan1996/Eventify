@@ -221,7 +221,7 @@ class NewEventVC: UIViewController {
             self.showAlert("Vui lòng chọn loại sự kiện", title: "Thông báo", buttons: nil)
             return
         }
-        
+        self.loading.showLoadingDialog(self)
         EventServices.shared.addEvent(withEvent: newEvent) { (error) in
             self.loading.stopAnimating()
             if let error = error {
