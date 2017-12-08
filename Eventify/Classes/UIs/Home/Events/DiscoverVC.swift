@@ -10,6 +10,11 @@ import UIKit
 import Dollar
 import Reachability
 
+enum SelectedTypeEvents {
+    case allEvents
+    case previousEvents
+}
+
 class DiscoverVC: UIViewController {
     
     @IBOutlet weak var controlView: UIView!
@@ -19,9 +24,11 @@ class DiscoverVC: UIViewController {
     @IBOutlet weak var saparatorView: UIView!
     
     var events: [EventObject] = []
+    var prevEvents: [EventObject] = []
     var refreshControl: UIRefreshControl!
     var isLoadingMore = false
     var previousController: UIViewController?
+    var selectedTypeEvents: SelectedTypeEvents = .allEvents
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,8 @@ class DiscoverVC: UIViewController {
         setUpUI()
         
         loadEvents()
+        
+        loadPrevEvents()
     }
     
     func setUpUI() {
@@ -92,12 +101,22 @@ class DiscoverVC: UIViewController {
         }
     }
     
+    func loadPrevEvents() {
+        EventServices.shared.loadPreviousEvents { (events, error) in
+            if let error = error {
+                self.showAlert(error, title: "Loading events has been failed", buttons: nil)
+                return
+            }
+            
+            if let events = events {
+                self.prevEvents = events
+                self.tblEvents.reloadData()
+            }
+        }
+    }
+    
     func loadMoreEvents() {
         EventServices.shared.getMoreEvents(self.events.count, completionHandler: { (events, error) in
-            
-//            if let error = error {
-//                return
-//            }
             
             if let events = events {
                 if events.count == 0 { return }
@@ -111,6 +130,19 @@ class DiscoverVC: UIViewController {
         })
     }
     
+    func loadMorePreviousEvents() {
+        EventServices.shared.loadMorePreviousEvents(self.prevEvents.count) { (events, error) in
+            if let events = events {
+                if events.count == 0 { return }
+                
+                events.forEach({ (event) in
+                    self.prevEvents.append(event)
+                })
+                
+                self.tblEvents.reloadData()
+            }
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
@@ -119,14 +151,6 @@ class DiscoverVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tblEvents.reloadData()
-        
-        //        if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
-        //            if let tabBar = self.tabBarController {
-        //                tabBar.addChildViewController(vc)
-        //                vc.view.frame = tabBar.view.frame
-        //                tabBar.view.addSubview(vc.view)
-        //            }
-        //        }
     }
     
     @IBAction func btnEventsClicked(_ sender: Any) {
@@ -138,7 +162,14 @@ class DiscoverVC: UIViewController {
         btnPlaces.layer.zPosition = 99
         btnPlaces.setTitleColor(#colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1), for: UIControlState.normal)
         
+        if self.selectedTypeEvents == .allEvents {
+            return
+        }
+        
+        self.loadEvents()
+        self.selectedTypeEvents = .allEvents
     }
+    
     @IBAction func btnPlacesClicked(_ sender: Any) {
         btnPlaces.backgroundColor = #colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1)
         btnPlaces.layer.zPosition = 100
@@ -147,20 +178,42 @@ class DiscoverVC: UIViewController {
         btnEvents.backgroundColor = #colorLiteral(red: 0.9999160171, green: 1, blue: 0.9998719096, alpha: 1)
         btnEvents.layer.zPosition = 99
         btnEvents.setTitleColor(#colorLiteral(red: 0.6353397965, green: 0.6384146214, blue: 0.7479377389, alpha: 1), for: UIControlState.normal)
+        
+        if self.selectedTypeEvents == .previousEvents {
+            return
+        }
+        
+        self.loadPrevEvents()
+        self.selectedTypeEvents = .previousEvents
     }
-    
 }
 
 extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, InteractiveEventProtocol {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        switch self.selectedTypeEvents {
+        case .allEvents:
+            return self.events.count
+        default:
+            return self.prevEvents.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventsCell", for: indexPath) as? EventsCell else {
             return UITableViewCell()
         }
+        
+        var events: [EventObject] = []
+        
+        switch self.selectedTypeEvents {
+        case .allEvents:
+            events = self.events
+        default:
+            events = self.prevEvents
+        }
+        
         cell.contentView.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         cell.event = events[indexPath.row]
@@ -195,6 +248,15 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        var events: [EventObject] = []
+        
+        switch self.selectedTypeEvents {
+        case .allEvents:
+            events = self.events
+        default:
+            events = self.prevEvents
+        }
+        
         if let sb = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC {
             
             if let likes = UserManager.shared.currentUser?.liked {
@@ -207,7 +269,7 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
                 }
             }
             
-            sb.idEvent = self.events[indexPath.row].id
+            sb.idEvent = events[indexPath.row].id
             self.navigationController?.pushViewController(sb, animated: true)
             self.tabBarController?.hidesBottomBarWhenPushed = true
         }
@@ -221,7 +283,13 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if maximumOffset - currentOffset <= 200.0 {
-            self.loadMoreEvents()
+            
+            switch self.selectedTypeEvents {
+            case .allEvents:
+                self.loadMoreEvents()
+            default:
+                self.loadMorePreviousEvents()
+            }
         }
     }
     

@@ -89,6 +89,78 @@ class EventServices: NSObject {
         }
     }
     
+    func loadPreviousEvents(_ completionHandler: @escaping (_ events: [EventObject]?, _ error: String?) -> Void) {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler(nil, "Token not found")
+        }
+        
+        socketEvent.emit("get-previous-events", with: [token])
+        socketEvent.off("get-previous-events")
+        socketEvent.on("get-previous-events") { (data, ack) in
+            
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                //print(json)
+                
+                if json[0].isEmpty {
+                    return completionHandler([], nil)
+                }
+                
+                //print(json)
+                
+                //try parse from json to object
+                guard let events = [EventObject].from(jsonArray: json) else {
+                    return completionHandler(nil, "Path not found")
+                }
+                
+                return completionHandler(events, nil)
+            })
+        }
+    }
+    
+    func loadMorePreviousEvents(_ from: Int, _ completionHandler: @escaping (_ events: [EventObject]?, _ error: String?) -> Void) {
+        guard let token = UserManager.shared.currentUser?.token else {
+            return completionHandler(nil, "Token not found")
+        }
+        
+        socketEvent.emit("get-more-previous-events", with: [token])
+        socketEvent.off("get-more-previous-events")
+        socketEvent.on("get-more-previous-events") { (data, ack) in
+            
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                //print(json)
+                
+                if json[0].isEmpty {
+                    return completionHandler([], nil)
+                }
+                
+                //print(json)
+                
+                //try parse from json to object
+                guard let events = [EventObject].from(jsonArray: json) else {
+                    return completionHandler(nil, "Path not found")
+                }
+                
+                return completionHandler(events, nil)
+            })
+        }
+    }
+    
     //Done
     func getEvent(withId id: String, completionHandler: @escaping (_ event: EventObject?, _ error: String?) -> Void)  {
         guard let token = UserManager.shared.currentUser?.token else {
