@@ -44,7 +44,7 @@ class DiscoverVC: UIViewController {
         //pull to refresh
         refreshControl = UIRefreshControl()
         //refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(loadEvents), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         //tableview
         tblEvents.delegate = self
@@ -80,6 +80,15 @@ class DiscoverVC: UIViewController {
         self.tabBarController?.delegate = self
     }
     
+    func refresh() {
+        switch self.selectedTypeEvents {
+        case .allEvents:
+            loadEvents()
+        default:
+            loadPrevEvents()
+        }
+    }
+    
     func loadEvents() {
         EventServices.shared.getEvents { (events, error) in
             
@@ -104,6 +113,7 @@ class DiscoverVC: UIViewController {
     func loadPrevEvents() {
         EventServices.shared.loadPreviousEvents { (events, error) in
             if let error = error {
+                self.refreshControl.endRefreshing()
                 self.showAlert(error, title: "Loading events has been failed", buttons: nil)
                 return
             }
@@ -111,6 +121,7 @@ class DiscoverVC: UIViewController {
             if let events = events {
                 self.prevEvents = events
                 self.tblEvents.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
