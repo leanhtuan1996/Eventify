@@ -129,4 +129,46 @@ class TicketServices: NSObject {
             })
         }
     }
+    
+    func getTickets(withEvent id: String,_ completionHandler: @escaping (_ idEvent: String?, _ tickets: [TicketObject]?, _ error: String?) -> Void){
+        guard let token = UserManager.shared.currentUser?.token else {
+            print("User id not found")
+            return completionHandler(nil, nil, "User id not found")
+        }
+        
+        socket.emit("get-detail-tickets", with: [id, token])
+        
+        socket.off("get-detail-tickets")
+        
+        socket.on("get-detail-tickets") { (data, ack) in
+            
+            
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                
+                if let error = error {
+                    return completionHandler(nil, nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, nil, "Data is empty")
+                }
+                
+                
+                if json[0].isEmpty { return completionHandler(nil, [], nil) }
+                
+                guard let ticketsJson = json[0]["tickets"] as? [JSON], let idEvent = json[0]["event"] as? String else {
+                    return completionHandler(nil, nil, "Data is empty")
+                }
+                
+                //try parse from json to object
+                guard let tickets = [TicketObject].from(jsonArray: ticketsJson) else {
+                    return completionHandler(nil, nil, "Convert json to object has been failed")
+                }
+                
+                return completionHandler(idEvent, tickets, nil)
+                
+            })
+        }
+
+    }
 }

@@ -298,6 +298,18 @@ class DetailEventVC: UIViewController {
     }
     
     @IBAction func ticketDetailsClicked(_ sender: Any) {
+        
+        let currentTime = Date().timeIntervalSince1970
+        
+        if let timeEnd = self.event?.timeEnd {
+            if timeEnd <= currentTime.toInt() {
+                let returnAction = UIAlertAction(title: "Xem sự kiện khác", style: UIAlertActionStyle.default, handler: nil)
+                
+                self.showAlert("Thành thật xin lỗi bạn, sự kiện này đã kết thúc rồi!", title: "Sự kiện đã kết thúc", buttons: [returnAction])
+                return
+            }
+        }
+        
         if let vc = UIStoryboard(name: "Order", bundle: nil).instantiateViewController(withIdentifier: "TicketDetailsVC") as? TicketDetailsVC {
             
             vc.event = self.event

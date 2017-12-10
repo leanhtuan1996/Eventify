@@ -177,8 +177,12 @@ class DiscoverVC: UIViewController {
             return
         }
         
-        self.loadEvents()
         self.selectedTypeEvents = .allEvents
+        
+        
+        if self.events.count != 0 { self.tblEvents.reloadData(); return }
+        
+        self.loadEvents()
     }
     
     @IBAction func btnPlacesClicked(_ sender: Any) {
@@ -194,8 +198,11 @@ class DiscoverVC: UIViewController {
             return
         }
         
-        self.loadPrevEvents()
         self.selectedTypeEvents = .previousEvents
+        
+        if self.prevEvents.count != 0 { self.tblEvents.reloadData(); return }
+        
+        self.loadPrevEvents()
     }
 }
 
@@ -302,6 +309,9 @@ extension DiscoverVC: UITableViewDelegate, UITableViewDataSource, UITabBarContro
                 self.loadMorePreviousEvents()
             }
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

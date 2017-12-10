@@ -11,6 +11,7 @@ import UIKit
 class TicketDetailsVC: UIViewController {
     
     var event: EventObject?
+    var tickets: [TicketObject]?
     var ticketsToOrder: [TicketOrderObject] = []
     var loading = UIActivityIndicatorView()
     
@@ -39,6 +40,8 @@ class TicketDetailsVC: UIViewController {
         self.navigationItem.title = ""
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         self.tabBarController?.tabBar.isHidden = true
+        
+        getTickets()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,6 +75,27 @@ class TicketDetailsVC: UIViewController {
             
         }
     }
+    
+    func getTickets() {
+        
+        guard let id = self.event?.id else {
+            return
+        }
+        
+        TicketServices.shared.getTickets(withEvent: id) { (idEvent, tickets, error) in
+            if let error = error {
+                self.showAlert(error, title: "Lỗi khi tải vé", buttons: nil);
+                return
+            }
+            
+            if idEvent == self.event?.id {
+                self.tickets = tickets
+                self.tblTickets.reloadData()
+            }
+        }
+    }
+    
+    
     @IBAction func continuesClicked(_ sender: Any) {
         
         if self.ticketsToOrder.count == 0 {
@@ -104,7 +128,7 @@ class TicketDetailsVC: UIViewController {
 
 extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TicketsOrderCell", for: indexPath) as? TicketsOrderCell, let tickets = self.event?.tickets, tickets.count > 0 else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TicketsOrderCell", for: indexPath) as? TicketsOrderCell, let tickets = self.tickets, tickets.count > 0 else {
             
             return UITableViewCell()
         }
@@ -123,7 +147,18 @@ extension TicketDetailsVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.ticket = tickets[indexPath.row]
         
+        var quantity = 0
+        
+        self.ticketsToOrder.forEach { (ticket) in
+            if ticket.id == self.tickets?[indexPath.row].id {
+                quantity += 1
+            }
+        }
+        
+        cell.lblQuantity.text = quantity.toString()
+        
         cell.delegate = self
+        
         return cell
     }
     

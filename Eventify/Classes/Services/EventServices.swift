@@ -71,13 +71,9 @@ class EventServices: NSObject {
                     return completionHandler(nil, "Data is empty")
                 }
                 
-                //print(json)
-                
                 if json[0].isEmpty {
                     return completionHandler([], nil)
                 }
-                
-                //print(json)
                 
                 //try parse from json to object
                 guard let events = [EventObject].from(jsonArray: json) else {
@@ -129,8 +125,7 @@ class EventServices: NSObject {
         guard let token = UserManager.shared.currentUser?.token else {
             return completionHandler(nil, "Token not found")
         }
-        
-        socketEvent.emit("get-more-previous-events", with: [token])
+        socketEvent.emit("get-more-previous-events", with: [from, token])
         socketEvent.off("get-more-previous-events")
         socketEvent.on("get-more-previous-events") { (data, ack) in
             
