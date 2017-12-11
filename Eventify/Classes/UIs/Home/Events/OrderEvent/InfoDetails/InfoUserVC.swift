@@ -19,7 +19,7 @@ class InfoUserVC: UIViewController {
     var tickets: [TicketObject] = []
     var ticketsToOrder: [TicketObject] = []
     var loading = UIActivityIndicatorView()
-    let remainingTime = 720
+    var timer = Timer()
     
     @IBOutlet weak var lblEventName: UILabel!
     @IBOutlet weak var lblBy: UILabel!
@@ -36,17 +36,13 @@ class InfoUserVC: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Trở về", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "Trở về", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.back))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setUpUi()
     }
-    
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        self.navigationController?.navigationBar.backItem?.title = "Trở về"
-    //    }
     
     func setUpUi() {
         
@@ -73,14 +69,44 @@ class InfoUserVC: UIViewController {
         //txtEmail.delegate = self
         //txtAddress.delegate = self
         
-        //self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.remainingOrder), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.remainingTimeOrder), userInfo: nil, repeats: true)
+    }
+    
+    var giay = 60, phut = 4
+    func remainingTimeOrder() {
+        if giay == 0 {
+            giay = 59
+            phut -= 1
+        }
+        
+        giay -= 1
+        
+        DispatchQueue.main.async {
+            self.lblTimeRemaining.text = "\(self.phut):\(self.giay)"
+        }
+        
+        
+        if giay == 0 && phut == 0 {
+            self.timer.invalidate()
+            
+            let backAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.destructive, handler: { (action) in
+                self.loading.showLoadingDialog(self)
+                OrderServices.shared.cancelOrder(completionHandler: { (error) in
+                    self.loading.stopAnimating()
+                    self.navigationController?.popViewController(animated: true)
+                })
+            })
+            
+            
+            self.showAlert("Bạn đã vượt quá thời gian giới hạn và phiên đặt vé này đã bị kết thúc. Mục đích của việc hạn chế thời gian đặt này để đảm bảo rằng vé bạn đã chọn luôn luôn có sẵn. Chúng tôi xin lỗi vì sự bất tiện này", title: "Whoops!", buttons: [backAction])
+        }
     }
     
     @IBAction func btnContinues(_ sender: Any) {
         continues()
     }
     
-    func back(sender: UIBarButtonItem) {
+    func back() {
         
         let backAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.destructive, handler: { (action) in
             self.loading.showLoadingDialog(self)
@@ -142,10 +168,6 @@ class InfoUserVC: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
-    }
-    
-    func remainingOrder() {
-        
     }
 }
 

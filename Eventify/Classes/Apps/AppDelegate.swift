@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var orientationLock = UIInterfaceOrientationMask.portrait
     let reachability = Reachability()!
+    var timer = Timer()
     
     override init() {
         //FirebaseApp.configure()
@@ -118,7 +119,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func reachabilityChanged(note: Notification) {
         
-        let reachability = note.object as! Reachability
+        guard let reachability = note.object as? Reachability else {
+            return
+        }
         
         switch reachability.connection {
         case .wifi, .cellular:
@@ -129,15 +132,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showNotiLostConnection() {
-//        if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
-//            vc.view.frame = self.view.frame
-//            self.view.addSubview(vc.view)
-//        }
+        
+        guard let window = self.window else {
+            return
+        }
+        
+        if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
+            print("LOST CONNECTION")
+            vc.view.frame = window.frame
+            vc.view.tag = 100
+            self.window?.addSubview(vc.view)
+        }
     }
     
     func hideNotiLostConnection() {
-        print("CONNECTED")
+        
+        let instance = SocketIOServices.shared
+        
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            switch instance.socket.status {
+            case .connected:
+                self.timer.invalidate()
+                self.removeSubview()
+            case .connecting:
+                break
+            case .disconnected:
+                instance.socket.connect()
+            case .notConnected:
+                instance.socket.connect()
+            }
+        })
     }
-
+    
+    func removeSubview() {
+        if let dialog = self.window?.viewWithTag(100) {
+            dialog.removeFromSuperview()
+        }
+    }
 }
 

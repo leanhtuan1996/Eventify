@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17B48" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17B1003" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -277,7 +277,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOJ-Ui-kDf" userLabel="sessionView">
                                                 <rect key="frame" x="10" y="165" width="355" height="80"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScU-pY-1r0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScU-pY-1r0">
                                                         <rect key="frame" x="15" y="28" width="51.5" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="51.5" id="IuZ-aX-1km"/>
@@ -287,7 +287,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sau 12 phút, phiên làm việc này sẽ hết hạn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUu-EH-GfI">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sau 5 phút, phiên làm việc này sẽ hết hạn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUu-EH-GfI">
                                                         <rect key="frame" x="76.5" y="7.5" width="278.5" height="65"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="65" id="MZz-pz-FOe"/>
@@ -474,7 +474,7 @@
                         <outlet property="lblBy" destination="7aP-St-wwB" id="Wu8-16-62U"/>
                         <outlet property="lblEventName" destination="NDk-EY-HtL" id="1D2-oh-aPu"/>
                         <outlet property="lblTimeEnd" destination="pc9-gw-DLS" id="dpF-HI-LX2"/>
-                        <outlet property="lblTimeRemaining" destination="ScU-pY-1r0" id="jog-rU-RbF"/>
+                        <outlet property="lblTimeRemaining" destination="ScU-pY-1r0" id="rRC-cd-1pi"/>
                         <outlet property="lblTimeStart" destination="Ihp-dU-hdA" id="1rC-Pt-yiP"/>
                         <outlet property="lblTotalPrice" destination="q2a-4c-0fs" id="ceh-Gk-UOG"/>
                         <outlet property="txtFullName" destination="SKq-m9-hEE" id="dpM-rm-sKo"/>

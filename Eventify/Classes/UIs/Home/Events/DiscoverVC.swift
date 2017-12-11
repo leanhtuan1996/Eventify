@@ -100,13 +100,17 @@ class DiscoverVC: UIViewController {
             
             if let events = events {
                 self.events = events
-                self.tblEvents.reloadData()
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    self.tblEvents.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
             }
         }
         
         UserServices.shared.getLikedEvents { (error) in
-            self.tblEvents.reloadData()
+            DispatchQueue.main.async {
+                self.tblEvents.reloadData()
+            }
         }
     }
     
@@ -120,8 +124,10 @@ class DiscoverVC: UIViewController {
             
             if let events = events {
                 self.prevEvents = events
-                self.tblEvents.reloadData()
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    self.tblEvents.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
             }
         }
     }
@@ -136,7 +142,9 @@ class DiscoverVC: UIViewController {
                     self.events.append(event)
                 })
                 
-                self.tblEvents.reloadData()
+                DispatchQueue.main.async {
+                    self.tblEvents.reloadData()
+                }
             }
         })
     }
@@ -150,7 +158,9 @@ class DiscoverVC: UIViewController {
                     self.prevEvents.append(event)
                 })
                 
-                self.tblEvents.reloadData()
+                DispatchQueue.main.async {
+                    self.tblEvents.reloadData()
+                }
             }
         }
     }
