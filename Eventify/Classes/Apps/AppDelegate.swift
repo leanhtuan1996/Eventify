@@ -138,7 +138,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if let vc = UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: "DialogNetworkVC") as? DialogNetworkVC {
-            print("LOST CONNECTION")
             vc.view.frame = window.frame
             vc.view.tag = 100
             self.window?.addSubview(vc.view)

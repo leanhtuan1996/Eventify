@@ -142,6 +142,9 @@
                                                     <constraint firstAttribute="height" constant="30" id="sUl-vL-nwd"/>
                                                 </constraints>
                                                 <state key="normal" title="Thêm vào lịch"/>
+                                                <connections>
+                                                    <action selector="btnAddToCalendar:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ny7-a0-Rcf"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -180,6 +183,9 @@
                                                     <constraint firstAttribute="height" constant="30" id="oQJ-kg-HIi"/>
                                                 </constraints>
                                                 <state key="normal" title="Xem bản đồ"/>
+                                                <connections>
+                                                    <action selector="btnOpenMaps:" destination="gTV-IL-0wX" eventType="touchUpInside" id="h0m-VY-TL7"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -237,6 +243,9 @@
                                             <constraint firstAttribute="height" constant="30" id="lu9-Pv-odl"/>
                                         </constraints>
                                         <state key="normal" title="Xem chi tiết sự kiện"/>
+                                        <connections>
+                                            <action selector="btnViewDetailEventClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="C55-p2-USR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1600FF157567900C11290812 /* Pods_Eventify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A434F16EF586BE1A66742A2 /* Pods_Eventify.framework */; };
+		170D78381FDE793C006932B1 /* ActionTicketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D78371FDE793C006932B1 /* ActionTicketDelegate.swift */; };
 		36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AE11F83F8360031A1EE /* Extensions+Double.swift */; };
 		36001B061F8747C40031A1EE /* TypeEventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B051F8747C40031A1EE /* TypeEventServices.swift */; };
 		36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B081F874A7C0031A1EE /* EventTypesVC.swift */; };
@@ -187,6 +188,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		170D78371FDE793C006932B1 /* ActionTicketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTicketDelegate.swift; sourceTree = "<group>"; };
 		1A434F16EF586BE1A66742A2 /* Pods_Eventify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36001AE11F83F8360031A1EE /* Extensions+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Double.swift"; sourceTree = "<group>"; };
 		36001B051F8747C40031A1EE /* TypeEventServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEventServices.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				362260001FA1A0D000B2BE4C /* EventProtocols.swift */,
 				36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */,
 				36F28DA41FAD718B000A5359 /* OrderEventDelegate.swift */,
+				170D78371FDE793C006932B1 /* ActionTicketDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2277,6 +2280,7 @@
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
+				170D78381FDE793C006932B1 /* ActionTicketDelegate.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
 				3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */,
 				36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */,

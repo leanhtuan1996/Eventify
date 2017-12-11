@@ -131,6 +131,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnSignIn(_ sender: Any) {
+        print("signIn")
         appDelegate.showSignInView()
     }
     
