@@ -31,7 +31,7 @@ class GoogleMapsServices: NSObject {
                 guard let firstResult = results.first else {
                     return completionHandler(nil, "Result not found")
                 }
-                //print(firstResult)
+                
                 if let address = AddressObject(json: firstResult) {
                     
                     return completionHandler(address, nil)
@@ -39,20 +39,5 @@ class GoogleMapsServices: NSObject {
                     return completionHandler(nil, "Parse json to object has been failed")
                 }
         }
-        
-//        let url = URL(string: "latlng=\(latitude),\(longitude)&key=AIzaSyD8T0J9zFSbM_wC3kl46FgBT68Ev9AkLnw")
-//        let data = NSData(contentsOf: url!)
-//        let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-//        if let result = json["results"] as? NSArray {
-//            //            if let address = result[0]["address_components"] as? NSArray {
-//            //                let number = address[0]["short_name"] as! String
-//            //                let street = address[1]["short_name"] as! String
-//            //                let city = address[2]["short_name"] as! String
-//            //                let state = address[4]["short_name"] as! String
-//            //                let zip = address[6]["short_name"] as! String
-//            //                print("\n\(number) \(street), \(city), \(state) \(zip) \(address)")
-//            //            }
-//            print(result)
-//        }
     }
 }

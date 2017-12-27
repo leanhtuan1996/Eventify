@@ -284,10 +284,33 @@ class EventServices: NSObject {
         }
     }
     
-    func uploadImageDescriptionEvent(data imgData: Data, completionHandler: @escaping (_ urlImg: String?, _ error: String?) -> Void ) {
+    func uploadImageDescriptionEvent(data imgData: Data, completionHandler: @escaping (_ path: String?, _ downloadURL: String?, _ error: String?) -> Void ) {
+        guard let user = UserManager.shared.currentUser, let token = user.token else {
+            return completionHandler(nil, nil, "Current user not found")
+        }
         
+        let imgPath = "\(user.id)\(Helpers.getTimeStampWithInt()).jpg"
+        socketEvent.emit("upload-image-description-event", with: [imgData, imgPath, token])
         
-        
+        socketEvent.once("upload-image-description-event") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, nil, "Data is empty")
+                }
+                
+                //try parse from json to object
+                guard let path = json[0]["path"] as? String, let downloadURL = json[0]["downloadURL"] as? String else {
+                    return completionHandler(nil, nil, "Path not found")
+                }
+                
+                return completionHandler(path, downloadURL, nil)
+                
+            })
+        }
     }
     
     func downloadImageCover(withPath path: String, completionHandler: @escaping (_ url: URL?, _ error: Error?) -> Void ) {
