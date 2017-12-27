@@ -50,7 +50,7 @@ class UserManager: NSObject {
     func verifyToken(_ completionHandler: @escaping(_ error: String?) -> Void) {
         if let token = self.getToken() {
             
-            UserServices.shared.getInformations(isListening: false, with: token, completionHandler: { (user, error) in
+            UserServices.shared.getInformations(with: token, completionHandler: { (user, error) in
                 if let error = error {
                     //remove token 
                     self.editToken(nil)
@@ -59,7 +59,12 @@ class UserManager: NSObject {
                 
                 if let user = user {
                     user.token = token
+                    
                     self.setUser(with: user)
+                    
+                    OrderServices.shared.getOrders()
+                    UserServices.shared.getLikedEvents()
+                    
                     return completionHandler(nil)
                 }
             })
@@ -74,8 +79,6 @@ class UserManager: NSObject {
         if let user = user {
             self.currentUser = user
             
-            OrderServices.shared.getOrders()
-            
             if let token = user.token {
                 self.editToken(token)
             }
@@ -83,7 +86,5 @@ class UserManager: NSObject {
             self.currentUser = nil
             self.editToken(nil)
         }
-        
-        
     }
 }

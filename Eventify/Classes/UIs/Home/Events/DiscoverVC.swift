@@ -107,11 +107,13 @@ class DiscoverVC: UIViewController {
             }
         }
         
+        
         UserServices.shared.getLikedEvents { (error) in
             DispatchQueue.main.async {
                 self.tblEvents.reloadData()
             }
         }
+    
     }
     
     func loadPrevEvents() {
