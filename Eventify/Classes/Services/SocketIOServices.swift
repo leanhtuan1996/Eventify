@@ -17,7 +17,6 @@ class SocketIOServices: NSObject {
     
     let socket = SocketIOClient(socketURL: URL(string: baseUrl)!, config: [SocketIOClientConfiguration.Element.reconnects(true), SocketIOClientConfiguration.Element.reconnectAttempts(120), SocketIOClientConfiguration.Element.reconnectWait(3), SocketIOClientConfiguration.Element.compress, SocketIOClientConfiguration.Element.nsp("/")])
     
-    
     func establishConnection(completionHandler: ((_ error: String?) -> Void)? = nil) {
         
         if isConnected() { completionHandler?(nil); return }

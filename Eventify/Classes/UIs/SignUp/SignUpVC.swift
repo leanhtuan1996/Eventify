@@ -18,6 +18,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var btnSignIn: UIButton!
     
+    
+    //save informations of user from access token
+    var user: UserObject?
+    
     let activityIndicatorView = UIActivityIndicatorView()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -85,6 +89,16 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         //Sign Up button
         btnSignUp.layer.cornerRadius = 10
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let user = self.user else {
+            return
+        }
+        
+        self.txtEmail.text = user.email
+        self.txtPhoneNumber.text = user.phoneNumber
+        self.txtFullname.text = user.fullName
     }
     
     // MARK: - FUNCTIONS

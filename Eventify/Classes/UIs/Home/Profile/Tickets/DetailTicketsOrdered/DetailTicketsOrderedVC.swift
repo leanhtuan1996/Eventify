@@ -243,7 +243,3 @@ extension DetailTicketsOrderedVC: ActionTicketDelegate {
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
     }
 }
-
-
-
-

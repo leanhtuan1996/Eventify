@@ -178,20 +178,38 @@ extension SignInVC: UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate 
     // MARK: - SIGN IN FUNCTION WITH GID
     func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser, withError error: Error) {
         
-        UserServices.shared.signInWithGoogle(authentication: user.authentication) { (error) in
+        let object = UserObject()
+        object.email = user.profile.email
+        object.fullName = user.profile.name
+        
+        guard let signUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC else {
+            return
+        }
+        
+        signUpVC.user = object
+        
+        self.present(signUpVC, animated: true, completion: nil)
+        
+        /*
+        UserServices.shared.signInWithGoogle(with: user.authentication.accessToken) { (user, error) in
             self.activityIndicatorView.stopAnimating()
-            
+        
             if let error = error {
-                print(error)
+                self.showAlert(error, title: "Đăng nhập thất bại", buttons: nil)
                 return
             }
             
-//            if let _ = user {
-//                // print(user.email)
-                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.showMainView()
+            if let user = user {
+                guard let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC else {
+                    return
                 }
-//            }
+                
+                signUpVC.user = user
+                
+                self.navigationController?.pushViewController(signUpVC, animated: true)
+           }
         }
+    */
+ 
     }
 }

@@ -31,6 +31,7 @@ class CompleteOrderVC: UIViewController {
         backToDiscovery()
     }
     @IBAction func btnViewTickets(_ sender: Any) {
+        
     }
     
     func backToDiscovery() {

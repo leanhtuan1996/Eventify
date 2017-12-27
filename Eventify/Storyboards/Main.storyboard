@@ -625,14 +625,14 @@
                         <viewControllerLayoutGuide type="bottom" id="ptH-zW-Big"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rDh-II-YeA" userLabel="rootView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAT-Se-Iw2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1540"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1340"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4TV-dz-YkZ" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1486"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1286"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-2S-cIf" userLabel="view">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -864,10 +864,10 @@
                                                 </constraints>
                                             </imageView>
                                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGk-7a-jeX">
-                                                <rect key="frame" x="10" y="986" width="355" height="500"/>
+                                                <rect key="frame" x="10" y="986" width="355" height="300"/>
                                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="500" id="dby-0B-up6"/>
+                                                    <constraint firstAttribute="height" constant="300" id="dby-0B-up6"/>
                                                 </constraints>
                                             </webView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0H-o6-QO7" userLabel="aboutView">
@@ -936,7 +936,7 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wou-h5-Ewg" userLabel="bottomView">
-                                <rect key="frame" x="0.0" y="1540" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="1340" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2A-eY-44a">
                                         <rect key="frame" x="294" y="0.0" width="61" height="60"/>
@@ -984,7 +984,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1600"/>
+                    <size key="freeformSize" width="375" height="1400"/>
                     <connections>
                         <outlet property="btnBookmark" destination="ENy-Cq-BUq" id="uxF-hr-YZE"/>
                         <outlet property="btnShare" destination="ThA-mP-US9" id="g7S-he-Zyr"/>
@@ -1768,7 +1768,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiE-ur-YW5">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
                                         <color key="backgroundColor" red="0.63533979650000005" green="0.63841462140000005" blue="0.74793773890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="TICKETS">
+                                        <state key="normal" title="Những vé hiện có">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1778,7 +1778,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHV-WZ-Vmh">
                                         <rect key="frame" x="188" y="0.0" width="187" height="50"/>
                                         <color key="backgroundColor" red="0.63533979650000005" green="0.63841462140000005" blue="0.74793773890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="SAVED">
+                                        <state key="normal" title="Những sự kiện đã lưu">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1896,7 +1896,7 @@
                                     <constraint firstAttribute="height" constant="1" id="zUo-9p-FyI"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2Z-Wb-XA0">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Y2Z-Wb-XA0">
                                 <rect key="frame" x="0.0" y="71" width="375" height="680"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-vg-Avp" userLabel="contentView">
@@ -2441,7 +2441,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVf-V8-fpM" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="984"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="924"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ĐĂNG KÍ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cm-Wr-PpO">
                                                 <rect key="frame" x="148.5" y="60" width="78.5" height="24"/>
@@ -2474,7 +2474,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn đã có tài khoản?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F4-L0-eD8">
-                                                <rect key="frame" x="109" y="644" width="158.5" height="25"/>
+                                                <rect key="frame" x="109" y="584" width="158.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="tyX-k3-cJm"/>
                                                 </constraints>
@@ -2483,7 +2483,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-5I-F9n">
-                                                <rect key="frame" x="60" y="689" width="255" height="45"/>
+                                                <rect key="frame" x="60" y="629" width="255" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="bOG-km-823"/>
@@ -2556,7 +2556,7 @@
                                             <constraint firstItem="Rht-I3-TfI" firstAttribute="top" secondItem="8Cm-Wr-PpO" secondAttribute="bottom" constant="40" id="AIj-fZ-Yo0"/>
                                             <constraint firstItem="8Cm-Wr-PpO" firstAttribute="top" secondItem="FVf-V8-fpM" secondAttribute="top" constant="60" id="DTd-Zx-eCi"/>
                                             <constraint firstItem="Egb-5I-F9n" firstAttribute="centerX" secondItem="6F4-L0-eD8" secondAttribute="centerX" id="ECC-Kc-vYg"/>
-                                            <constraint firstItem="6F4-L0-eD8" firstAttribute="top" secondItem="xyH-nE-2fh" secondAttribute="bottom" constant="140" id="HZs-5h-XAX"/>
+                                            <constraint firstItem="6F4-L0-eD8" firstAttribute="top" secondItem="xyH-nE-2fh" secondAttribute="bottom" constant="80" id="HZs-5h-XAX"/>
                                             <constraint firstItem="8Cm-Wr-PpO" firstAttribute="centerX" secondItem="FVf-V8-fpM" secondAttribute="centerX" id="OIW-Uw-WDA"/>
                                             <constraint firstItem="AtQ-Lf-2FK" firstAttribute="top" secondItem="Rht-I3-TfI" secondAttribute="bottom" constant="20" id="Pa5-8s-Eti"/>
                                             <constraint firstItem="AtQ-Lf-2FK" firstAttribute="leading" secondItem="Rht-I3-TfI" secondAttribute="leading" id="QZO-Dn-rDJ"/>
@@ -2641,7 +2641,8 @@
                 <navigationController storyboardIdentifier="navDiscovery" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xgj-To-8My" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="event" id="FX1-mo-f2v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P83-pO-uz1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P83-pO-uz1">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2659,7 +2660,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jax-Dj-2Vo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" id="moM-TK-frP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmt-1m-j3K">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tmt-1m-j3K">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2677,7 +2679,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eCx-KP-e6n" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="plus" id="HWc-D0-cGs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vcE-vv-7wx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vcE-vv-7wx">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2699,7 +2702,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7i7-AK-sec" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="more" id="auB-ZF-Sjq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bj4-Jy-j0H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Bj4-Jy-j0H">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2717,7 +2721,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="mW6-H2-F16" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="alert" id="5AN-wJ-eXZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AuI-26-OZl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AuI-26-OZl">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

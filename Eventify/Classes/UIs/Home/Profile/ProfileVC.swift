@@ -176,9 +176,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             self.view.addSubview(vc.view)
             vc.didMove(toParentViewController: self)
             
-            //self.present(vc, animated: true, completion: nil)
-            
-            
         default:
             guard let likes = user.liked, let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailEventVC") as? DetailEventVC else {
                 return

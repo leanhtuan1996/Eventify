@@ -136,7 +136,7 @@ class DetailEventVC: UIViewController {
         //maps
         if let latitude = event.address?.latitude, let longtitude = event.address?.longitude {
             
-            if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=16&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.width))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            if let staticMapUrl: String = "http://maps.google.com/maps/api/staticmap?markers=color:red|\(latitude),\(longtitude)&\("zoom=18&size=\(2 * Int(self.imgPreviewMaps.frame.width))x\(2 * Int(self.imgPreviewMaps.frame.height))")&sensor=true".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
                 
                 if let url = URL(string: staticMapUrl), let data = NSData(contentsOf: url) {
                     self.imgPreviewMaps.image = UIImage.convertFromData(data as Data)

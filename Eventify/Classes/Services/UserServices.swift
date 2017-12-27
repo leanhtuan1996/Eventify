@@ -137,9 +137,27 @@ class UserServices: NSObject {
         UserManager.shared.editToken(nil)
     }
     
-    func signInWithGoogle(authentication: GIDAuthentication?, completionHandler: @escaping (_ error: String?) -> Void) {
+    func signInWithGoogle(with token: String, completionHandler: @escaping (_ user: UserObject?, _ error: String?) -> Void) {
+        socket.emit("sign-in-with-google-plus", with: [token])
         
-        
+        socket.once("sign-in-with-google-plus") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                guard let user = UserObject(json: json[0]) else {
+                    return completionHandler(nil, "Convert json to object has been failed")
+                }
+                
+                return completionHandler(user, nil)
+                
+            })
+        }
     }
     
     func signInWithFacebook(token: FBSDKAccessToken, completionHandler: @escaping (_ error: String?) -> Void) {
