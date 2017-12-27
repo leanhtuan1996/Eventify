@@ -18,31 +18,60 @@ class UserServices: NSObject {
     
     let socket = SocketIOServices.shared.socket
     
-    func getInformations(with token: String, completionHandler: @escaping ((_ user: UserObject?, _ error: String? ) -> Void )) {
+    func getInformations(isListening: Bool = true, with token: String, completionHandler: @escaping ((_ user: UserObject?, _ error: String? ) -> Void )) {
         
-        socket.emit("get-informations", with: [token])
-        
-        socket.once("get-informations") { (data, ack) in
+        if isListening {
+            socket.off("get-informations")
             
-            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+            socket.emit("get-informations", with: [token])
+            
+            socket.on("get-informations") { (data, ack) in
                 
-                if let error = error {
-                    return completionHandler(nil, error)
-                }
+                Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                    
+                    if let error = error {
+                        return completionHandler(nil, error)
+                    }
+                    
+                    guard let json = json, json.count > 0 else {
+                        return completionHandler(nil, "Data is empty")
+                    }
+                    
+                    guard let user = UserObject(json: json[0]) else {
+                        return completionHandler(nil, "Convert json to object has been failed")
+                    }
+                    
+                    UserManager.shared.currentUser = user
+                    
+                    return completionHandler(user, nil)
+                    
+                })
+            }
+        } else {
+            
+            socket.emit("get-informations", with: [token])
+            
+            socket.once("get-informations") { (data, ack) in
                 
-                guard let json = json, json.count > 0 else {
-                    return completionHandler(nil, "Data is empty")
-                }
-                
-                guard let user = UserObject(json: json[0]) else {
-                    return completionHandler(nil, "Convert json to object has been failed")
-                }
-                
-                return completionHandler(user, nil)
-                
-            })
+                Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                    
+                    if let error = error {
+                        return completionHandler(nil, error)
+                    }
+                    
+                    guard let json = json, json.count > 0 else {
+                        return completionHandler(nil, "Data is empty")
+                    }
+                    
+                    guard let user = UserObject(json: json[0]) else {
+                        return completionHandler(nil, "Convert json to object has been failed")
+                    }
+                    
+                    return completionHandler(user, nil)
+                    
+                })
+            }
         }
-        
     }
     
     func getInformations(completionHandler: @escaping ((_ user: UserObject?, _ error: String? ) -> Void )) {
@@ -185,6 +214,27 @@ class UserServices: NSObject {
     }
     
     func updatePhotoURL(withImage image: Data, completionHandler: @escaping (_ error: String?) -> Void) {
+        //upload-image-user
+        guard let user = UserManager.shared.currentUser, let token = user.token else {
+            return completionHandler("Current user not found")
+        }
+        
+        let imgPath = "\(user.id)\(Helpers.getTimeStampWithInt()).jpg"
+        socket.emit("upload-image-user", with: [image, imgPath, token])
+        
+        socket.once("upload-image-user") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler("Data is empty")
+                }
+                
+                return completionHandler(nil)
+            })
+        }
     }
     
     func updateFullname(withFullname fullname: String, completionHandler: @escaping (_ error: String?) -> Void) {

@@ -54,7 +54,7 @@ class UserObject: NSObject, Glossy {
         self.email = "email" <~~ json
         
         //display image
-        self.photoDisplayPath = "photoDisplayPath" <~~ json
+        self.photoDisplayPath = "photoPath" <~~ json
         
         //phoneNumber
         self.phoneNumber = "phoneNumber" <~~ json

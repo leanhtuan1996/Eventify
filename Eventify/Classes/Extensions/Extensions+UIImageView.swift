@@ -43,6 +43,7 @@ extension UIImageView
         }
     }
     
+    /*
     func downloadedFrom(path: String, _ completionHandler: ((_ image: UIImage?, _ error: String?) -> Void)? = nil ) {
         
         stringCache.fetch(key: path)
@@ -70,5 +71,5 @@ extension UIImageView
                 })
         }
     }
-    
+    */
 }

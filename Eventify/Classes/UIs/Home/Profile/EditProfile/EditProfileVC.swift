@@ -14,6 +14,8 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     
+    var pickerImg = UIImagePickerController()
+    var loading = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,14 @@ class EditProfileVC: UIViewController {
     func setUpUi() {
         imgAvatar.layer.cornerRadius = 50
         
+        self.pickerImg.delegate = self
+        
         if let photoUrl = UserManager.shared.currentUser?.photoDisplayPath {
             self.imgAvatar.downloadedFrom(link: photoUrl)
             imgCover.downloadedFrom(link: photoUrl, { (image, error) in
                 DispatchQueue.main.async {
-                    if error == nil {
-                        self.imgCover.image = #imageLiteral(resourceName: "avatar")
+                    if error != nil {
+                        self.imgCover.image = #imageLiteral(resourceName: "avata")
                     } else {
                         self.imgCover.image = image
                     }
@@ -37,8 +41,8 @@ class EditProfileVC: UIViewController {
                 }
             })
         } else {
-            self.imgAvatar.image = #imageLiteral(resourceName: "avatar")
-            self.imgCover.image = #imageLiteral(resourceName: "avatar")
+            self.imgAvatar.image = #imageLiteral(resourceName: "avata")
+            self.imgCover.image = #imageLiteral(resourceName: "avata")
             self.imgCover.addBlurEffect()
         }
         
@@ -70,6 +74,23 @@ class EditProfileVC: UIViewController {
     }
     
     @IBAction func btnUpdatePhotoClicked(_ sender: Any) {
+        self.dismissKeyboard()
+        let alert = UIAlertController(title: "Chọn thư viện hoặc camera", message: "Chọn một bức ảnh từ thư viện ảnh hoặc chụp để làm ảnh đại diện cho tài khoản của bạn", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.cancel, handler: nil)
+        let libraryAction = UIAlertAction(title: "Thư viện ảnh", style: UIAlertActionStyle.default) { (btn) in
+            self.openGallary()
+        }
+        
+        let cameraAction = UIAlertAction(title: "Máy ảnh", style: UIAlertActionStyle.default) { (btn) in
+            self.openCamera()
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(libraryAction)
+        alert.addAction(cameraAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btnUpdatePasswordClicked(_ sender: Any) {
@@ -92,5 +113,48 @@ class EditProfileVC: UIViewController {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.showSignInView()
         }
+    }
+}
+
+extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismiss(animated: true, completion: nil)
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let img = UIImageJPEGRepresentation(image, 1) {
+                self.loading.showLoadingDialog(self)
+                UserServices.shared.updatePhotoURL(withImage: img, completionHandler: { (error) in
+                    self.loading.stopAnimating()
+                    if let error = error {
+                        self.showAlert(error, title: "Whoops", buttons: nil)
+                    } else {
+                        DispatchQueue.main.async {
+                            self.imgCover.image = UIImage(data: img)
+                            self.imgAvatar.image = UIImage(data: img)
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            self.pickerImg.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(pickerImg, animated: true, completion: nil)
+        } else {
+            self.showAlert("Camera không sẵn có", title: "Lỗi", buttons: nil)
+        }
+    }
+    
+    func openGallary() {
+        pickerImg.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        pickerImg.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        pickerImg.isEditing = false
+        self.present(pickerImg, animated: true, completion: nil)
     }
 }

@@ -48,10 +48,9 @@ class UserManager: NSObject {
     }
     
     func verifyToken(_ completionHandler: @escaping(_ error: String?) -> Void) {
-        print("verifyToken")
         if let token = self.getToken() {
             
-            UserServices.shared.getInformations(with: token, completionHandler: { (user, error) in
+            UserServices.shared.getInformations(isListening: false, with: token, completionHandler: { (user, error) in
                 if let error = error {
                     //remove token 
                     self.editToken(nil)

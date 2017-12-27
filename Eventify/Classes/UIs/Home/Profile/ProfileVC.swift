@@ -56,9 +56,11 @@ class ProfileVC: UIViewController {
             lblEmail.text = user.email
             
             if let photoUrl = user.photoDisplayPath {
-                self.imgAvatar.downloadedFrom(link: photoUrl)
+                DispatchQueue.main.async {
+                    self.imgAvatar.downloadedFrom(link: photoUrl)
+                }
             } else {
-                self.imgAvatar.image = #imageLiteral(resourceName: "avatar")
+                self.imgAvatar.image = #imageLiteral(resourceName: "avata")
             }
         }
     }

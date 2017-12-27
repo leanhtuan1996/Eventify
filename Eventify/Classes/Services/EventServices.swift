@@ -308,12 +308,7 @@ class EventServices: NSObject {
                 }
                 
                 return completionHandler(path, downloadURL, nil)
-                
             })
         }
-    }
-    
-    func downloadImageCover(withPath path: String, completionHandler: @escaping (_ url: URL?, _ error: Error?) -> Void ) {
-        
     }
 }

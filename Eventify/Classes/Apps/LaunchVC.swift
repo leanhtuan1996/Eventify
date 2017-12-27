@@ -31,7 +31,6 @@ class LaunchVC: UIViewController {
     }
     
     func hideVC(_ appDelegate: AppDelegate, _ error: String?) {
-        print("hideVC")
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut, .curveLinear], animations: {
             self.imgLogo.transform = CGAffineTransform(scaleX: 10, y: 10)
             self.imgLogo.backgroundColor = UIColor.clear.withAlphaComponent(1)

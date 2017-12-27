@@ -150,7 +150,7 @@ class DetailEventVC: UIViewController {
             if let link = user.photoDisplayPath {
                 self.imgAvata.downloadedFrom(link: link)
             } else {
-                self.imgAvata.image = #imageLiteral(resourceName: "avatar")
+                self.imgAvata.image = #imageLiteral(resourceName: "avata")
             }
             
             self.lblByName.text = "\(user.fullName ?? "Không rõ")"
