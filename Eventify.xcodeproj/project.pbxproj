@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		1600FF157567900C11290812 /* Pods_Eventify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A434F16EF586BE1A66742A2 /* Pods_Eventify.framework */; };
 		170D78381FDE793C006932B1 /* ActionTicketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D78371FDE793C006932B1 /* ActionTicketDelegate.swift */; };
+		1714E8C01FF4BCCB00826AC8 /* EditEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8BE1FF4BCCB00826AC8 /* EditEmailVC.swift */; };
+		1714E8C11FF4BCCB00826AC8 /* EditEmailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1714E8BF1FF4BCCB00826AC8 /* EditEmailVC.xib */; };
+		1714E8C41FF4BCDF00826AC8 /* EditFullNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8C21FF4BCDF00826AC8 /* EditFullNameVC.swift */; };
+		1714E8C51FF4BCDF00826AC8 /* EditFullNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1714E8C31FF4BCDF00826AC8 /* EditFullNameVC.xib */; };
+		1714E8C81FF4BCED00826AC8 /* EditPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8C61FF4BCED00826AC8 /* EditPasswordVC.swift */; };
+		1714E8C91FF4BCED00826AC8 /* EditPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1714E8C71FF4BCED00826AC8 /* EditPasswordVC.xib */; };
+		1714E8CC1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8CA1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift */; };
+		1714E8CD1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */; };
+		1714E8CF1FF4C16000826AC8 /* UpdateProfilesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8CE1FF4C16000826AC8 /* UpdateProfilesProtocol.swift */; };
 		36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AE11F83F8360031A1EE /* Extensions+Double.swift */; };
 		36001B061F8747C40031A1EE /* TypeEventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B051F8747C40031A1EE /* TypeEventServices.swift */; };
 		36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B081F874A7C0031A1EE /* EventTypesVC.swift */; };
@@ -189,6 +198,15 @@
 
 /* Begin PBXFileReference section */
 		170D78371FDE793C006932B1 /* ActionTicketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTicketDelegate.swift; sourceTree = "<group>"; };
+		1714E8BE1FF4BCCB00826AC8 /* EditEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmailVC.swift; sourceTree = "<group>"; };
+		1714E8BF1FF4BCCB00826AC8 /* EditEmailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditEmailVC.xib; sourceTree = "<group>"; };
+		1714E8C21FF4BCDF00826AC8 /* EditFullNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFullNameVC.swift; sourceTree = "<group>"; };
+		1714E8C31FF4BCDF00826AC8 /* EditFullNameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditFullNameVC.xib; sourceTree = "<group>"; };
+		1714E8C61FF4BCED00826AC8 /* EditPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPasswordVC.swift; sourceTree = "<group>"; };
+		1714E8C71FF4BCED00826AC8 /* EditPasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPasswordVC.xib; sourceTree = "<group>"; };
+		1714E8CA1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhoneNumberVC.swift; sourceTree = "<group>"; };
+		1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPhoneNumberVC.xib; sourceTree = "<group>"; };
+		1714E8CE1FF4C16000826AC8 /* UpdateProfilesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilesProtocol.swift; sourceTree = "<group>"; };
 		1A434F16EF586BE1A66742A2 /* Pods_Eventify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36001AE11F83F8360031A1EE /* Extensions+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Double.swift"; sourceTree = "<group>"; };
 		36001B051F8747C40031A1EE /* TypeEventServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEventServices.swift; sourceTree = "<group>"; };
@@ -666,6 +684,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1714E8BA1FF4BCB600826AC8 /* EditEmail */ = {
+			isa = PBXGroup;
+			children = (
+				1714E8BE1FF4BCCB00826AC8 /* EditEmailVC.swift */,
+				1714E8BF1FF4BCCB00826AC8 /* EditEmailVC.xib */,
+			);
+			path = EditEmail;
+			sourceTree = "<group>";
+		};
+		1714E8BB1FF4BCB600826AC8 /* EditFullName */ = {
+			isa = PBXGroup;
+			children = (
+				1714E8C21FF4BCDF00826AC8 /* EditFullNameVC.swift */,
+				1714E8C31FF4BCDF00826AC8 /* EditFullNameVC.xib */,
+			);
+			path = EditFullName;
+			sourceTree = "<group>";
+		};
+		1714E8BC1FF4BCB600826AC8 /* EditPassword */ = {
+			isa = PBXGroup;
+			children = (
+				1714E8C61FF4BCED00826AC8 /* EditPasswordVC.swift */,
+				1714E8C71FF4BCED00826AC8 /* EditPasswordVC.xib */,
+			);
+			path = EditPassword;
+			sourceTree = "<group>";
+		};
+		1714E8BD1FF4BCB600826AC8 /* EditPhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				1714E8CA1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift */,
+				1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */,
+			);
+			path = EditPhoneNumber;
+			sourceTree = "<group>";
+		};
 		25E6E15A33BD89295462B165 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +788,7 @@
 				36D1C1EB1FA32DC200DB7451 /* InteractiveEventProtocol.swift */,
 				36F28DA41FAD718B000A5359 /* OrderEventDelegate.swift */,
 				170D78371FDE793C006932B1 /* ActionTicketDelegate.swift */,
+				1714E8CE1FF4C16000826AC8 /* UpdateProfilesProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1769,6 +1824,10 @@
 		36B762351F7E9D1C009D3BE9 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
+				1714E8BA1FF4BCB600826AC8 /* EditEmail */,
+				1714E8BB1FF4BCB600826AC8 /* EditFullName */,
+				1714E8BC1FF4BCB600826AC8 /* EditPassword */,
+				1714E8BD1FF4BCB600826AC8 /* EditPhoneNumber */,
 				36B762361F7E9D32009D3BE9 /* EditProfileVC.swift */,
 			);
 			path = EditProfile;
@@ -2136,14 +2195,18 @@
 				36EC9A691FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib in Resources */,
 				36147DCB1FB053CE004F38DD /* TicketsOrdered.storyboard in Resources */,
 				36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */,
+				1714E8C91FF4BCED00826AC8 /* EditPasswordVC.xib in Resources */,
+				1714E8CD1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib in Resources */,
 				367F3BFA1F7E34EB002222EB /* Main.storyboard in Resources */,
 				36EC9A621FD63CF900447EAB /* LikedEventsCell.xib in Resources */,
+				1714E8C11FF4BCCB00826AC8 /* EditEmailVC.xib in Resources */,
 				36D471511FD91B010056792B /* Dialog.storyboard in Resources */,
 				3699BFBF1F7E435100D37DDC /* GoogleService-Info.plist in Resources */,
 				362C5E101F80ADF20033F9DB /* TicketCells.xib in Resources */,
 				36147DD21FB05425004F38DD /* TicketsOrderedCell.xib in Resources */,
 				36F28D7F1FAC4700000A5359 /* Order.storyboard in Resources */,
 				367F3C141F7E3639002222EB /* Images.xcassets in Resources */,
+				1714E8C51FF4BCDF00826AC8 /* EditFullNameVC.xib in Resources */,
 				36001B0E1F875ED10031A1EE /* EventTypeCell.xib in Resources */,
 				367F3BF91F7E34EB002222EB /* LaunchScreen.storyboard in Resources */,
 			);
@@ -2244,6 +2307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36F111AC1FA9B0AF00B97951 /* NSDateComponents+Timepiece.swift in Sources */,
+				1714E8C81FF4BCED00826AC8 /* EditPasswordVC.swift in Sources */,
 				367F3BF51F7E34EB002222EB /* EventServices.swift in Sources */,
 				36F28DBB1FAEF9A9000A5359 /* CompleteOrderVC.swift in Sources */,
 				369F75081FD57DDB00126F68 /* InfoUserView.swift in Sources */,
@@ -2266,6 +2330,7 @@
 				367F3BFF1F7E35C4002222EB /* LaunchVC.swift in Sources */,
 				367F3C121F7E3612002222EB /* SignUpVC.swift in Sources */,
 				36F111A81FA9B0AF00B97951 /* Duration.swift in Sources */,
+				1714E8CC1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift in Sources */,
 				362C5E0B1F80A1930033F9DB /* Extensions+Int.swift in Sources */,
 				36B762371F7E9D32009D3BE9 /* EditProfileVC.swift in Sources */,
 				36EC9A681FD7D1AD00447EAB /* DetailTicketsOrderedCell.swift in Sources */,
@@ -2278,16 +2343,19 @@
 				36147DD41FB054A7004F38DD /* OrderServices.swift in Sources */,
 				3651ADAB1FAA1BA500D91954 /* DescriptionEditorVC.swift in Sources */,
 				367F3BEE1F7E34EB002222EB /* Extensions+Date.swift in Sources */,
+				1714E8C01FF4BCCB00826AC8 /* EditEmailVC.swift in Sources */,
 				367F3BF11F7E34EB002222EB /* Extensions+String.swift in Sources */,
 				362C5E091F809F150033F9DB /* TicketManager.swift in Sources */,
 				170D78381FDE793C006932B1 /* ActionTicketDelegate.swift in Sources */,
 				362C5E0F1F80ADF20033F9DB /* TicketCells.swift in Sources */,
 				3665801A1FA1EDE8008A161F /* AddressObject.swift in Sources */,
 				36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */,
+				1714E8CF1FF4C16000826AC8 /* UpdateProfilesProtocol.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
 				36F28DB81FAEED74000A5359 /* InfoUserVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
 				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
+				1714E8C41FF4BCDF00826AC8 /* EditFullNameVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
 				36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */,
 				3664104B1FB6DBF8000E2516 /* UserManager.swift in Sources */,

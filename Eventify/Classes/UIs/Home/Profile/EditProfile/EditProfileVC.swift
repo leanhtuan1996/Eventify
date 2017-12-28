@@ -94,6 +94,14 @@ class EditProfileVC: UIViewController {
     }
     
     @IBAction func btnUpdatePasswordClicked(_ sender: Any) {
+        let vc = EditPasswordVC()
+        vc.delegate = self
+        
+        vc.view.frame = self.view.frame
+        self.addChildViewController(vc)
+        self.didMove(toParentViewController: vc)
+        self.view.addSubview(vc.view)
+        
     }
     
     @IBAction func btnUpdateEmailClicked(_ sender: Any) {
@@ -121,19 +129,8 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
         dismiss(animated: true, completion: nil)
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            if let img = UIImageJPEGRepresentation(image, 1) {
-                self.loading.showLoadingDialog(self)
-                UserServices.shared.updatePhotoURL(withImage: img, completionHandler: { (error) in
-                    self.loading.stopAnimating()
-                    if let error = error {
-                        self.showAlert(error, title: "Whoops", buttons: nil)
-                    } else {
-                        DispatchQueue.main.async {
-                            self.imgCover.image = UIImage(data: img)
-                            self.imgAvatar.image = UIImage(data: img)
-                        }
-                    }
-                })
+            if let img = UIImageJPEGRepresentation(image, 0.3) {
+                self.updatePhoto(with: img)
             }
         }
     }
@@ -156,5 +153,43 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
         pickerImg.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         pickerImg.isEditing = false
         self.present(pickerImg, animated: true, completion: nil)
+    }
+}
+
+extension EditProfileVC: UpdateProfilesDelegate {
+    func updatePassword(with currentPassword: String, andNewPassword newPassword: String, _ completion: @escaping (_ error: String?) -> Void) -> Void {
+        UserServices.shared.updatePassword(withCurrentPw: currentPassword, andNewPw: newPassword) { (error) in
+            completion(error)
+        }
+    }
+    func updateFullName(with fullname: String, _ completion: @escaping (_ error: String?) -> Void) -> Void {
+        UserServices.shared.updateFullname(withFullname: fullname) { (error) in
+            completion(error)
+        }
+    }
+    func updatePhoneNumber(with phoneNumber: String, _ completion: @escaping (_ error: String?) -> Void) -> Void {
+        UserServices.shared.updatePhoneNumber(withPhone: phoneNumber) { (error) in
+            completion(error)
+        }
+    }
+    func updateEmail(with currentPassword: String, and newEmail: String, _ completion: @escaping (_ error: String?) -> Void) -> Void {
+        UserServices.shared.updateEmail(withPassword: currentPassword, withEmail: newEmail) { (error) in
+            completion(error)
+        }
+    }
+
+    func updatePhoto(with imgData: Data) -> Void {
+        self.loading.showLoadingDialog(self)
+        UserServices.shared.updatePhotoURL(withImage: imgData, completionHandler: { (error) in
+            self.loading.stopAnimating()
+            if let error = error {
+                self.showAlert(error, title: "Whoops", buttons: nil)
+            } else {
+                DispatchQueue.main.async {
+                    self.imgCover.image = UIImage(data: imgData)
+                    self.imgAvatar.image = UIImage(data: imgData)
+                }
+            }
+        })
     }
 }
