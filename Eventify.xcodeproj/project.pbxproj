@@ -18,6 +18,9 @@
 		1714E8CC1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8CA1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift */; };
 		1714E8CD1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */; };
 		1714E8CF1FF4C16000826AC8 /* UpdateProfilesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8CE1FF4C16000826AC8 /* UpdateProfilesProtocol.swift */; };
+		17FF34771FF4E62C0099661B /* SearchEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF34751FF4E62C0099661B /* SearchEventsVC.swift */; };
+		17FF347A1FF4E97F0099661B /* Searching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17FF34791FF4E97F0099661B /* Searching.storyboard */; };
+		17FF347C1FF4EBB70099661B /* SearchEventsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF347B1FF4EBB70099661B /* SearchEventsTableVC.swift */; };
 		36001AE21F83F8360031A1EE /* Extensions+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001AE11F83F8360031A1EE /* Extensions+Double.swift */; };
 		36001B061F8747C40031A1EE /* TypeEventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B051F8747C40031A1EE /* TypeEventServices.swift */; };
 		36001B091F874A7C0031A1EE /* EventTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36001B081F874A7C0031A1EE /* EventTypesVC.swift */; };
@@ -207,6 +210,9 @@
 		1714E8CA1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhoneNumberVC.swift; sourceTree = "<group>"; };
 		1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPhoneNumberVC.xib; sourceTree = "<group>"; };
 		1714E8CE1FF4C16000826AC8 /* UpdateProfilesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilesProtocol.swift; sourceTree = "<group>"; };
+		17FF34751FF4E62C0099661B /* SearchEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsVC.swift; sourceTree = "<group>"; };
+		17FF34791FF4E97F0099661B /* Searching.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Searching.storyboard; sourceTree = "<group>"; };
+		17FF347B1FF4EBB70099661B /* SearchEventsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsTableVC.swift; sourceTree = "<group>"; };
 		1A434F16EF586BE1A66742A2 /* Pods_Eventify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36001AE11F83F8360031A1EE /* Extensions+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Double.swift"; sourceTree = "<group>"; };
 		36001B051F8747C40031A1EE /* TypeEventServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEventServices.swift; sourceTree = "<group>"; };
@@ -718,6 +724,15 @@
 				1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */,
 			);
 			path = EditPhoneNumber;
+			sourceTree = "<group>";
+		};
+		17FF34701FF4E29C0099661B /* SearchEvents */ = {
+			isa = PBXGroup;
+			children = (
+				17FF34751FF4E62C0099661B /* SearchEventsVC.swift */,
+				17FF347B1FF4EBB70099661B /* SearchEventsTableVC.swift */,
+			);
+			path = SearchEvents;
 			sourceTree = "<group>";
 		};
 		25E6E15A33BD89295462B165 /* Pods */ = {
@@ -1751,6 +1766,7 @@
 				36F28D7E1FAC4700000A5359 /* Order.storyboard */,
 				36147DCA1FB053CE004F38DD /* TicketsOrdered.storyboard */,
 				36D471501FD91B010056792B /* Dialog.storyboard */,
+				17FF34791FF4E97F0099661B /* Searching.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1795,6 +1811,7 @@
 		36B762251F7E9BDF009D3BE9 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				17FF34701FF4E29C0099661B /* SearchEvents */,
 				36F28D8C1FAC4956000A5359 /* OrderEvent */,
 				36B762381F7FB283009D3BE9 /* NewEvent */,
 				36B762271F7E9C83009D3BE9 /* DetailEvent */,
@@ -2193,6 +2210,7 @@
 				36F111AE1FA9B0AF00B97951 /* WWCalendarTimeSelector.storyboard in Resources */,
 				36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */,
 				36EC9A691FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib in Resources */,
+				17FF347A1FF4E97F0099661B /* Searching.storyboard in Resources */,
 				36147DCB1FB053CE004F38DD /* TicketsOrdered.storyboard in Resources */,
 				36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */,
 				1714E8C91FF4BCED00826AC8 /* EditPasswordVC.xib in Resources */,
@@ -2352,11 +2370,13 @@
 				36F28D8F1FAC4A97000A5359 /* TicketDetailsVC.swift in Sources */,
 				1714E8CF1FF4C16000826AC8 /* UpdateProfilesProtocol.swift in Sources */,
 				362C5E021F8093C10033F9DB /* TicketsManagerVC.swift in Sources */,
+				17FF34771FF4E62C0099661B /* SearchEventsVC.swift in Sources */,
 				36F28DB81FAEED74000A5359 /* InfoUserVC.swift in Sources */,
 				367F3C161F7E375D002222EB /* Extensions+UIViewController.swift in Sources */,
 				362260281FA1A99500B2BE4C /* MapPickerVC.swift in Sources */,
 				1714E8C41FF4BCDF00826AC8 /* EditFullNameVC.swift in Sources */,
 				367F3BEF1F7E34EB002222EB /* Extensions+HTTPURLResponse.swift in Sources */,
+				17FF347C1FF4EBB70099661B /* SearchEventsTableVC.swift in Sources */,
 				36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */,
 				3664104B1FB6DBF8000E2516 /* UserManager.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,

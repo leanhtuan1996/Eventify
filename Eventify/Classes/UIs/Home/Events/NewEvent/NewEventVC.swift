@@ -221,22 +221,22 @@ class NewEventVC: UIViewController {
             self.showAlert("Vui lòng chọn loại sự kiện", title: "Thông báo", buttons: nil)
             return
         }
-        //self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog(self)
         EventServices.shared.addEvent(withEvent: newEvent) { (error) in
-//            self.loading.stopAnimating()
-//            if let error = error {
-//                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
-//                return
-//            }
-//            
-//            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
-//                
-//                self.finishedAddEvent()
-//                
-//                self.tabBarController?.selectedIndex = 0
-//            })
-//            
-//            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
+            self.loading.stopAnimating()
+            if let error = error {
+                self.showAlert("Thêm mới sự kiện thất bại với lỗi: \(error)", title: "Thêm thất bại", buttons: nil)
+                return
+            }
+            
+            let button = UIAlertAction(title: "Trở về trang chính", style: UIAlertActionStyle.default, handler: { (btn) in
+                
+                self.finishedAddEvent()
+                
+                self.tabBarController?.selectedIndex = 0
+            })
+            
+            self.showAlert("Thêm mới sự kiện thành công", title: "Thêm thành công", buttons: [button])
         }
         self.dismissKeyboard()
     }

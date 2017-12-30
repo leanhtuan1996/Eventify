@@ -541,7 +541,7 @@
                                 <rect key="frame" x="30" y="461" width="315" height="50"/>
                                 <color key="backgroundColor" red="0.53996080160000004" green="0.54462438820000003" blue="0.63826191430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Xem vé">
+                                <state key="normal" title="Xong">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -577,7 +577,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Eh-pS-yar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228" y="1560"/>
+            <point key="canvasLocation" x="-228" y="1660"/>
         </scene>
     </scenes>
     <resources>
