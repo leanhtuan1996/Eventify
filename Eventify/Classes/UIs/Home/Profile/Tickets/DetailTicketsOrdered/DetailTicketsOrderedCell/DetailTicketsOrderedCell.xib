@@ -23,24 +23,24 @@
                         <rect key="frame" x="20" y="0.0" width="491" height="1028"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Qu-hZ-u7J">
-                                <rect key="frame" x="0.0" y="0.0" width="491" height="1018"/>
+                                <rect key="frame" x="0.0" y="0.0" width="491" height="1028"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qTh-9g-bCq">
-                                        <rect key="frame" x="180.5" y="15" width="130" height="130"/>
+                                        <rect key="frame" x="170.5" y="15" width="150" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="130" id="bvi-au-Bh2"/>
-                                            <constraint firstAttribute="height" constant="130" id="kZp-ks-Npt"/>
+                                            <constraint firstAttribute="width" constant="150" id="bvi-au-Bh2"/>
+                                            <constraint firstAttribute="height" constant="150" id="kZp-ks-Npt"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPH-Rb-dvZ">
-                                        <rect key="frame" x="0.0" y="194.5" width="170.5" height="1"/>
+                                        <rect key="frame" x="0.0" y="204.5" width="170.5" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="VrQ-cr-Zy6"/>
                                         </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HfX-0u-rGf">
-                                        <rect key="frame" x="170.5" y="175" width="150" height="40"/>
+                                        <rect key="frame" x="170.5" y="185" width="150" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket 1 of 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRl-VK-hnp">
                                                 <rect key="frame" x="24" y="9" width="101" height="21"/>
@@ -58,14 +58,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-oU-PSN">
-                                        <rect key="frame" x="320.5" y="194.5" width="170.5" height="1"/>
+                                        <rect key="frame" x="320.5" y="204.5" width="170.5" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="lvz-5o-eEk"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Họ và tên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eB-8x-x5w">
-                                        <rect key="frame" x="15" y="236" width="66" height="20"/>
+                                        <rect key="frame" x="15" y="246" width="66" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Lqf-xU-Ghl"/>
                                         </constraints>
@@ -74,7 +74,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lê Anh Tuấn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMN-QE-IsA">
-                                        <rect key="frame" x="15" y="271" width="461" height="25"/>
+                                        <rect key="frame" x="15" y="281" width="461" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="ndO-fa-O3D"/>
                                         </constraints>
@@ -83,7 +83,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sự kiện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-3j-PmE">
-                                        <rect key="frame" x="15" y="316" width="51" height="20"/>
+                                        <rect key="frame" x="15" y="326" width="51" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="AUf-CH-Hls"/>
                                         </constraints>
@@ -92,7 +92,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên sự kiện" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdK-6Y-egp">
-                                        <rect key="frame" x="15" y="351" width="92.5" height="25"/>
+                                        <rect key="frame" x="15" y="361" width="92.5" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="3Rn-e7-HQt"/>
                                         </constraints>
@@ -101,7 +101,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vé" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-h1-cWz">
-                                        <rect key="frame" x="15" y="396" width="17.5" height="20"/>
+                                        <rect key="frame" x="15" y="406" width="17.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="cNw-Cg-Oxy"/>
                                         </constraints>
@@ -110,7 +110,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vé miễn phí" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sG7-4E-Lle">
-                                        <rect key="frame" x="15" y="431" width="94" height="25"/>
+                                        <rect key="frame" x="15" y="441" width="94" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="hnY-dz-a13"/>
                                         </constraints>
@@ -119,7 +119,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSu-hG-9tW">
-                                        <rect key="frame" x="0.0" y="476" width="221" height="200"/>
+                                        <rect key="frame" x="0.0" y="486" width="221" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ust-G7-HNw">
                                                 <rect key="frame" x="15" y="5" width="63.5" height="20"/>
@@ -160,7 +160,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0b-73-NuM">
-                                        <rect key="frame" x="270" y="476" width="221" height="200"/>
+                                        <rect key="frame" x="270" y="486" width="221" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa điểm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rM-Eb-zya">
                                                 <rect key="frame" x="15" y="15" width="60" height="20"/>
@@ -200,14 +200,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ib0-Am-xFf">
-                                        <rect key="frame" x="0.0" y="696" width="491" height="1"/>
+                                        <rect key="frame" x="0.0" y="706" width="491" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Bnm-q7-AVj"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mã thanh toán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-TX-dnT">
-                                        <rect key="frame" x="15" y="717" width="98.5" height="20"/>
+                                        <rect key="frame" x="15" y="727" width="98.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="0gk-RU-COX"/>
                                         </constraints>
@@ -216,13 +216,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#20295" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="129-pN-ST9">
-                                        <rect key="frame" x="15" y="752" width="461" height="21.5"/>
+                                        <rect key="frame" x="15" y="762" width="461" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đơn vị tổ chức" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4E-xb-ZYe">
-                                        <rect key="frame" x="15" y="799" width="99.5" height="20"/>
+                                        <rect key="frame" x="15" y="809" width="99.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="WMr-g0-p3S"/>
                                             <constraint firstAttribute="height" constant="20" id="xdE-hi-3CO"/>
@@ -232,13 +232,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#20295" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYd-2q-Xy8">
-                                        <rect key="frame" x="15" y="834" width="461" height="21.5"/>
+                                        <rect key="frame" x="15" y="844" width="461" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROX-Vy-J97">
-                                        <rect key="frame" x="15" y="875.5" width="135" height="30"/>
+                                        <rect key="frame" x="15" y="885.5" width="135" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="lu9-Pv-odl"/>
                                         </constraints>
@@ -266,7 +266,7 @@
                                     <constraint firstItem="qTh-9g-bCq" firstAttribute="top" secondItem="7Qu-hZ-u7J" secondAttribute="top" constant="15" id="KCZ-fY-f5X"/>
                                     <constraint firstItem="KYd-2q-Xy8" firstAttribute="leading" secondItem="G4E-xb-ZYe" secondAttribute="leading" id="Ohi-to-Ifb"/>
                                     <constraint firstItem="I0b-73-NuM" firstAttribute="width" secondItem="KSu-hG-9tW" secondAttribute="width" id="Rcb-wt-osg"/>
-                                    <constraint firstItem="HfX-0u-rGf" firstAttribute="top" secondItem="qTh-9g-bCq" secondAttribute="bottom" constant="30" id="Rdv-7l-QSx"/>
+                                    <constraint firstItem="HfX-0u-rGf" firstAttribute="top" secondItem="qTh-9g-bCq" secondAttribute="bottom" constant="20" id="Rdv-7l-QSx"/>
                                     <constraint firstAttribute="trailing" secondItem="Vq2-oU-PSN" secondAttribute="trailing" id="RhZ-6R-zZT"/>
                                     <constraint firstItem="HfX-0u-rGf" firstAttribute="centerX" secondItem="qTh-9g-bCq" secondAttribute="centerX" id="RjG-Mh-bQs"/>
                                     <constraint firstItem="D1Q-h1-cWz" firstAttribute="top" secondItem="XdK-6Y-egp" secondAttribute="bottom" constant="20" id="Rtw-fw-FMj"/>
