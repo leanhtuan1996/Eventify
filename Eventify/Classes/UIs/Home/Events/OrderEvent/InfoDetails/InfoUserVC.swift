@@ -90,7 +90,7 @@ class InfoUserVC: UIViewController {
             self.timer.invalidate()
             
             let backAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.destructive, handler: { (action) in
-                self.loading.showLoadingDialog(self)
+                self.loading.showLoadingDialog()
                 OrderServices.shared.cancelOrder(completionHandler: { (error) in
                     self.loading.stopAnimating()
                     self.navigationController?.popViewController(animated: true)
@@ -109,7 +109,7 @@ class InfoUserVC: UIViewController {
     func back() {
         
         let backAction = UIAlertAction(title: "Trở về", style: UIAlertActionStyle.destructive, handler: { (action) in
-            self.loading.showLoadingDialog(self)
+            self.loading.showLoadingDialog()
             OrderServices.shared.cancelOrder(completionHandler: { (error) in
                 self.loading.stopAnimating()
                 if let error = error {
@@ -157,7 +157,7 @@ class InfoUserVC: UIViewController {
             return
         }
         
-        self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog()
         OrderServices.shared.newOrder(withName: fullName, andPhone: phone) { (error) in
             self.loading.stopAnimating()
             if let error = error {

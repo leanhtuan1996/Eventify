@@ -163,7 +163,7 @@ extension DetailTicketsOrderedVC: ActionTicketDelegate {
         let endDate = dateEnd.toDate()
         
         let addButton = UIAlertAction(title: "Thêm ngay", style: UIAlertActionStyle.default) { (btn) in
-            self.loading.showLoadingDialog(self)
+            self.loading.showLoadingDialog()
             Helpers.addEventToCalendar(title: name, description: "", startDate: startDate, endDate: endDate, location: location, completion: { (error) in
                 
                 let cancelButton = UIAlertAction(title: "Đã hiểu", style: UIAlertActionStyle.default, handler: { (btn) in

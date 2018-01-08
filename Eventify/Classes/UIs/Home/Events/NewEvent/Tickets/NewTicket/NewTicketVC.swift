@@ -60,7 +60,7 @@ class NewTicketVC: UIViewController, UITextFieldDelegate {
         
         self.dismissKeyboard()
         //TicketManager.shared.addTicket(with: ticket)
-        self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog()
         //edit, else => add
         if let ticket = self.ticketObject {
             ticket.name = txtNameTicket.text

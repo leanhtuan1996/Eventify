@@ -49,7 +49,7 @@ class TicketDetailsVC: UIViewController {
     }
     
     func handlerInformations() {
-        self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog()
         DispatchQueue.global().async {
             
             DispatchQueue.main.async {
@@ -107,7 +107,7 @@ class TicketDetailsVC: UIViewController {
         order.event = self.event
         order.ticketsOrder = self.ticketsToOrder
         
-        self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog()
         OrderServices.shared.beginOrder(order: order) { (error) in
             self.loading.stopAnimating()
             if let error = error {

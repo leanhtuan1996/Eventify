@@ -38,7 +38,7 @@ class MapPickerVC: UIViewController {
     }
     
     func setUpMapView() {
-        self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog()
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: self.zoomLevel)
         self.mapView.camera = camera
         self.mapView.delegate = self

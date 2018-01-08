@@ -53,7 +53,7 @@ class ForgotPasswordVC: UIViewController, UITextFieldDelegate {
             self.showAlert("Email invalid format", title: "Field are required", buttons: nil)
             return
         }
-        activityIndicatorView.showLoadingDialog(self)
+        activityIndicatorView.showLoadingDialog()
         
         UserServices.shared.forgotPasswordWithEmail(withEmail: email) { (error) in
             self.activityIndicatorView.stopAnimating()

@@ -94,7 +94,7 @@ extension DescriptionEditorVC: UIImagePickerControllerDelegate, UINavigationCont
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let imageResized = resizeImage(image: image, newWidth: self.view.bounds.width) {
                 if let img = UIImageJPEGRepresentation(imageResized, 1) {
-                    self.loading.showLoadingDialog(self)
+                    self.loading.showLoadingDialog()
                     EventServices.shared.uploadImageDescriptionEvent(data: img, completionHandler: { (url, downloadURL, error) in
                         self.loading.stopAnimating()
                         if let error = error {

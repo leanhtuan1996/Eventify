@@ -69,7 +69,7 @@ class DetailEventVC: UIViewController {
     }
     
     func loadEvent(withId id: String) {
-        self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog()
         EventServices.shared.getEvent(withId: id) { (event, error) in
             if let error = error {
                 self.showAlert(error, title: "Loading event has been failed", buttons: nil);
@@ -89,7 +89,7 @@ class DetailEventVC: UIViewController {
     func handlerEvent(withEvent event: EventObject) {
         
         if !self.loading.isAnimating {
-            self.loading.showLoadingDialog(self)
+            self.loading.showLoadingDialog()
         }
         
         if let photoUrl = event.photoCoverPath {
@@ -241,7 +241,7 @@ class DetailEventVC: UIViewController {
         let endDate = dateEnd.toDate()
         
         let addButton = UIAlertAction(title: "Thêm ngay", style: UIAlertActionStyle.default) { (btn) in
-            self.loading.showLoadingDialog(self)
+            self.loading.showLoadingDialog()
             Helpers.addEventToCalendar(title: name, description: "", startDate: startDate, endDate: endDate, location: location, completion: { (error) in
                 
                 let cancelButton = UIAlertAction(title: "Đã hiểu", style: UIAlertActionStyle.default, handler: { (btn) in

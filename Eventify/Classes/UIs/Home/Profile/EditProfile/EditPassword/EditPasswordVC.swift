@@ -70,7 +70,7 @@ class EditPasswordVC: UIViewController {
             return
         }
         
-        loading.showLoadingDialog(self)
+        loading.showLoadingDialog()
         self.delegate?.updatePassword(with: oldPassword, andNewPassword: newPassword, { (error) in
             self.loading.stopAnimating()
             if let error = error {

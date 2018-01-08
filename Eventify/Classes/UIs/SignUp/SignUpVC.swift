@@ -119,7 +119,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        activityIndicatorView.showLoadingDialog(self)
+        activityIndicatorView.showLoadingDialog()
         
         //for 
         let userObject = UserObject()

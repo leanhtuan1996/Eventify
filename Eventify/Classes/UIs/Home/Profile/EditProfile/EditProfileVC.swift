@@ -115,7 +115,7 @@ class EditProfileVC: UIViewController {
     
     @IBAction func btnLogOutClicked(_ sender: Any) {
         let loading = UIActivityIndicatorView()
-        loading.showLoadingDialog(self)
+        loading.showLoadingDialog()
         UserManager.shared.setUser(with: nil)
         
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -179,7 +179,7 @@ extension EditProfileVC: UpdateProfilesDelegate {
     }
 
     func updatePhoto(with imgData: Data) -> Void {
-        self.loading.showLoadingDialog(self)
+        self.loading.showLoadingDialog()
         UserServices.shared.updatePhotoURL(withImage: imgData, completionHandler: { (error) in
             self.loading.stopAnimating()
             if let error = error {
