@@ -94,6 +94,7 @@ class SignInVC: UIViewController {
     // MARK : - ACTIONS
     
     @IBAction func btnFacebook(_ sender: Any) {
+        /*
         self.dismissKeyboard()
         self.activityIndicatorView.showLoadingDialog()
         let fbManager = FBSDKLoginManager.init()
@@ -124,12 +125,15 @@ class SignInVC: UIViewController {
                 }
             })
         }
+ */
     }
     
     @IBAction func btnGooglePlus(_ sender: Any) {
+        /*
         self.dismissKeyboard()
         activityIndicatorView.showLoadingDialog()
         GIDSignIn.sharedInstance().signIn()
+ */
     }
     
     @IBAction func btnZalo(_ sender: Any) {
