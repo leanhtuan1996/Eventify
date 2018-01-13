@@ -18,6 +18,8 @@
 		1714E8CC1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8CA1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift */; };
 		1714E8CD1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */; };
 		1714E8CF1FF4C16000826AC8 /* UpdateProfilesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714E8CE1FF4C16000826AC8 /* UpdateProfilesProtocol.swift */; };
+		1715BA68200A74E400D19A4F /* InforDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1715BA66200A74E400D19A4F /* InforDialogVC.swift */; };
+		1715BA69200A74E400D19A4F /* InforDialogVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1715BA67200A74E400D19A4F /* InforDialogVC.xib */; };
 		17FF34771FF4E62C0099661B /* SearchEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF34751FF4E62C0099661B /* SearchEventsVC.swift */; };
 		17FF347A1FF4E97F0099661B /* Searching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17FF34791FF4E97F0099661B /* Searching.storyboard */; };
 		17FF347C1FF4EBB70099661B /* SearchEventsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF347B1FF4EBB70099661B /* SearchEventsTableVC.swift */; };
@@ -210,6 +212,8 @@
 		1714E8CA1FF4BCFD00826AC8 /* EditPhoneNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhoneNumberVC.swift; sourceTree = "<group>"; };
 		1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPhoneNumberVC.xib; sourceTree = "<group>"; };
 		1714E8CE1FF4C16000826AC8 /* UpdateProfilesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilesProtocol.swift; sourceTree = "<group>"; };
+		1715BA66200A74E400D19A4F /* InforDialogVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforDialogVC.swift; sourceTree = "<group>"; };
+		1715BA67200A74E400D19A4F /* InforDialogVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforDialogVC.xib; sourceTree = "<group>"; };
 		17FF34751FF4E62C0099661B /* SearchEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsVC.swift; sourceTree = "<group>"; };
 		17FF34791FF4E97F0099661B /* Searching.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Searching.storyboard; sourceTree = "<group>"; };
 		17FF347B1FF4EBB70099661B /* SearchEventsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsTableVC.swift; sourceTree = "<group>"; };
@@ -724,6 +728,15 @@
 				1714E8CB1FF4BCFD00826AC8 /* EditPhoneNumberVC.xib */,
 			);
 			path = EditPhoneNumber;
+			sourceTree = "<group>";
+		};
+		1715BA65200A74D600D19A4F /* InforDialogVC */ = {
+			isa = PBXGroup;
+			children = (
+				1715BA66200A74E400D19A4F /* InforDialogVC.swift */,
+				1715BA67200A74E400D19A4F /* InforDialogVC.xib */,
+			);
+			path = InforDialogVC;
 			sourceTree = "<group>";
 		};
 		17FF34701FF4E29C0099661B /* SearchEvents */ = {
@@ -1897,6 +1910,7 @@
 		36EC9A641FD7D18F00447EAB /* DetailTicketsOrdered */ = {
 			isa = PBXGroup;
 			children = (
+				1715BA65200A74D600D19A4F /* InforDialogVC */,
 				36EC9A651FD7D19000447EAB /* DetailTicketsOrderedCell */,
 				36EC9A6A1FD7D1D600447EAB /* DetailTicketsOrderedVC.swift */,
 			);
@@ -2211,6 +2225,7 @@
 				36B7622E1F7E9C83009D3BE9 /* EventsCell.xib in Resources */,
 				36EC9A691FD7D1AD00447EAB /* DetailTicketsOrderedCell.xib in Resources */,
 				17FF347A1FF4E97F0099661B /* Searching.storyboard in Resources */,
+				1715BA69200A74E400D19A4F /* InforDialogVC.xib in Resources */,
 				36147DCB1FB053CE004F38DD /* TicketsOrdered.storyboard in Resources */,
 				36F28D941FAC541E000A5359 /* TicketsOrderCell.xib in Resources */,
 				1714E8C91FF4BCED00826AC8 /* EditPasswordVC.xib in Resources */,
@@ -2379,6 +2394,7 @@
 				17FF347C1FF4EBB70099661B /* SearchEventsTableVC.swift in Sources */,
 				36F28D931FAC541E000A5359 /* TicketsOrderCell.swift in Sources */,
 				3664104B1FB6DBF8000E2516 /* UserManager.swift in Sources */,
+				1715BA68200A74E400D19A4F /* InforDialogVC.swift in Sources */,
 				367F3BF61F7E34EB002222EB /* UserServices.swift in Sources */,
 				36D1C1EC1FA32DC200DB7451 /* InteractiveEventProtocol.swift in Sources */,
 				367F3C181F7E37C3002222EB /* Helpers.swift in Sources */,

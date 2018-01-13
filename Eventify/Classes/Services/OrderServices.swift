@@ -173,4 +173,32 @@ class OrderServices: NSObject {
             })
         }
     }
+    
+    func verifyTicket(_ completionHandler: @escaping (_ info: [String: Any]?, _ error: String?) -> Void) -> Void {
+        guard let id = UserManager.shared.currentUser?.id else {
+            return completionHandler(nil, "Missing token")
+        }
+        
+        socket.off("alert-to-verify-ticket")
+        
+        socket.on("alert-to-verify-ticket") { (data, ack) in
+            Helpers.errorHandler(with: data, completionHandler: { (json, error) in
+                if let error = error {
+                    return completionHandler(nil, error)
+                }
+                
+                guard let json = json, json.count > 0 else {
+                    return completionHandler(nil, "Data is empty")
+                }
+                
+                print(json[0])
+                
+                if let idUser = json[0]["ID_USER"] as? String {
+                    if idUser == id {
+                        return completionHandler(json[0], nil)
+                    }
+                }
+            })
+        }
+    }
 }

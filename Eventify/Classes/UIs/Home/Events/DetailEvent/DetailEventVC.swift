@@ -244,8 +244,9 @@ class DetailEventVC: UIViewController {
             self.loading.showLoadingDialog()
             Helpers.addEventToCalendar(title: name, description: "", startDate: startDate, endDate: endDate, location: location, completion: { (error) in
                 
+                self.loading.stopAnimating()
                 let cancelButton = UIAlertAction(title: "Đã hiểu", style: UIAlertActionStyle.default, handler: { (btn) in
-                    self.loading.stopAnimating()
+                    
                 })
                 if let error = error {
                     self.showAlert(error, title: "Thêm sự kiện vào lịch thất bại", buttons: nil)

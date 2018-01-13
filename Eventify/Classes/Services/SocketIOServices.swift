@@ -9,9 +9,9 @@
 import UIKit
 import SocketIO
 
-let baseUrl: String = "https://www.estenials.me"
-//let baseUrl: String = "http://0.0.0.0:8080"
-//let baseUrl: String = "http://192.168.31.96:8080"
+//let baseUrl: String = "https://www.estenials.me"
+//et baseUrl: String = "http://0.0.0.0:8080"
+let baseUrl: String = "http://192.168.10.111:8080"
 
 class SocketIOServices: NSObject {
     static let shared = SocketIOServices()

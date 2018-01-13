@@ -14,7 +14,9 @@ import MapKit
 class DetailTicketsOrderedVC: UIViewController {
     
     var order: OrderObject?
+    var currentRow: Int = 0
     
+    var infoView = InforDialogVC()
     var isfirstTimeTransform = true
     var prevIndexPath = IndexPath(row: 0, section: 0)
     let loading = UIActivityIndicatorView()
@@ -29,6 +31,8 @@ class DetailTicketsOrderedVC: UIViewController {
         collectionTickets.dataSource = self
         
         showAnimate()
+        
+        registerForVerifyTicket()
     }
     
     func showAnimate()
@@ -65,6 +69,33 @@ class DetailTicketsOrderedVC: UIViewController {
     
     @IBAction func btnReturnClicked(_ sender: Any) {
         removeAnimate()
+    }
+    
+    func registerForVerifyTicket() {
+        print("ACTIVE")
+        OrderServices.shared.verifyTicket { (response, error) in
+            if let error = error {
+                self.showAlert(error, title: "Whoops!", buttons: nil)
+                return
+            }
+            
+            self.infoView.info = response
+            self.view.bringSubview(toFront: self.infoView.view)
+            self.addChildViewController(self.infoView)
+            self.infoView.view.frame = self.view.frame
+            self.view.addSubview(self.infoView.view)
+            self.infoView.didMove(toParentViewController: self)
+
+            
+            /*
+            if let idTicket = self.order?.ticketsOrder?[self.currentRow].id {
+                if let ticketResponse = response?["CODE_NUMBER"] as? String {
+                    if idTicket == ticketResponse {                        
+                                            }
+                }
+            }
+            */
+        }
     }
     
 }
@@ -137,6 +168,7 @@ extension DetailTicketsOrderedVC: UICollectionViewDelegate, UICollectionViewData
         let newCell = self.collectionTickets.cellForItem(at: newIndexPath)
         let prevCell = self.collectionTickets.cellForItem(at: prevIndexPath)
         
+        self.currentRow = cellToSwipe.toInt()
         
         self.collectionTickets.scrollToItem(at: newIndexPath, at: UICollectionViewScrollPosition.left, animated: true)
         
